@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.10.0 - 2026-09-27
+
+- Redesigned the main window for small notebook displays: controls are grouped into **Receive / CAT / Stations** tabs instead of three tall columns.
+- Added horizontal and vertical splitters so the sidebar, decoded fax and live diagnostics can be resized interactively; layout and active tab are remembered.
+- The selected sound input device is now saved by device name (with index fallback) and restored after restart or device-list refresh.
+- Added always-visible live **Audio / START 300 Hz / STOP 450 Hz / SYNC** meters.
+- Moved phasing and H-sync confidence indicators into the diagnostics panel.
+- Kept the live FFT spectrum and waterfall visible below the decoded image and made them responsive to reduced window height.
+- Audio level is now measured consistently for both live input and WAV/audio-file playback.
+
 ## 1.9.3 - 2026-09-27
 
 - Renamed the station action to **Tune frequency via CAT** / **Naladit frekvenci přes CAT** so its behavior is explicit.

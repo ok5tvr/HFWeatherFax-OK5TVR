@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (
     QHBoxLayout, QLabel, QMainWindow, QMessageBox, QPushButton, QSlider,
     QSpinBox, QDoubleSpinBox, QVBoxLayout, QWidget, QScrollArea, QProgressBar,
     QLineEdit, QCompleter, QListWidget, QListWidgetItem, QTableWidget,
-    QTableWidgetItem, QHeaderView
+    QTableWidgetItem, QHeaderView, QTabWidget, QSplitter, QSizePolicy
 )
 
 from .audio import LiveAudioInput
@@ -52,7 +52,15 @@ class MainWindow(QMainWindow):
         icon_path = resource_path("assets", "hfweatherfax_ok5tvr.ico")
         if icon_path.exists():
             self.setWindowIcon(QIcon(str(icon_path)))
-        self.resize(1500, 960)
+        self.setMinimumSize(860, 560)
+        screen = QApplication.primaryScreen()
+        if screen is not None:
+            avail = screen.availableGeometry()
+            target_w = min(1400, max(900, int(avail.width() * 0.92)))
+            target_h = min(900, max(600, int(avail.height() * 0.90)))
+            self.resize(target_w, target_h)
+        else:
+            self.resize(1280, 760)
 
         self.audio = None
         self.decoder = FaxImageDecoder(48000, 120, 576)
@@ -83,9 +91,12 @@ class MainWindow(QMainWindow):
         self.cat_freq_dirty = False
         self.cat_last_rig_hz = None
 
+        self.last_audio_db = -120.0
         self._build_ui()
         self._restore_cat_settings()
         self.refresh_devices()
+        self._restore_ui_settings()
+        self._update_signal_diagnostics(-120.0)
         self.update_status(self._tr("ready"))
 
     def _tr(self, key: str, **kwargs) -> str:
@@ -169,6 +180,11 @@ class MainWindow(QMainWindow):
             except RuntimeError:
                 pass
 
+        if hasattr(self, "side_tabs"):
+            self.side_tabs.setTabText(self.tab_receive_index, self._tr("tab_receive"))
+            self.side_tabs.setTabText(self.tab_cat_index, self._tr("tab_cat"))
+            self.side_tabs.setTabText(self.tab_stations_index, self._tr("tab_stations"))
+
         if hasattr(self, "cat_width"):
             self.cat_width.setSpecialValueText(self._tr("no_change"))
 
@@ -242,10 +258,8 @@ class MainWindow(QMainWindow):
             self.image_label.setText(self._tr("no_image"))
 
         if hasattr(self, "level"):
-            if self.audio is not None:
-                self.level.setText(self._tr("level_value", db=self.audio.last_level_db))
-            else:
-                self.level.setText(self._tr("level"))
+            db = float(getattr(self, "last_audio_db", -120.0))
+            self.level.setText(self._tr("level") if db <= -119.0 else self._tr("level_value", db=db))
 
         if hasattr(self, "status"):
             if self.audio is not None:
@@ -332,17 +346,118 @@ class MainWindow(QMainWindow):
             return self._tr("signal_high", hz=offset)
         return self._tr("no_signal")
 
+    def _set_percent_meter(self, bar: QProgressBar, confidence: float) -> None:
+        pct = int(round(float(np.clip(confidence, 0.0, 1.0)) * 100.0))
+        bar.setValue(pct)
+        bar.setFormat(f"{pct}%")
+
+    def _update_signal_diagnostics(self, audio_db: float | None = None) -> None:
+        """Refresh the compact live signal diagnostics used on small displays."""
+        if audio_db is not None:
+            self.last_audio_db = float(audio_db)
+
+        if hasattr(self, "audio_level_meter"):
+            db = float(self.last_audio_db)
+            mapped = int(round(np.clip(db + 60.0, 0.0, 60.0)))
+            self.audio_level_meter.setValue(mapped)
+            if db <= -119.0:
+                self.audio_level_meter.setFormat("-- dBFS")
+            else:
+                self.audio_level_meter.setFormat(f"{db:.1f} dBFS")
+            if hasattr(self, "level"):
+                self.level.setText(self._tr("level") if db <= -119.0 else self._tr("level_value", db=db))
+
+        if not hasattr(self, "autodetector"):
+            return
+        d = self.autodetector
+        start_conf = float(getattr(d, "last_start_confidence", 0.0))
+        stop_conf = float(getattr(d, "last_stop_confidence", 0.0))
+        if getattr(d, "state", "WAIT_START") == "RECEIVING":
+            sync_conf = max(
+                float(getattr(d, "last_hsync_confidence", 0.0)),
+                float(getattr(d, "locked_phasing_confidence", 0.0)),
+            )
+        else:
+            sync_conf = float(getattr(d, "last_phasing_confidence", 0.0))
+
+        if hasattr(self, "start_quality"):
+            self._set_percent_meter(self.start_quality, start_conf)
+        if hasattr(self, "stop_quality"):
+            self._set_percent_meter(self.stop_quality, stop_conf)
+        if hasattr(self, "sync_quality"):
+            self._set_percent_meter(self.sync_quality, sync_conf)
+
+    def _restore_ui_settings(self) -> None:
+        geometry = self.settings.value("ui/geometry")
+        if geometry is not None:
+            try:
+                self.restoreGeometry(geometry)
+            except Exception:
+                pass
+        if hasattr(self, "main_splitter"):
+            state = self.settings.value("ui/main_splitter")
+            if state is not None:
+                try:
+                    self.main_splitter.restoreState(state)
+                except Exception:
+                    pass
+        if hasattr(self, "workspace_splitter"):
+            state = self.settings.value("ui/workspace_splitter")
+            if state is not None:
+                try:
+                    self.workspace_splitter.restoreState(state)
+                except Exception:
+                    pass
+        if hasattr(self, "side_tabs"):
+            try:
+                tab = int(self.settings.value("ui/sidebar_tab", 0))
+                if 0 <= tab < self.side_tabs.count():
+                    self.side_tabs.setCurrentIndex(tab)
+            except Exception:
+                pass
+
+    def _save_ui_settings(self) -> None:
+        self.settings.setValue("ui/geometry", self.saveGeometry())
+        if hasattr(self, "main_splitter"):
+            self.settings.setValue("ui/main_splitter", self.main_splitter.saveState())
+        if hasattr(self, "workspace_splitter"):
+            self.settings.setValue("ui/workspace_splitter", self.workspace_splitter.saveState())
+        if hasattr(self, "side_tabs"):
+            self.settings.setValue("ui/sidebar_tab", self.side_tabs.currentIndex())
+
+    def _audio_device_identity(self):
+        if not hasattr(self, "device") or self.device.currentIndex() < 0:
+            return None, None
+        data = self.device.currentData()
+        if isinstance(data, (tuple, list)) and len(data) >= 2:
+            try:
+                return int(data[0]), str(data[1])
+            except Exception:
+                return None, None
+        return None, None
+
+    def _save_audio_device(self, _index: int = -1) -> None:
+        idx, name = self._audio_device_identity()
+        if idx is None or not name:
+            return
+        self.settings.setValue("audio/device_index", idx)
+        self.settings.setValue("audio/device_name", name)
+
     def _build_ui(self):
         root = QWidget()
         outer = QHBoxLayout(root)
-        outer.setContentsMargins(8, 8, 8, 8)
-        outer.setSpacing(8)
+        outer.setContentsMargins(6, 6, 6, 6)
+        outer.setSpacing(6)
 
         # --- shared widgets -------------------------------------------------
         controls = self._group("controls")
         g = QGridLayout(controls)
+        g.setContentsMargins(8, 8, 8, 8)
+        g.setHorizontalSpacing(6)
+        g.setVerticalSpacing(5)
 
         self.device = QComboBox()
+        self.device.currentIndexChanged.connect(self._save_audio_device)
         self.refresh_btn = self._button("refresh")
         self.refresh_btn.clicked.connect(self.refresh_devices)
         self.rate = QComboBox()
@@ -360,9 +475,13 @@ class MainWindow(QMainWindow):
         self.auto_clear = self._check("auto_clear")
         self.auto_clear.setChecked(True)
         self.auto_status = QLabel(self._tr("auto_waiting"))
+        self.auto_status.setWordWrap(True)
         self.sensitivity = QComboBox()
         self._populate_sensitivity_combo("High")
         self.sensitivity.currentIndexChanged.connect(self._change_detection_sensitivity)
+
+        # Detailed lock indicators live in the diagnostics panel so the
+        # control tab stays compact on notebook displays.
         self.phasing_quality_label = QLabel()
         self.phasing_quality = QProgressBar()
         self.phasing_quality.setRange(0, 100)
@@ -394,8 +513,8 @@ class MainWindow(QMainWindow):
         self.clear_btn.clicked.connect(self.clear_image)
 
         g.addWidget(self._label("audio_input"), 0, 0)
-        g.addWidget(self.device, 0, 1, 1, 3)
-        g.addWidget(self.refresh_btn, 0, 4)
+        g.addWidget(self.device, 0, 1, 1, 4)
+        g.addWidget(self.refresh_btn, 0, 5)
         g.addWidget(self._label("sample_rate"), 1, 0)
         g.addWidget(self.rate, 1, 1)
         g.addWidget(QLabel("LPM"), 1, 2)
@@ -408,23 +527,21 @@ class MainWindow(QMainWindow):
         g.addWidget(self._label("detection_sensitivity"), 3, 3)
         g.addWidget(self.sensitivity, 3, 4, 1, 2)
         g.addWidget(self.auto_status, 4, 0, 1, 6)
-        g.addWidget(self.phasing_quality_label, 5, 0)
-        g.addWidget(self.phasing_quality, 5, 1, 1, 2)
-        g.addWidget(self.hsync_quality_label, 5, 3)
-        g.addWidget(self.hsync_quality, 5, 4, 1, 2)
 
         btns = QGridLayout()
+        btns.setHorizontalSpacing(6)
+        btns.setVerticalSpacing(5)
         btns.addWidget(self.start_btn, 0, 0)
         btns.addWidget(self.stop_btn, 0, 1)
         btns.addWidget(self.open_btn, 1, 0)
         btns.addWidget(self.save_btn, 1, 1)
         btns.addWidget(self.clear_btn, 2, 0, 1, 2)
-        g.addLayout(btns, 6, 0, 1, 3)
+        g.addLayout(btns, 5, 0, 1, 3)
 
-        g.addWidget(self.auto_save, 6, 3, 1, 3)
-        g.addWidget(self._label("auto_save_folder"), 7, 0)
-        g.addWidget(self.auto_save_folder, 7, 1, 1, 4)
-        g.addWidget(self.auto_save_folder_btn, 7, 5)
+        g.addWidget(self.auto_save, 5, 3, 1, 3)
+        g.addWidget(self._label("auto_save_folder"), 6, 0)
+        g.addWidget(self.auto_save_folder, 6, 1, 1, 4)
+        g.addWidget(self.auto_save_folder_btn, 6, 5)
 
         self.language_label = self._label("language")
         self.language_combo = QComboBox()
@@ -434,11 +551,14 @@ class MainWindow(QMainWindow):
         if lang_index >= 0:
             self.language_combo.setCurrentIndex(lang_index)
         self.language_combo.currentIndexChanged.connect(self._language_changed)
-        g.addWidget(self.language_label, 8, 0)
-        g.addWidget(self.language_combo, 8, 1, 1, 2)
+        g.addWidget(self.language_label, 7, 0)
+        g.addWidget(self.language_combo, 7, 1, 1, 2)
 
         cat_box = QGroupBox("CAT / Hamlib")
         catg = QGridLayout(cat_box)
+        catg.setContentsMargins(8, 8, 8, 8)
+        catg.setHorizontalSpacing(6)
+        catg.setVerticalSpacing(5)
         self.cat_dll = QLineEdit()
         self._bind_tr(self.cat_dll, "hamlib_placeholder", "setPlaceholderText")
         self.cat_dll_btn = QPushButton("Hamlib…")
@@ -446,7 +566,7 @@ class MainWindow(QMainWindow):
         self.cat_model = QComboBox()
         self.cat_model.setEditable(True)
         self.cat_model.setInsertPolicy(QComboBox.NoInsert)
-        self.cat_model.setMinimumContentsLength(22)
+        self.cat_model.setMinimumContentsLength(18)
         self.cat_model.completer().setCaseSensitivity(Qt.CaseInsensitive)
         self.cat_model.completer().setFilterMode(Qt.MatchContains)
         self.cat_model.addItem(self._tr("load_hamlib_models"), 1)
@@ -495,6 +615,7 @@ class MainWindow(QMainWindow):
         self.cat_poll = self._check("poll_1s")
         self.cat_poll.setChecked(True)
         self.cat_status = QLabel(self._tr("cat_disconnected"))
+        self.cat_status.setWordWrap(True)
 
         catg.addWidget(QLabel("Hamlib"), 0, 0)
         catg.addWidget(self.cat_dll, 0, 1, 1, 3)
@@ -523,6 +644,9 @@ class MainWindow(QMainWindow):
 
         correction = self._group("correction")
         cg = QGridLayout(correction)
+        cg.setContentsMargins(8, 8, 8, 8)
+        cg.setHorizontalSpacing(6)
+        cg.setVerticalSpacing(5)
         self.phase = QDoubleSpinBox()
         self.phase.setRange(-100.0, 100.0)
         self.phase.setDecimals(2)
@@ -554,33 +678,31 @@ class MainWindow(QMainWindow):
         self.shift_right_1_btn.clicked.connect(lambda: self.nudge_image(1.0))
         self.shift_right_5_btn.clicked.connect(lambda: self.nudge_image(5.0))
         self.line_start_status = QLabel(self._tr("line_start_not_evaluated"))
+        self.auto_slant_status.setWordWrap(True)
+        self.level_cal_status.setWordWrap(True)
+        self.line_start_status.setWordWrap(True)
         cg.addWidget(self._label("horizontal_phase"), 0, 0)
         cg.addWidget(self.phase, 0, 1)
         cg.addWidget(self._label("slant_correction"), 0, 2)
         cg.addWidget(self.slant, 0, 3)
-        cg.addWidget(self.invert_box, 0, 4)
-        cg.addWidget(self.auto_slant, 1, 0, 1, 2)
-        cg.addWidget(self.auto_slant_status, 1, 2, 1, 3)
-        cg.addWidget(self.auto_levels, 2, 0, 1, 2)
-        cg.addWidget(self.level_cal_status, 2, 2, 1, 3)
-        cg.addWidget(self.auto_line_start, 3, 0, 1, 2)
-        cg.addWidget(self.realign_btn, 3, 2)
-        cg.addWidget(self.shift_left_5_btn, 3, 3)
-        cg.addWidget(self.shift_left_1_btn, 3, 4)
-        cg.addWidget(self.shift_right_1_btn, 4, 3)
-        cg.addWidget(self.shift_right_5_btn, 4, 4)
-        cg.addWidget(self.line_start_status, 5, 0, 1, 5)
-
-        spectrum_box = self._group("spectrum")
-        sg = QVBoxLayout(spectrum_box)
-        self.spectrum = SpectrumWidget()
-        self.spectrum_info = QLabel(self._tr("spectrum_expected"))
-        self.spectrum_info.setAlignment(Qt.AlignCenter)
-        sg.addWidget(self.spectrum)
-        sg.addWidget(self.spectrum_info)
+        cg.addWidget(self.invert_box, 1, 0, 1, 2)
+        cg.addWidget(self.auto_slant, 1, 2, 1, 2)
+        cg.addWidget(self.auto_slant_status, 2, 0, 1, 4)
+        cg.addWidget(self.auto_levels, 3, 0, 1, 2)
+        cg.addWidget(self.level_cal_status, 3, 2, 1, 2)
+        cg.addWidget(self.auto_line_start, 4, 0, 1, 2)
+        cg.addWidget(self.realign_btn, 4, 2, 1, 2)
+        shift_row = QHBoxLayout()
+        shift_row.addWidget(self.shift_left_5_btn)
+        shift_row.addWidget(self.shift_left_1_btn)
+        shift_row.addWidget(self.shift_right_1_btn)
+        shift_row.addWidget(self.shift_right_5_btn)
+        cg.addLayout(shift_row, 5, 0, 1, 4)
+        cg.addWidget(self.line_start_status, 6, 0, 1, 4)
 
         image_box = self._group("images")
         ig = QVBoxLayout(image_box)
+        ig.setContentsMargins(6, 6, 6, 6)
         self.image_title = self._label("decoded_image")
         self.image_title.setAlignment(Qt.AlignCenter)
         self.image_label = QLabel()
@@ -590,6 +712,7 @@ class MainWindow(QMainWindow):
         self.scroll.setWidgetResizable(True)
         self.scroll.setWidget(self.image_label)
         self.status = QLabel(self._tr("ready"))
+        self.status.setWordWrap(True)
         self.level = QLabel(self._tr("level"))
         status_row = QHBoxLayout()
         status_row.addWidget(self.status, 1)
@@ -600,12 +723,16 @@ class MainWindow(QMainWindow):
 
         stations_box = self._group("stations")
         stg = QVBoxLayout(stations_box)
+        stg.setContentsMargins(8, 8, 8, 8)
+        stg.setSpacing(5)
 
         self.station_search = QLineEdit()
         self._bind_tr(self.station_search, "station_search", "setPlaceholderText")
         self.station_search.textChanged.connect(self.filter_station_list)
 
         filter_row = QGridLayout()
+        filter_row.setHorizontalSpacing(6)
+        filter_row.setVerticalSpacing(4)
         self.station_country = QComboBox()
         self.station_service = QComboBox()
         self.station_band = QComboBox()
@@ -629,6 +756,7 @@ class MainWindow(QMainWindow):
         filter_row.addWidget(self.station_fav_only, 4, 0, 1, 2)
 
         self.station_list = QListWidget()
+        self.station_list.setMinimumHeight(140)
         self.station_list.currentItemChanged.connect(self.station_selected)
         self.station_list.itemDoubleClicked.connect(lambda _item: self.apply_station_to_cat())
 
@@ -652,13 +780,13 @@ class MainWindow(QMainWindow):
         self.station_schedule.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
         self.station_schedule.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
         self.station_schedule.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeToContents)
-        self.station_schedule.setMinimumHeight(230)
+        self.station_schedule.setMinimumHeight(120)
         self.station_schedule_note = self._label("schedule_note")
         self.station_schedule_note.setWordWrap(True)
 
         stg.addWidget(self.station_search)
         stg.addLayout(filter_row)
-        stg.addWidget(self.station_list, 1)
+        stg.addWidget(self.station_list, 2)
         stg.addWidget(self.station_favorite_btn)
         stg.addWidget(self.station_info)
         stg.addWidget(self._label("frequency_callsign"))
@@ -668,33 +796,98 @@ class MainWindow(QMainWindow):
         st_btns.addWidget(self.station_apply_btn)
         stg.addLayout(st_btns)
         stg.addWidget(self._label("schedule"))
-        stg.addWidget(self.station_schedule, 2)
+        stg.addWidget(self.station_schedule, 1)
         stg.addWidget(self.station_schedule_note)
 
-        # --- three-column layout matching the sketch -----------------------
-        left_col = QVBoxLayout()
-        left_col.addWidget(controls)
-        left_col.addWidget(cat_box)
-        left_col.addWidget(correction)
-        left_col.addWidget(spectrum_box, 1)
+        # --- live diagnostics: always visible next to/below the image -------
+        self.diagnostics_box = self._group("diagnostics")
+        dg = QVBoxLayout(self.diagnostics_box)
+        dg.setContentsMargins(6, 6, 6, 6)
+        dg.setSpacing(4)
 
-        center_col = QVBoxLayout()
-        center_col.addWidget(image_box, 1)
+        meters = QGridLayout()
+        meters.setHorizontalSpacing(8)
+        meters.setVerticalSpacing(3)
+        self.audio_level_label = self._label("diag_audio")
+        self.start_quality_label = self._label("diag_start")
+        self.stop_quality_label = self._label("diag_stop")
+        self.sync_quality_label = self._label("diag_sync")
+        self.audio_level_meter = QProgressBar()
+        self.audio_level_meter.setRange(0, 60)
+        self.audio_level_meter.setValue(0)
+        self.audio_level_meter.setFormat("-- dBFS")
+        self.start_quality = QProgressBar()
+        self.stop_quality = QProgressBar()
+        self.sync_quality = QProgressBar()
+        for bar in (self.start_quality, self.stop_quality, self.sync_quality):
+            bar.setRange(0, 100)
+            bar.setValue(0)
+            bar.setFormat("0%")
+        meter_labels = (self.audio_level_label, self.start_quality_label, self.stop_quality_label, self.sync_quality_label)
+        meter_bars = (self.audio_level_meter, self.start_quality, self.stop_quality, self.sync_quality)
+        for col, (label, bar) in enumerate(zip(meter_labels, meter_bars)):
+            label.setAlignment(Qt.AlignCenter)
+            meters.addWidget(label, 0, col)
+            meters.addWidget(bar, 1, col)
 
-        right_col = QVBoxLayout()
-        right_col.addWidget(stations_box, 1)
+        meters.addWidget(self.phasing_quality_label, 2, 0)
+        meters.addWidget(self.phasing_quality, 2, 1)
+        meters.addWidget(self.hsync_quality_label, 2, 2)
+        meters.addWidget(self.hsync_quality, 2, 3)
+        dg.addLayout(meters)
 
-        left_widget = QWidget()
-        left_widget.setLayout(left_col)
-        center_widget = QWidget()
-        center_widget.setLayout(center_col)
-        right_widget = QWidget()
-        right_widget.setLayout(right_col)
+        self.spectrum = SpectrumWidget()
+        self.spectrum.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.spectrum_info = QLabel(self._tr("spectrum_expected"))
+        self.spectrum_info.setAlignment(Qt.AlignCenter)
+        self.spectrum_info.setWordWrap(True)
+        dg.addWidget(self.spectrum_info)
+        dg.addWidget(self.spectrum, 1)
 
-        outer.addWidget(left_widget, 4)
-        outer.addWidget(center_widget, 6)
-        outer.addWidget(right_widget, 3)
+        # --- compact notebook layout ---------------------------------------
+        # Controls are placed in tabs instead of three tall side-by-side
+        # columns. The decoded image and diagnostics remain visible together.
+        def make_scroll_tab(*widgets):
+            area = QScrollArea()
+            area.setWidgetResizable(True)
+            area.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+            area.setFrameStyle(0)
+            holder = QWidget()
+            layout = QVBoxLayout(holder)
+            layout.setContentsMargins(3, 3, 3, 3)
+            layout.setSpacing(6)
+            for widget in widgets:
+                layout.addWidget(widget)
+            layout.addStretch(1)
+            area.setWidget(holder)
+            return area
 
+        receive_tab = make_scroll_tab(controls, correction)
+        cat_tab = make_scroll_tab(cat_box)
+
+        self.side_tabs = QTabWidget()
+        self.side_tabs.setDocumentMode(True)
+        self.side_tabs.setMinimumWidth(320)
+        self.tab_receive_index = self.side_tabs.addTab(receive_tab, self._tr("tab_receive"))
+        self.tab_cat_index = self.side_tabs.addTab(cat_tab, self._tr("tab_cat"))
+        stations_tab = make_scroll_tab(stations_box)
+        self.tab_stations_index = self.side_tabs.addTab(stations_tab, self._tr("tab_stations"))
+
+        self.workspace_splitter = QSplitter(Qt.Vertical)
+        self.workspace_splitter.addWidget(image_box)
+        self.workspace_splitter.addWidget(self.diagnostics_box)
+        self.workspace_splitter.setStretchFactor(0, 3)
+        self.workspace_splitter.setStretchFactor(1, 2)
+        self.workspace_splitter.setSizes([470, 250])
+
+        self.main_splitter = QSplitter(Qt.Horizontal)
+        self.main_splitter.addWidget(self.side_tabs)
+        self.main_splitter.addWidget(self.workspace_splitter)
+        self.main_splitter.setStretchFactor(0, 0)
+        self.main_splitter.setStretchFactor(1, 1)
+        self.main_splitter.setSizes([390, 900])
+
+        outer.addWidget(self.main_splitter, 1)
         self.setCentralWidget(root)
         self.populate_station_filters()
         self.filter_station_list()
@@ -1290,15 +1483,35 @@ class MainWindow(QMainWindow):
             self.auto_save_folder.setText(folder)
 
     def refresh_devices(self):
+        current_idx, current_name = self._audio_device_identity()
+        saved_name = current_name or str(self.settings.value("audio/device_name", "") or "")
+        try:
+            saved_idx = current_idx if current_idx is not None else int(self.settings.value("audio/device_index", -1))
+        except Exception:
+            saved_idx = -1
+
+        self.device.blockSignals(True)
         self.device.clear()
+        selected = -1
         try:
             devices = LiveAudioInput.input_devices()
-            for idx, name in devices:
-                self.device.addItem(f"{idx}: {name}", idx)
+            for row, (idx, name) in enumerate(devices):
+                self.device.addItem(f"{idx}: {name}", (int(idx), str(name)))
+                if saved_name and str(name) == saved_name:
+                    selected = row
+                elif selected < 0 and int(idx) == saved_idx:
+                    selected = row
             if not devices:
-                self.device.addItem(self._tr("no_input_devices"))
+                self.device.addItem(self._tr("no_input_devices"), None)
+            elif selected < 0:
+                selected = 0
+            if selected >= 0:
+                self.device.setCurrentIndex(selected)
         except Exception as e:
-            self.device.addItem(self._tr("audio_error", error=e))
+            self.device.addItem(self._tr("audio_error", error=e), None)
+        finally:
+            self.device.blockSignals(False)
+        self._save_audio_device()
 
     def configure_decoder(self, sample_rate: int):
         self.decoder = FaxImageDecoder(
@@ -1315,7 +1528,12 @@ class MainWindow(QMainWindow):
         self.stop_all()
         try:
             sr = int(self.rate.currentText())
-            dev = self.device.currentData()
+            device_data = self.device.currentData()
+            if isinstance(device_data, (tuple, list)) and device_data:
+                dev = int(device_data[0])
+            else:
+                dev = device_data
+            self._save_audio_device()
             self.configure_decoder(sr)
             self.autodetector = WefaxAutoDetector(sr, self.sensitivity.currentData() or "Normal")
             self.slant_estimator = AutoSlantEstimator(self.decoder.width)
@@ -1384,6 +1602,8 @@ class MainWindow(QMainWindow):
             self.auto_slant_status.setText(self._tr("auto_slant_measuring"))
         if hasattr(self, "level_cal_status"):
             self.level_cal_status.setText(self._tr("levels_nominal"))
+        self.last_audio_db = -120.0
+        self._update_signal_diagnostics(-120.0)
         self.auto_realign_done = False
 
     def clear_image(self):
@@ -1418,7 +1638,7 @@ class MainWindow(QMainWindow):
                     chunks.append(self.audio.queue.get_nowait())
                 except Exception:
                     break
-            self.level.setText(self._tr("level_value", db=self.audio.last_level_db))
+            self._update_signal_diagnostics(self.audio.last_level_db)
         elif self.wav_data is not None:
             # Faster than real-time file decoding while keeping GUI responsive.
             n = int(self.wav_rate * 1.5)
@@ -1437,6 +1657,9 @@ class MainWindow(QMainWindow):
         if chunks:
             spectrum_audio = np.concatenate(chunks) if len(chunks) > 1 else chunks[0]
             current_sr = self.audio.sample_rate if self.audio is not None else self.wav_rate
+            rms = float(np.sqrt(np.mean(np.asarray(spectrum_audio, dtype=np.float64) ** 2) + 1e-12))
+            audio_db = 20.0 * np.log10(max(rms, 1e-9))
+            self._update_signal_diagnostics(audio_db)
             self.spectrum.update_audio(spectrum_audio, current_sr)
             peak = "--" if self.spectrum.peak_hz is None else f"{self.spectrum.peak_hz:.0f} Hz"
             if self.auto_detect.isChecked() and self.autodetector.state == "RECEIVING":
@@ -1561,6 +1784,8 @@ class MainWindow(QMainWindow):
                             self.slant.blockSignals(True)
                             self.slant.setValue(applied)
                             self.slant.blockSignals(False)
+
+        self._update_signal_diagnostics()
 
         if added:
             if self.auto_line_start.isChecked() and (not self.auto_realign_done) and len(self.image_lines) >= 60:
@@ -1695,7 +1920,10 @@ class MainWindow(QMainWindow):
         self.status.setText(text)
 
     def closeEvent(self, event):
+        self._save_audio_device()
+        self._save_ui_settings()
         self._save_cat_settings()
+        self.settings.sync()
         self.stop_all()
         self.disconnect_cat()
         event.accept()

@@ -35,6 +35,9 @@ Jazyk se přepíná položkou **Jazyk / Language** v ovládacím panelu. Volba s
 - automatická i ruční korekce sklonu,
 - automatická korekce začátku řádku / přetočení obrazu,
 - živé FFT spektrum a waterfall se značkami START / PHASING / IMAGE / STOP,
+- kompaktní rozhraní pro notebooky s kartami **Příjem / CAT / Stanice** a nastavitelnými dělicími panely,
+- živé indikátory **úroveň audia / START 300 Hz / STOP 450 Hz / SYNC**,
+- zapamatování vybrané zvukové karty i rozložení hlavního okna mezi spuštěními,
 - automatické ukládání PNG,
 - přímé CAT ovládání přes Hamlib bez `rigctld`,
 - zapamatování cesty k Hamlibu a nastavení rádia/CAT mezi spuštěními,
@@ -91,8 +94,8 @@ V repozitáři je připraven workflow `.github/workflows/windows-release.yml`.
 Pro vydání nové verze stačí například:
 
 ```bash
-git tag v1.9.3
-git push origin v1.9.3
+git tag v1.10.0
+git push origin v1.10.0
 ```
 
 GitHub Actions potom na Windows runneru:

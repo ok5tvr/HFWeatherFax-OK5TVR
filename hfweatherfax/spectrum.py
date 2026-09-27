@@ -11,8 +11,10 @@ class SpectrumWidget(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setMinimumHeight(330)
-        self.setMaximumHeight(420)
+        # The widget is intentionally flexible: on a small notebook it can
+        # shrink to a compact diagnostic strip, while a larger window gives
+        # the spectrum/waterfall more room.
+        self.setMinimumHeight(170)
         self.sample_rate = 48000
         self.freqs = np.empty(0, dtype=np.float32)
         self.db = np.empty(0, dtype=np.float32)
@@ -222,10 +224,12 @@ class SpectrumWidget(QWidget):
         p.fillRect(r, self.palette().base())
 
         left, right, top, bottom = 48.0, 18.0, 14.0, 28.0
-        gap = 28.0
-        waterfall_h = 145.0
+        gap = 18.0
         total_h = max(10.0, r.height() - top - bottom)
-        spectrum_h = max(95.0, total_h - waterfall_h - gap)
+        # Scale both panes with the available height. The previous fixed
+        # 145 px waterfall made the whole application too tall on notebooks.
+        waterfall_h = float(np.clip(total_h * 0.38, 48.0, 135.0))
+        spectrum_h = max(48.0, total_h - waterfall_h - gap)
         w = max(10.0, r.width() - left - right)
 
         band_x1 = self._x(1500.0, left, w)
@@ -271,7 +275,7 @@ class SpectrumWidget(QWidget):
 
         wf_top = top + spectrum_h + gap
         p.setPen(self.palette().text().color())
-        p.drawText(int(left), int(wf_top - 8), "Waterfall - newest signal at bottom")
+        p.drawText(int(left), int(wf_top - 8), "Waterfall")
 
         # Compact legend for the event timeline.
         legend_x = left + 245

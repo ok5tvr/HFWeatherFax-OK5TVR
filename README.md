@@ -35,6 +35,9 @@ Use the **Language / Jazyk** selector in the program controls. The selected lang
 - automatic and manual slant correction,
 - automatic line-start / image wrap correction,
 - live FFT spectrum and scrolling waterfall with START / PHASING / IMAGE / STOP markers,
+- compact notebook-friendly UI with **Receive / CAT / Stations** tabs and resizable split panes,
+- live **audio level / START 300 Hz / STOP 450 Hz / SYNC** indicators,
+- persistent selected audio input and main-window layout across restarts,
 - automatic PNG saving,
 - direct Hamlib CAT control without `rigctld`,
 - persistent Hamlib path and rig/CAT settings across restarts,
@@ -99,8 +102,8 @@ The repository contains `.github/workflows/windows-release.yml`.
 A tagged version such as:
 
 ```bash
-git tag v1.9.3
-git push origin v1.9.3
+git tag v1.10.0
+git push origin v1.10.0
 ```
 
 starts a Windows build on GitHub Actions. The workflow builds the EXE, generates `SHA256SUMS.txt`, uploads a build artifact and publishes the files to the matching GitHub Release.

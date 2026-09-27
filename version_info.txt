@@ -1,7 +1,7 @@
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(1, 9, 2, 0),
-    prodvers=(1, 9, 2, 0),
+    filevers=(1, 10, 0, 0),
+    prodvers=(1, 10, 0, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -16,11 +16,11 @@ VSVersionInfo(
         [
           StringStruct(u'CompanyName', u'OK5TVR'),
           StringStruct(u'FileDescription', u'HFWeatherFax OK5TVR - HF radiofax decoder'),
-          StringStruct(u'FileVersion', u'1.9.3'),
+          StringStruct(u'FileVersion', u'1.10.0'),
           StringStruct(u'InternalName', u'HFWeatherFax_OK5TVR'),
           StringStruct(u'OriginalFilename', u'HFWeatherFax_OK5TVR.exe'),
           StringStruct(u'ProductName', u'HFWeatherFax OK5TVR'),
-          StringStruct(u'ProductVersion', u'1.9.3')
+          StringStruct(u'ProductVersion', u'1.10.0')
         ]
       )
     ]),
