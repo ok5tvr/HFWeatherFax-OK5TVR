@@ -1,0 +1,11 @@
+HFWeatherFax OK5TVR uses Hamlib directly through libhamlib-4.dll; rigctld is not required.
+
+Official Windows builds:
+- build_exe.bat automatically downloads and verifies the official Hamlib 4.7.2 x64 ZIP.
+- GitHub Actions does the same before building a Release.
+
+Manual/offline build:
+Place libhamlib-4.dll and its companion DLL files from the same 64-bit Hamlib BIN directory in:
+  hamlib\bin\
+
+Do not copy libhamlib-4.dll alone. Keep its dependent DLL files with it.

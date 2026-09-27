@@ -1,0 +1,2096 @@
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Sun Jun 21 08:22:29 2026 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>RIGCTL</title>
+
+</head>
+<body>
+
+<h1 align="center">RIGCTL</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#COMMANDS">COMMANDS</a><br>
+<a href="#Standard Input">Standard Input</a><br>
+<a href="#rigctl Commands">rigctl Commands</a><br>
+<a href="#READLINE">READLINE</a><br>
+<a href="#DIAGNOSTICS">DIAGNOSTICS</a><br>
+<a href="#EXIT STATUS">EXIT STATUS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#COPYING">COPYING</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#COLOPHON">COLOPHON</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">rigctl - control
+radio transceivers and receivers</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="8%">
+
+
+<p style="margin-top: 1em"><b>rigctl</b></p></td>
+<td width="1%"></td>
+<td width="82%">
+
+
+<p style="margin-top: 1em">[<b>-hiIlLnouV</b>]
+[<b>-m&nbsp;</b><i>id</i>] [<b>-r&nbsp;</b><i>device</i>]
+[<b>-p&nbsp;</b><i>device</i>]
+[<b>-d&nbsp;</b><i>device</i>] [<b>-P&nbsp;</b><i>type</i>]
+[<b>-D&nbsp;</b><i>type</i>] [<b>-s&nbsp;</b><i>baud</i>]
+[<b>-c&nbsp;</b><i>id</i>] [<b>-t&nbsp;</b><i>char</i>]
+[<b>-C&nbsp;</b><i>parm=val</i>] -Y [<b>-v</b>[<b>-Z</b>]]
+[<b>command</b>|<b>-</b>]</p> </td></tr>
+</table>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">Control radio
+transceivers and receivers. <b>rigctl</b> accepts
+<b>commands</b> from the command line as well as in
+interactive mode if none are provided on the command
+line.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Keep in mind
+that Hamlib is BETA level software. While a lot of backend
+libraries lack complete rig support, the basic functions are
+usually well supported.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Please report
+bugs and provide feedback at the e-mail address given in the
+<b>BUGS</b> section below. Patches and code enhancements
+sent to the same address are welcome.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">This program
+follows the usual GNU command line syntax. Short options
+that take an argument may have the value follow immediately
+or be separated by a space. Long options starting with two
+dashes (&lsquo;-&rsquo;) require an &lsquo;=&rsquo; between
+the option and any argument.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Here is a
+summary of the supported options: <b><br>
+-m</b>, <b>--model</b>=<i>id</i></p>
+
+<p style="margin-left:18%;">Select radio model number.
+Defaults to dummy rig.</p>
+
+<p style="margin-left:18%; margin-top: 1em">See model list
+(use &ldquo;rigctl -l&rdquo;).</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+<b>rigctl</b> (or third party software using the C API) will
+use radio model 2 for <b>NET rigctl</b> (communicating with
+<b>rigctld</b>).</p>
+
+<p style="margin-left:9%;"><b>-r</b>,
+<b>--rig-file</b>=<i>device</i></p>
+
+<p style="margin-left:18%;">Use <i>device</i> as the file
+name of the port connected to the radio.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Typically
+<i>/dev/ttyS0</i>, <i>/dev/ttyS1</i>, <i>/dev/ttyUSB0</i>,
+etc. on Linux, <i>COM1</i>, <i>COM2</i>, etc. on MS Windows.
+The BSD flavors and Mac OS/X have their own designations.
+See your system&rsquo;s documentation.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Can be a
+network address:port, e.g. <i>127.0.0.1:12345</i></p>
+
+<p style="margin-left:18%; margin-top: 1em">The special
+string &ldquo;uh-rig&rdquo; may be given to enable micro-ham
+device support.</p>
+
+<p style="margin-left:9%;"><b>-p</b>,
+<b>--ptt-file</b>=<i>device</i></p>
+
+<p style="margin-left:18%;">Use <i>device</i> as the file
+name of the Push-To-Talk device using a device file as
+described above.</p>
+
+<p style="margin-left:9%;"><b>-d</b>,
+<b>--dcd-file</b>=<i>device</i></p>
+
+<p style="margin-left:18%;">Use <i>device</i> as the file
+name of the Data Carrier Detect device using a device file
+as described above.</p>
+
+<p style="margin-left:9%;"><b>-P</b>,
+<b>--ptt-type</b>=<i>type</i></p>
+
+<p style="margin-left:18%;">Use <i>type</i> of Push-To-Talk
+device.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Supported types
+are &lsquo;RIG&rsquo; (CAT command), &lsquo;DTR&rsquo;,
+&lsquo;RTS&rsquo;, &lsquo;PARALLEL&rsquo;,
+&lsquo;CM108&rsquo;, &lsquo;GPIO&rsquo;,
+&lsquo;GPION&rsquo;, &lsquo;NONE&rsquo;, overriding PTT type
+defined in the rig&rsquo;s backend.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Some side
+effects of this command are that when type is set to DTR,
+read PTT state comes from the <b>Hamlib</b> frontend, not
+read from the radio. When set to NONE, PTT state cannot be
+read or set even if rig backend supports reading/setting PTT
+status from the rig.</p>
+
+<p style="margin-left:9%;"><b>-D</b>,
+<b>--dcd-type</b>=<i>type</i></p>
+
+<p style="margin-left:18%;">Use <i>type</i> of Data Carrier
+Detect device.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Supported types
+are &lsquo;RIG&rsquo; (CAT command), &lsquo;DSR&rsquo;,
+&lsquo;CTS&rsquo;, &lsquo;CD&rsquo;, &lsquo;PARALLEL&rsquo;,
+&lsquo;CM108&rsquo;, &lsquo;GPIO&rsquo;,
+&lsquo;GPION&rsquo;, &lsquo;NONE&rsquo;.</p>
+
+<p style="margin-left:9%;"><b>-s</b>,
+<b>--serial-speed</b>=<i>baud</i></p>
+
+<p style="margin-left:18%;">Set serial speed to <i>baud</i>
+rate.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Uses maximum
+serial speed from radio backend capabilities (set by
+<b>-m</b> above) as the default.</p>
+
+<p style="margin-left:9%;"><b>-c</b>,
+<b>--civaddr</b>=<i>id</i></p>
+
+<p style="margin-left:18%;">Use <i>id</i> as the CI-V
+address to communicate with the rig.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Only useful for
+Icom and some Ten-Tec rigs.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+The <i>id</i> is in decimal notation, unless prefixed by
+<i>0x</i>, in which case it is hexadecimal.</p>
+
+<p style="margin-left:9%;"><b>-t</b>,
+<b>--send-cmd-term</b>=<i>char</i></p>
+
+<p style="margin-left:18%;">Change the termination
+<i>char</i> for text protocol when using the <b>send_cmd</b>
+command.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The default
+value is ASCII CR (&lsquo;0x0D&rsquo;). ASCII non-printing
+characters can be given as the ASCII number in hexadecimal
+format prepended with &ldquo;0x&rdquo;. You may pass an
+empty string for no termination char. The string
+&ldquo;-1&rdquo; tells <b>rigctl</b> to switch to binary
+protocol. See the <b>send_cmd</b> command for further
+explanation.</p>
+
+<p style="margin-left:18%; margin-top: 1em">For example, to
+specify a command terminator for Kenwood style text commands
+pass &ldquo;-t &rsquo;;&rsquo;&rdquo; to rigctl. See
+<b>EXAMPLE</b> below.</p>
+
+<p style="margin-left:9%;"><b>-L</b>,
+<b>--show-conf</b></p>
+
+<p style="margin-left:18%;">List all config parameters for
+the radio defined with <b>-m</b> above.</p>
+
+<p style="margin-left:9%;"><b>-C</b>,
+<b>--set-conf</b>=<i>parm=val</i>[<i>,parm=val</i>]</p>
+
+<p style="margin-left:18%;">Set configuration parameter(s).
+Some common ones are:</p>
+
+<p style="margin-left:23%;"><b>async:</b>True enables
+asynchronous data transfer for backends that support it.
+This allows use of transceive and spectrum data. <b><br>
+auto_power_on:</b>True enables compatible rigs to be powered
+up on open <b><br>
+auto_power_off:</b>True enables compatible rigs to be
+powered down on close <b><br>
+auto_disable_screensaver:</b>True enables compatible rigs to
+have their screen saver disabled on open <b><br>
+dcd_type:</b>Data Carrier Detect (or squelch) interface type
+override <b><br>
+dcd_pathname:</b>Path name to the device file of the Data
+Carrier Detect (or squelch) <b><br>
+disable_yaesu_bandselect:</b>True disables the automatic
+band select on band change for Yaesu rigs <b><br>
+dtr_state:</b>ON turns on DTR, OFF turns it off, Unset
+disables it <b><br>
+freq_skip:</b>!=0 skips setting freq on TX_VFO when in RX
+and on RX_VFO when in TX -- for use with gpredict and rigs
+that do not have TARGETABLE_VFO <b><br>
+lo_freq:</b>Frequency to add to the VFO frequency for use
+with a transverter <b><br>
+post_write_delay:</b>Delay in ms between each command sent
+out <b><br>
+ptt_share:</b>True enables ptt port to be shared with other
+apps <b><br>
+ptt_type:</b>Push-To-Talk interface type override <b><br>
+ptt_pathname:</b>Path name to the device file of the
+Push-To-Talk <b><br>
+ptt_bitnum:</b>Push-To-Talk GPIO bit number <b><br>
+retry:</b>Max number of retry <b><br>
+rts_state:</b>ON turns on DTR, OFF turns it off, Unset
+disables it <b><br>
+twiddle_timeout:</b>For satellite ops when VFOB is twiddled
+will pause VFOB commands until timeout <b><br>
+twiddle_rit:</b>Suppress get_freq on VFOB for RIT tuning
+satellites <b><br>
+timeout:</b>Timeout in ms <b><br>
+write_delay:</b>Delay in ms between each byte sent out
+<b><br>
+tuner_control_pathname:</b>Path name to a script/program to
+control a tuner with 1 argument of 0/1 for Tuner Off/On</p>
+
+<p style="margin-left:18%; margin-top: 1em">Use the
+<b>-L</b> option above for a list of configuration
+parameters for a given model number.</p>
+
+<p style="margin-left:9%;"><b>-u</b>,
+<b>--dump-caps</b></p>
+
+<p style="margin-left:18%;">Dump capabilities for the radio
+defined with <b>-m</b> above and exit.</p>
+
+<p style="margin-left:9%;"><b>-l</b>, <b>--list</b></p>
+
+<p style="margin-left:18%;">List all model numbers defined
+in <b>Hamlib</b> and exit.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The list is
+sorted by model number.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>: In
+Linux the list can be scrolled back using
+<b>Shift-PageUp</b>/<b>Shift-PageDown</b>, or using the
+scrollbars of a virtual terminal in X or the cmd window in
+Windows. The output can be piped to <b>more</b>(1) or
+<b>less</b>(1), e.g. &ldquo;rigctl -l | more&rdquo;.</p>
+
+<p style="margin-left:9%;"><b>-o</b>, <b>--vfo</b></p>
+
+<p style="margin-left:18%;">Enable vfo mode.</p>
+
+<p style="margin-left:18%; margin-top: 1em">An extra VFO
+argument will be required in front of each appropriate
+command (except <b>set_vfo</b>). Otherwise,
+&lsquo;currVFO&rsquo; is used when this option is not set
+and an extra VFO argument is not used.</p>
+
+<p style="margin-left:9%;"><b>-n</b>,
+<b>--no-restore-ai</b></p>
+
+<p style="margin-left:18%;">On exit <b>rigctl</b> restores
+the state of auto information (AI) on the controlled
+rig.</p>
+
+<p style="margin-left:18%; margin-top: 1em">If this is not
+desired, for example if you are using <b>rigctl</b> to turn
+AI mode on or off, pass this option.</p>
+
+<p style="margin-left:9%;"><b>-i</b>,
+<b>--read-history</b></p>
+
+<p style="margin-left:18%;">Read previously saved command
+and argument history from a file (default
+<i>$HOME/.rigctl_history</i>) for the current session.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Available when
+<b>rigctl</b> is built with Readline support (see READLINE
+below).</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>: To
+read a history file stored in another directory, set the
+<b>RIGCTL_HIST_DIR</b> environment variable, e.g.
+&ldquo;RIGCTL_HIST_DIR=&#732;/tmp rigctl -i&rdquo;. When
+RIGCTL_HIST_DIR is not set, the value of <b>HOME</b> is
+used.</p>
+
+<p style="margin-left:9%;"><b>-I</b>,
+<b>--save-history</b></p>
+
+<p style="margin-left:18%;">Write current session (and
+previous session(s), if <b>-i</b> option is given) command
+and argument history to a file (default
+<i>$HOME/.rigctl_history</i>) at the end of the current
+session.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Complete
+commands with arguments are saved as a single line to be
+recalled and used or edited. Available when <b>rigctl</b> is
+built with Readline support (see <b>READLINE</b> below).</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>: To
+write a history file in another directory, set the
+<b>RIGCTL_HIST_DIR</b> environment variable, e.g.
+&ldquo;RIGCTL_HIST_DIR=&#732;/tmp rigctl -IRq. When
+RIGCTL_HIST_DIR is not set, the value of <b>HOME</b> is
+used.</p>
+
+<p style="margin-left:9%;"><b>-v</b>, <b>--verbose</b></p>
+
+<p style="margin-left:18%;">Set verbose mode, cumulative
+(see <b>DIAGNOSTICS</b> below).</p>
+
+
+<p style="margin-left:9%;"><b>-Y</b>,<b>--ignore-err</b></p>
+
+<p style="margin-left:18%;">Ignores rig open errors</p>
+
+<p style="margin-left:9%;"><b>-Z</b>,
+<b>--debug-time-stamps</b></p>
+
+<p style="margin-left:18%;">Enable time stamps for the
+debug messages.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Use only in
+combination with the <b>-v</b> option as it generates no
+output on its own.</p>
+
+<p style="margin-left:9%;"><b>-h</b>, <b>--help</b></p>
+
+<p style="margin-left:18%;">Show a summary of these options
+and exit.</p>
+
+<p style="margin-left:9%;"><b>-V</b>, <b>--version</b></p>
+
+<p style="margin-left:18%;">Show version of <b>rigctl</b>
+and exit.</p>
+
+<p style="margin-left:9%;"><b>-!</b>, <b>--cookie</b></p>
+
+<p style="margin-left:18%;">Sets the cookie to be used for
+remote access security</p>
+
+<p style="margin-left:9%;"><b>-#</b>,
+<b>--skip_init</b></p>
+
+<p style="margin-left:18%;">Skips most startup
+initialization.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="1%">
+
+
+<p><b>-</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Stop option processing and read commands from standard
+input.</p> </td>
+<td width="4%">
+</td></tr>
+</table>
+
+<p style="margin-left:18%; margin-top: 1em">See <b>Standard
+Input</b> below.</p>
+
+<p style="margin-left:9%; margin-top: 1em"><b>Note</b>:
+Some options may not be implemented by a given backend and
+will return an error. This is most likely to occur with the
+<b>--set-conf</b> and <b>--show-conf</b> options.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Please note that
+the backend for the radio to be controlled, or the radio
+itself may not support some commands. In that case, the
+operation will fail with a <b>Hamlib</b> error code.</p>
+
+<h2>COMMANDS
+<a name="COMMANDS"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">Commands can be
+entered either as a single char, or as a long command name.
+The commands are not prefixed with a dash as the options
+are. They may be typed in when in interactive mode or
+provided as argument(s) in command line interface mode. In
+interactive mode commands and their arguments may be entered
+on a single line:</p>
+
+<p style="margin-left:14%; margin-top: 1em"><b>M LSB
+2400</b></p>
+
+<p style="margin-left:9%; margin-top: 1em">Since most of
+the <b>Hamlib</b> operations have a <b>set</b> and a
+<b>get</b> method, a single upper case letter will be used
+for <b>set</b> methods whereas the corresponding single
+lower case letter refers to the <b>get</b> method. Each
+operation also has a long name; in interactive mode, prepend
+a backslash, &lsquo;\&rsquo;, to enter a long command name
+all lower case.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Example: Use
+&ldquo;\dump_caps&rdquo; to see what capabilities this radio
+and backend support.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+The backend for the radio to be controlled, or the radio
+itself may not support some commands. In that case, the
+operation will fail with a <b>Hamlib</b> error message.</p>
+
+<h3>Standard Input
+<a name="Standard Input"></a>
+</h3>
+
+
+<p style="margin-left:9%; margin-top: 1em">As an
+alternative to the <b>READLINE</b> interactive command entry
+or a single command for each run, <b>rigctl</b> features a
+special option where a single dash (&lsquo;-&rsquo;) may be
+used to read commands from standard input (<b>stdin</b>).
+Commands must be separated by whitespace similar to the
+commands given on the command line. Comments may be added
+using the &lsquo;#&rsquo; character, all text up until the
+end of the current line including the &lsquo;#&rsquo;
+character is ignored.</p>
+
+<p style="margin-left:9%; margin-top: 1em">A simple example
+(typed text is in bold):</p>
+
+<p style="margin-left:14%; margin-top: 1em">$ <b>cat
+&lt;&lt;.EOF. &gt;cmds.txt</b> <br>
+&gt; <b># File of commands</b></p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="14%"></td>
+<td width="-4%">
+
+
+<p>&gt; <b>v f m</b></p></td>
+<td width="7%"></td>
+<td width="6%">
+
+
+<p><b># query rig</b></p></td>
+<td width="19%"></td>
+<td width="7%"></td>
+<td width="51%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="14%"></td>
+<td width="-4%">
+
+
+<p>&gt; <b>V VFOB F 14200000 M CW 500</b></p></td>
+<td width="7%"></td>
+<td width="6%"></td>
+<td width="19%"></td>
+<td width="7%"></td>
+<td width="51%">
+
+
+<p><b># set rig</b></p></td></tr>
+<tr valign="top" align="left">
+<td width="14%"></td>
+<td width="-4%">
+
+
+<p>&gt; <b>v f m</b></p></td>
+<td width="7%"></td>
+<td width="6%">
+
+
+<p><b># query rig</b></p></td>
+<td width="19%"></td>
+<td width="7%"></td>
+<td width="51%">
+</td></tr>
+</table>
+
+<p style="margin-left:14%;">&gt; <b>.EOF.</b></p>
+
+<p style="margin-left:14%; margin-top: 1em">$ <b>rigctl -m1
+- &lt;cmds.txt</b></p>
+
+<p style="margin-left:14%; margin-top: 1em">v VFOA</p>
+
+<p style="margin-left:14%; margin-top: 1em">f 145000000</p>
+
+<p style="margin-left:14%; margin-top: 1em">m FM <br>
+15000</p>
+
+<p style="margin-left:14%; margin-top: 1em">V VFOB <br>
+F 14200000 <br>
+M CW 500 <br>
+v VFOB</p>
+
+<p style="margin-left:14%; margin-top: 1em">f 14200000</p>
+
+<p style="margin-left:14%; margin-top: 1em">m CW <br>
+500</p>
+
+<p style="margin-left:14%; margin-top: 1em">$</p>
+
+<h3>rigctl Commands
+<a name="rigctl Commands"></a>
+</h3>
+
+
+<p style="margin-left:9%; margin-top: 1em">A summary of
+commands is included below (In the case of <b>set</b>
+commands the quoted italicized string is replaced by the
+value in the description. In the case of <b>get</b> commands
+the quoted italicized string is the key name of the value
+returned.): <b><br>
+Q</b>|<b>q</b>, exit rigctl</p>
+
+<p style="margin-left:18%;">Exit rigctl in interactive
+mode.</p>
+
+<p style="margin-left:18%; margin-top: 1em">When rigctl is
+controlling the rig directly, will close the rig backend and
+port. When rigctl is connected to rigctld (radio model 2),
+the TCP/IP connection to rigctld is closed and rigctld
+remains running, available for another TCP/IP network
+connection.</p>
+
+<p style="margin-left:9%;"><b>F</b>, <b>set_freq</b>
+'<i>Frequency</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Frequency</i>', in
+Hz.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Frequency may
+be a floating point or integer value.</p>
+
+<p style="margin-left:9%;"><b>f</b>, <b>get_freq</b></p>
+
+<p style="margin-left:18%;">Get '<i>Frequency</i>', in
+Hz.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns an
+integer value and the VFO hamlib thinks is active. Note that
+some rigs (e.g. all Icoms) cannot track current VFO so
+hamlib can get out of sync with the rig if the user presses
+rig buttons like the VFO. rigctld clients should ensure they
+set the intended VFO or use vfo mode.</p>
+
+<p style="margin-left:9%;"><b>M</b>, <b>set_mode</b>
+'<i>Mode</i>' '<i>Passband</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Mode</i>' and
+'<i>Passband</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Mode is a
+token: &lsquo;USB&rsquo;, &lsquo;LSB&rsquo;,
+&lsquo;CW&rsquo;, &lsquo;CWR&rsquo;, &lsquo;RTTY&rsquo;,
+&lsquo;RTTYR&rsquo;, &lsquo;AM&rsquo;, &lsquo;FM&rsquo;,
+&lsquo;WFM&rsquo;, &lsquo;AMS&rsquo;, &lsquo;PKTLSB&rsquo;,
+&lsquo;PKTUSB&rsquo;, &lsquo;PKTFM&rsquo;,
+&lsquo;ECSSUSB&rsquo;, &lsquo;ECSSLSB&rsquo;,
+&lsquo;FA&rsquo;, &lsquo;SAM&rsquo;, &lsquo;SAL&rsquo;,
+&lsquo;SAH&rsquo;, &lsquo;DSB&rsquo;.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Passband is in
+Hz as an integer, -1 for no change, or &lsquo;0&rsquo; for
+the radio backend default. IC7300 can use 1,2,3 to select
+which filter to use</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Mode token will return a space separated list
+of radio backend supported Modes. Use this to determine the
+supported Modes of a given radio backend.</p>
+
+<p style="margin-left:9%;"><b>m</b>, <b>get_mode</b></p>
+
+<p style="margin-left:18%;">Get '<i>Mode</i>' and
+'<i>Passband</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns Mode as
+a token and Passband in Hz as in <b>set_mode</b> above.</p>
+
+<p style="margin-left:9%;"><b>V</b>, <b>set_vfo</b>
+'<i>VFO</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>VFO</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">VFO is a token:
+&lsquo;VFOA&rsquo;, &lsquo;VFOB&rsquo;, &lsquo;VFOC&rsquo;,
+&lsquo;currVFO&rsquo;, &lsquo;VFO&rsquo;, &lsquo;MEM&rsquo;,
+&lsquo;Main&rsquo;, &lsquo;Sub&rsquo;, &lsquo;TX&rsquo;,
+&lsquo;RX&rsquo;, &lsquo;MainA&rsquo;, &lsquo;MainB&rsquo;,
+&lsquo;MainC&rsquo;, &lsquo;SubA&rsquo;, &lsquo;SubB&rsquo;
+&lsquo;SubC&rsquo;.</p>
+
+<p style="margin-left:18%; margin-top: 1em">In VFO mode
+(see <b>--vfo</b> option above) only a single VFO parameter
+is required:</p>
+
+<p style="margin-left:23%; margin-top: 1em">$ <b>rigctl -m
+2029 -r /dev/rig -o</b></p>
+
+<p style="margin-left:23%; margin-top: 1em">Rig command: V
+<br>
+VFO: VFOB</p>
+
+<p style="margin-left:23%; margin-top: 1em">Rig
+command:</p>
+
+<p style="margin-left:9%;"><b>v</b>, <b>get_vfo</b></p>
+
+<p style="margin-left:18%;">Get current '<i>VFO</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns VFO as
+a token as in <b>set_vfo</b> above.</p>
+
+<p style="margin-left:9%;"><b>J</b>, <b>set_rit</b>
+'<i>RIT</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>RIT</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">RIT is in Hz
+and can be + or -. A value of &lsquo;0&rsquo; resets RIT
+(Receiver Incremental Tuning) to match the VFO
+frequency.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+RIT needs to be explicitly activated or deactivated with the
+<b>set_func</b> command. This allows setting the RIT offset
+independently of its activation and allows RIT to remain
+active while setting the offset to &lsquo;0&rsquo;.</p>
+
+<p style="margin-left:9%;"><b>j</b>, <b>get_rit</b></p>
+
+<p style="margin-left:18%;">Get '<i>RIT</i>' in Hz.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returned value
+is an integer.</p>
+
+<p style="margin-left:9%;"><b>Z</b>, <b>set_xit</b>
+'<i>XIT</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>XIT</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">XIT is in Hz
+and can be + or -. A value of &lsquo;0&rsquo; resets XIT
+(Transmitter Incremental Tuning) to match the VFO
+frequency.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+XIT needs to be explicitly activated or deactivated with the
+<b>set_func</b> command. This allows setting the XIT offset
+independently of its activation and allows XIT to remain
+active while setting the offset to &lsquo;0&rsquo;.</p>
+
+<p style="margin-left:9%;"><b>z</b>, <b>get_xit</b></p>
+
+<p style="margin-left:18%;">Get '<i>XIT</i>' in Hz.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returned value
+is an integer.</p>
+
+<p style="margin-left:9%;"><b>T</b>, <b>set_ptt</b>
+'<i>PTT</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>PTT</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">PTT is a value:
+&lsquo;0&rsquo; (RX), &lsquo;1&rsquo; (TX), &lsquo;2&rsquo;
+(TX mic), or &lsquo;3&rsquo; (TX data).</p>
+
+<p style="margin-left:9%;"><b>t</b>, <b>get_ptt</b></p>
+
+<p style="margin-left:18%;">Get '<i>PTT</i>' status.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns PTT as
+a value in <b>set_ptt</b> above.</p>
+
+<p style="margin-left:9%;"><b>S</b>, <b>set_split_vfo</b>
+'<i>Split</i>' '<i>TX VFO</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Split</i>' mode.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Split is either
+&lsquo;0&rsquo; = Normal or &lsquo;1&rsquo; = Split.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Set '<i>TX
+VFO</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">TX VFO is a
+token: &lsquo;VFOA&rsquo;, &lsquo;VFOB&rsquo;,
+&lsquo;VFOC&rsquo;, &lsquo;currVFO&rsquo;,
+&lsquo;VFO&rsquo;, &lsquo;MEM&rsquo;, &lsquo;Main&rsquo;,
+&lsquo;Sub&rsquo;, &lsquo;TX&rsquo;, &lsquo;RX&rsquo;.</p>
+
+<p style="margin-left:9%;"><b>s</b>,
+<b>get_split_vfo</b></p>
+
+<p style="margin-left:18%;">Get '<i>Split</i>' mode.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Split is either
+&lsquo;0&rsquo; = Normal or &lsquo;1&rsquo; = Split.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Get '<i>TX
+VFO</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">TX VFO is a
+token as in <b>set_split_vfo</b> above.</p>
+
+<p style="margin-left:9%;"><b>I</b>, <b>set_split_freq</b>
+'<i>Tx Frequency</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>TX Frequency</i>', in
+Hz.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Frequency may
+be a floating point or integer value.</p>
+
+<p style="margin-left:9%;"><b>i</b>,
+<b>get_split_freq</b></p>
+
+<p style="margin-left:18%;">Get '<i>TX Frequency</i>', in
+Hz.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns an
+integer value.</p>
+
+<p style="margin-left:9%;"><b>K</b>,
+<b>set_split_freq_mode</b> '<i>TX Frequency</i>' '<i>TX
+Mode</i>' '<i>TX Passband</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>TX Frequency</i>' ,
+'<i>TX Mode</i>' and '<i>TX Passband</i>'. See
+<b>set_split_mode</b> for more information.</p>
+
+<p style="margin-left:9%;"><b>k</b>,
+<b>get_split_freq_mode</b></p>
+
+<p style="margin-left:18%;">Get the current split
+settings.</p>
+
+<p style="margin-left:9%;"><b>X</b>, <b>set_split_mode</b>
+'<i>TX Mode</i>' '<i>TX Passband</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>TX Mode</i>' and '<i>TX
+Passband</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">TX Mode is a
+token: &lsquo;USB&rsquo;, &lsquo;LSB&rsquo;,
+&lsquo;CW&rsquo;, &lsquo;CWR&rsquo;, &lsquo;RTTY&rsquo;,
+&lsquo;RTTYR&rsquo;, &lsquo;AM&rsquo;, &lsquo;FM&rsquo;,
+&lsquo;WFM&rsquo;, &lsquo;AMS&rsquo;, &lsquo;PKTLSB&rsquo;,
+&lsquo;PKTUSB&rsquo;, &lsquo;PKTFM&rsquo;,
+&lsquo;ECSSUSB&rsquo;, &lsquo;ECSSLSB&rsquo;,
+&lsquo;FA&rsquo;, &lsquo;SAM&rsquo;, &lsquo;SAL&rsquo;,
+&lsquo;SAH&rsquo;, &lsquo;DSB&rsquo;.</p>
+
+<p style="margin-left:18%; margin-top: 1em">TX Passband is
+in Hz as an integer, or &lsquo;0&rsquo; for the radio
+backend default.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a TX Mode token will return a space separated
+list of radio backend supported TX Modes. Use this to
+determine the supported TX Modes of a given radio
+backend.</p>
+
+<p style="margin-left:9%;"><b>x</b>,
+<b>get_split_mode</b></p>
+
+<p style="margin-left:18%;">Get '<i>TX Mode</i>' and '<i>TX
+Passband</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns TX Mode
+as a token and TX Passband in Hz as in <b>set_split_mode</b>
+above.</p>
+
+<p style="margin-left:9%;"><b>Y</b>, <b>set_ant</b>
+'<i>Antenna</i>' '<i>Option</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Antenna</i>' and
+'<i>Option</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Number is
+1-based antenna# (&lsquo;1&rsquo;, &lsquo;2&rsquo;,
+&lsquo;3&rsquo;, ...).</p>
+
+<p style="margin-left:18%; margin-top: 1em">Option depends
+on rig. For Icom it probably sets the Tx &amp; Rx antennas
+as in the IC-7851. See your manual for rig specific option
+values. Most rigs don&rsquo;t care about the option.</p>
+
+<p style="margin-left:18%; margin-top: 1em">For the
+IC-7851, FTDX3000 (and perhaps others) it means this:</p>
+
+<p style="margin-left:23%; margin-top: 1em">1 = TX/RX =
+ANT1 FTDX3000=ANT1/ANT3 <br>
+2 = TX/RX = ANT2 FTDX3000=ANT2/ANT3 <br>
+3 = TX/RX = ANT3 FTDX3000=ANT3 <br>
+4 = TX/RX = ANT1/ANT4 <br>
+5 = TX/RX = ANT2/ANT4 <br>
+6 = TX/RX = ANT3/ANT4</p>
+
+<p style="margin-left:9%;"><b>y</b>, <b>get_ant</b>
+'<i>Antenna</i>'</p>
+
+<p style="margin-left:18%;">Get '<i>Antenna</i>'</p>
+
+<p style="margin-left:18%; margin-top: 1em">A value of 0
+for Antenna will return the current TX antenna</p>
+
+<p style="margin-left:18%; margin-top: 1em">&gt; 0 is
+1-based antenna# (&lsquo;1&rsquo;, &lsquo;2&rsquo;,
+&lsquo;3&rsquo;, ...).</p>
+
+<p style="margin-left:18%; margin-top: 1em">Option returned
+depends on rig. For Icom it is likely the RX only flag.</p>
+
+<p style="margin-left:9%;"><b>b</b>, <b>send_morse</b>
+'<i>Morse</i>'</p>
+
+<p style="margin-left:18%;">Send '<i>Morse</i>' symbols.
+For Yaesu rigs use memory# (1-5 for most rigs) or up to 50
+char message (which will use memory#1)</p>
+
+<p style="margin-left:18%; margin-top: 1em">Example from
+command line: <br>
+rigctl -m 3073 -r /dev/ttyUSB0 b &quot;CQ CQ DE ME&quot;
+<br>
+Yaesu example to send message#1: <br>
+rigctl -m 1035 -r /dev/ttyUSB0 b 1</p>
+
+<p style="margin-left:9%;"><b>0xbb</b>,
+<b>stop_morse</b></p>
+
+<p style="margin-left:18%;">Stop sending the current morse
+code.</p>
+
+<p style="margin-left:9%;"><b>0xbc</b>,
+<b>wait_morse</b></p>
+
+<p style="margin-left:18%;">Wait for morse to finish --
+only works on full break-in.</p>
+
+<p style="margin-left:9%;"><b>0x94</b>,
+<b>send_voice_mem</b> '<i>Msgnum</i>'</p>
+
+<p style="margin-left:18%;">Have rig transmit internal
+message '<i>Msgnum</i>'</p>
+
+<p style="margin-left:9%;"><b>0xab</b>,
+<b>stop_voice_mem</b></p>
+
+<p style="margin-left:18%;">Stop transmission of internal
+message</p>
+
+<p style="margin-left:9%;"><b>0x8b</b>, <b>get_dcd</b></p>
+
+<p style="margin-left:18%;">Get '<i>DCD</i>' (squelch)
+status: &lsquo;0&rsquo; (Closed) or &lsquo;1&rsquo;
+(Open).</p>
+
+<p style="margin-left:9%;"><b>0x8d</b>, <b>set_twiddle</b>
+'<i>Timeout</i>'</p>
+
+<p style="margin-left:18%;">Set the twiddle
+'<i>Timeout</i>' in seconds.</p>
+
+<p style="margin-left:9%;"><b>0x8e</b>,
+<b>get_twiddle</b></p>
+
+<p style="margin-left:18%;">Get the twiddle
+'<i>Timeout</i>' in seconds.</p>
+
+<p style="margin-left:9%;"><b>R</b>, <b>set_rptr_shift</b>
+'<i>Rptr Shift</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Rptr Shift</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Rptr Shift is
+one of: &lsquo;+&rsquo;, &lsquo;-&rsquo;, or something else
+for &lsquo;None&rsquo;.</p>
+
+<p style="margin-left:9%;"><b>r</b>,
+<b>get_rptr_shift</b></p>
+
+<p style="margin-left:18%;">Get '<i>Rptr Shift</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns
+&lsquo;+&rsquo;, &lsquo;-&rsquo;, or &lsquo;None&rsquo;.</p>
+
+<p style="margin-left:9%;"><b>O</b>, <b>set_rptr_offs</b>
+'<i>Rptr Offset</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Rptr Offset</i>', in
+Hz.</p>
+
+<p style="margin-left:9%;"><b>o</b>,
+<b>get_rptr_offs</b></p>
+
+<p style="margin-left:18%;">Get '<i>Rptr Offset</i>', in
+Hz.</p>
+
+<p style="margin-left:9%;"><b>C</b>, <b>set_ctcss_tone</b>
+'<i>CTCSS Tone</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>CTCSS Tone</i>', in
+tenths of Hz.</p>
+
+<p style="margin-left:9%;"><b>c</b>,
+<b>get_ctcss_tone</b></p>
+
+<p style="margin-left:18%;">Get '<i>CTCSS Tone</i>', in
+tenths of Hz.</p>
+
+<p style="margin-left:9%;"><b>D</b>, <b>set_dcs_code</b>
+'<i>DCS Code</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>DCS Code</i>'.</p>
+
+<p style="margin-left:9%;"><b>d</b>,
+<b>get_dcs_code</b></p>
+
+<p style="margin-left:18%;">Get '<i>DCS Code</i>'.</p>
+
+<p style="margin-left:9%;"><b>0x90</b>,
+<b>set_ctcss_sql</b> '<i>CTCSS Sql</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>CTCSS Sql</i>' tone, in
+tenths of Hz.</p>
+
+<p style="margin-left:9%;"><b>0x91</b>,
+<b>get_ctcss_sql</b></p>
+
+<p style="margin-left:18%;">Get '<i>CTCSS Sql</i>' tone, in
+tenths of Hz.</p>
+
+<p style="margin-left:9%;"><b>0x92</b>, <b>set_dcs_sql</b>
+'<i>DCS Sql</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>DCS Sql</i>' code.</p>
+
+<p style="margin-left:9%;"><b>0x93</b>,
+<b>get_dcs_sql</b></p>
+
+<p style="margin-left:18%;">Get '<i>DCS Sql</i>' code.</p>
+
+<p style="margin-left:9%;"><b>0x95</b>, <b>set_cache</b>
+'<i>Timeout</i>'</p>
+
+<p style="margin-left:18%;">Set cache timeout in ms.</p>
+
+<p style="margin-left:9%;"><b>0x96</b>,
+<b>get_cache</b></p>
+
+<p style="margin-left:18%;">Get cache timeout in ms.</p>
+
+<p style="margin-left:9%;"><b>0x97</b>, <b>uplink</b>
+'<i>Uplink</i>'</p>
+
+<p style="margin-left:18%;">Set the uplink VFO to
+'<i>Uplink</i>' (1=Sub, 2=Main).</p>
+
+<p style="margin-left:9%;"><b>N</b>, <b>set_ts</b>
+'<i>Tuning Step</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Tuning Step</i>', in
+Hz.</p>
+
+<p style="margin-left:9%;"><b>n</b>, <b>get_ts</b></p>
+
+<p style="margin-left:18%;">Get '<i>Tuning Step</i>', in
+Hz.</p>
+
+<p style="margin-left:9%;"><b>U</b>, <b>set_func</b>
+'<i>Func</i>' '<i>Func Status</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Func</i>' and '<i>Func
+Status</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Func is a
+token: &lsquo;ABM&rsquo;, &lsquo;AFC&rsquo;,
+&lsquo;AFLT&rsquo;, &lsquo;AIP&rsquo;, &lsquo;ANF&rsquo;,
+&lsquo;ANL&rsquo;, &lsquo;APF&rsquo;, &lsquo;ARO&rsquo;,
+&lsquo;BC2&rsquo;, &lsquo;BC&rsquo;, &lsquo;COMP&rsquo;,
+&lsquo;CSQL&rsquo;, &lsquo;DIVERSITY&rsquo;,
+&lsquo;DSQL&rsquo;, &lsquo;DUAL_WATCH&rsquo;,
+&lsquo;FAGC&rsquo;, &lsquo;FBKIN&rsquo;, &lsquo;LOCK&rsquo;,
+&lsquo;MBC&rsquo;, &lsquo;MN&rsquo;, &lsquo;MON&rsquo;,
+&lsquo;MUTE&rsquo;, &lsquo;NB2&rsquo;, &lsquo;NB&rsquo;,
+&lsquo;NR&rsquo;, &lsquo;OVF_STATUS&rsquo;,
+&lsquo;RESUME&rsquo;, &lsquo;REV&rsquo;, &lsquo;RF&rsquo;,
+&lsquo;RIT&rsquo;, &lsquo;SATMODE&rsquo;,
+&lsquo;SBKIN&rsquo;, &lsquo;SCEN&rsquo;,
+&lsquo;SCOPE&rsquo;, &lsquo;SEND_MORSE&rsquo;,
+&lsquo;SEND_VOICE_MEM&rsquo;, &lsquo;SPECTRUM&rsquo;,
+&lsquo;SPECTRUM_HOLD&rsquo;, &lsquo;SQL&rsquo;,
+&lsquo;SYNC&rsquo;, &lsquo;TBURST&rsquo;,
+&lsquo;TONE&rsquo;, &lsquo;TRANSCEIVE&rsquo;,
+&lsquo;TSQL&rsquo;, &lsquo;TUNER&rsquo;, &lsquo;VOX&rsquo;,
+&lsquo;VSC&rsquo;, &lsquo;XIT&rsquo;.</p>
+
+<p style="margin-left:18%; margin-top: 1em">ABM -- Auto
+Band Mode <br>
+AFC -- Auto Frequency Control ON/OFF <br>
+AFLT -- AF Filter setting <br>
+AIP -- RF pre-amp (AIP on Kenwood, IPO on Yaesu, etc.) <br>
+ANF -- Automatic Notch Filter (DSP) <br>
+ANL -- Noise limiter setting <br>
+APF -- Audio Peak Filter <br>
+ARO -- Auto Repeater Offset <br>
+BC -- Beat Canceller <br>
+BC2 -- 2nd Beat Cancel <br>
+COMP -- Speech Compression <br>
+CSQL -- DCS Squelch setting <br>
+DIVERSITY -- Diversity receive <br>
+DSQL -- Digital modes squelch <br>
+DUAL_WATCH -- Dual Watch / Sub Receiver <br>
+FAGC -- Fast AGC <br>
+FBKIN -- Full Break-in (CW mode) <br>
+LOCK -- Lock <br>
+MBC -- Manual Beat Canceller <br>
+MN -- Manual Notch <br>
+MON -- Monitor transmitted signal <br>
+MUTE -- Mute <br>
+NB -- Noise Blanker <br>
+NB2 -- 2nd Noise Blanker <br>
+NR -- Noise Reduction (DSP) <br>
+OVF_STATUS -- Read overflow status 0=Off, 1=On <br>
+RESUME -- Scan auto-resume <br>
+REV -- Reverse transmit and receive frequencies <br>
+RF -- RTTY Filter <br>
+RIT -- Receiver Incremental Tuning <br>
+SATMODE -- Satellite mode ON/OFF <br>
+SBKIN -- Semi Break-in (CW mode) <br>
+SCEN -- scrambler/encryption <br>
+SCOPE -- Simple bandscope ON/OFF <br>
+SEND_MORSE -- Send specified characters using CW <br>
+SEND_VOICE_MEM -- Transmit in SSB message stored in memory
+<br>
+SPECTRUM -- Spectrum scope data output ON/OFF <br>
+SPECTRUM_HOLD -- Pause spectrum scope updates ON/OFF <br>
+SQL -- Turn Squelch Monitor on/off <br>
+SYNC -- Synchronize VFOs <br>
+TBURST -- 1750 Hz tone burst <br>
+TONE -- CTCSS Tone TX <br>
+TRANSCEIVE -- Send radio state changes automatically ON/OFF
+<br>
+TSQL -- CTCSS Activate/De-activate RX <br>
+TUNER -- Enable automatic tuner <br>
+VOX -- Voice Operated Relay <br>
+VSC -- Voice Scan Control <br>
+XIT -- Transmitter Incremental Tuning</p>
+
+<p style="margin-left:18%; margin-top: 1em">Func Status is
+a non null value for &ldquo;activate&rdquo; or
+&ldquo;de-activate&rdquo; otherwise, much as TRUE/FALSE
+definitions in the C language (true is non-zero and false is
+zero, &lsquo;0&rsquo;).</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Func token will return a space separated list
+of radio backend supported set function tokens. Use this to
+determine the supported functions of a given radio
+backend.</p>
+
+<p style="margin-left:9%;"><b>u</b>, <b>get_func</b>
+'<i>Func</i>'</p>
+
+<p style="margin-left:18%;">Get '<i>Func Status</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns Func
+Status as a non null value for the Func token given as in
+<b>set_func</b> above.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Func token will return a space separated list
+of radio backend supported get function tokens. Use this to
+determine the supported functions of a given radio
+backend.</p>
+
+<p style="margin-left:9%;"><b>L</b>, <b>set_level</b>
+'<i>Level</i>' '<i>Level Value</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Level</i>' and
+'<i>Level Value</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Level is a
+token: &lsquo;AF&rsquo;, &lsquo;AGC&rsquo;,
+&lsquo;AGC_TIME&rsquo;, &lsquo;ALC&rsquo;,
+&lsquo;ANTIVOX&rsquo;, &lsquo;APF&rsquo;, &lsquo;ATT&rsquo;,
+&lsquo;BAL&rsquo;, &lsquo;BAND_SELECT&rsquo;,
+&lsquo;BKINDL&rsquo;, &lsquo;BKIN_DLYMS&rsquo;,
+&lsquo;COMP&rsquo;, &lsquo;COMP_METER&rsquo;,
+&lsquo;CWPITCH&rsquo;, &lsquo;ID_METER&rsquo;,
+&lsquo;IF&rsquo;, &lsquo;KEYSPD&rsquo;, &lsquo;METER&rsquo;,
+&lsquo;MGC&rsquo;, &lsquo;MGF&rsquo;, &lsquo;MGL&rsquo;,
+&lsquo;MICGAIN&rsquo;, &lsquo;MONITOR_GAIN&rsquo;,
+&lsquo;NB&rsquo;, &lsquo;NOTCHF&rsquo;,
+&lsquo;NOTCHF_RAW&rsquo;, &lsquo;NR&rsquo;,
+&lsquo;PBT_IN&rsquo;, &lsquo;PBT_OUT&rsquo;,
+&lsquo;PREAMP&rsquo;, &lsquo;RAWSTR&rsquo;,
+&lsquo;RF&rsquo;, &lsquo;RFPOWER&rsquo;,
+&lsquo;RFPOWER_METER&rsquo;,
+&lsquo;RFPOWER_METER_WATTS&rsquo;, &lsquo;SLOPE_HIGH&rsquo;,
+&lsquo;SLOPE_LOW&rsquo;, &lsquo;SPECTRUM_ATT&rsquo;,
+&lsquo;SPECTRUM_AVG&rsquo;,
+&lsquo;SPECTRUM_EDGE_HIGH&rsquo;,
+&lsquo;SPECTRUM_EDGE_LOW&rsquo;,
+&lsquo;SPECTRUM_MODE&rsquo;, &lsquo;SPECTRUM_REF&rsquo;,
+&lsquo;SPECTRUM_SPAN&rsquo;, &lsquo;SPECTRUM_SPEED&rsquo;,
+&lsquo;SQL&rsquo;, &lsquo;STRENGTH&rsquo;,
+&lsquo;SWR&rsquo;, &lsquo;TEMP_METER&rsquo;,
+&lsquo;USB_AF&rsquo;, &lsquo;USB_AF_INPUT&rsquo;,
+&lsquo;VD_METER&rsquo;, &lsquo;VOXDELAY&rsquo;,
+&lsquo;VOXGAIN&rsquo;.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The Level Value
+can be a float or an integer value. For the AGC token the
+value is one of &lsquo;0&rsquo; = OFF, &lsquo;1&rsquo; =
+SUPERFAST, &lsquo;2&rsquo; = FAST, &lsquo;3&rsquo; = SLOW,
+&lsquo;4&rsquo; = USER, &lsquo;5&rsquo; = MEDIUM,
+&lsquo;6&rsquo; = AUTO. Note that not all values work on all
+rigs. To list usable values do <br>
+rigctl -m MODEL_ID -u | grep &quot;AGC levels&quot; <br>
+or for Windows <br>
+rigctl -m MODEL_ID -u | find &quot;AGC levels&quot;</p>
+
+<p style="margin-left:18%; margin-top: 1em">Level units</p>
+
+<p style="margin-left:23%;">0.0-1.0 where 0=0% and 1.0=100%
+(except for BAL where 50% is center) <br>
+AF, ALC, ANTIVOX, BAL, COMP, MICGAIN, MONITOR_GAIN,
+NOTCHF_RAW, NR, RF, RFPOWER, RFPOWER_METER, USB_AF,
+VOXGAIN</p>
+
+<p style="margin-left:23%; margin-top: 1em">Amps <br>
+ID_METER(A)</p>
+
+<p style="margin-left:23%; margin-top: 1em">dB <br>
+NL, COMP_METER, PREAMP, ATT, SLOPE_LOW, SLOPE_HIGH,
+SPECTRUM_REF, SPECTRUM_ATT, STRENGTH</p>
+
+
+<p style="margin-left:23%; margin-top: 1em">Degrees(temperature)
+<br>
+TEMP_METER(C)</p>
+
+<p style="margin-left:23%; margin-top: 1em">Hz <br>
+CWPITCH, IF, NOTCHF, PBT_IN, PBT_OUT, SPECTRUM_EDGE_LOW,
+SPECTRUM_EDGE_HIGH, SPECTRUM_SPAN</p>
+
+<p style="margin-left:23%; margin-top: 1em">Seconds <br>
+VOXDELAY(ds), BKINDL(ms), BKIN_DLYMS(ms)</p>
+
+<p style="margin-left:23%; margin-top: 1em">Raw info from
+rig <br>
+RAWSTR, BANDSELECT (subject to change -- index right now but
+may convert to band name)</p>
+
+<p style="margin-left:23%; margin-top: 1em">SWR <br>
+SWR</p>
+
+<p style="margin-left:23%; margin-top: 1em">Volts <br>
+VD_METER</p>
+
+<p style="margin-left:23%; margin-top: 1em">Lookup - if
+level shows 0/0/0 then it&rsquo;s probably a lookup value
+<br>
+METER RIG_METER_XXXX 1=SWR, 2=COMP, 4=ALC, 8=IC, 16=DB,
+32=PO, 64=VDD, 128=Temp <br>
+AGC 0=None, 1=SuperFast, 2=Fast, 3=Slow, 4=User, 5=Medium,
+6=Auto <br>
+Note: Not all AGC values may be available -- see AGC Level
+in dumpcaps (e.g. rigctl -m 1035 -u | grep AGC) <br>
+SPECTRUM_MODE 0=None, 1=Center, 2=Fixed, 3=Center Scroll,
+4=Fixed Scroll <br>
+SPECTRUM_AVG rig specific</p>
+
+<p style="margin-left:23%; margin-top: 1em">METER --
+SWR,COMP,ALC,IC/ID,DB,PO,VDD,TEMP or can use the numbers
+above in Lookup l METER returns the meter number=name</p>
+
+<p style="margin-left:23%; margin-top: 1em">Watts <br>
+RFPOWER_METER_WATTS</p>
+
+<p style="margin-left:23%; margin-top: 1em">WPM <br>
+KEYSPD</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Level token will return a space separated list
+of radio backend supported set level tokens. Use this to
+determine the supported levels of a given radio backend.</p>
+
+<p style="margin-left:9%;"><b>l</b>, <b>get_level</b>
+'<i>Level</i>'</p>
+
+<p style="margin-left:18%;">Get '<i>Level Value</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns Level
+Value as a float or integer for the Level token given as in
+<b>set_level</b> above.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Level token will return a space separated list
+of radio backend supported get level tokens. Use this to
+determine the supported levels of a given radio backend.</p>
+
+<p style="margin-left:9%;"><b>P</b>, <b>set_parm</b>
+'<i>Parm</i>' '<i>Parm Value</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Parm</i>' and '<i>Parm
+Value</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Parm is a
+token: &lsquo;AFIF&rsquo;, &lsquo;AFIF_ACC&rsquo;,
+&lsquo;AFIF_LAN&rsquo;, &lsquo;AFIF_WLAN&rsquo;,
+&lsquo;ANN&rsquo;, &lsquo;APO&rsquo;,
+&lsquo;BACKLIGHT&rsquo;, &lsquo;BANDSELECT&rsquo;,
+&lsquo;BAT&rsquo;, &lsquo;BEEP&rsquo;,
+&lsquo;KEYERTYPE&rsquo;, &lsquo;KEYLIGHT&rsquo;,
+&lsquo;SCREENSAVER&rsquo;, &lsquo;TIME&rsquo;.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Parm token will return a space separated list
+of radio backend supported set parameter tokens. Use this to
+determine the supported parameters of a given radio
+backend.</p>
+
+<p style="margin-left:18%; margin-top: 1em">ANN --
+&quot;Announce&quot; level, see ann_t <br>
+APO -- Auto power off, int in minute <br>
+BACKLIGHT -- LCD light, float [0.0 ... 1.0] <br>
+BEEP -- Beep on keypressed, int (0,1) <br>
+TIME -- hh:mm:ss, int in seconds from 00:00:00 <br>
+BAT -- battery level, float [0.0 ... 1.0] <br>
+KEYLIGHT -- Button backlight, on/off <br>
+SCREENSAVER -- rig specific timeouts <br>
+AFIF -- 0=AF audio, 1=IF audio -- see IC-7300/9700/705 <br>
+BANDSELECT -- band name, e.g. BAND160M, BAND80M.... a ?
+instead of band will show band possibilities <br>
+KEYERTYPE -- Icom keyer type 0,1,2 or
+STRAIGHT,BUG,PADDLE</p>
+
+<p style="margin-left:9%;"><b>p</b>, <b>get_parm</b>
+'<i>Parm</i>'</p>
+
+<p style="margin-left:18%;">Get '<i>Parm Value</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns Parm
+Value as a float or integer for the Parm token given as in
+<b>set_parm</b> above.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Parm token will return a space separated list
+of radio backend supported get parameter tokens. Use this to
+determine the supported parameters of a given radio
+backend.</p>
+
+<p style="margin-left:9%;"><b>B</b>, <b>set_bank</b>
+'<i>Bank</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Bank</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Sets the
+current memory bank number.</p>
+
+<p style="margin-left:9%;"><b>E</b>, <b>set_mem</b>
+'<i>Memory#</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Memory#</i>' channel
+number.</p>
+
+<p style="margin-left:9%;"><b>e</b>, <b>get_mem</b></p>
+
+<p style="margin-left:18%;">Get '<i>Memory#</i>' channel
+number.</p>
+
+<p style="margin-left:9%;"><b>G</b>, <b>vfo_op</b>
+'<i>Mem/VFO Op</i>'</p>
+
+<p style="margin-left:18%;">Perform a '<i>Mem/VFO
+Op</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Mem/VFO
+Operation is a token: &lsquo;CPY&rsquo;, &lsquo;XCHG&rsquo;,
+&lsquo;FROM_VFO&rsquo;, &lsquo;TO_VFO&rsquo;,
+&lsquo;MCL&rsquo;, &lsquo;UP&rsquo;, &lsquo;DOWN&rsquo;,
+&lsquo;BAND_UP&rsquo;, &lsquo;BAND_DOWN&rsquo;,
+&lsquo;LEFT&rsquo;, &lsquo;RIGHT&rsquo;, &lsquo;TUNE&rsquo;,
+&lsquo;TOGGLE&rsquo;.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Mem/VFO Op token will return a space separated
+list of radio backend supported Set Mem/VFO Op tokens. Use
+this to determine the supported Mem/VFO Ops of a given radio
+backend.</p>
+
+<p style="margin-left:9%;"><b>g</b>, <b>scan</b> '<i>Scan
+Function</i>' '<i>Scan Channel</i>'</p>
+
+<p style="margin-left:18%;">Perform a '<i>Scan
+Function</i>' on a '<i>Scan Option</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Scan Function
+is a token: &lsquo;DELTA&rsquo;, &lsquo;MEM&rsquo;,
+&lsquo;PLT&rsquo;, &lsquo;PRIO&rsquo;, &lsquo;PROG&rsquo;,
+&lsquo;SLCT&rsquo;, &lsquo;STOP&rsquo;,
+&lsquo;VFO&rsquo;.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Scan Option is
+an integer.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Scan Option for
+Yaesu rigs 0=STOP, 1=UP, 2=DOWN.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Scan Option for
+Icom rigs is a channel number to program with G otherwise
+not used.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Scan Option for
+Kenwood rigs is not used.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Scan Fct token will return a space separated
+list of radio backend supported Scan Function tokens. Use
+this to determine the supported Scan Functions of a given
+radio backend.</p>
+
+<p style="margin-left:9%;"><b>H</b>, <b>set_channel</b>
+'<i>Channel</i>'</p>
+
+<p style="margin-left:18%;">Set memory '<i>Channel</i>'
+data.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Sets memory
+channel information</p>
+
+<p style="margin-left:9%;"><b>h</b>, <b>get_channel</b>
+'<i>Channel</i>' <b>'</b><i>readonly</i><b>'</b></p>
+
+<p style="margin-left:18%;">Get channel memory.</p>
+
+<p style="margin-left:18%; margin-top: 1em">If readonly!=0
+then only channel data is returned and rig remains on the
+current channel. If readonly=0 then rig will be set to the
+channel requested.</p>
+
+<p style="margin-left:9%;"><b>A</b>, <b>set_trn</b>
+'<i>Transceive</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Transceive</i>'
+mode.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Transceive is a
+token: &lsquo;OFF&rsquo;, &lsquo;RIG&rsquo;,
+&lsquo;POLL&rsquo;.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Transceive is a
+mechanism for radios to report events without a specific
+call for information.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+Passing a &lsquo;?&rsquo; (query) as the first argument
+instead of a Transceive token will return a space separated
+list of radio backend supported Transceive mode tokens. Use
+this to determine the supported Transceive modes of a given
+radio backend.</p>
+
+<p style="margin-left:9%;"><b>a</b>, <b>get_trn</b></p>
+
+<p style="margin-left:18%;">Get '<i>Transceive</i>'
+mode.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Transceive mode
+(reporting event) as in <b>set_trn</b> above.</p>
+
+<p style="margin-left:9%;"><b>*</b>, <b>reset</b>
+'<i>Reset</i>'</p>
+
+<p style="margin-left:18%;">Perform rig '<i>Reset</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Reset is a
+value: &lsquo;0&rsquo; = None, &lsquo;1&rsquo; = Software
+reset, &lsquo;2&rsquo; = VFO reset, &lsquo;4&rsquo; = Memory
+Clear reset, &lsquo;8&rsquo; = Master reset.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Since these
+values are defined as a bitmask in
+<i>include/hamlib/rig.h</i>, it should be possible to OR
+these values together to do multiple resets at once, if the
+backend supports it or supports a reset action via rig
+control at all.</p>
+
+<p style="margin-left:9%;"><b>0x87</b>,
+<b>set_powerstat</b> '<i>Power Status</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Power Status</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Power Status is
+a value: &lsquo;0&rsquo; = Power Off, &lsquo;1&rsquo; =
+Power On, &lsquo;2&rsquo; = Power Standby (enter standby),
+&lsquo;4&rsquo; = Power Operate (leave standby).</p>
+
+<p style="margin-left:9%;"><b>0x88</b>,
+<b>get_powerstat</b></p>
+
+<p style="margin-left:18%;">Get '<i>Power Status</i>' as in
+<b>set_powerstat</b> above.</p>
+
+<p style="margin-left:9%;"><b>0x89</b>, <b>send_dtmf</b>
+'<i>Digits</i>'</p>
+
+<p style="margin-left:18%;">Set DTMF '<i>Digits</i>'.</p>
+
+<p style="margin-left:9%;"><b>0x8a</b>,
+<b>recv_dtmf</b></p>
+
+<p style="margin-left:18%;">Get DTMF '<i>Digits</i>'.</p>
+
+<p style="margin-left:9%;"><b>0xac</b>, <b>set_conf</b>
+'<i>Token</i>' '<i>Value</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Token</i>' to
+'<i>Value</i>'.</p>
+
+<p style="margin-left:9%;"><b>0xad</b>, <b>get_conf</b>
+'<i>Token</i>'</p>
+
+<p style="margin-left:18%;">Get value of
+'<i>Token</i>'.</p>
+
+<p style="margin-left:9%;"><b>_</b>, <b>get_info</b></p>
+
+<p style="margin-left:18%;">Get misc information about the
+rig.</p>
+
+<p style="margin-left:9%;"><b>0xf5</b>,
+<b>get_rig_info</b></p>
+
+<p style="margin-left:18%;">Get misc information about the
+rig vfo status and other info.</p>
+
+<p style="margin-left:9%;"><b>0xf1</b>, <b>halt</b></p>
+
+<p style="margin-left:18%;">When issued inside
+<b>rigctl</b> it quits it; when issued by another client it
+quits <b>rigctld</b> instead.</p>
+
+<p style="margin-left:9%;"><b>0xf3</b>, <b>get_vfo_info</b>
+'<i>VFO</i>'</p>
+
+<p style="margin-left:18%;">Get misc information about a
+specific vfo.</p>
+
+<p style="margin-left:9%;"><b>0xf4</b>,
+<b>get_vfo_list</b></p>
+
+<p style="margin-left:18%;">Get the names of the available
+VFOs.</p>
+
+<p style="margin-left:9%;"><b>0xf6</b>,
+<b>get_modes</b></p>
+
+<p style="margin-left:18%;">Get all supported bandwidths
+for all modes.</p>
+
+<p style="margin-left:9%;"><b>0xf7</b>,
+<b>get_mode_bandwidths</b> '<i>Mode</i>'</p>
+
+<p style="margin-left:18%;">Get bandwidths of
+'<i>Mode</i>'. See also <b>get_modes.</b></p>
+
+<p style="margin-left:9%;"><b>dump_state</b></p>
+
+<p style="margin-left:18%;">Return certain state
+information about the radio backend.</p>
+
+<p style="margin-left:9%;"><b>1</b>, <b>dump_caps</b></p>
+
+<p style="margin-left:18%;">Not a real rig remote command,
+it just dumps capabilities, i.e. what the backend knows
+about this model, and what it can do.</p>
+
+<p style="margin-left:18%; margin-top: 1em">TODO: Ensure
+this is in a consistent format so it can be read into a
+hash, dictionary, etc. Bug reports requested.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+This command will produce many lines of output so be very
+careful if using a fixed length array! For example, running
+this command against the Dummy backend results in over 5kB
+of text output.</p>
+
+<p style="margin-left:18%; margin-top: 1em">VFO parameter
+is not used in &rsquo;VFO mode&rsquo;.</p>
+
+<p style="margin-left:9%;"><b>2</b>, <b>power2mW</b>
+'<i>Power [0.0..1.0]</i>' '<i>Frequency</i>'
+'<i>Mode</i>'</p>
+
+<p style="margin-left:18%;">Returns '<i>Power mW</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Converts a
+Power value in a range of <i>0.0</i>...<i>1.0</i> to the
+real transmit power in milli-Watts (integer).</p>
+
+
+<p style="margin-left:18%; margin-top: 1em">'<i>Frequency</i>'
+and '<i>Mode</i>' also need to be provided as output power
+may vary according to these values.</p>
+
+<p style="margin-left:18%; margin-top: 1em">VFO parameter
+is not used in VFO mode.</p>
+
+<p style="margin-left:9%;"><b>3</b>, <b>dump_conf</b></p>
+
+<p style="margin-left:18%;">Not a real rig remote command,
+it just dumps the current configuration with allowed ranges
+of values.</p>
+
+<p style="margin-left:9%;"><b>4</b>, <b>mW2power</b>
+'<i>Power mW</i>' '<i>Frequency</i>' '<i>Mode</i>'</p>
+
+<p style="margin-left:18%;">Returns '<i>Power
+[0.0..1.0]</i>'.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Converts the
+real transmit power in milli-Watts (integer) to a Power
+value in a range of <i>0.0 ... 1.0</i>.</p>
+
+
+<p style="margin-left:18%; margin-top: 1em">'<i>Frequency</i>'
+and '<i>Mode</i>' also need to be provided as output power
+may vary according to these values.</p>
+
+<p style="margin-left:18%; margin-top: 1em">VFO parameter
+is not used in VFO mode.</p>
+
+<p style="margin-left:9%;"><b>w</b>, <b>send_cmd</b>
+'<i>Cmd</i>'</p>
+
+<p style="margin-left:18%;">Send a raw command string to
+the radio.</p>
+
+<p style="margin-left:18%; margin-top: 1em">This is useful
+for testing and troubleshooting radio commands and responses
+when developing a backend.</p>
+
+<p style="margin-left:18%; margin-top: 1em">For binary
+protocols enter values as \0xAA\0xBB. Expect a
+'<i>Reply</i>' from the radio which will likely be a binary
+block or an ASCII string depending on the radio&rsquo;s
+protocol (see your radio&rsquo;s computer control
+documentation). If you are testing a protocol like SmartSDR
+where there are spaces in the commands use quote, e.g. w
+&quot;C0|set slice 0 tx=1&quot;</p>
+
+<p style="margin-left:18%; margin-top: 1em">The command
+terminator, set by the <b>send-cmd-term</b> option above,
+will terminate each command string sent to the radio. This
+character should not be a part of the input string.</p>
+
+<p style="margin-left:9%;"><b>W</b>, <b>send_cmd_rx</b>
+'<i>Cmd</i><b>'</b> <i>nbytes_or_terminator_char</i></p>
+
+<p style="margin-left:18%;">Send a raw command string to
+the radio and expect nbytes returned or the terminator char
+(e.g. ;).</p>
+
+<p style="margin-left:18%; margin-top: 1em">This is useful
+for testing and troubleshooting radio commands and responses
+when developing a backend. If the # of bytes requested is
+&lt;= the number actually returned no timeout will occur. If
+a char is provided it will be used to terminate reading the
+string so &rsquo;;&rsquo; is popular for Kenwood/Yaesu
+commands for example.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The command
+argument can have no spaces in it. For binary protocols
+enter values as \0xAA\0xBB. Expect a '<i>Reply</i>' from the
+radio which will likely be a binary block or an ASCII string
+depending on the radio&rsquo;s protocol (see your
+radio&rsquo;s computer control documentation).</p>
+
+<p style="margin-left:18%; margin-top: 1em">The command
+terminator, set by the <b>send-cmd-term</b> option above,
+will terminate each command string sent to the radio. This
+character should not be a part of the input string.</p>
+
+<p style="margin-left:9%;"><b>set_clock</b>
+'<i>DateTime</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>DateTime</i>'</p>
+
+<p style="margin-left:18%; margin-top: 1em">Sets rig clock
+-- note that some rigs do not handle seconds or
+milliseconds. If you try to set sec/msec and rig does not
+support it you will get a debug warning message. Format is
+ISO8601. Formats accepted allow for 2-digit or 4-digit time
+zone <br>
+YYYY-MM-DDTHH:MM:SS.SSS+ZZ (where +ZZ is either -/+ UTC
+offset HH) <br>
+YYYY-MM-DDTHH:MM:SS.SSS+ZZZZ (where +ZZZZ is either -/+ UTC
+offset HHMM) <br>
+YYYY-MM-DDTHH:MM:SS+ZZ <br>
+YYYY-MM-DDTHH:MM:SS+ZZZZ <br>
+YYYY-MM-DDTHH:MM+ZZ <br>
+YYYY-MM-DDTHH:MM+ZZZZ <br>
+YYYY-MM-DD (sets date only) <br>
+local (sets both clocks to local time) <br>
+utc (sets both clocks to utc time) <br>
+Note: Icom rigs expect you to set local time and the hours
+off to UTC. So...4PM EST example would be
+2021-12-01T16:00:00-0500 But...if you want to display GMT
+you must set the clock for GMT with zero UTC offset.
+Hopefully Icom will allow displaying either clock in the
+future</p>
+
+<p style="margin-left:18%; margin-top: 1em">Note: Kenwood
+rigs only allow setting local clock, and then only if not
+autoset by NTP. Trying to set clock when NTP is in use will
+set the offset, but not the time - and no error status will
+be returned. Time displayed on the auxiliary clock is solely
+determined by UTC and the aux offset.</p>
+
+<p style="margin-left:9%;"><b>get_clock</b></p>
+
+<p style="margin-left:18%;">Get '<i>RigTime</i>'</p>
+
+<p style="margin-left:18%; margin-top: 1em">Gets rig clock
+-- note that some rigs do not handle seconds or
+milliseconds. Format is ISO8601 YYYY-MM-DDTHH:MM:SS.sss+ZZ
+where +ZZ is either -/+ UTC offset</p>
+
+<p style="margin-left:9%;"><b>chk_vfo</b></p>
+
+<p style="margin-left:18%;">Get '<i>Status</i>'</p>
+
+<p style="margin-left:18%; margin-top: 1em">Returns Status
+as 1 if vfo option is on and 0 if vfo option is off. This
+command reflects the -o switch for <b>rigctl</b> and
+<b>rigctld</b> and can be dynamically changed by
+<b>set_vfo_opt.</b></p>
+
+<p style="margin-left:9%;"><b>set_vfo_opt</b>
+'<i>Status</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>Status</i>'</p>
+
+<p style="margin-left:18%; margin-top: 1em">Set vfo option
+Status 1=on or 0=off This is the same as using the -o switch
+for <b>rigctl</b> and <b>rigctld.</b> This can be
+dynamically changed while running.</p>
+
+<p style="margin-left:9%;"><b>set_separator</b>
+'<i>SeparatorChar</i>'</p>
+
+<p style="margin-left:18%;">Set '<i>SeparatorChar</i>'</p>
+
+<p style="margin-left:18%; margin-top: 1em">Change rigctld
+response to use a special char instead of newline (recommend
+#). Handy for node-red&rsquo;s tcprequest node. This can be
+dynamically changed while running.</p>
+
+<p style="margin-left:9%;"><b>get_separator</b></p>
+
+<p style="margin-left:18%;">Get '<i>SeparatorChar</i>'</p>
+
+<p style="margin-left:18%; margin-top: 1em">Shows the
+current SeparatorChar.</p>
+
+<p style="margin-left:9%;"><b>pause</b>
+'<i>Seconds</i>'</p>
+
+<p style="margin-left:18%;">Pause for the given whole
+(integer) number of '<i>Seconds</i>' before sending the next
+command to the radio.</p>
+
+<p style="margin-left:9%;"><b>password</b>
+'<i>Password</i>'</p>
+
+<p style="margin-left:18%;">Sends password to rigctld when
+rigctld has been secured with -A. Must use the 32-char
+shared secret from rigctld. (NOT IMPLEMENTED)</p>
+
+<p style="margin-left:9%;"><b>set_lock_mode</b>
+'<i>Locked</i>'</p>
+
+<p style="margin-left:18%;">Turns mode lock on(1) or off(0)
+(only when using rigctld). Turning on will prevent all
+clients from changing the rig mode. For example this is
+useful when running CW Skimmer in FM mode on an IC-7300.
+Clicking spots in a spotting program will not change the
+VFOA mode when lock is on. So &quot;set_lock_mode 1&quot;
+when CW Skimmer is started and &quot;set_lock_mode 0&quot;
+when CW Skimmer is stopped.</p>
+
+<p style="margin-left:9%;"><b>get_lock_mode</b></p>
+
+<p style="margin-left:18%;">Returns current lock mode
+status 1=On, 2=Off (only useful when using rigctld)</p>
+
+<p style="margin-left:9%;"><b>send_raw</b>
+'<i>Terminator</i>' '<i>String</i>'</p>
+
+<p style="margin-left:18%;">Can send ASCII string or 0xnn
+values or xnn values -- there can be no spaces in the
+command string. Possible terminator values are CR, LF, ;,
+ICOM, 1-100 (bytes to read), or 0 meaning no reply and -1
+meaning unknown (will timeout on read). Examples (note that
+a ; must be escaped in Unix/Linux or enclosed in single or
+double quotes):</p>
+
+<p style="margin-left:18%; margin-top: 1em">For Windows
+&amp; Unix/Linux we have a new colon-separated format for
+hex digits <br>
+send_raw icom 0xFE:0xFE:0x94:0x03:0xFD Note: colon-separated
+does not have to be escaped on Unix/Linux <br>
+send_raw -1 0xFE:0xFE:0x94:0x03:0xFD <br>
+send_raw 14 0xFE:0xFE:0x94:0x03:0xFD <br>
+Note that ASCII commands still require escaping the
+semicolon on Unix/Linux <br>
+send_raw \; FA\;MD\; <br>
+For Windows: <br>
+send_raw ; FA;MD; <br>
+send_raw icom 0xFE;0xFE;0x94;0x03;0xFD <br>
+send_raw -1 0xFE;0xFE;0x94;0x03;0xFD <br>
+send_raw 14 0xFE;0xFE;0x94;0x03;0xFD <br>
+For Unix/Linux <br>
+send_raw icom 0xFE;0xFE;0x94;0x03;0xFD <br>
+send_raw \; FA\;MD\; <br>
+send_raw -1 0xFE;0xFE;0x94;0x03;0xFD <br>
+send_raw 14 0xFE;0xFE;0x94;0x03;0xFD</p>
+
+<p style="margin-left:9%;"><b>client_version</b>
+'<i>String</i>'</p>
+
+<p style="margin-left:18%;">Client can send its version to
+<b>rigctld</b> and get feedback on compatibility,
+deprecation, and alternatives</p>
+
+<p style="margin-left:9%;"><b>hamlib_version</b></p>
+
+<p style="margin-left:18%;">Returns Hamlib version with
+ISO8601 date/time</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="5%">
+
+
+<p><b>test</b></p></td>
+<td width="4%"></td>
+<td width="55%">
+
+
+<p>Performs test routines. Under development.</p></td>
+<td width="27%">
+</td></tr>
+</table>
+
+<p style="margin-left:9%;"><b>set_gpio</b> '<i>GPIO#</i>'
+'<i>0/1</i>'</p>
+
+<p style="margin-left:18%;">Sets GPIO1, GPIO2, GPIO3, GPIO4
+on the GPIO ptt port Can also use 1,2,3,4</p>
+
+<p style="margin-left:9%;"><b>get_gpio</b>
+'<i>GPIO#</i>'</p>
+
+<p style="margin-left:18%;">Reads GPIO1, GPIO2, GPIO3,
+GPIO4 on the GPIO ptt port Can also use 1,2,3,4</p>
+
+<p style="margin-left:9%;"><b>skip_init</b></p>
+
+<p style="margin-left:18%;">Skips rig initialization --
+useful when executing commands with rigctl to speed up
+things</p>
+
+<h2>READLINE
+<a name="READLINE"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">If
+<b>Readline</b> library development files are found at
+configure time, <b>rigctl</b> will be conditionally built
+with Readline support for command and argument entry.
+Readline command key bindings are at their defaults as
+described in the
+<a href="https://tiswww.cwru.edu/php/chet/readline/rluserman.html">Readline
+manual</a>. <b>rigctl</b> sets the name &ldquo;rigctl&rdquo;
+which can be used in Conditional Init Constructs in the
+Readline Init File (<i>$HOME/.inputrc</i> by default) for
+custom keybindings unique to <b>rigctl</b>.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Command history
+is available with Readline support as described in the
+<a href="https://tiswww.case.edu/php/chet/readline/history.html#SEC1">Readline
+History manual</a>. Command and argument strings are stored
+as single lines even when arguments are prompted for input
+individually. Commands and arguments are not validated and
+are stored as typed with values separated by a single
+space.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Normally session
+history is not saved, however, use of either of the
+<b>-i</b>/<b>--read-history</b> or
+<b>-I</b>/<b>--save-history</b> options when starting
+<b>rigctl</b> will cause any previously saved history to be
+read in and/or the current and any previous session history
+(assuming the <b>-i</b> and <b>-I</b> options are given
+together) will be written out when <b>rigctl</b> is closed.
+Each option is mutually exclusive, i.e. either may be given
+separately or in combination. This is useful to save a set
+of commands and then read them later but not write the
+modified history for a consistent set of test commands in
+interactive mode, for example.</p>
+
+<p style="margin-left:9%; margin-top: 1em">History is
+stored in <i>$HOME/.rigctl_history</i> by default although
+the destination directory may be changed by setting the
+<b>RIGCTL_HIST_DIR</b> environment variable. When
+RIGCTL_HIST_DIR is unset, the value of the <b>HOME</b>
+environment variable is used instead. Only the destination
+directory may be changed at this time.</p>
+
+<p style="margin-left:9%; margin-top: 1em">If Readline
+support is not found at configure time the original internal
+command handler is used. Readline is not used for
+<b>rigctl</b> commands entered on the command line
+regardless if Readline support is built in or not.</p>
+
+<p style="margin-left:9%; margin-top: 1em"><b>Note</b>:
+Readline support is not included in the MS Windows 32 or 64
+bit binary builds supplied by the Hamlib Project. Running
+<b>rigctl</b> on the MS Windows platform in the
+&lsquo;cmd&rsquo; shell does give session command line
+history, however, it is not saved to disk between
+sessions.</p>
+
+<h2>DIAGNOSTICS
+<a name="DIAGNOSTICS"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">The <b>-v</b>,
+<b>--verbose</b> option allows different levels of
+diagnostics to be output to <b>stderr</b> and correspond to
+-v for <b>BUG</b>, -vv for <b>ERR</b>, -vvv for <b>WARN</b>,
+-vvvv for <b>VERBOSE</b>, or -vvvvv for <b>TRACE</b>.</p>
+
+<p style="margin-left:9%; margin-top: 1em">A given verbose
+level is useful for providing needed debugging information
+to the email address below. For example, TRACE output shows
+all of the values sent to and received from the radio which
+is very useful for radio backend library development and may
+be requested by the developers.</p>
+
+<h2>EXIT STATUS
+<a name="EXIT STATUS"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>rigctl</b>
+exits with:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="1%">
+
+
+<p><b>0</b></p></td>
+<td width="8%"></td>
+<td width="72%">
+
+
+<p>if all operations completed normally;</p></td>
+<td width="10%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="1%">
+
+
+<p><b>1</b></p></td>
+<td width="8%"></td>
+<td width="72%">
+
+
+<p>if there was an invalid command line option or
+argument;</p> </td>
+<td width="10%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="1%">
+
+
+<p><b>2</b></p></td>
+<td width="8%"></td>
+<td width="72%">
+
+
+<p>if an error was returned by <b>Hamlib</b>.</p></td>
+<td width="10%">
+</td></tr>
+</table>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">Start
+<b>rigctl</b> for a Yaesu FT-920 using a USB to serial
+adapter on Linux in interactive mode:</p>
+
+<p style="margin-left:14%; margin-top: 1em">$ <b>rigctl -m
+1014 -r /dev/ttyUSB1</b></p>
+
+<p style="margin-left:9%; margin-top: 1em">Start
+<b>rigctl</b> for a Yaesu FT-920 using COM1 on MS Windows
+while generating TRACE output to <i>stderr</i>:</p>
+
+<p style="margin-left:14%; margin-top: 1em">&gt; <b>rigctl
+-m 1014 -r COM1 -vvvvv</b></p>
+
+<p style="margin-left:9%; margin-top: 1em">Start
+<b>rigctl</b> for a Yaesu FT-920 using a USB to serial
+adapter while setting baud rate and stop bits:</p>
+
+<p style="margin-left:14%; margin-top: 1em">$ <b>rigctl -m
+1014 -r /dev/ttyUSB1 -s 4800 -C stop_bits=2</b></p>
+
+<p style="margin-left:9%; margin-top: 1em">Start
+<b>rigctl</b> for an Elecraft K3 using a USB to serial
+adapter while specifying a command terminator for the
+<b>w</b> command:</p>
+
+<p style="margin-left:14%; margin-top: 1em">$ <b>rigctl -m
+2029 -r /dev/ttyUSB0 -t&rsquo;;&rsquo;</b></p>
+
+<p style="margin-left:9%; margin-top: 1em">Connect to a
+running <b>rigctld</b> with radio model 2 (&ldquo;NET
+rigctl&rdquo;) on the local host and specifying the TCP
+port, setting frequency and mode:</p>
+
+<p style="margin-left:14%; margin-top: 1em">$ <b>rigctl -m
+2 -r localhost:4532 F 7253500 M LSB 0</b></p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>set_chan</b>
+has no entry method as of yet, hence left unimplemented.</p>
+
+<p style="margin-left:9%; margin-top: 1em">This almost
+empty section...</p>
+
+<p style="margin-left:9%; margin-top: 1em">Report bugs
+to:</p>
+
+
+<p style="margin-left:18%;"><a href="mailto:hamlib-developer@lists.sourceforge.net">Hamlib
+Developer mailing list </a></p>
+
+<h2>COPYING
+<a name="COPYING"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">This file is
+part of Hamlib, a project to develop a library that
+simplifies radio, rotator, and amplifier control functions
+for developers of software primarily of interest to radio
+amateurs and those interested in radio communications.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Copyright &copy;
+2000-2011 Stephane Fillod <br>
+Copyright &copy; 2000-2018 the Hamlib Group (various
+contributors) <br>
+Copyright &copy; 2010-2020 Nate Bargmann</p>
+
+<p style="margin-left:9%; margin-top: 1em">This is free
+software; see the file COPYING for copying conditions. There
+is NO warranty; not even for MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE.</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>less</b>(1),
+<b>more</b>(1), <b>rigctld</b>(1), <b>hamlib</b>(7)</p>
+
+<h2>COLOPHON
+<a name="COLOPHON"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">Links to the
+Hamlib Wiki, Git repository, release archives, and daily
+snapshot archives are available via
+<a href="http://www.hamlib.org">hamlib.org</a>.</p>
+<hr>
+</body>
+</html>

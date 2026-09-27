@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build output
+build/
+dist/
+*.log
+
+# Local Hamlib binaries (GitHub Actions downloads the official release)
+hamlib/bin/*.dll
+hamlib/bin/*.exe
+hamlib/bin/*.pdb
+hamlib/download/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

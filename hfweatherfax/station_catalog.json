@@ -1,0 +1,5816 @@
+[
+  {
+    "id": "jp_tokyo",
+    "region": "Asia",
+    "country": "Japan",
+    "location": "Tokyo",
+    "service": "Japan Meteorological Agency (JMA)",
+    "call_signs": [
+      "JMH",
+      "JMH2",
+      "JMH4"
+    ],
+    "frequencies": [
+      {
+        "khz": 3622.5,
+        "call_sign": "JMH",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "5 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 3620.6,
+        "display": "3622.5 kHz"
+      },
+      {
+        "khz": 7795.0,
+        "call_sign": "JMH2",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "5 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 7793.1,
+        "display": "7795 kHz"
+      },
+      {
+        "khz": 13988.5,
+        "call_sign": "JMH4",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "5 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 13986.6,
+        "display": "13988.5 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "Jan 2014",
+    "source_pages": "6-7",
+    "notes": "Marine weatherfax. Conditional and seasonal products are marked in the source schedule.",
+    "schedule": [
+      {
+        "utc": "0000",
+        "product": "RETRANSMISSION OF 2200/0750 (1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0020",
+        "product": "96HR SURFACE PRESSURE, PRECIP PROGS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0040",
+        "product": "120HR SURFACE PRESSURE, PRECIP PROGS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0103",
+        "product": "TEST CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0110",
+        "product": "METEOROLOGICAL SATELLITE PICTURE (MSAT)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0130",
+        "product": "RETRANSMISSION OF 1019/0730",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0150",
+        "product": "TROPICAL CYCLONE FORECAST(1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0210",
+        "product": "SEA SURFACE CURRENT, WATER TEMPERATURE AT 100M DEPTH (2)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0229",
+        "product": "RADIO PREDICTION (3)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0240",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0300",
+        "product": "SEA SURFACE WATER TEMPERATURE (2)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0320",
+        "product": "THE FIRST RETRANSMISSION OF 0240/1440",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0340",
+        "product": "BROADCAST SCHEDULE and MANUAL AMENDMENTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0400",
+        "product": "TROPICAL CYCLONE FORECAST (6)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0421",
+        "product": "OCEAN WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0440",
+        "product": "COASTAL WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0459",
+        "product": "500 hPa HEIGHT, TEMPERATURE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0518",
+        "product": "850 hPa HEIGHT, TEMPERATURE, DEW POINT DEPRESSION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0537",
+        "product": "24HR 500 hPa HEIGHT, VORTICITY PROGNOSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0548",
+        "product": "24HR SURFACE PRESSURE, WIND, FOG, ICING, SEA ICE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0610",
+        "product": "RETRANSMISSION OF 0150/1350 (1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0630",
+        "product": "48/72 HR SURFACE PRESSURE, PRECIPITATION PROGNOSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0651",
+        "product": "24HR WAVE PROG (NORTH PACIFIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0710",
+        "product": "METEOROLOGICAL SATELLITE PICTURE (MSAT)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0730",
+        "product": "24HR COASTAL WAVE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0750",
+        "product": "TROPICAL CYCLONE FORECAST (1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0809",
+        "product": "36HR 500 hPa HEIGHT, VORTICITY PROGNOSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0820",
+        "product": "48HR SURFACE PRESSURE, WIND, FOG, ICING, SEA ICE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0840",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0900",
+        "product": "TROPICAL CYCLONE FORECAST (6)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0920",
+        "product": "THE FIRST RETRANSMISSION OF 0840/2040",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0940",
+        "product": "RETRANSMISSION OF 0630/1950",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1000",
+        "product": "RETRANSMISSION OF 0820",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1019",
+        "product": "SEA ICE CONDITION ANAL(4), 48HR & 168 HR PROGS(5)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1040",
+        "product": "RETRANSMISSION OF 0548/1950",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1100",
+        "product": "RETRANSMISSION OF 0421/1930",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1119",
+        "product": "RETRANSMISSION OF 0440/1719",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1140",
+        "product": "RETRANSMISSION OF 0651/2100",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1200",
+        "product": "RETRANSMISSION OF 2200/0750 (1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1220",
+        "product": "12/24/48/72HR OCEAN WAVE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1240",
+        "product": "24 HR 500hPa TEMPERATURE AND 700hPa DEWPOINT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1251",
+        "product": "36 HR 500hPa TEMPERATURE AND 700hPa DEWPOINT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1303",
+        "product": "TEST CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1310",
+        "product": "METEOROLOGICAL SATELLITE PICTURE (MSAT)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1330",
+        "product": "RETRANSMISSION OF 1019/0730",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1350",
+        "product": "TROPICAL CYCLONE FORECAST(1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1420",
+        "product": "RETRANSMISSION OF 0210 (2)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1440",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1520",
+        "product": "THE FIRST RETRANSMISSION OF 0240/1440",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1540",
+        "product": "TROPICAL CYCLONE FORECAST (6)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1600",
+        "product": "SEA SURFACE WATER TEMPERATURE (2)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1620",
+        "product": "OCEAN WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1640",
+        "product": "500 hPa HEIGHT, TEMPERATURE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1700",
+        "product": "850 hPa HEIGHT, TEMPERATURE, DEW POINT DEPRESSION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1719",
+        "product": "COASTAL WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1739",
+        "product": "24HR 500 hPa HEIGHT, VORTICITY PROGNOSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1750",
+        "product": "RETRANSMISSION OF 0150/1350 (1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1810",
+        "product": "36HR 500 hPa HEIGHT, VORTICITY PROGNOSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1821",
+        "product": "24 HR 500 hPa TEMPERATURE AND 700 hPa DEWPOINT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1832",
+        "product": "36 HR 500 hPa TEMPERATURE AND 700 hPa DEWPOINT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1850",
+        "product": "12/24/48/72HR OCEAN WAVE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1910",
+        "product": "METEOROLOGICAL SATELLITE PICTURE (MSAT)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1930",
+        "product": "24HR SURFACE PRESSURE, WIND, FOG, ICING, SEA ICE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1950",
+        "product": "TROPICAL CYCLONE FORECAST (1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2010",
+        "product": "24HR COASTAL WAVE PROG (1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2040",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2100",
+        "product": "48HR SURFACE PRESSURE, WIND, FOG, ICING, SEA ICE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2120",
+        "product": "THE FIRST RETRANSMISSION OF 0840/2040",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2140",
+        "product": "TROPICAL CYCLONE FORECAST(6)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2200",
+        "product": "48/72HR SURFACE PRESSURE, PRECIPITATION PROGNOSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2220",
+        "product": "24HR OCEAN WAVE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2240",
+        "product": "RETRANSMISSION OF 0548/1950",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2300",
+        "product": "RETRANSMISSION OF 0421/1930",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2320",
+        "product": "RETRANSMISSION OF 0440/1719",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2340",
+        "product": "RETRANSMISSION OF 0651/2100",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "jp_kagoshima",
+    "region": "Asia",
+    "country": "Japan",
+    "location": "Kagoshima",
+    "service": "JFX Marine Radiofax",
+    "call_signs": [
+      "JFX"
+    ],
+    "frequencies": [
+      {
+        "khz": 4274.0,
+        "call_sign": "JFX",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4272.1,
+        "display": "4274 kHz"
+      },
+      {
+        "khz": 8658.0,
+        "call_sign": "JFX",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 8656.1,
+        "display": "8658 kHz"
+      },
+      {
+        "khz": 13074.0,
+        "call_sign": "JFX",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 13072.1,
+        "display": "13074 kHz"
+      },
+      {
+        "khz": 16907.5,
+        "call_sign": "JFX",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 16905.6,
+        "display": "16907.5 kHz"
+      },
+      {
+        "khz": 22559.6,
+        "call_sign": "JFX",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 22557.7,
+        "display": "22559.6 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2025-01-29",
+    "source_pages": "7-8",
+    "notes": "Some products are weekday/season dependent.",
+    "schedule": [
+      {
+        "utc": "0020",
+        "product": "SURFACE PRESSURE FORECAST",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0110",
+        "product": "BROADCAST SCHEDULE (1)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0310",
+        "product": "SURFACE ANALYSIS JMH ASAS",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0330",
+        "product": "FISH MARKET INFORMATION",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0400",
+        "product": "SURFACE PRESSURE FORECAST (REBROADCAST)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0440",
+        "product": "TROPICAL CYCLONE INFORMATION (2)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0610",
+        "product": "JFX NOAA INFORMATION (REBROADCAST)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0700",
+        "product": "SEA SURFACE TEMPERATURE AROUND JAPAN (4)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0700",
+        "product": "MISAKI FISHING PORT FROZEN TUNA MARKET (3)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0730",
+        "product": "WEATHER INFORMATION (4)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0800",
+        "product": "PACIFIC SAURY FISHING INFORMATION (5)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0830",
+        "product": "TUNA MARKET INFORMATION",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0930",
+        "product": "COAST GUARD NAVIGATIONAL WARNINGS",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1030",
+        "product": "MARITIME SECURITY INTELLIGENCE",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1100",
+        "product": "NOTIFICATIONS FROM RADIO STATIONS",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1800",
+        "product": "JFX NOAA INFORMATION",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "2200",
+        "product": "GENERAL NAVIGATIONAL WARNINGS",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "2240",
+        "product": "MARINE WEATHER (KAGOSHIMA, NAGASAKI, OKINAWA)",
+        "rpm_ioc": ""
+      }
+    ]
+  },
+  {
+    "id": "ru_pevek",
+    "region": "Asia",
+    "country": "Russia",
+    "location": "Pevek, Chukotka Peninsula",
+    "service": "Ice radiofacsimile",
+    "call_signs": [],
+    "frequencies": [
+      {
+        "khz": 148.0,
+        "call_sign": "",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 146.1,
+        "display": "148 kHz"
+      }
+    ],
+    "status": "uncertain",
+    "source_updated": "Nov 1997",
+    "source_pages": "8",
+    "notes": "Old source entry; operational status uncertain.",
+    "schedule": [
+      {
+        "utc": "0530-0730",
+        "product": "ICE",
+        "rpm_ioc": "90/576"
+      },
+      {
+        "utc": "1130-1330",
+        "product": "ICE",
+        "rpm_ioc": "90/576"
+      },
+      {
+        "utc": "1430-1630",
+        "product": "ICE",
+        "rpm_ioc": "90/576"
+      }
+    ]
+  },
+  {
+    "id": "kr_seoul",
+    "region": "Asia",
+    "country": "Republic of Korea",
+    "location": "Seoul",
+    "service": "Meteorological radiofacsimile",
+    "call_signs": [
+      "HLL2"
+    ],
+    "frequencies": [
+      {
+        "khz": 3585.0,
+        "call_sign": "HLL2",
+        "hours": "1200-0000 UTC",
+        "emission": "J3C",
+        "power": "3 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 3583.1,
+        "display": "3585 kHz"
+      },
+      {
+        "khz": 5857.5,
+        "call_sign": "HLL2",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "3 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 5855.6,
+        "display": "5857.5 kHz"
+      },
+      {
+        "khz": 7433.5,
+        "call_sign": "HLL2",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "3 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 7431.6,
+        "display": "7433.5 kHz"
+      },
+      {
+        "khz": 9165.0,
+        "call_sign": "HLL2",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "3 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 9163.1,
+        "display": "9165 kHz"
+      },
+      {
+        "khz": 13570.0,
+        "call_sign": "HLL2",
+        "hours": "0000-1200 UTC",
+        "emission": "J3C",
+        "power": "3 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 13568.1,
+        "display": "13570 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2009-01-01",
+    "source_pages": "9",
+    "notes": "Source states phasing signals 30 s before each chart and stop signals 15 s after transmission.",
+    "schedule": [
+      {
+        "utc": "0000",
+        "product": "SPECIAL WEATHER REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0033",
+        "product": "SEA-SHORE WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0047",
+        "product": "FISHERY WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0100",
+        "product": "MANAM",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0133",
+        "product": "LIGHTHOUSE WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0147",
+        "product": "SURFACE ANALYSIS FAR EAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0200",
+        "product": "WARNING TYPHOON REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0214",
+        "product": "GENERAL WEATHER CONDITIONS REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0314",
+        "product": "LIGHTHOUSE SIGN WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0333",
+        "product": "LIGHTHOUSE WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0400",
+        "product": "SURFACE ANALYSIS FAR ASIA",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0447",
+        "product": "SURFACE ANALYSIS FAR EAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0500",
+        "product": "500 hPa UPPER AIR WEATHER CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0513",
+        "product": "650 hPa UPPER AIR WEATHER CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0526",
+        "product": "700 hPa UPPER AIR WEATHER CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0539",
+        "product": "300 hPa UPPER AIR WEATHER CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0600",
+        "product": "SPECIAL WEATHER REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0633",
+        "product": "LIGHTHOUSE WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0647",
+        "product": "FISHERY WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0700",
+        "product": "12HR WAVE HEIGHT & SEA SURFACE WIND FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0714",
+        "product": "24HR WAVE HEIGHT & SEA SURFACE WIND FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0728",
+        "product": "36HR WAVE HEIGHT & SEA SURFACE WIND FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0747",
+        "product": "SURFACE ANALYSIS FAR EAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0800",
+        "product": "WARNING TYPHOON REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0814",
+        "product": "GENERAL WEATHER CONDITIONS REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0828",
+        "product": "SST OBSERVATION CHART OF NEAR KOREAN PENINSULA AREA",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0846",
+        "product": "MAIN SEASHORE WEATHER FORECAST FOR SHIP ROUTE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0900",
+        "product": "SEA FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0914",
+        "product": "LIGHTHOUSE SIGN WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0933",
+        "product": "LIGHTHOUSE WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0947",
+        "product": "WEEKLY SEA WEATHER FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1047",
+        "product": "SURFACE ANALYSIS FAR EAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1200",
+        "product": "SPECIAL WEATHER REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1233",
+        "product": "SEA-SHORE WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1247",
+        "product": "FISHERY WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1347",
+        "product": "SURFACE ANALYSIS FAR EAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "WARNING TYPHOON REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1500",
+        "product": "SPECIAL WEATHER REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1530",
+        "product": "SST OBSERVATION CHART OF NEAR KOREAN PENINSULA AREA",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1547",
+        "product": "LIGHTHOUSE SIGN WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1600",
+        "product": "SURFACE ANALYSIS FAR ASIA",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1647",
+        "product": "SURFACE ANALYSIS FAR EAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1700",
+        "product": "500 hPa UPPER AIR WEATHER CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1713",
+        "product": "650 hPa UPPER AIR WEATHER CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1726",
+        "product": "700 hPa UPPER AIR WEATHER CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1739",
+        "product": "300 hPa UPPER AIR WEATHER CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1800",
+        "product": "SPECIAL WEATHER REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1833",
+        "product": "SEA-SHORE WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1847",
+        "product": "FISHERY WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1900",
+        "product": "12HR WAVE HEIGHT & SEA SURFACE WIND FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1914",
+        "product": "24HR WAVE HEIGHT & SEA SURFACE WIND FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1928",
+        "product": "36HR WAVE HEIGHT & SEA SURFACE WIND FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1947",
+        "product": "SURFACE ANALYSIS FAR EAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2000",
+        "product": "WARNING TYPHOON REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2014",
+        "product": "GENERAL WEATHER CONDITIONS REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2046",
+        "product": "MAIN SEASHORE WEATHER FORECAST FOR SHIP ROUTE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2100",
+        "product": "SEA FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2114",
+        "product": "LIGHTHOUSE SIGN WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2133",
+        "product": "LIGHTHOUSE WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2147",
+        "product": "WEEKLY SEA WEATHER FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2233",
+        "product": "LIGHTHOUSE WEATHER OBSERVATION REPORT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2247",
+        "product": "SURFACE ANALYSIS FAR EAST",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "th_bangkok",
+    "region": "Asia",
+    "country": "Thailand",
+    "location": "Bangkok",
+    "service": "Marine meteorological radiofax",
+    "call_signs": [
+      "HSW64"
+    ],
+    "frequencies": [
+      {
+        "khz": 7395.0,
+        "call_sign": "HSW64",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "3 kW",
+        "basis": "carrier",
+        "note": "Source note: may refer to carrier frequency; center frequency add 1.9 kHz.",
+        "cat_khz": 7395.0,
+        "display": "7395 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "Jan 2009",
+    "source_pages": "10",
+    "notes": "Listed frequency is marked with a source note that it may be carrier frequency.",
+    "schedule": [
+      {
+        "utc": "0050",
+        "product": "TEST CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0100",
+        "product": "FORECAST FOR SHIPPING (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0120",
+        "product": "SURFACE PRESSURE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0200",
+        "product": "BROADCAST SCHEDULE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0300",
+        "product": "24 HR SURFACE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0320",
+        "product": "48 HR SURFACE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0340",
+        "product": "72 HR SURFACE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0400",
+        "product": "FORECAST FOR SHIPPING (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0420",
+        "product": "24 HR 850 mb WIND/TEMP PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0500",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0520",
+        "product": "850 mb ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0540",
+        "product": "700 mb ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0600",
+        "product": "500 mb ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0700",
+        "product": "FORECAST FOR SHIPPING (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0720",
+        "product": "24 HR SURFACE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0740",
+        "product": "48 HR SURFACE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0800",
+        "product": "72 HR SURFACE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0820",
+        "product": "24 HR 850 mb WIND/TEMP PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1000",
+        "product": "FORECAST FOR SHIPPING (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1020",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1300",
+        "product": "FORECAST FOR SHIPPING (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1700",
+        "product": "FORECAST FOR SHIPPING (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1720",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2300",
+        "product": "FORECAST FOR SHIPPING (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2320",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "jp_kyodo",
+    "region": "Asia",
+    "country": "Japan / Singapore",
+    "location": "Kyodo News",
+    "service": "Kyodo News / maritime radiofax",
+    "call_signs": [
+      "JJC"
+    ],
+    "frequencies": [
+      {
+        "khz": 16971.0,
+        "call_sign": "JJC",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 16969.1,
+        "display": "16971 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2025-01-30",
+    "source_pages": "11",
+    "notes": "News and maritime information with weekday-specific products.",
+    "schedule": [
+      {
+        "utc": "0200",
+        "product": "KYODO NEWS (EVENING) (1)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0200",
+        "product": "KYODO FURUSATO NEWS (2)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0300",
+        "product": "KYODO NEWS (MORNING), KYODO NEWS SPORTS (MORNING), JAPAN NAVIGATIONAL WARNINGS",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0700",
+        "product": "OCEAN CURRENT FORECASTING (MAP) (3) Sunday, Monday",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0710",
+        "product": "KYODO NEWS (ENGLISH EDITION) (4) Tue Wed Thu Fri? Sat",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0730",
+        "product": "MARINE ADMINISTRATION NEWS (5) Sat",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0745",
+        "product": "KYODO NEWS (EVENING), KYODO KAIUN-SUISAN NEWS (6)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0745",
+        "product": "KYODO FURUSATO NEWS, MARINE ADMINISTRATION NEWS (7)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0940",
+        "product": "SUMO MATCH TABLE",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1000",
+        "product": "KYODO FURUSATO NEWS (7)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1020",
+        "product": "KYODO NEWS SPORTS (MORNING), KYODO NEWS (MORNING)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1130",
+        "product": "JAPAN NAVIGATIONAL WARNINGS, SUMO MATCH TABLE",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1200",
+        "product": "KYODO NEWS (ENGLISH EDITION) Mon Tue Wed Thu Fri? Sat?",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1400",
+        "product": "KYODO KAIUN-SUISAN NEWS Mon Tue Wed Thu Fri Sat?",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1500",
+        "product": "KYODO NEWS (MORNING), KYODO NEWS SPORTS (MORNING), JAPAN NAVIGATIONAL WARNINGS",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1645",
+        "product": "KYODO NEWS (EVENING)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "2030",
+        "product": "JAPAN NAVIGATIONAL WARNINGS, MARINE ADMINISTRATION NEWS (5)",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "2300",
+        "product": "KYODO NEWS (MORNING), KYODO NEWS SPORTS (MORNING), JAPAN NAVIGATIONAL WARNINGS, KYODO",
+        "rpm_ioc": ""
+      }
+    ]
+  },
+  {
+    "id": "cn_guangzhou",
+    "region": "Asia",
+    "country": "China",
+    "location": "Guangzhou Coast Radio Station",
+    "service": "Guangdong Meteorological Observatory / South China Sea Weather Forecast Center",
+    "call_signs": [
+      "XSQ"
+    ],
+    "frequencies": [
+      {
+        "khz": 4199.75,
+        "call_sign": "XSQ",
+        "hours": "All broadcast times",
+        "emission": "F3C",
+        "power": "5 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4197.85,
+        "display": "4199.75 kHz"
+      },
+      {
+        "khz": 8412.5,
+        "call_sign": "XSQ",
+        "hours": "All broadcast times",
+        "emission": "F3C",
+        "power": "5 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 8410.6,
+        "display": "8412.5 kHz"
+      },
+      {
+        "khz": 12629.25,
+        "call_sign": "XSQ",
+        "hours": "All broadcast times",
+        "emission": "F3C",
+        "power": "5 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 12627.35,
+        "display": "12629.25 kHz"
+      },
+      {
+        "khz": 16826.25,
+        "call_sign": "XSQ",
+        "hours": "All broadcast times",
+        "emission": "F3C",
+        "power": "5 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 16824.35,
+        "display": "16826.25 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2022-08-23",
+    "source_pages": "12-13",
+    "notes": "Schedule includes UTC and local time; tropical-cyclone products can be conditional.",
+    "schedule": [
+      {
+        "utc": "0000",
+        "product": "MANAM XSQ BROADCAST SCHEDULE AND MANUAL AMENDMENTS 手册修订时间",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0025",
+        "product": "00（08） FSAS024 24H SURFACE FORECAST 24h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0050",
+        "product": "00（08） FSAS048 48H SURFACE FORECAST 48h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0115",
+        "product": "00（08） FSAS072 72H SURFACE FORECAST 72h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0140",
+        "product": "22（06） FSSS024 24H SOUTH CHINA SEA FORECAST （24h） （1）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0215",
+        "product": "00（08） FTPW120 120H TROPICAL CYCLONE FORECAST 120h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0240",
+        "product": "22（06） FSSS048 48H SOUTH CHINA SEA FORECAST （48h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0305",
+        "product": "22（06） FSSS072 72H SOUTH CHINA SEA FORECAST （72h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0330",
+        "product": "00（08） FWEA024 24H WAVE HEIGHT,SURFACE WIND FORECAST 24h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0400",
+        "product": "00（08） ASPN SURFACE ANALYSIS 地面实况分析",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0425",
+        "product": "00（08） FWEA048 48H WAVE HEIGHT,SURFACE WIND FORECAST 48h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0450",
+        "product": "00（08） FWEA072 72H WAVE HEIGHT,SURFACE WIND FORECAST 72h） （2）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0515",
+        "product": "REISSUE CHART 补发传真图 （1）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0815",
+        "product": "06（14） FTPW120 120H TROPICAL CYCLONE FORECAST 120h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1225",
+        "product": "12（20） FSAS024 24H SURFACE FORECAST 24h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1250",
+        "product": "12（20） FSAS048 48H SURFACE FORECAST 48h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1315",
+        "product": "12（20） FSAS072 72H SURFACE FORECAST 72h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1340",
+        "product": "08（16） FSSS024 24H SOUTH CHINA SEA FORECAST （24h） （1）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1415",
+        "product": "12（20） FTPW120 120H TROPICAL CYCLONE FORECAST 120h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1440",
+        "product": "08（16） FSSS048 48H SOUTH CHINA SEA FORECAST （48h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1505",
+        "product": "08（16） FSSS072 72H SOUTH CHINA SEA FORECAST （72h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1600",
+        "product": "12（20） FWEA024 24H WAVE HEIGHT,SURFACE WIND FORECAST 24h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1625",
+        "product": "12（20） FWEA048 48H WAVE HEIGHT,SURFACE WIND FORECAST 48h）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1650",
+        "product": "12（20） FWEA072 72H WAVE HEIGHT,SURFACE WIND FORECAST 72h） （1）",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "2015",
+        "product": "18（02） FTPW120 120H TROPICAL CYCLONE FORECAST 120h）",
+        "rpm_ioc": ""
+      }
+    ]
+  },
+  {
+    "id": "cl_valparaiso",
+    "region": "South America",
+    "country": "Chile",
+    "location": "Valparaiso Playa Ancha",
+    "service": "Chilean naval marine weatherfax",
+    "call_signs": [
+      "CBV"
+    ],
+    "frequencies": [
+      {
+        "khz": 4228.0,
+        "call_sign": "CBV",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4226.1,
+        "display": "4228 kHz"
+      },
+      {
+        "khz": 8677.0,
+        "call_sign": "CBV",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 8675.1,
+        "display": "8677 kHz"
+      },
+      {
+        "khz": 17146.4,
+        "call_sign": "CBV",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 17144.5,
+        "display": "17146.4 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2010-09-23",
+    "source_pages": "15",
+    "notes": "Source schedule dated 2010.",
+    "schedule": [
+      {
+        "utc": "1100",
+        "product": "TEST CHART CBV CBM SCHEDULES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1115",
+        "product": "SURFACE CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1130",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1630",
+        "product": "24 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1645",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1915",
+        "product": "SURFACE CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1930",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2200",
+        "product": "36 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2215",
+        "product": "SURFACE CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2230",
+        "product": "WINDS BARB ISOTACHS FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2310",
+        "product": "48 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2325",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "cl_punta_arenas",
+    "region": "South America",
+    "country": "Chile",
+    "location": "Punta Arenas, Magallanes",
+    "service": "Chilean naval marine weatherfax",
+    "call_signs": [
+      "CBM"
+    ],
+    "frequencies": [
+      {
+        "khz": 4322.0,
+        "call_sign": "CBM",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4320.1,
+        "display": "4322 kHz"
+      },
+      {
+        "khz": 8696.0,
+        "call_sign": "CBM",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 8694.1,
+        "display": "8696 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2010-09-23",
+    "source_pages": "15",
+    "notes": "Source schedule dated 2010.",
+    "schedule": [
+      {
+        "utc": "0350",
+        "product": "48 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0405",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1550",
+        "product": "TEST CHART CBV CBM SCHEDULES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1605",
+        "product": "12HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1620",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1730",
+        "product": "SURFACE CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1745",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2005",
+        "product": "SIGNIFICANT WAVE MAP FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2020",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2240",
+        "product": "36 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2255",
+        "product": "SURFACE CHART",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2310",
+        "product": "WINDS BARB ISOTACHS FORECAST",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "ca_iqaluit",
+    "region": "North America",
+    "country": "Canada",
+    "location": "Iqaluit",
+    "service": "Canadian Coast Guard radiofax",
+    "call_signs": [],
+    "frequencies": [],
+    "status": "discontinued",
+    "source_updated": "Aug 2024",
+    "source_pages": "17",
+    "notes": "Service discontinued in 2019 according to the source.",
+    "schedule": []
+  },
+  {
+    "id": "ca_resolute",
+    "region": "North America",
+    "country": "Canada",
+    "location": "Resolute",
+    "service": "Canadian Coast Guard radiofax",
+    "call_signs": [],
+    "frequencies": [],
+    "status": "discontinued",
+    "source_updated": "Aug 2024",
+    "source_pages": "17",
+    "notes": "Service discontinued in 2019 according to the source.",
+    "schedule": []
+  },
+  {
+    "id": "ca_inuvik",
+    "region": "North America",
+    "country": "Canada",
+    "location": "Inuvik",
+    "service": "Canadian Coast Guard radiofax",
+    "call_signs": [],
+    "frequencies": [],
+    "status": "discontinued",
+    "source_updated": "Aug 2024",
+    "source_pages": "17",
+    "notes": "Service discontinued in 2019 according to the source.",
+    "schedule": []
+  },
+  {
+    "id": "ca_sydney",
+    "region": "North America",
+    "country": "Canada",
+    "location": "Sydney, Nova Scotia",
+    "service": "Canadian Coast Guard / ice analysis",
+    "call_signs": [
+      "VCO"
+    ],
+    "frequencies": [
+      {
+        "khz": 4416.0,
+        "call_sign": "VCO",
+        "hours": "2200-2331",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4414.1,
+        "display": "4416 kHz"
+      },
+      {
+        "khz": 6915.1,
+        "call_sign": "VCO",
+        "hours": "1121-1741",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 6913.2,
+        "display": "6915.1 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2014",
+    "source_pages": "17",
+    "notes": "Ice-analysis products; schedule is dated 2014.",
+    "schedule": [
+      {
+        "utc": "1121",
+        "product": "ICE ANALYSIS GULF OF ST. LAWRENCE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1142",
+        "product": "ICE ANALYSIS EAST OR SOUTHEAST NEWFOUNDLAND WATERS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1741",
+        "product": "ICE ANALYSIS ICEBERG LIMIT",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2200",
+        "product": "ICE ANALYSIS GULF OF ST. LAWRENCE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2331",
+        "product": "ICE ANALYSIS EAST OR SOUTHEAST NEWFOUNDLAND WATERS",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "us_kodiak",
+    "region": "North America",
+    "country": "U.S.A.",
+    "location": "Kodiak, Alaska",
+    "service": "NOAA/NWS + USCG marine weatherfax",
+    "call_signs": [
+      "NOJ"
+    ],
+    "frequencies": [
+      {
+        "khz": 2054.0,
+        "call_sign": "NOJ",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 2052.1,
+        "display": "2054 kHz"
+      },
+      {
+        "khz": 4298.0,
+        "call_sign": "NOJ",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4296.1,
+        "display": "4298 kHz"
+      },
+      {
+        "khz": 8459.0,
+        "call_sign": "NOJ",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 8457.1,
+        "display": "8459 kHz"
+      },
+      {
+        "khz": 12412.5,
+        "call_sign": "NOJ",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 12410.6,
+        "display": "12412.5 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2020-02-12",
+    "source_pages": "18-19",
+    "notes": "For CAT/USB, publication notes carrier frequency is 1.9 kHz below assigned frequency.",
+    "schedule": [
+      {
+        "utc": "0008",
+        "product": "96HR WAVE PERIOD, SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0018",
+        "product": "96HR 500 MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0340",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0343",
+        "product": "SEA ICE ANALYSIS/REBROADCAST 1057",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0403",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0427",
+        "product": "REBROADCAST 24HR SURFACE F'CAST 2203/1017",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0437",
+        "product": "REBROADCAST 48HR SURFACE F'CAST 2227/1037",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0447",
+        "product": "REBROADCAST 96HR SURFACE F'CAST 2348",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0456",
+        "product": "SEA STATE ANALYSIS/REBROADCAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0506",
+        "product": "GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0517",
+        "product": "500 MB ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0527",
+        "product": "SYMBOLS AND CONTRACTIONS/SCHEDULE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0548",
+        "product": "REQUEST FOR COMMENTS/PRODUCT NOTICE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0558",
+        "product": "24HR 500 MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0950",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0953",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1017",
+        "product": "24HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1027",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1037",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1047",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1057",
+        "product": "5-DAY SEA ICE FORECAST/REBROADCAST 0343",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1117",
+        "product": "GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1128",
+        "product": "48HR WAVE PERIOD, SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1138",
+        "product": "48HR 500 MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1148",
+        "product": "SEA SURFACE TEMPERATURE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1159",
+        "product": "COOK INLET SEA ICE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1540",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1543",
+        "product": "SEA ICE ANALYSIS/REBROADCAST 1057",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1603",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1627",
+        "product": "REBROADCAST 24HR SURFACE F'CAST 2203/1017",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1637",
+        "product": "REBROADCAST 48HR SURFACE F'CAST 2227/1037",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1647",
+        "product": "REBROADCAST 96HR SURFACE F'CAST 2348",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1656",
+        "product": "SEA STATE ANALYSIS/REBROADCAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1706",
+        "product": "GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1717",
+        "product": "500 MB ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1727",
+        "product": "SYMBOLS AND CONTRACTIONS/SCHEDULE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1748",
+        "product": "REQUEST FOR COMMENTS/PRODUCT NOTICE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1758",
+        "product": "24HR 500 MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1808",
+        "product": "48HR 500 MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2150",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2153",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2203",
+        "product": "24HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2217",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2227",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2237",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2247",
+        "product": "48HR WAVE PERIOD, SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2257",
+        "product": "5-DAY SEA ICE FORECAST/REBROADCAST 0343",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2307",
+        "product": "GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2317",
+        "product": "72HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2328",
+        "product": "72HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2338",
+        "product": "72HR WAVE PERIOD, SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2348",
+        "product": "96HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2358",
+        "product": "96HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "us_point_reyes",
+    "region": "North America",
+    "country": "U.S.A.",
+    "location": "Point Reyes, California",
+    "service": "NOAA/NWS + USCG marine weatherfax",
+    "call_signs": [
+      "NMC"
+    ],
+    "frequencies": [
+      {
+        "khz": 4346.0,
+        "call_sign": "NMC",
+        "hours": "0140-1608",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4344.1,
+        "display": "4346 kHz"
+      },
+      {
+        "khz": 8682.0,
+        "call_sign": "NMC",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 8680.1,
+        "display": "8682 kHz"
+      },
+      {
+        "khz": 12786.0,
+        "call_sign": "NMC",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 12784.1,
+        "display": "12786 kHz"
+      },
+      {
+        "khz": 17151.2,
+        "call_sign": "NMC",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 17149.3,
+        "display": "17151.2 kHz"
+      },
+      {
+        "khz": 22527.0,
+        "call_sign": "NMC",
+        "hours": "1840-2356",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 22525.1,
+        "display": "22527 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2020-02-12",
+    "source_pages": "20-21",
+    "notes": "For CAT/USB, publication notes carrier frequency is 1.9 kHz below assigned frequency.",
+    "schedule": [
+      {
+        "utc": "0140",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0143",
+        "product": "NE PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0154",
+        "product": "PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0205",
+        "product": "TROPICAL SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0215",
+        "product": "TROPICAL 48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0225",
+        "product": "TROPICAL 48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0235",
+        "product": "TROPICAL 72HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0245",
+        "product": "500MB ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0255",
+        "product": "SEA STATE ANALYSIS, WIND/WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0305",
+        "product": "PRELIM SURFACE ANALYSIS(PART 1 NE PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0318",
+        "product": "PRELIM SURFACE ANALYSIS(PART 2 NW PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0331",
+        "product": "FINAL SURFACE ANALYSIS(PART 1 NE PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0344",
+        "product": "FINAL SURFACE ANALYSIS(PART 2 NW PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0357",
+        "product": "CYCLONE DANGER AREA* or HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0408",
+        "product": "TROPICAL SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0655",
+        "product": "TEST PATTERN",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0657",
+        "product": "1953Z REBROADCAST (96HR 500MB)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0707",
+        "product": "1933Z REBROADCAST (96HR SURFACE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0717",
+        "product": "1943Z REBROADCAST (96HR WIND/WAVE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0727",
+        "product": "2003Z REBROADCAST (96HR WAVE PERIOD)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0737",
+        "product": "TROPICAL GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0748",
+        "product": "WIND/WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0758",
+        "product": "24HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0808",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0818",
+        "product": "24HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0828",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0838",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0848",
+        "product": "48HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0858",
+        "product": "48HR WAVE PERIOD/SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0908",
+        "product": "PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0919",
+        "product": "SURFACE ANALYSIS (PART 1 NE PACIFIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0932",
+        "product": "SURFACE ANALYSIS (PART 2 NW PACIFIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0945",
+        "product": "TROPICAL SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0959",
+        "product": "TROPICAL 24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1009",
+        "product": "CYCLONE DANGER AREA* or HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1120",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1124",
+        "product": "BROADCAST SCHEDULE (PART 1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1135",
+        "product": "BROADCAST SCHEDULE (PART 2)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1146",
+        "product": "REQUEST FOR COMMENTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1157",
+        "product": "PRODUCT NOTICE BULLETIN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1208",
+        "product": "TROPICAL 48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1218",
+        "product": "TROPICAL 72HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1228",
+        "product": "TROPICAL 48HR WAVE PERIOD/SWELL DIR",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1403",
+        "product": "NE PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1414",
+        "product": "PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1425",
+        "product": "TROPICAL SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1435",
+        "product": "TROPICAL 48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1445",
+        "product": "500MB ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1455",
+        "product": "SEA STATE ANALYSIS, WIND/WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1505",
+        "product": "PRELIM SURFACE ANALYSIS(PART 1 NE PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1518",
+        "product": "PRELIM SURFACE ANALYSIS(PART 2 NW PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1531",
+        "product": "FINAL SURFACE ANALYSIS(PART 1 NE PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1544",
+        "product": "FINAL SURFACE ANALYSIS(PART 2 NW PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1557",
+        "product": "CYCLONE DANGER AREA* or HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1608",
+        "product": "TROPICAL SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1820",
+        "product": "TEST PATTERN",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1822",
+        "product": "24HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1832",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1842",
+        "product": "24HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1852",
+        "product": "SST ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1902",
+        "product": "SST ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1913",
+        "product": "TROPICAL GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1923",
+        "product": "WIND/WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1933",
+        "product": "96HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1943",
+        "product": "96HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1953",
+        "product": "96HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2003",
+        "product": "96HR WAVE PERIOD/SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2013",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2023",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2033",
+        "product": "48HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2043",
+        "product": "48HR WAVE PERIOD/SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2053",
+        "product": "72HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2103",
+        "product": "72HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2113",
+        "product": "PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2124",
+        "product": "SURFACE ANALYSIS (PART 1 NE PACIFIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2137",
+        "product": "SURFACE ANALYSIS (PART 2 NW PACIFIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2150",
+        "product": "TROPICAL SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2204",
+        "product": "TROPICAL 24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2214",
+        "product": "CYCLONE DANGER AREA* or HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2320",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2324",
+        "product": "BROADCAST SCHEDULE (PART 1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2335",
+        "product": "BROADCAST SCHEDULE (PART 2)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2346",
+        "product": "TROPICAL 48HR WAVE PERIOD/SWELL DIR",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2356",
+        "product": "TROPICAL 72HR WAVE PERIOD/SWELL DIR",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "us_new_orleans",
+    "region": "North America",
+    "country": "U.S.A.",
+    "location": "New Orleans, Louisiana",
+    "service": "NOAA/NHC + USCG marine weatherfax",
+    "call_signs": [
+      "NMG"
+    ],
+    "frequencies": [
+      {
+        "khz": 4317.9,
+        "call_sign": "NMG",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4316.0,
+        "display": "4317.9 kHz"
+      },
+      {
+        "khz": 8503.9,
+        "call_sign": "NMG",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 8502.0,
+        "display": "8503.9 kHz"
+      },
+      {
+        "khz": 12789.9,
+        "call_sign": "NMG",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 12788.0,
+        "display": "12789.9 kHz"
+      },
+      {
+        "khz": 17146.4,
+        "call_sign": "NMG",
+        "hours": "1200-2045",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 17144.5,
+        "display": "17146.4 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2020-02-12",
+    "source_pages": "22-23",
+    "notes": "For CAT/USB, publication notes carrier frequency is 1.9 kHz below assigned frequency.",
+    "schedule": [
+      {
+        "utc": "0000",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0005",
+        "product": "U.S./TROPICAL SURFACE ANALYSIS (W HALF)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0020",
+        "product": "TROPICAL SURFACE ANALYSIS (E HALF)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0035",
+        "product": "REBROADCAST OF 1925/0725 (24 HR WIND/WAVE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0045",
+        "product": "REBROADCAST OF 1950/0750 (48 HR WIND/WAVE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0055",
+        "product": "REBROADCAST OF 2015/0815 (72 HR WIND/WAVE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0105",
+        "product": "REBROADCAST OF 1855/0655 (24 HR SURFACE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0115",
+        "product": "REBROADCAST OF 1905/0705 (48 HR SURFACE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0125",
+        "product": "REBROADCAST OF 1915/0715 (72 HR SURFACE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0135",
+        "product": "CYCLONE DANGER AREA* or 48 HR HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0150",
+        "product": "REBROADCAST OF 0825 (72 HR WAVE PD/SWELL)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0200",
+        "product": "GOES IR TROPICAL SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0215",
+        "product": "SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0225",
+        "product": "REQUEST FOR COMMENTS/PRODUCT NOTICE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0245",
+        "product": "HIGH SEAS FORECAST (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0600",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0605",
+        "product": "U.S./TROPICAL SURFACE ANALYSIS (W HALF)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0620",
+        "product": "TROPICAL SURFACE ANALYSIS (E HALF)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0635",
+        "product": "48 HR WAVE PERIOD/SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0645",
+        "product": "REBROADCAST OF 0215/1415 (SEA STATE ANAL')",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0655",
+        "product": "24 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0705",
+        "product": "48 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0715",
+        "product": "72 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0725",
+        "product": "24 HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0735",
+        "product": "CYCLONE DANGER AREA* or 48HR HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0750",
+        "product": "48 HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0800",
+        "product": "GOES IR TROPICAL SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0815",
+        "product": "72 HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0825",
+        "product": "72 HR WAVE PERIOD/SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0835",
+        "product": "REBROADCAST OF 0215 (SEA STATE ANALYSIS)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0845",
+        "product": "HIGH SEAS FORECAST (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1200",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1205",
+        "product": "U.S./TROPICAL SURFACE ANALYSIS (W HALF)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1220",
+        "product": "TROPICAL SURFACE ANALYSIS (E HALF)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1235",
+        "product": "REBROADCAST OF 1925/0725 (24 HR WIND/WAVE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1245",
+        "product": "REBROADCAST OF 1950/0750 (48 HR WIND/WAVE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1255",
+        "product": "REBROADCAST OF 2015/0815 (72 HR WIND/WAVE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1305",
+        "product": "REBROADCAST OF 1855/0655 (24 HR SURFACE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1315",
+        "product": "REBROADCAST OF 1905/0705 (48 HR SURFACE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1325",
+        "product": "REBROADCAST OF 1915/0715 (72 HR SURFACE)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1335",
+        "product": "CYCLONE DANGER AREA* or 48 HR HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "GOES IR TROPICAL SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1415",
+        "product": "SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1425",
+        "product": "REQUEST FOR COMMENTS/PRODUCT NOTICE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1445",
+        "product": "HIGH SEAS FORECAST (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1800",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1805",
+        "product": "U.S./TROPICAL SURFACE ANALYSIS (W HALF)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1820",
+        "product": "TROPICAL SURFACE ANALYSIS (E HALF)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1835",
+        "product": "48 HR WAVE PERIOD/SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1845",
+        "product": "REBROADCAST OF 0215/1415 (SEA STATE ANAL')",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1855",
+        "product": "24 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1905",
+        "product": "48 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1915",
+        "product": "72 HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1925",
+        "product": "24 HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1935",
+        "product": "CYCLONE DANGER AREA* or 48HR HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1950",
+        "product": "48 HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2000",
+        "product": "GOES IR TROPICAL SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2015",
+        "product": "72 HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2025",
+        "product": "BROADCAST SCHEDULE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2045",
+        "product": "HIGH SEAS FORECAST (IN ENGLISH)",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "us_boston",
+    "region": "North America",
+    "country": "U.S.A.",
+    "location": "Boston, Massachusetts",
+    "service": "NOAA/NWS + USCG marine weatherfax",
+    "call_signs": [
+      "NMF"
+    ],
+    "frequencies": [
+      {
+        "khz": 4235.0,
+        "call_sign": "NMF",
+        "hours": "0230Z-1039Z",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4233.1,
+        "display": "4235 kHz"
+      },
+      {
+        "khz": 6340.5,
+        "call_sign": "NMF",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 6338.6,
+        "display": "6340.5 kHz"
+      },
+      {
+        "khz": 9110.0,
+        "call_sign": "NMF",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 9108.1,
+        "display": "9110 kHz"
+      },
+      {
+        "khz": 12750.0,
+        "call_sign": "NMF",
+        "hours": "1400Z-2239Z",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 12748.1,
+        "display": "12750 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2020-02-12",
+    "source_pages": "24-25",
+    "notes": "For CAT/USB, publication notes carrier frequency is 1.9 kHz below assigned frequency.",
+    "schedule": [
+      {
+        "utc": "0230",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0233",
+        "product": "PRELIMINARY SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0243",
+        "product": "BROADCAST SCHEDULE (PART 1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0254",
+        "product": "BROADCAST SCHEDULE (PART 2)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0305",
+        "product": "REQUEST FOR COMMENTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0315",
+        "product": "WIND/WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0325",
+        "product": "SURFACE ANALYSIS (PART 1 NE ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0338",
+        "product": "SURFACE ANALYSIS (PART 2 NW ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0351",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0402",
+        "product": "(REBROADCAST OF 0325/1525 NE ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0415",
+        "product": "(REBROADCAST OF 0338/1538 NW ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0428",
+        "product": "500MB ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0438",
+        "product": "ICE CHART (REBROADCAST)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0452",
+        "product": "CYCLONE DANGER AREA* or HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0745",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0755",
+        "product": "PRELIMINARY SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0805",
+        "product": "24HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0815",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0825",
+        "product": "24HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0835",
+        "product": "36HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0845",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0855",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0905",
+        "product": "48HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0915",
+        "product": "48HR WAVE PERIOD FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0925",
+        "product": "SURFACE ANALYSIS (PART 1 NE ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0938",
+        "product": "SURFACE ANALYSIS (PART 2 NW ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0951",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1002",
+        "product": "(REBROADCAST OF 0925/2125 NE ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1015",
+        "product": "(REBROADCAST OF 0938/2138 NW ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1028",
+        "product": "CYCLONE DANGER AREA* or HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1039",
+        "product": "REBROADCAST/N American Ice Service Chart",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1405",
+        "product": "BROADCAST SCHEDULE (PART 1)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1420",
+        "product": "BROADCAST SCHEDULE (PART 2)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1433",
+        "product": "REQUEST FOR COMMENTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1443",
+        "product": "PRODUCT NOTICE BULLETIN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1453",
+        "product": "PRELIMINARY SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1503",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1515",
+        "product": "WIND/WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1525",
+        "product": "SURFACE ANALYSIS (PART 1 NE ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1538",
+        "product": "SURFACE ANALYSIS (PART 2 NW ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1600",
+        "product": "ICE CHART (REBROADCAST)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1720",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1723",
+        "product": "(REBROADCAST OF 0325/1525 NE ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1736",
+        "product": "(REBROADCAST OF 0338/1538 NW ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1749",
+        "product": "500MB ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1759",
+        "product": "SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1810",
+        "product": "24HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1824",
+        "product": "CYCLONE DANGER AREA* or HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1835",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1855",
+        "product": "24HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1905",
+        "product": "36HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1915",
+        "product": "96HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1925",
+        "product": "96HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1935",
+        "product": "96HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1945",
+        "product": "96HR WAVE PERIOD FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1955",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2005",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2015",
+        "product": "48HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2025",
+        "product": "48HR WAVE PERIOD FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2035",
+        "product": "PRELIMINARY SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2045",
+        "product": "72HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2055",
+        "product": "72HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2105",
+        "product": "72HR 500MB FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2115",
+        "product": "72HR WAVE PERIOD FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2125",
+        "product": "SURFACE ANALYSIS (PART 1 NE ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2138",
+        "product": "SURFACE ANALYSIS (PART 2 NW ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2151",
+        "product": "SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2202",
+        "product": "(REBROADCAST OF 0925/2125 NE ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2215",
+        "product": "(REBROADCAST OF 0938/2138 NW ATLANTIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2228",
+        "product": "CYCLONE DANGER AREA* or HIGH WIND/WAVES",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2239",
+        "product": "REBROADCAST/N American Ice Service Chart",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "au_charleville",
+    "region": "Pacific Ocean Basin",
+    "country": "Australia",
+    "location": "Charleville",
+    "service": "Australian Bureau of Meteorology marine radiofax",
+    "call_signs": [
+      "VMC"
+    ],
+    "frequencies": [
+      {
+        "khz": 2628.0,
+        "call_sign": "VMC",
+        "hours": "0900-1900",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 2626.1,
+        "display": "2628 kHz"
+      },
+      {
+        "khz": 5100.0,
+        "call_sign": "VMC",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 5098.1,
+        "display": "5100 kHz"
+      },
+      {
+        "khz": 11030.0,
+        "call_sign": "VMC",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 11028.1,
+        "display": "11030 kHz"
+      },
+      {
+        "khz": 13920.0,
+        "call_sign": "VMC",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 13918.1,
+        "display": "13920 kHz"
+      },
+      {
+        "khz": 20469.0,
+        "call_sign": "VMC",
+        "hours": "1900-0900",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 20467.1,
+        "display": "20469 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2022-04-20",
+    "source_pages": "27-28",
+    "notes": "Shares the VMC/VMW schedule with Wiluna.",
+    "schedule": [
+      {
+        "utc": "0000",
+        "product": "Indian Ocean MSLP Anal (Manual) Valid 1200",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0015",
+        "product": "VMC/VMW Schedule Page 1 of 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0030",
+        "product": "VMC/VMW Schedule Page 2 of 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0045",
+        "product": "VMC/VMW Information Notice",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0100",
+        "product": "IPS Recommended Frequencies for VMC (Charleville)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0130",
+        "product": "IPS RECOMMENDED FREQUENCIES FOR VMW",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0200",
+        "product": "Australian MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0245",
+        "product": "Australian MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0300",
+        "product": "Australian 500 hPa Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0315",
+        "product": "Voice Broadcast Information for VMW (Wiluna) and VMC (Charleville)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0345",
+        "product": "Australian MSLP Anal (Manual) Valid 0000",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0400",
+        "product": "Australian 500 hPa (H+24) Prog",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0430",
+        "product": "Australian MSLP 4-day forecast, Days 1 and 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0445",
+        "product": "Australian MSLP 4-day forecast, Days 3 and 4",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0500",
+        "product": "Australian MSLP 4-day Forecast, Days 1 and 2",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0515",
+        "product": "Australian MSLP 4-day Forecast, Days 3 and 4",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0600",
+        "product": "Asian (Part A) Gradient Level Wind Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0623",
+        "product": "Asian (Part B) Gradient Level Wind Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0730",
+        "product": "Indian Ocean MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0745",
+        "product": "Australian Wind Waves Ht(m) Prog",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0800",
+        "product": "Australian Swell Waves Ht(m) Prog (H+24)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0830",
+        "product": "South Pacific Ocean MSLP Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0845",
+        "product": "Australian MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0900",
+        "product": "Australian MSLP Prog (H+36) (Repeat)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0915",
+        "product": "Australian MSLP 4-day forecast, Days 1 and 2 (Repeat)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0930",
+        "product": "Australian MSLP 4-day forecast, Days 3 and 4 (Repeat)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1015",
+        "product": "Casey Eastern and Western High Seas (H+24)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1030",
+        "product": "S.H. 500 hPa Prog (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1045",
+        "product": "S.H. MSLP Prog (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1100",
+        "product": "Casey Eastern and Western High Seas (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1115",
+        "product": "S.H. 500 hPa Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1130",
+        "product": "Asian Sea Surface Temp Anal (Weekly)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1145",
+        "product": "VMC/VMW Information Notice",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1200",
+        "product": "Australian MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1215",
+        "product": "VMC/VMW Schedule Page 1 of 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1230",
+        "product": "VMC/VMW Schedule Page 2 of 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1245",
+        "product": "Indian Ocean MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1315",
+        "product": "South Pacific Ocean Total Waves (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1330",
+        "product": "Indian Ocean Total Waves (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1345",
+        "product": "Pacific Ocean Sea Surface Temps (Weekly)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "Indian Ocean Sea Surface Temps (Weekly)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1415",
+        "product": "Casey Eastern and Western High Seas (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1430",
+        "product": "Australian MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1500",
+        "product": "Australian 500 hPa Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1515",
+        "product": "Australian MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1530",
+        "product": "Australian MSLP 4-day forecast, Days 1 and 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1545",
+        "product": "Australian MSLP 4-day forecast, Days 3 and 4",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1600",
+        "product": "Australian 500 hPa (H+24) Prog",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1630",
+        "product": "IPS Recommended Frequencies for VMC (Charleville)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1700",
+        "product": "IPS Recommended Frequencies for VMW (Wiluna)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1800",
+        "product": "Asian (Part A) Gradient Level Wind Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1823",
+        "product": "Asian (Part B) Gradient Level Wind Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1915",
+        "product": "Indian Ocean MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1930",
+        "product": "Australian Wind Waves Ht(m) Prog",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1945",
+        "product": "Australian Swell Waves Ht(m) Prog (H+24)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2000",
+        "product": "South Pacific Ocean MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2015",
+        "product": "Casey Eastern and Western High Seas (H+24)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2030",
+        "product": "Australian MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2215",
+        "product": "Casey Eastern and Western High Seas (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2230",
+        "product": "S.H. 500 hPa Prog (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2245",
+        "product": "S.H. MSLP Prog (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2300",
+        "product": "S.H. 500 hPa Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2315",
+        "product": "Casey Eastern and Western High Seas (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2330",
+        "product": "Australian MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2345",
+        "product": "Indian Ocean MSLP Prog (H+48)",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "au_wiluna",
+    "region": "Pacific Ocean Basin",
+    "country": "Australia",
+    "location": "Wiluna",
+    "service": "Australian Bureau of Meteorology marine radiofax",
+    "call_signs": [
+      "VMW"
+    ],
+    "frequencies": [
+      {
+        "khz": 5755.0,
+        "call_sign": "VMW",
+        "hours": "1100-2100",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 5753.1,
+        "display": "5755 kHz"
+      },
+      {
+        "khz": 7535.0,
+        "call_sign": "VMW",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 7533.1,
+        "display": "7535 kHz"
+      },
+      {
+        "khz": 10555.0,
+        "call_sign": "VMW",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 10553.1,
+        "display": "10555 kHz"
+      },
+      {
+        "khz": 15615.0,
+        "call_sign": "VMW",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 15613.1,
+        "display": "15615 kHz"
+      },
+      {
+        "khz": 18060.0,
+        "call_sign": "VMW",
+        "hours": "2100-1100",
+        "emission": "J3C",
+        "power": "1 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 18058.1,
+        "display": "18060 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2022-04-20",
+    "source_pages": "27-28",
+    "notes": "Shares the VMC/VMW schedule with Charleville.",
+    "schedule": [
+      {
+        "utc": "0000",
+        "product": "Indian Ocean MSLP Anal (Manual) Valid 1200",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0015",
+        "product": "VMC/VMW Schedule Page 1 of 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0030",
+        "product": "VMC/VMW Schedule Page 2 of 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0045",
+        "product": "VMC/VMW Information Notice",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0100",
+        "product": "IPS Recommended Frequencies for VMC (Charleville)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0130",
+        "product": "IPS RECOMMENDED FREQUENCIES FOR VMW",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0200",
+        "product": "Australian MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0245",
+        "product": "Australian MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0300",
+        "product": "Australian 500 hPa Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0315",
+        "product": "Voice Broadcast Information for VMW (Wiluna) and VMC (Charleville)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0345",
+        "product": "Australian MSLP Anal (Manual) Valid 0000",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0400",
+        "product": "Australian 500 hPa (H+24) Prog",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0430",
+        "product": "Australian MSLP 4-day forecast, Days 1 and 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0445",
+        "product": "Australian MSLP 4-day forecast, Days 3 and 4",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0500",
+        "product": "Australian MSLP 4-day Forecast, Days 1 and 2",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0515",
+        "product": "Australian MSLP 4-day Forecast, Days 3 and 4",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0600",
+        "product": "Asian (Part A) Gradient Level Wind Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0623",
+        "product": "Asian (Part B) Gradient Level Wind Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0730",
+        "product": "Indian Ocean MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0745",
+        "product": "Australian Wind Waves Ht(m) Prog",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0800",
+        "product": "Australian Swell Waves Ht(m) Prog (H+24)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0830",
+        "product": "South Pacific Ocean MSLP Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0845",
+        "product": "Australian MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0900",
+        "product": "Australian MSLP Prog (H+36) (Repeat)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0915",
+        "product": "Australian MSLP 4-day forecast, Days 1 and 2 (Repeat)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0930",
+        "product": "Australian MSLP 4-day forecast, Days 3 and 4 (Repeat)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1015",
+        "product": "Casey Eastern and Western High Seas (H+24)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1030",
+        "product": "S.H. 500 hPa Prog (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1045",
+        "product": "S.H. MSLP Prog (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1100",
+        "product": "Casey Eastern and Western High Seas (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1115",
+        "product": "S.H. 500 hPa Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1130",
+        "product": "Asian Sea Surface Temp Anal (Weekly)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1145",
+        "product": "VMC/VMW Information Notice",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1200",
+        "product": "Australian MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1215",
+        "product": "VMC/VMW Schedule Page 1 of 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1230",
+        "product": "VMC/VMW Schedule Page 2 of 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1245",
+        "product": "Indian Ocean MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1315",
+        "product": "South Pacific Ocean Total Waves (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1330",
+        "product": "Indian Ocean Total Waves (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1345",
+        "product": "Pacific Ocean Sea Surface Temps (Weekly)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "Indian Ocean Sea Surface Temps (Weekly)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1415",
+        "product": "Casey Eastern and Western High Seas (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1430",
+        "product": "Australian MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1500",
+        "product": "Australian 500 hPa Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1515",
+        "product": "Australian MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1530",
+        "product": "Australian MSLP 4-day forecast, Days 1 and 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1545",
+        "product": "Australian MSLP 4-day forecast, Days 3 and 4",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1600",
+        "product": "Australian 500 hPa (H+24) Prog",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1630",
+        "product": "IPS Recommended Frequencies for VMC (Charleville)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1700",
+        "product": "IPS Recommended Frequencies for VMW (Wiluna)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1800",
+        "product": "Asian (Part A) Gradient Level Wind Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1823",
+        "product": "Asian (Part B) Gradient Level Wind Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1915",
+        "product": "Indian Ocean MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1930",
+        "product": "Australian Wind Waves Ht(m) Prog",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1945",
+        "product": "Australian Swell Waves Ht(m) Prog (H+24)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2000",
+        "product": "South Pacific Ocean MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2015",
+        "product": "Casey Eastern and Western High Seas (H+24)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2030",
+        "product": "Australian MSLP Anal (Manual)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2215",
+        "product": "Casey Eastern and Western High Seas (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2230",
+        "product": "S.H. 500 hPa Prog (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2245",
+        "product": "S.H. MSLP Prog (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2300",
+        "product": "S.H. 500 hPa Anal",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2315",
+        "product": "Casey Eastern and Western High Seas (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2330",
+        "product": "Australian MSLP Prog (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2345",
+        "product": "Indian Ocean MSLP Prog (H+48)",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "nz_wellington",
+    "region": "Pacific Ocean Basin",
+    "country": "New Zealand",
+    "location": "Wellington",
+    "service": "MetService radiofax",
+    "call_signs": [
+      "ZKLF"
+    ],
+    "frequencies": [],
+    "status": "discontinued",
+    "source_updated": "Jul 2023",
+    "source_pages": "28",
+    "notes": "ZKLF stopped broadcasting radiofax charts on 1 July 2023.",
+    "schedule": []
+  },
+  {
+    "id": "us_honolulu",
+    "region": "Pacific Ocean Basin",
+    "country": "U.S.A.",
+    "location": "Honolulu, Hawaii",
+    "service": "NOAA/NWS marine weatherfax",
+    "call_signs": [
+      "KVM70"
+    ],
+    "frequencies": [
+      {
+        "khz": 9982.5,
+        "call_sign": "KVM70",
+        "hours": "0519-1556",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 9980.6,
+        "display": "9982.5 kHz"
+      },
+      {
+        "khz": 11090.0,
+        "call_sign": "KVM70",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 11088.1,
+        "display": "11090 kHz"
+      },
+      {
+        "khz": 16135.0,
+        "call_sign": "KVM70",
+        "hours": "1719-0356",
+        "emission": "J3C",
+        "power": "4 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 16133.1,
+        "display": "16135 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2020-02-12",
+    "source_pages": "29-30",
+    "notes": "Publication states these are assigned frequencies; subtract 1.9 kHz for carrier.",
+    "schedule": [
+      {
+        "utc": "0014",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0034",
+        "product": "EAST PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0048",
+        "product": "SW PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0100",
+        "product": "SCHEDULE PART I",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0120",
+        "product": "SCHEDULE PART II",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0140",
+        "product": "SYMBOLS OR PRODUCT NOTICE BULLETIN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0200",
+        "product": "24HR TROPICAL SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0210",
+        "product": "48HR TROPICAL SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0220",
+        "product": "72HR TROPICAL SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0230",
+        "product": "48/72HR TROPICAL WAVE PERIOD,SWELL DIR",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0240",
+        "product": "TROPICAL SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0250",
+        "product": "rebroadcast 24HR TROPICAL WIND/WAVE FORECASTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0300",
+        "product": "48HR TROPICAL WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0310",
+        "product": "72HR TROPICAL WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0320",
+        "product": "rebroadcast/SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0330",
+        "product": "SURFACE ANALYSIS(PART 1 NE PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0343",
+        "product": "SURFACE ANALYSIS(PART 2 NW PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0356",
+        "product": "TROPICAL SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0519",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0535",
+        "product": "CYCLONE DANGER AREA",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0555",
+        "product": "STREAMLINE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0615",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/570"
+      },
+      {
+        "utc": "0635",
+        "product": "EAST PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0649",
+        "product": "SW PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0701",
+        "product": "24HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0714",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0727",
+        "product": "72HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0740",
+        "product": "WIND/WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0753",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0806",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0816",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0826",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0836",
+        "product": "48/96HR WAVE PERIOD,SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0846",
+        "product": "rebroadcast/ 96HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0856",
+        "product": "rebroadcast/ 96HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0906",
+        "product": "PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0917",
+        "product": "SURFACE ANALYSIS (PART 1 NE PACIFIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0930",
+        "product": "SURFACE ANALYSIS (PART 2 NW PACIFIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0943",
+        "product": "TROPICAL GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0954",
+        "product": "TROPICAL SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1008",
+        "product": "24HR TROPICAL WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1042",
+        "product": "CYCLONE DANGER AREA",
+        "rpm_ioc": "120/570"
+      },
+      {
+        "utc": "1102",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1115",
+        "product": "72HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1128",
+        "product": "SEA SURFACE TEMPS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1141",
+        "product": "rebroadcast 24HR WIND/WAVE FORECASTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1154",
+        "product": "STREAMLINE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1214",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1234",
+        "product": "EAST PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1248",
+        "product": "SW PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1300",
+        "product": "SCHEDULE PART I",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1320",
+        "product": "SCHEDULE PART II",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1340",
+        "product": "SYMBOLS OR PRODUCT NOTICE BULLETIN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "24HR TROPICAL SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1410",
+        "product": "48HR TROPICAL SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1420",
+        "product": "72HR TROPICAL SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1430",
+        "product": "48/72HR TROPICAL WAVE PERIOD,SWELL DIR",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1440",
+        "product": "TROPICAL SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1450",
+        "product": "rebroadcast 24HR TROPICAL WIND/WAVE FORECASTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1500",
+        "product": "48HR TROPICAL WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1510",
+        "product": "72HR TROPICAL WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1520",
+        "product": "rebroadcast/SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1530",
+        "product": "SURFACE ANALYSIS(PART 1 NE PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1543",
+        "product": "SURFACE ANALYSIS(PART 2 NW PAC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1556",
+        "product": "TROPICAL SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1719",
+        "product": "TEST PATTERN",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1735",
+        "product": "CYCLONE DANGER AREA",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1755",
+        "product": "STREAMLINE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1815",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/570"
+      },
+      {
+        "utc": "1835",
+        "product": "EAST PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1849",
+        "product": "SW PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1901",
+        "product": "24HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1914",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1927",
+        "product": "72HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1940",
+        "product": "WIND/WAVE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1953",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2006",
+        "product": "24HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2016",
+        "product": "48HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2026",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2036",
+        "product": "48/96HR WAVE PERIOD,SWELL DIRECTION",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2046",
+        "product": "rebroadcast/ 96HR SURFACE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2056",
+        "product": "rebroadcast/ 96HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2106",
+        "product": "PACIFIC GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2117",
+        "product": "SURFACE ANALYSIS (PART 1 NE PACIFIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2130",
+        "product": "SURFACE ANALYSIS (PART 2 NW PACIFIC)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2143",
+        "product": "TROPICAL GOES IR SATELLITE IMAGE",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2154",
+        "product": "TROPICAL SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2208",
+        "product": "24HR TROPICAL WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2242",
+        "product": "CYCLONE DANGER AREA",
+        "rpm_ioc": "120/570"
+      },
+      {
+        "utc": "2302",
+        "product": "48HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2315",
+        "product": "72HR WIND/WAVE FORECAST",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2328",
+        "product": "SEA SURFACE TEMPS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2341",
+        "product": "rebroadcast 24HR WIND/WAVE FORECASTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2354",
+        "product": "STREAMLINE ANALYSIS",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "gr_athens",
+    "region": "Europe",
+    "country": "Greece",
+    "location": "Athens",
+    "service": "Greek marine weatherfax",
+    "call_signs": [
+      "SVJ4"
+    ],
+    "frequencies": [
+      {
+        "khz": 4481.0,
+        "call_sign": "SVJ4",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "8 kW",
+        "basis": "carrier",
+        "note": "Source: center frequency is 1.9 kHz higher.",
+        "cat_khz": 4481.0,
+        "display": "4481 kHz"
+      },
+      {
+        "khz": 8105.0,
+        "call_sign": "SVJ4",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "8 kW",
+        "basis": "carrier",
+        "note": "Source: center frequency is 1.9 kHz higher.",
+        "cat_khz": 8105.0,
+        "display": "8105 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "Jan 2019",
+    "source_pages": "32",
+    "notes": "Source explicitly says center frequency is 1.9 kHz higher than the listed frequency.",
+    "schedule": [
+      {
+        "utc": "0845",
+        "product": "SURFACE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0857",
+        "product": "SURFACE PROG (H+42)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0909",
+        "product": "SURFACE PROG (H+66)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0921",
+        "product": "WAVE HEIGHT PROG (H+30)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0933",
+        "product": "WAVE HEIGHT PROG (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0945",
+        "product": "WAVE HEIGHT PROG (H+42)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0957",
+        "product": "WAVE HEIGHT PROG (H+48)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1009",
+        "product": "WAVE HEIGHT PROG (H+30)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1021",
+        "product": "WAVE HEIGHT PROG (H+36)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1033",
+        "product": "WAVE HEIGHT PROG (H+42)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1044",
+        "product": "WAVE HEIGHT PROG (H+48)",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "ru_murmansk",
+    "region": "Europe",
+    "country": "Russia",
+    "location": "Murmansk",
+    "service": "Marine / ice weatherfax",
+    "call_signs": [
+      "RBW41",
+      "RBW48"
+    ],
+    "frequencies": [
+      {
+        "khz": 5336.0,
+        "call_sign": "RBW41",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 5334.1,
+        "display": "5336 kHz"
+      },
+      {
+        "khz": 6445.5,
+        "call_sign": "RBW41",
+        "hours": "All broadcast times",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 6443.6,
+        "display": "6445.5 kHz"
+      },
+      {
+        "khz": 7908.8,
+        "call_sign": "RBW41",
+        "hours": "1900-0600",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 7906.9,
+        "display": "7908.8 kHz"
+      },
+      {
+        "khz": 10130.0,
+        "call_sign": "RBW48",
+        "hours": "0600-1900",
+        "emission": "J3C",
+        "power": "",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 10128.1,
+        "display": "10130 kHz"
+      }
+    ],
+    "status": "uncertain",
+    "source_updated": "listener update 2024-10-19",
+    "source_pages": "32",
+    "notes": "Source flags operational uncertainty; a listener reported 8444 kHz in Oct 2024 and older notes mention 6446/7907/8444 kHz.",
+    "schedule": [
+      {
+        "utc": "0700",
+        "product": "36HR SURFACE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0800",
+        "product": "SEA STATE ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "SURFACE TEMP ANALYSIS/ICEBERG POSITIONS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "ANAL OF ICEBERG POSITIONS FOR PAST+24HR",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1430",
+        "product": "24HR SEA STATE PROG",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1850",
+        "product": "BROADCAST SCHEDULE",
+        "rpm_ioc": "90/576"
+      },
+      {
+        "utc": "2000",
+        "product": "ICEBERG PROGNOSIS",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "de_hamburg",
+    "region": "Europe",
+    "country": "Germany",
+    "location": "Hamburg / Pinneberg",
+    "service": "Deutscher Wetterdienst (DWD)",
+    "call_signs": [
+      "DDH3",
+      "DDK3",
+      "DDK6"
+    ],
+    "frequencies": [
+      {
+        "khz": 3855.0,
+        "call_sign": "DDH3",
+        "hours": "All broadcast times",
+        "emission": "F1C",
+        "power": "10 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 3853.1,
+        "display": "3855 kHz"
+      },
+      {
+        "khz": 7880.0,
+        "call_sign": "DDK3",
+        "hours": "All broadcast times",
+        "emission": "F1C",
+        "power": "10 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 7878.1,
+        "display": "7880 kHz"
+      },
+      {
+        "khz": 13882.5,
+        "call_sign": "DDK6",
+        "hours": "All broadcast times",
+        "emission": "F1C",
+        "power": "10 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 13880.6,
+        "display": "13882.5 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2024-07-24",
+    "source_pages": "33-34",
+    "notes": "DWD facsimile for shipping; source notes white +425 Hz / black -425 Hz and voice breaks in schedule.",
+    "schedule": [
+      {
+        "utc": "0430",
+        "product": "Surface Analysis North Atlantic, Europe",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0512",
+        "product": "36HR-forecast surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0525",
+        "product": "surface pressure analysis, arrows showing the movement of pressure systems, significant weather, ice",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0555-0635",
+        "product": "Voice-transmission on 5905 kHz and 6180 kHz",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0638",
+        "product": "Information of tropical storms, North Atlantic (during season only)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0651",
+        "product": "12HR, 24HR 500 hPa H+T, surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0704",
+        "product": "12HR, 24HR 850 hPa H+T, 700 hPa relative humidity",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0717",
+        "product": "Repetition chart 05.12 UTC",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0730",
+        "product": "48HR-forecast surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0743",
+        "product": "60HR-forecast surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0804",
+        "product": "84HR-forecast surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0817",
+        "product": "108HR-forecast surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0830",
+        "product": "24HR-forecast significant height of combined wind waves and swell, wind 10m",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0842",
+        "product": "48HR-forecast significant height of combined wind waves and swell, wind 10m",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0854",
+        "product": "72HR-forecast significant height of combined wind waves and swell, wind 10m",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0906",
+        "product": "96HR-forecast significant height of combined wind waves and swell, wind 10m",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0930",
+        "product": "36HR, 48HR 500 hPa H+T, surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0945",
+        "product": "Sea surface temperature North Sea",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1007",
+        "product": "Ice conditions chart Western Baltic Sea or special area if ice situation requires",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1029",
+        "product": "48HR wave prediction North Atlantic",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1050",
+        "product": "Surface Analysis North Atlantic, Europe",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1111",
+        "product": "36HR, 48HR 850 hPa H+T, 700 hPa relative humidity",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1123",
+        "product": "60HR, 72HR 500 hPa H+T, surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1135",
+        "product": "60HR, 72HR 850 hPa H+T, 700 hPa relative humidity",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1155-1235",
+        "product": "Voice-transmission on 5905 kHz and 6180 kHz",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1236",
+        "product": "Repetition chart 10.50 UTC",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1256",
+        "product": "Repetition chart 05.12 UTC",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1308",
+        "product": "Repetition chart 07.30 UTC",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1320",
+        "product": "Repetition chart 07.43 UTC",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1332",
+        "product": "Repetition chart 08.04 UTC",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1344",
+        "product": "Repetition chart 08.17 UTC",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1356",
+        "product": "Repetition chart 10.50 UTC",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1425",
+        "product": "Transmission schedule part 1",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1445",
+        "product": "Transmission schedule part 2",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1508",
+        "product": "Ice conditions chart Northwest Atlantic, Canadian Ice serv., or int. Ice Patrol",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1520",
+        "product": "Ice conditions chart Baltic Sea or special area",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1540",
+        "product": "Ice conditions chart European Arctic Sea or special area",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1555-1635",
+        "product": "Voice-transmission on 5905 kHz and 6180 kHz",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "1636",
+        "product": "Surface Analysis North Atlantic, Europe",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1800",
+        "product": "surface pressure analysis, arrows showing the movement of pressure systems, significant weather, ice",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1821",
+        "product": "Information of tropical storms, North Atlantic (during season only)",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1834",
+        "product": "36HR-forecast surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1847",
+        "product": "48HR-forecast surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1900",
+        "product": "84HR-forecast surface pressure",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1913",
+        "product": "24HR-forecast significant height of combined wind waves and swell, wind 10m",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1926",
+        "product": "48HR-forecast significant height of combined wind waves and swell, wind 10m",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1939",
+        "product": "72HR-forecast significant height of combined wind waves and swell, wind 10m",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1955-2035",
+        "product": "Voice-transmission on 5905 kHz and 6180 kHz",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "2100",
+        "product": "Ice conditions chart Northwest Atlantic",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2115",
+        "product": "Ice conditions chart Baltic Sea or special area",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2136",
+        "product": "48HR wave prediction Surface weather chart North Atlantic",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2200",
+        "product": "Surface Analysis North Atlantic, Europe",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  },
+  {
+    "id": "uk_northwood",
+    "region": "Europe",
+    "country": "United Kingdom",
+    "location": "Northwood",
+    "service": "JOMOC HF-Fax / North Atlantic",
+    "call_signs": [
+      "GYA"
+    ],
+    "frequencies": [
+      {
+        "khz": 2618.5,
+        "call_sign": "GYA",
+        "hours": "2200Z-0500Z",
+        "emission": "J3C",
+        "power": "10 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 2616.6,
+        "display": "2618.5 kHz"
+      },
+      {
+        "khz": 4610.0,
+        "call_sign": "GYA",
+        "hours": "24 hours",
+        "emission": "J3C",
+        "power": "10 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 4608.1,
+        "display": "4610 kHz"
+      },
+      {
+        "khz": 8040.0,
+        "call_sign": "GYA",
+        "hours": "Alternative 24 hour",
+        "emission": "J3C",
+        "power": "10 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 8038.1,
+        "display": "8040 kHz"
+      },
+      {
+        "khz": 11086.5,
+        "call_sign": "GYA",
+        "hours": "0600Z-2000Z",
+        "emission": "J3C",
+        "power": "10 kW",
+        "basis": "assigned",
+        "note": "",
+        "cat_khz": 11084.6,
+        "display": "11086.5 kHz"
+      }
+    ],
+    "status": "active",
+    "source_updated": "2022-01-05",
+    "source_pages": "35-36",
+    "notes": "JOMOC HF-Fax Schedule (North Atlantic).",
+    "schedule": [
+      {
+        "utc": "0000",
+        "product": "18Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0012",
+        "product": "18Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0024",
+        "product": "18Z PRECIPITATION AND REDUCED VIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0036",
+        "product": "18Z PRECIPITATION AND REDUCED VIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0048",
+        "product": "18Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0100",
+        "product": "18Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0112",
+        "product": "18Z SEA AND SWELL T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0124",
+        "product": "18Z SEA AND SWELL T+72",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0136",
+        "product": "OCEAN FRONTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0148",
+        "product": "18Z SEA AND SWELL T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0200",
+        "product": "18Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0212",
+        "product": "00Z SEA SURFACE TEMP",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0224",
+        "product": "18Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0236",
+        "product": "00Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0300",
+        "product": "00Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0312",
+        "product": "00Z ANPS PROGNOSIS T+24 1512",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0324",
+        "product": "18Z SFC WINDS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0336",
+        "product": "00Z ANPS PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0348",
+        "product": "00Z ANPS PROGNOSIS T+72",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0400",
+        "product": "00Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0424",
+        "product": "18Z SFC WINDS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0436",
+        "product": "00Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0448",
+        "product": "18Z SFC WINDS T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0500",
+        "product": "00Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0512",
+        "product": "00Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0524",
+        "product": "00Z SFC PROGNOSIS T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0548",
+        "product": "06Z GALE WARNING",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0600",
+        "product": "12Z SFC ANALYSIS 1800",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0612",
+        "product": "00Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0624",
+        "product": "00Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0636",
+        "product": "00Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0648",
+        "product": "00Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0700",
+        "product": "00Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0712",
+        "product": "00Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0724",
+        "product": "00Z SFC PROGNOSIS T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0736",
+        "product": "00Z SFC PROGNOSIS T+72",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0748",
+        "product": "00Z SFC PROGNOSIS T+96",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0800",
+        "product": "00Z SFC PROGNOSIS T+120",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0812",
+        "product": "00Z SFC PROGNOSIS T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0824",
+        "product": "00Z PRECIPITATION AND REDUCED VIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0836",
+        "product": "00Z PRECIPITATION AND REDUCED VIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0848",
+        "product": "00Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0900",
+        "product": "06Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0912",
+        "product": "12Z PRECIPITATION AND REDUCED VIS 2112",
+        "rpm_ioc": ""
+      },
+      {
+        "utc": "0924",
+        "product": "00Z ANPS PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "0936",
+        "product": "00Z ANPS PROGNOSIS T+120",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1000",
+        "product": "06Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1012",
+        "product": "06Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1036",
+        "product": "00Z ANPS PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1100",
+        "product": "06Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1112",
+        "product": "06Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1124",
+        "product": "06Z SEA AND SWELL T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1136",
+        "product": "06Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1148",
+        "product": "06Z SEA AND SWELL T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1200",
+        "product": "06Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1212",
+        "product": "06Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1224",
+        "product": "06Z PRECIPITATION AND REDUCED VIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1236",
+        "product": "06Z PRECIPITATION AND REDUCED VIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1248",
+        "product": "06Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1300",
+        "product": "06Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1312",
+        "product": "06Z SFC WINDS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1324",
+        "product": "06Z GALE WARNING",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1336",
+        "product": "OCEAN FRONTS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1348",
+        "product": "06Z SEA AND SWELL T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1400",
+        "product": "00Z SEA SURFACE TEMP",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1412",
+        "product": "06Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1424",
+        "product": "06Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1436",
+        "product": "12Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1500",
+        "product": "12Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1524",
+        "product": "00Z ANPS PROGNOSIS T+120",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1536",
+        "product": "06Z SEA AND SWELL T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1600",
+        "product": "12Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1624",
+        "product": "06Z SFC WINDS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1636",
+        "product": "12Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1648",
+        "product": "06Z SFC WINDS T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1700",
+        "product": "12Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1712",
+        "product": "12Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1724",
+        "product": "12Z SFC PROGNOSIS T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1748",
+        "product": "06Z SEA AND SWELL T+72",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1812",
+        "product": "12Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1824",
+        "product": "12Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1836",
+        "product": "12Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1848",
+        "product": "12Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1900",
+        "product": "12Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1924",
+        "product": "12Z SFC PROGNOSIS T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1936",
+        "product": "12Z SFC PROGNOSIS T+72",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "1948",
+        "product": "12Z SFC PROGNOSIS T+96",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2012",
+        "product": "12Z SFC PROGNOSIS T+120",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2024",
+        "product": "12Z SFC PROGNOSIS T+48",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2036",
+        "product": "12Z PRECIPITATION AND REDUCED VIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2048",
+        "product": "12Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2100",
+        "product": "18Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2124",
+        "product": "00Z ANPS PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2136",
+        "product": "00Z ANPS PROGNOSIS T+120",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2200",
+        "product": "18Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2212",
+        "product": "18Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2236",
+        "product": "00Z ANPS PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2300",
+        "product": "18Z SFC ANALYSIS",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2312",
+        "product": "18Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2324",
+        "product": "18Z SEA AND SWELL T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2336",
+        "product": "18Z SFC PROGNOSIS T+24",
+        "rpm_ioc": "120/576"
+      },
+      {
+        "utc": "2348",
+        "product": "18Z SEA AND SWELL T+24",
+        "rpm_ioc": "120/576"
+      }
+    ]
+  }
+]

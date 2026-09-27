@@ -1,0 +1,635 @@
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Sun Jun 21 08:22:29 2026 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>RIGCTLTCP</title>
+
+</head>
+<body>
+
+<h1 align="center">RIGCTLTCP</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#DIAGNOSTICS">DIAGNOSTICS</a><br>
+<a href="#EXIT STATUS">EXIT STATUS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#COPYING">COPYING</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#COLOPHON">COLOPHON</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">rigctltcp - TCP
+multicast control of radio transceivers and receivers</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="12%">
+
+
+<p style="margin-top: 1em"><b>rigctltcp</b></p></td>
+<td width="1%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">[<b>-hlLuoVR</b>]
+[<b>-m&nbsp;</b><i>id</i>] [<b>-r&nbsp;</b><i>device</i>]
+[<b>-p&nbsp;</b><i>device</i>]
+[<b>-d&nbsp;</b><i>device</i>] [<b>-P&nbsp;</b><i>type</i>]
+[<b>-D&nbsp;</b><i>type</i>] [<b>-s&nbsp;</b><i>baud</i>]
+[<b>-c&nbsp;</b><i>id</i>] [<b>-S&nbsp;</b><i>char</i>]
+[<b>-C&nbsp;</b><i>parm=val</i>]
+[<b>-T&nbsp;</b><i>ipaddr</i>] [<b>-t&nbsp;</b><i>num</i>]
+[<b>-M&nbsp;</b><i>addr</i>] [<b>-n&nbsp;</b><i>port</i>]
+[<b>-W&nbsp;</b><i>secs</i>] [<b>-w&nbsp;</b><i>secs</i>]
+[<b>-x&nbsp;</b><i>option</i>]
+[<b>-A&nbsp;</b><i>password</i>] [<b>-v</b>[<b>-Z</b>]]</p></td></tr>
+</table>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">Network daemon
+enabling UDP multicast broadcasts containing rig snapshot
+data. Supports bidirectional rig control and status.
+Broadcast data can be either <b>rigctld</b>(1) token pairs
+or <i>JSON</i>.</p>
+
+<p style="margin-left:9%; margin-top: 1em">All packets are
+tagged with a unique <i>id</i> string so multiple rigs can
+broadcast/rx on the same port. Will eventually be able to
+set frequency, mode, passband width, PTT status, satmode,
+and split status to start since those are common to many
+apps. More functions plan to be added as time goes on.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Broadcast packet
+contents are based on <i>get_rig_info</i> output and may
+contain multiple VFO lines. See <b>EXAMPLES</b> below.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">This program
+follows the usual GNU command line syntax. Short options
+that take an argument may have the value follow immediately
+or be separated by a space. Long options starting with two
+dashes (&lsquo;-&rsquo;) require an &lsquo;=&rsquo; between
+the option and any argument.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Here is a
+summary of the supported options: <b><br>
+-m</b>, <b>--model</b>=<i>ID</i></p>
+
+<p style="margin-left:18%;">Select radio model number.
+Defaults to Dummy, <i>ID</i> <b>1</b>.</p>
+
+<p style="margin-left:18%; margin-top: 1em">See model list
+(use &ldquo;rigctltcp -l&rdquo;).</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+<b>rigctltcp</b> (or third party software using the C API)
+will use <i>ID</i> <b>2</b> for <b>NET rigctl</b>
+(communicating with <b>rigctld</b>).</p>
+
+<p style="margin-left:9%;"><b>-r</b>,
+<b>--rig-file</b>=<i>DEVICE</i></p>
+
+<p style="margin-left:18%;">Use <i>DEVICE</i> as the file
+name of the port connected to the radio.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Typically
+<i>/dev/ttyS0</i>, <i>/dev/ttyS1</i>, <i>/dev/ttyUSB0</i>,
+etc. on Linux, <i>COM1</i>, <i>COM2</i>, etc. on MS Windows.
+The BSD flavors and MacOS have their own device names. See
+your system&rsquo;s documentation.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Can be a
+network address:port, e.g. <i>127.0.0.1:12345</i></p>
+
+<p style="margin-left:18%; margin-top: 1em">The special
+string &ldquo;uh-rig&rdquo; may be given to enable micro-ham
+device support.</p>
+
+<p style="margin-left:9%;"><b>-p</b>,
+<b>--ptt-file</b>=<i>DEVICE</i></p>
+
+<p style="margin-left:18%;">Use <i>DEVICE</i> as the file
+name of the Push To Talk device using a device filename as
+described in <b>-r</b> above.</p>
+
+<p style="margin-left:9%;"><b>-d</b>,
+<b>--dcd-file</b>=<i>DEVICE</i></p>
+
+<p style="margin-left:18%;">Use <i>DEVICE</i> as the file
+name of the Data Carrier Detect device using a device
+filename as described in <b>-r</b> above.</p>
+
+<p style="margin-left:9%;"><b>-P</b>,
+<b>--ptt-type</b>=<i>TYPE</i></p>
+
+<p style="margin-left:18%;">Use <i>TYPE</i> of Push To Talk
+device.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Supported types
+are &lsquo;RIG&rsquo; (CAT command), &lsquo;DTR&rsquo;,
+&lsquo;RTS&rsquo;, &lsquo;PARALLEL&rsquo;,
+&lsquo;CM108&rsquo;, &lsquo;GPIO&rsquo;,
+&lsquo;GPION&rsquo;, &lsquo;NONE&rsquo;, overriding PTT type
+defined in the rig&rsquo;s backend.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Some side
+effects of this command are that when type is set to DTR,
+read PTT state comes from the <b>Hamlib</b> frontend, not
+read from the radio. When set to NONE, PTT state cannot be
+read or set even if rig backend supports reading/setting PTT
+status from the rig.</p>
+
+<p style="margin-left:9%;"><b>-D</b>,
+<b>--dcd-type</b>=<i>TYPE</i></p>
+
+<p style="margin-left:18%;">Use <i>TYPE</i> of Data Carrier
+Detect device.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Supported types
+are &lsquo;RIG&rsquo; (CAT command), &lsquo;DSR&rsquo;,
+&lsquo;CTS&rsquo;, &lsquo;CD&rsquo;, &lsquo;PARALLEL&rsquo;,
+&lsquo;CM108&rsquo;, &lsquo;GPIO&rsquo;,
+&lsquo;GPION&rsquo;, &lsquo;NONE&rsquo;.</p>
+
+<p style="margin-left:9%;"><b>-s</b>,
+<b>--serial-speed</b>=<i>BAUD</i></p>
+
+<p style="margin-left:18%;">Set serial speed to <i>BAUD</i>
+rate.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Uses maximum
+serial speed from radio backend capabilities (set by
+<b>-m</b> above) as the default.</p>
+
+<p style="margin-left:9%;"><b>-c</b>,
+<b>--civaddr</b>=<i>ID</i></p>
+
+<p style="margin-left:18%;">Use <i>ID</i> as the CI&ndash;V
+address to communicate with the rig.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Only useful for
+Icom and some Ten&ndash;Tec rigs.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+The <i>id</i> is in decimal notation, unless prefixed by
+<i>0x</i>, in which case it is hexadecimal.</p>
+
+<p style="margin-left:9%;"><b>-S</b>,
+<b>--separator</b>=<i>CHAR</i></p>
+
+<p style="margin-left:18%;">Use <i>CHAR</i> as separator
+instead of line feed.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The default is
+<i>\n</i>. Recommend using <i>$</i> or <i>@</i> as they work
+on both POSIX and MS Windows.</p>
+
+<p style="margin-left:9%;"><b>-L</b>,
+<b>--show-conf</b></p>
+
+<p style="margin-left:18%;">List all config parameters for
+the radio defined with <b>-m</b> above. Will exit if no
+<b>-r</b> is given. <b>Note</b> the dummy device has no
+serial parameters.</p>
+
+<p style="margin-left:9%;"><b>-C</b>,
+<b>--set-conf</b>=<i>PARM=val</i>[<i>,PARM=val</i>]</p>
+
+<p style="margin-left:18%;">Set configuration parameter(s).
+Some common ones are:</p>
+
+<p style="margin-left:23%;"><b>async</b>: <i>True</i>
+enables asynchronous data transfer for backends that support
+it. This allows use of transceive and spectrum data. <b><br>
+auto_power_on</b>: <i>True</i> enables compatible rigs to be
+powered up on open. <b><br>
+auto_power_off</b>: <i>True</i> enables compatible rigs to
+be powered down on close. <b><br>
+auto_disable_screensaver</b>: <i>True</i> enables compatible
+rigs to have their screen saver disabled on open. <b><br>
+dcd_type</b>: Data Carrier Detect (or squelch) interface
+type override. <b><br>
+dcd_pathname</b>: Path name to the device file of the Data
+Carrier Detect (or squelch). <b><br>
+disable_yaesu_bandselect</b>: <i>True</i> disables the
+automatic band select on band change for Yaesu rigs. <b><br>
+dtr_state</b>: <i>ON</i> turns on DTR, <i>OFF</i> turns it
+off, disabled when not set. <b><br>
+freq_skip</b>: !=<i>0</i> skips setting freq on TX_VFO when
+in RX and on RX_VFO when in TX&mdash;for use with gpredict
+and rigs that do not have TARGETABLE_VFO. <b><br>
+lo_freq</b>: Frequency to add to the VFO frequency for use
+with a transverter. <b><br>
+post_write_delay</b>: Delay in ms between each command sent
+out. <b><br>
+ptt_share</b>: <i>True</i> enables ptt port to be shared
+with other apps. <b><br>
+ptt_type</b>: Push&ndash;To&ndash;Talk interface type
+override. <b><br>
+ptt_pathname</b>: Path name to the device file of the
+Push&ndash;To&ndash;Talk. <b><br>
+ptt_bitnum</b>: Push&ndash;To&ndash;Talk GPIO bit number.
+<b><br>
+retry</b>: Max number of retries. <b><br>
+rts_state</b>: <i>ON</i> turns on DTR, <i>OFF</i> turns it
+off, disabled when not set. <b><br>
+twiddle_timeout</b>: For satellite ops when VFOB is twiddled
+will pause VFOB commands until timeout. <b><br>
+twiddle_rit</b>: Suppress get_freq on VFOB for RIT tuning
+satellites. <b><br>
+timeout</b>: Timeout in ms. <b><br>
+write_delay</b>: Delay in mS between each byte sent out.
+<b><br>
+tuner_control_pathname</b>: Path name to a script/program to
+control a tuner with 1 argument of <i>0</i>/<i>1</i> for
+Tuner <i>Off</i>/<i>On</i>.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Use the
+<b>-L</b> option above for a list of configuration
+parameters for a given model number.</p>
+
+<p style="margin-left:9%;"><b>-l</b>, <b>--list</b></p>
+
+<p style="margin-left:18%;">List all model numbers defined
+in <b>Hamlib</b> and exit.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The list is
+sorted by model number.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>Note</b>:
+The list can be scrolled back using
+<b>Shift-PageUp</b>/<b>Shift-PageDown</b>, or using the
+scrollbars of a terminal emulator in X/Wayland or the cmd
+window in MS Windows. The output can be piped to
+<b>more</b>(1) or <b>less</b>(1), e.g. &ldquo;rigctltcp -l |
+more&rdquo;.</p>
+
+<p style="margin-left:9%;"><b>-u</b>,
+<b>--dump-caps</b></p>
+
+<p style="margin-left:18%;">Dump capabilities for the radio
+defined with <b>-m</b> above and exit.</p>
+
+<p style="margin-left:9%;"><b>-o</b>, <b>--vfo</b></p>
+
+<p style="margin-left:18%;">Enable vfo mode.</p>
+
+<p style="margin-left:18%; margin-top: 1em">An extra VFO
+argument will be required in front of each appropriate
+command (except <b>set_vfo</b>). Otherwise,
+&lsquo;currVFO&rsquo; is used when this option is not set
+and an extra VFO argument is not used.</p>
+
+<p style="margin-left:18%; margin-top: 1em">See
+<b>chk_vfo</b> below.</p>
+
+<p style="margin-left:9%;"><b>-v</b>, <b>--verbose</b></p>
+
+<p style="margin-left:18%;">Set verbose mode, cumulative
+(see <b>DIAGNOSTICS</b> below).</p>
+
+<p style="margin-left:9%;"><b>-T</b>,
+<b>--listen-addr</b>=<i>IPADDR</i></p>
+
+<p style="margin-left:18%;">Use <i>IPADDR</i> as the
+listening IP address.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The default is
+ANY (0.0.0.0).</p>
+
+<p style="margin-left:9%;"><b>-t</b>,
+<b>--port</b>=<i>NUM</i></p>
+
+<p style="margin-left:18%;">Use <i>NUM</i> as the TCP
+listening port.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The default is
+4531.</p>
+
+<p style="margin-left:9%;"><b>-M</b>,
+<b>--multicast-addr</b>=<i>ADDR</i></p>
+
+<p style="margin-left:18%;">Use <i>ADDR</i> as the
+multicast IP address.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The default is
+OFF (0.0.0.0).</p>
+
+<p style="margin-left:18%; margin-top: 1em">Recommended
+IPv4 setting is 224.0.1.1.</p>
+
+<p style="margin-left:9%;"><b>-n</b>,
+<b>--multicast-port</b>=<i>PORT</i></p>
+
+<p style="margin-left:18%;">Use <i>number</i> as the TCP
+listening port.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The default is
+4532.</p>
+
+<p style="margin-left:9%;"><b>-W</b>,
+<b>--twiddle_timeout</b>=<i>SECONDS</i></p>
+
+<p style="margin-left:18%;">Enables timeout when VFO
+twiddling is detected. Some functions will be ignored.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Should only be
+needed when controlling software should be
+&quot;paused&quot; so you can move the VFO. Continuous
+movement extends the timeout.</p>
+
+<p style="margin-left:9%;"><b>-w</b>,
+<b>--twiddle_rit</b>=<i>SECONDS</i></p>
+
+<p style="margin-left:18%;">Suppress VFOB <b>get_freq</b>
+so RIT can be twiddled.</p>
+
+<p style="margin-left:9%;"><b>-x</b>,
+<b>--uplink</b>=<i>OPTION</i></p>
+
+<p style="margin-left:18%;"><i>1</i>=Sub,
+<i>2</i>=Main.</p>
+
+<p style="margin-left:18%; margin-top: 1em">For GPredict
+use this option to ignore <b>get_freq</b> for Sub or Main
+uplink VFO.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Should allow
+downlink VFO movement without confusing GPredict or the
+uplink.</p>
+
+<p style="margin-left:9%;"><b>-Z</b>,
+<b>--debug-time-stamps</b></p>
+
+<p style="margin-left:18%;">Enable time stamps for the
+debug messages.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Use only in
+combination with the <b>-v</b> option as it generates no
+output on its own.</p>
+
+<p style="margin-left:9%;"><b>-A</b>,
+<b>--password</b>=<i>PASSWORD</i></p>
+
+<p style="margin-left:18%;">Sets a password on
+<b>rigctltcp</b> which requires Hamlib to use
+<b>rig_set_password</b> and clients to use <i>PASSWORD</i>
+to access rigctltcp. A 32 character shared secret will be
+displayed to be used on the client side.</p>
+
+<p style="margin-left:18%; margin-top: 1em"><b>(NOT
+IMPLEMENTED)</b></p>
+
+<p style="margin-left:9%;"><b>-R</b>,
+<b>--rigctltcp-idle</b></p>
+
+<p style="margin-left:18%;">Will make <b>rigctltcp</b>
+close the rig when no clients are connected. Normally
+remains connected to speed up connects.</p>
+
+<p style="margin-left:9%;"><b>-h</b>, <b>--help</b></p>
+
+<p style="margin-left:18%;">Show a summary of these options
+and exit.</p>
+
+<p style="margin-left:9%;"><b>-V</b>, <b>--version</b></p>
+
+<p style="margin-left:18%;">Show version of
+<b>rigctltcp</b> and exit.</p>
+
+<p style="margin-left:9%; margin-top: 1em"><b>Note</b>:
+Some options may not be implemented by a given backend and
+will return an error. This is most likely to occur with the
+<b>--set-conf</b> and <b>--show-conf</b> options.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Please note that
+the backend for the radio to be controlled, or the radio
+itself may not support some commands. In that case, the
+operation will fail with a <b>Hamlib</b> error code.</p>
+
+<h2>DIAGNOSTICS
+<a name="DIAGNOSTICS"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">The <b>-v</b>,
+<b>--verbose</b> option allows different levels of
+diagnostics to be output to <b>stderr</b> and correspond to
+-v for <b>BUG</b>, -vv for <b>ERR</b>, -vvv for <b>WARN</b>,
+-vvvv for <b>VERBOSE</b>, or -vvvvv for <b>TRACE</b>.</p>
+
+<p style="margin-left:9%; margin-top: 1em">A given verbose
+level is useful for providing needed debugging information
+to the email address below. For example, TRACE output shows
+all of the values sent to and received from the radio which
+is very useful for radio backend library development and may
+be requested by the developers.</p>
+
+<h2>EXIT STATUS
+<a name="EXIT STATUS"></a>
+</h2>
+
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>rigctltcp</b>
+exits with:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="1%">
+
+
+<p><b>0</b></p></td>
+<td width="8%"></td>
+<td width="72%">
+
+
+<p>if all operations completed normally;</p></td>
+<td width="10%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="1%">
+
+
+<p><b>1</b></p></td>
+<td width="8%"></td>
+<td width="72%">
+
+
+<p>if there was an invalid command line option or
+argument;</p> </td>
+<td width="10%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="1%">
+
+
+<p><b>2</b></p></td>
+<td width="8%"></td>
+<td width="72%">
+
+
+<p>if an error was returned by <b>Hamlib</b>.</p></td>
+<td width="10%">
+</td></tr>
+</table>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">This is an
+example of a multicast packet as of 2023-10-20.</p>
+
+<p style="margin-left:9%; margin-top: 1em">{ <br>
+&quot;app&quot;: &quot;Hamlib&quot;, <br>
+&quot;version&quot;: &quot;4.6&#732;git 2023-10-20T16:52:59Z
+SHA=d87671&quot;, <br>
+&quot;seq&quot;: 183, <br>
+&quot;time&quot;:
+&quot;2023-10-20T20:13:53.139869-0000&quot;, <br>
+&quot;crc&quot;: 0, <br>
+&quot;rig&quot;: { <br>
+&quot;id&quot;: &quot;FLRig:127.0.0.1:12345:30508&quot;,
+<br>
+&quot;status&quot;: &quot;OK&quot;, <br>
+&quot;errorMsg&quot;: &quot;&quot;, <br>
+&quot;name&quot;: &quot;FLRig&quot;, <br>
+&quot;split&quot;: false, <br>
+&quot;splitVfo&quot;: &quot;VFOA&quot;, <br>
+&quot;satMode&quot;: false, <br>
+&quot;modelist&quot;: &quot;AM CW USB LSB FM CWR PKTLSB
+PKTUSB &quot; <br>
+}, <br>
+&quot;vfos&quot;: [ <br>
+{ <br>
+&quot;name&quot;: &quot;VFOA&quot;, <br>
+&quot;freq&quot;: 14074270, <br>
+&quot;mode&quot;: &quot;PKTUSB&quot;, <br>
+&quot;width&quot;: 3, <br>
+&quot;ptt&quot;: false, <br>
+&quot;rx&quot;: true, <br>
+&quot;tx&quot;: true <br>
+}, <br>
+{ <br>
+&quot;name&quot;: &quot;VFOB&quot;, <br>
+&quot;freq&quot;: 14074500, <br>
+&quot;mode&quot;: &quot;&quot;, <br>
+&quot;width&quot;: 0, <br>
+&quot;ptt&quot;: false, <br>
+&quot;rx&quot;: false, <br>
+&quot;tx&quot;: false <br>
+} <br>
+], <br>
+&quot;spectra&quot;: [ <br>
+{ <br>
+&quot;id&quot;: 0, <br>
+&quot;name&quot;: &quot;?&quot;, <br>
+&quot;type&quot;: &quot;FIXED&quot;, <br>
+&quot;minLevel&quot;: 0, <br>
+&quot;maxLevel&quot;: 0, <br>
+&quot;minStrength&quot;: 0, <br>
+&quot;maxStrength&quot;: 0, <br>
+&quot;centerFreq&quot;: 0, <br>
+&quot;span&quot;: 0, <br>
+&quot;lowFreq&quot;: 0, <br>
+&quot;highFreq&quot;: 0, <br>
+&quot;length&quot;: 0, <br>
+&quot;data&quot;: &quot;&quot; <br>
+} <br>
+] <br>
+}</p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">This woefully
+incomplete document.</p>
+
+<h2>COPYING
+<a name="COPYING"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">This file is
+part of Hamlib, a project to develop a library that
+simplifies radio, rotator, and amplifier control functions
+for developers of software primarily of interest to radio
+amateurs and those interested in radio communications.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Copyright &copy;
+2000-2011 Stephane Fillod <br>
+Copyright &copy; 2000-2026 the Hamlib Group (various
+contributors) <br>
+Copyright &copy; 2010-2026 Nate Bargmann</p>
+
+<p style="margin-left:9%; margin-top: 1em">This is free
+software; see the file COPYING for copying conditions. There
+is NO warranty; not even for MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE.</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>rigctl</b>(1),
+<b>hamlib</b>(7)</p>
+
+<h2>COLOPHON
+<a name="COLOPHON"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">Links to the
+Hamlib Wiki, Git repository, release archives, and daily
+snapshot archives are available via
+<a href="http://www.hamlib.org">hamlib.org</a>.</p>
+<hr>
+</body>
+</html>

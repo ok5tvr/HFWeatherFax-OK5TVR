@@ -1,0 +1,922 @@
+﻿station_id;region;country;location;service;status;utc;product;rpm_ioc;source_updated;source_pages
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0000;RETRANSMISSION OF 2200/0750 (1);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0020;96HR SURFACE PRESSURE, PRECIP PROGS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0040;120HR SURFACE PRESSURE, PRECIP PROGS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0103;TEST CHART;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0110;METEOROLOGICAL SATELLITE PICTURE (MSAT);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0130;RETRANSMISSION OF 1019/0730;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0150;TROPICAL CYCLONE FORECAST(1);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0210;SEA SURFACE CURRENT, WATER TEMPERATURE AT 100M DEPTH (2);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0229;RADIO PREDICTION (3);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0240;SURFACE ANALYSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0300;SEA SURFACE WATER TEMPERATURE (2);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0320;THE FIRST RETRANSMISSION OF 0240/1440;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0340;BROADCAST SCHEDULE and MANUAL AMENDMENTS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0400;TROPICAL CYCLONE FORECAST (6);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0421;OCEAN WAVE ANALYSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0440;COASTAL WAVE ANALYSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0459;500 hPa HEIGHT, TEMPERATURE;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0518;850 hPa HEIGHT, TEMPERATURE, DEW POINT DEPRESSION;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0537;24HR 500 hPa HEIGHT, VORTICITY PROGNOSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0548;24HR SURFACE PRESSURE, WIND, FOG, ICING, SEA ICE PROG;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0610;RETRANSMISSION OF 0150/1350 (1);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0630;48/72 HR SURFACE PRESSURE, PRECIPITATION PROGNOSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0651;24HR WAVE PROG (NORTH PACIFIC);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0710;METEOROLOGICAL SATELLITE PICTURE (MSAT);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0730;24HR COASTAL WAVE PROG;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0750;TROPICAL CYCLONE FORECAST (1);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0809;36HR 500 hPa HEIGHT, VORTICITY PROGNOSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0820;48HR SURFACE PRESSURE, WIND, FOG, ICING, SEA ICE PROG;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0840;SURFACE ANALYSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0900;TROPICAL CYCLONE FORECAST (6);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0920;THE FIRST RETRANSMISSION OF 0840/2040;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;0940;RETRANSMISSION OF 0630/1950;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1000;RETRANSMISSION OF 0820;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1019;SEA ICE CONDITION ANAL(4), 48HR & 168 HR PROGS(5);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1040;RETRANSMISSION OF 0548/1950;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1100;RETRANSMISSION OF 0421/1930;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1119;RETRANSMISSION OF 0440/1719;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1140;RETRANSMISSION OF 0651/2100;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1200;RETRANSMISSION OF 2200/0750 (1);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1220;12/24/48/72HR OCEAN WAVE PROG;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1240;24 HR 500hPa TEMPERATURE AND 700hPa DEWPOINT;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1251;36 HR 500hPa TEMPERATURE AND 700hPa DEWPOINT;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1303;TEST CHART;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1310;METEOROLOGICAL SATELLITE PICTURE (MSAT);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1330;RETRANSMISSION OF 1019/0730;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1350;TROPICAL CYCLONE FORECAST(1);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1420;RETRANSMISSION OF 0210 (2);;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1440;SURFACE ANALYSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1520;THE FIRST RETRANSMISSION OF 0240/1440;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1540;TROPICAL CYCLONE FORECAST (6);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1600;SEA SURFACE WATER TEMPERATURE (2);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1620;OCEAN WAVE ANALYSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1640;500 hPa HEIGHT, TEMPERATURE;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1700;850 hPa HEIGHT, TEMPERATURE, DEW POINT DEPRESSION;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1719;COASTAL WAVE ANALYSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1739;24HR 500 hPa HEIGHT, VORTICITY PROGNOSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1750;RETRANSMISSION OF 0150/1350 (1);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1810;36HR 500 hPa HEIGHT, VORTICITY PROGNOSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1821;24 HR 500 hPa TEMPERATURE AND 700 hPa DEWPOINT;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1832;36 HR 500 hPa TEMPERATURE AND 700 hPa DEWPOINT;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1850;12/24/48/72HR OCEAN WAVE PROG;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1910;METEOROLOGICAL SATELLITE PICTURE (MSAT);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1930;24HR SURFACE PRESSURE, WIND, FOG, ICING, SEA ICE PROG;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;1950;TROPICAL CYCLONE FORECAST (1);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2010;24HR COASTAL WAVE PROG (1);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2040;SURFACE ANALYSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2100;48HR SURFACE PRESSURE, WIND, FOG, ICING, SEA ICE PROG;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2120;THE FIRST RETRANSMISSION OF 0840/2040;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2140;TROPICAL CYCLONE FORECAST(6);120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2200;48/72HR SURFACE PRESSURE, PRECIPITATION PROGNOSIS;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2220;24HR OCEAN WAVE PROG;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2240;RETRANSMISSION OF 0548/1950;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2300;RETRANSMISSION OF 0421/1930;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2320;RETRANSMISSION OF 0440/1719;120/576;Jan 2014;6-7
+jp_tokyo;Asia;Japan;Tokyo;Japan Meteorological Agency (JMA);active;2340;RETRANSMISSION OF 0651/2100;120/576;Jan 2014;6-7
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0020;SURFACE PRESSURE FORECAST;;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0110;BROADCAST SCHEDULE (1);;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0310;SURFACE ANALYSIS JMH ASAS;;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0330;FISH MARKET INFORMATION;;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0400;SURFACE PRESSURE FORECAST (REBROADCAST);;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0440;TROPICAL CYCLONE INFORMATION (2);;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0610;JFX NOAA INFORMATION (REBROADCAST);;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0700;SEA SURFACE TEMPERATURE AROUND JAPAN (4);;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0700;MISAKI FISHING PORT FROZEN TUNA MARKET (3);;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0730;WEATHER INFORMATION (4);;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0800;PACIFIC SAURY FISHING INFORMATION (5);;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0830;TUNA MARKET INFORMATION;;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;0930;COAST GUARD NAVIGATIONAL WARNINGS;;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;1030;MARITIME SECURITY INTELLIGENCE;;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;1100;NOTIFICATIONS FROM RADIO STATIONS;;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;1800;JFX NOAA INFORMATION;;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;2200;GENERAL NAVIGATIONAL WARNINGS;;2025-01-29;7-8
+jp_kagoshima;Asia;Japan;Kagoshima;JFX Marine Radiofax;active;2240;MARINE WEATHER (KAGOSHIMA, NAGASAKI, OKINAWA);;2025-01-29;7-8
+ru_pevek;Asia;Russia;Pevek, Chukotka Peninsula;Ice radiofacsimile;uncertain;0530-0730;ICE;90/576;Nov 1997;8
+ru_pevek;Asia;Russia;Pevek, Chukotka Peninsula;Ice radiofacsimile;uncertain;1130-1330;ICE;90/576;Nov 1997;8
+ru_pevek;Asia;Russia;Pevek, Chukotka Peninsula;Ice radiofacsimile;uncertain;1430-1630;ICE;90/576;Nov 1997;8
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0000;SPECIAL WEATHER REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0033;SEA-SHORE WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0047;FISHERY WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0100;MANAM;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0133;LIGHTHOUSE WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0147;SURFACE ANALYSIS FAR EAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0200;WARNING TYPHOON REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0214;GENERAL WEATHER CONDITIONS REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0314;LIGHTHOUSE SIGN WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0333;LIGHTHOUSE WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0400;SURFACE ANALYSIS FAR ASIA;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0447;SURFACE ANALYSIS FAR EAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0500;500 hPa UPPER AIR WEATHER CHART;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0513;650 hPa UPPER AIR WEATHER CHART;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0526;700 hPa UPPER AIR WEATHER CHART;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0539;300 hPa UPPER AIR WEATHER CHART;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0600;SPECIAL WEATHER REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0633;LIGHTHOUSE WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0647;FISHERY WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0700;12HR WAVE HEIGHT & SEA SURFACE WIND FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0714;24HR WAVE HEIGHT & SEA SURFACE WIND FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0728;36HR WAVE HEIGHT & SEA SURFACE WIND FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0747;SURFACE ANALYSIS FAR EAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0800;WARNING TYPHOON REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0814;GENERAL WEATHER CONDITIONS REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0828;SST OBSERVATION CHART OF NEAR KOREAN PENINSULA AREA;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0846;MAIN SEASHORE WEATHER FORECAST FOR SHIP ROUTE;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0900;SEA FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0914;LIGHTHOUSE SIGN WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0933;LIGHTHOUSE WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;0947;WEEKLY SEA WEATHER FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1047;SURFACE ANALYSIS FAR EAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1200;SPECIAL WEATHER REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1233;SEA-SHORE WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1247;FISHERY WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1347;SURFACE ANALYSIS FAR EAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1400;WARNING TYPHOON REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1500;SPECIAL WEATHER REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1530;SST OBSERVATION CHART OF NEAR KOREAN PENINSULA AREA;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1547;LIGHTHOUSE SIGN WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1600;SURFACE ANALYSIS FAR ASIA;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1647;SURFACE ANALYSIS FAR EAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1700;500 hPa UPPER AIR WEATHER CHART;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1713;650 hPa UPPER AIR WEATHER CHART;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1726;700 hPa UPPER AIR WEATHER CHART;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1739;300 hPa UPPER AIR WEATHER CHART;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1800;SPECIAL WEATHER REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1833;SEA-SHORE WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1847;FISHERY WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1900;12HR WAVE HEIGHT & SEA SURFACE WIND FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1914;24HR WAVE HEIGHT & SEA SURFACE WIND FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1928;36HR WAVE HEIGHT & SEA SURFACE WIND FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;1947;SURFACE ANALYSIS FAR EAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;2000;WARNING TYPHOON REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;2014;GENERAL WEATHER CONDITIONS REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;2046;MAIN SEASHORE WEATHER FORECAST FOR SHIP ROUTE;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;2100;SEA FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;2114;LIGHTHOUSE SIGN WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;2133;LIGHTHOUSE WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;2147;WEEKLY SEA WEATHER FORECAST;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;2233;LIGHTHOUSE WEATHER OBSERVATION REPORT;120/576;2009-01-01;9
+kr_seoul;Asia;Republic of Korea;Seoul;Meteorological radiofacsimile;active;2247;SURFACE ANALYSIS FAR EAST;120/576;2009-01-01;9
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0050;TEST CHART;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0100;FORECAST FOR SHIPPING (IN ENGLISH);120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0120;SURFACE PRESSURE;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0200;BROADCAST SCHEDULE;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0300;24 HR SURFACE PROG;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0320;48 HR SURFACE PROG;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0340;72 HR SURFACE PROG;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0400;FORECAST FOR SHIPPING (IN ENGLISH);120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0420;24 HR 850 mb WIND/TEMP PROG;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0500;SURFACE ANALYSIS;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0520;850 mb ANALYSIS;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0540;700 mb ANALYSIS;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0600;500 mb ANALYSIS;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0700;FORECAST FOR SHIPPING (IN ENGLISH);120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0720;24 HR SURFACE PROG;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0740;48 HR SURFACE PROG;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0800;72 HR SURFACE PROG;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;0820;24 HR 850 mb WIND/TEMP PROG;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;1000;FORECAST FOR SHIPPING (IN ENGLISH);120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;1020;SURFACE ANALYSIS;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;1300;FORECAST FOR SHIPPING (IN ENGLISH);120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;1700;FORECAST FOR SHIPPING (IN ENGLISH);120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;1720;SURFACE ANALYSIS;120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;2300;FORECAST FOR SHIPPING (IN ENGLISH);120/576;Jan 2009;10
+th_bangkok;Asia;Thailand;Bangkok;Marine meteorological radiofax;active;2320;SURFACE ANALYSIS;120/576;Jan 2009;10
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;0200;KYODO NEWS (EVENING) (1);;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;0200;KYODO FURUSATO NEWS (2);;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;0300;KYODO NEWS (MORNING), KYODO NEWS SPORTS (MORNING), JAPAN NAVIGATIONAL WARNINGS;;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;0700;OCEAN CURRENT FORECASTING (MAP) (3) Sunday, Monday;;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;0710;KYODO NEWS (ENGLISH EDITION) (4) Tue Wed Thu Fri? Sat;;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;0730;MARINE ADMINISTRATION NEWS (5) Sat;;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;0745;KYODO NEWS (EVENING), KYODO KAIUN-SUISAN NEWS (6);;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;0745;KYODO FURUSATO NEWS, MARINE ADMINISTRATION NEWS (7);;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;0940;SUMO MATCH TABLE;;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;1000;KYODO FURUSATO NEWS (7);;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;1020;KYODO NEWS SPORTS (MORNING), KYODO NEWS (MORNING);;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;1130;JAPAN NAVIGATIONAL WARNINGS, SUMO MATCH TABLE;;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;1200;KYODO NEWS (ENGLISH EDITION) Mon Tue Wed Thu Fri? Sat?;;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;1400;KYODO KAIUN-SUISAN NEWS Mon Tue Wed Thu Fri Sat?;;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;1500;KYODO NEWS (MORNING), KYODO NEWS SPORTS (MORNING), JAPAN NAVIGATIONAL WARNINGS;;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;1645;KYODO NEWS (EVENING);;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;2030;JAPAN NAVIGATIONAL WARNINGS, MARINE ADMINISTRATION NEWS (5);;2025-01-30;11
+jp_kyodo;Asia;Japan / Singapore;Kyodo News;Kyodo News / maritime radiofax;active;2300;KYODO NEWS (MORNING), KYODO NEWS SPORTS (MORNING), JAPAN NAVIGATIONAL WARNINGS, KYODO;;2025-01-30;11
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0000;MANAM XSQ BROADCAST SCHEDULE AND MANUAL AMENDMENTS 手册修订时间;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0025;00（08） FSAS024 24H SURFACE FORECAST 24h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0050;00（08） FSAS048 48H SURFACE FORECAST 48h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0115;00（08） FSAS072 72H SURFACE FORECAST 72h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0140;22（06） FSSS024 24H SOUTH CHINA SEA FORECAST （24h） （1）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0215;00（08） FTPW120 120H TROPICAL CYCLONE FORECAST 120h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0240;22（06） FSSS048 48H SOUTH CHINA SEA FORECAST （48h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0305;22（06） FSSS072 72H SOUTH CHINA SEA FORECAST （72h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0330;00（08） FWEA024 24H WAVE HEIGHT,SURFACE WIND FORECAST 24h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0400;00（08） ASPN SURFACE ANALYSIS 地面实况分析;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0425;00（08） FWEA048 48H WAVE HEIGHT,SURFACE WIND FORECAST 48h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0450;00（08） FWEA072 72H WAVE HEIGHT,SURFACE WIND FORECAST 72h） （2）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0515;REISSUE CHART 补发传真图 （1）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;0815;06（14） FTPW120 120H TROPICAL CYCLONE FORECAST 120h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1225;12（20） FSAS024 24H SURFACE FORECAST 24h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1250;12（20） FSAS048 48H SURFACE FORECAST 48h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1315;12（20） FSAS072 72H SURFACE FORECAST 72h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1340;08（16） FSSS024 24H SOUTH CHINA SEA FORECAST （24h） （1）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1415;12（20） FTPW120 120H TROPICAL CYCLONE FORECAST 120h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1440;08（16） FSSS048 48H SOUTH CHINA SEA FORECAST （48h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1505;08（16） FSSS072 72H SOUTH CHINA SEA FORECAST （72h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1600;12（20） FWEA024 24H WAVE HEIGHT,SURFACE WIND FORECAST 24h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1625;12（20） FWEA048 48H WAVE HEIGHT,SURFACE WIND FORECAST 48h）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;1650;12（20） FWEA072 72H WAVE HEIGHT,SURFACE WIND FORECAST 72h） （1）;;2022-08-23;12-13
+cn_guangzhou;Asia;China;Guangzhou Coast Radio Station;Guangdong Meteorological Observatory / South China Sea Weather Forecast Center;active;2015;18（02） FTPW120 120H TROPICAL CYCLONE FORECAST 120h）;;2022-08-23;12-13
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;1100;TEST CHART CBV CBM SCHEDULES;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;1115;SURFACE CHART;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;1130;SATELLITE IMAGE;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;1630;24 HR SURFACE FORECAST;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;1645;SATELLITE IMAGE;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;1915;SURFACE CHART;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;1930;SATELLITE IMAGE;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;2200;36 HR SURFACE FORECAST;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;2215;SURFACE CHART;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;2230;WINDS BARB ISOTACHS FORECAST;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;2310;48 HR SURFACE FORECAST;120/576;2010-09-23;15
+cl_valparaiso;South America;Chile;Valparaiso Playa Ancha;Chilean naval marine weatherfax;active;2325;SATELLITE IMAGE;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;0350;48 HR SURFACE FORECAST;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;0405;SATELLITE IMAGE;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;1550;TEST CHART CBV CBM SCHEDULES;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;1605;12HR SURFACE FORECAST;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;1620;SATELLITE IMAGE;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;1730;SURFACE CHART;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;1745;SATELLITE IMAGE;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;2005;SIGNIFICANT WAVE MAP FORECAST;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;2020;SATELLITE IMAGE;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;2240;36 HR SURFACE FORECAST;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;2255;SURFACE CHART;120/576;2010-09-23;15
+cl_punta_arenas;South America;Chile;Punta Arenas, Magallanes;Chilean naval marine weatherfax;active;2310;WINDS BARB ISOTACHS FORECAST;120/576;2010-09-23;15
+ca_sydney;North America;Canada;Sydney, Nova Scotia;Canadian Coast Guard / ice analysis;active;1121;ICE ANALYSIS GULF OF ST. LAWRENCE;120/576;2014;17
+ca_sydney;North America;Canada;Sydney, Nova Scotia;Canadian Coast Guard / ice analysis;active;1142;ICE ANALYSIS EAST OR SOUTHEAST NEWFOUNDLAND WATERS;120/576;2014;17
+ca_sydney;North America;Canada;Sydney, Nova Scotia;Canadian Coast Guard / ice analysis;active;1741;ICE ANALYSIS ICEBERG LIMIT;120/576;2014;17
+ca_sydney;North America;Canada;Sydney, Nova Scotia;Canadian Coast Guard / ice analysis;active;2200;ICE ANALYSIS GULF OF ST. LAWRENCE;120/576;2014;17
+ca_sydney;North America;Canada;Sydney, Nova Scotia;Canadian Coast Guard / ice analysis;active;2331;ICE ANALYSIS EAST OR SOUTHEAST NEWFOUNDLAND WATERS;120/576;2014;17
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0008;96HR WAVE PERIOD, SWELL DIRECTION;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0018;96HR 500 MB FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0340;TEST PATTERN;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0343;SEA ICE ANALYSIS/REBROADCAST 1057;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0403;SURFACE ANALYSIS;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0427;REBROADCAST 24HR SURFACE F'CAST 2203/1017;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0437;REBROADCAST 48HR SURFACE F'CAST 2227/1037;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0447;REBROADCAST 96HR SURFACE F'CAST 2348;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0456;SEA STATE ANALYSIS/REBROADCAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0506;GOES IR SATELLITE IMAGE;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0517;500 MB ANALYSIS;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0527;SYMBOLS AND CONTRACTIONS/SCHEDULE;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0548;REQUEST FOR COMMENTS/PRODUCT NOTICE;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0558;24HR 500 MB FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0950;TEST PATTERN;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;0953;SURFACE ANALYSIS;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1017;24HR SURFACE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1027;24HR WIND/WAVE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1037;48HR SURFACE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1047;48HR WIND/WAVE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1057;5-DAY SEA ICE FORECAST/REBROADCAST 0343;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1117;GOES IR SATELLITE IMAGE;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1128;48HR WAVE PERIOD, SWELL DIRECTION;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1138;48HR 500 MB FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1148;SEA SURFACE TEMPERATURE ANALYSIS;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1159;COOK INLET SEA ICE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1540;TEST PATTERN;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1543;SEA ICE ANALYSIS/REBROADCAST 1057;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1603;SURFACE ANALYSIS;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1627;REBROADCAST 24HR SURFACE F'CAST 2203/1017;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1637;REBROADCAST 48HR SURFACE F'CAST 2227/1037;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1647;REBROADCAST 96HR SURFACE F'CAST 2348;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1656;SEA STATE ANALYSIS/REBROADCAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1706;GOES IR SATELLITE IMAGE;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1717;500 MB ANALYSIS;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1727;SYMBOLS AND CONTRACTIONS/SCHEDULE;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1748;REQUEST FOR COMMENTS/PRODUCT NOTICE;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1758;24HR 500 MB FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;1808;48HR 500 MB FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2150;TEST PATTERN;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2153;SURFACE ANALYSIS;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2203;24HR SURFACE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2217;24HR WIND/WAVE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2227;48HR SURFACE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2237;48HR WIND/WAVE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2247;48HR WAVE PERIOD, SWELL DIRECTION;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2257;5-DAY SEA ICE FORECAST/REBROADCAST 0343;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2307;GOES IR SATELLITE IMAGE;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2317;72HR SURFACE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2328;72HR WIND/WAVE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2338;72HR WAVE PERIOD, SWELL DIRECTION;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2348;96HR SURFACE FORECAST;120/576;2020-02-12;18-19
+us_kodiak;North America;U.S.A.;Kodiak, Alaska;NOAA/NWS + USCG marine weatherfax;active;2358;96HR WIND/WAVE FORECAST;120/576;2020-02-12;18-19
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0140;TEST PATTERN;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0143;NE PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0154;PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0205;TROPICAL SEA STATE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0215;TROPICAL 48HR SURFACE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0225;TROPICAL 48HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0235;TROPICAL 72HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0245;500MB ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0255;SEA STATE ANALYSIS, WIND/WAVE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0305;PRELIM SURFACE ANALYSIS(PART 1 NE PAC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0318;PRELIM SURFACE ANALYSIS(PART 2 NW PAC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0331;FINAL SURFACE ANALYSIS(PART 1 NE PAC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0344;FINAL SURFACE ANALYSIS(PART 2 NW PAC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0357;CYCLONE DANGER AREA* or HIGH WIND/WAVES;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0408;TROPICAL SURFACE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0655;TEST PATTERN;;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0657;1953Z REBROADCAST (96HR 500MB);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0707;1933Z REBROADCAST (96HR SURFACE);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0717;1943Z REBROADCAST (96HR WIND/WAVE);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0727;2003Z REBROADCAST (96HR WAVE PERIOD);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0737;TROPICAL GOES IR SATELLITE IMAGE;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0748;WIND/WAVE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0758;24HR SURFACE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0808;24HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0818;24HR 500MB FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0828;48HR SURFACE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0838;48HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0848;48HR 500MB FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0858;48HR WAVE PERIOD/SWELL DIRECTION;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0908;PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0919;SURFACE ANALYSIS (PART 1 NE PACIFIC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0932;SURFACE ANALYSIS (PART 2 NW PACIFIC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0945;TROPICAL SURFACE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;0959;TROPICAL 24HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1009;CYCLONE DANGER AREA* or HIGH WIND/WAVES;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1120;TEST PATTERN;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1124;BROADCAST SCHEDULE (PART 1);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1135;BROADCAST SCHEDULE (PART 2);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1146;REQUEST FOR COMMENTS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1157;PRODUCT NOTICE BULLETIN;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1208;TROPICAL 48HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1218;TROPICAL 72HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1228;TROPICAL 48HR WAVE PERIOD/SWELL DIR;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1400;TEST PATTERN;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1403;NE PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1414;PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1425;TROPICAL SEA STATE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1435;TROPICAL 48HR SURFACE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1445;500MB ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1455;SEA STATE ANALYSIS, WIND/WAVE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1505;PRELIM SURFACE ANALYSIS(PART 1 NE PAC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1518;PRELIM SURFACE ANALYSIS(PART 2 NW PAC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1531;FINAL SURFACE ANALYSIS(PART 1 NE PAC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1544;FINAL SURFACE ANALYSIS(PART 2 NW PAC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1557;CYCLONE DANGER AREA* or HIGH WIND/WAVES;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1608;TROPICAL SURFACE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1820;TEST PATTERN;;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1822;24HR SURFACE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1832;24HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1842;24HR 500MB FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1852;SST ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1902;SST ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1913;TROPICAL GOES IR SATELLITE IMAGE;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1923;WIND/WAVE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1933;96HR SURFACE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1943;96HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;1953;96HR 500MB FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2003;96HR WAVE PERIOD/SWELL DIRECTION;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2013;48HR SURFACE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2023;48HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2033;48HR 500MB FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2043;48HR WAVE PERIOD/SWELL DIRECTION;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2053;72HR SURFACE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2103;72HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2113;PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2124;SURFACE ANALYSIS (PART 1 NE PACIFIC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2137;SURFACE ANALYSIS (PART 2 NW PACIFIC);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2150;TROPICAL SURFACE ANALYSIS;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2204;TROPICAL 24HR WIND/WAVE FORECAST;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2214;CYCLONE DANGER AREA* or HIGH WIND/WAVES;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2320;TEST PATTERN;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2324;BROADCAST SCHEDULE (PART 1);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2335;BROADCAST SCHEDULE (PART 2);120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2346;TROPICAL 48HR WAVE PERIOD/SWELL DIR;120/576;2020-02-12;20-21
+us_point_reyes;North America;U.S.A.;Point Reyes, California;NOAA/NWS + USCG marine weatherfax;active;2356;TROPICAL 72HR WAVE PERIOD/SWELL DIR;120/576;2020-02-12;20-21
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0000;TEST PATTERN;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0005;U.S./TROPICAL SURFACE ANALYSIS (W HALF);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0020;TROPICAL SURFACE ANALYSIS (E HALF);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0035;REBROADCAST OF 1925/0725 (24 HR WIND/WAVE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0045;REBROADCAST OF 1950/0750 (48 HR WIND/WAVE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0055;REBROADCAST OF 2015/0815 (72 HR WIND/WAVE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0105;REBROADCAST OF 1855/0655 (24 HR SURFACE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0115;REBROADCAST OF 1905/0705 (48 HR SURFACE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0125;REBROADCAST OF 1915/0715 (72 HR SURFACE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0135;CYCLONE DANGER AREA* or 48 HR HIGH WIND/WAVES;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0150;REBROADCAST OF 0825 (72 HR WAVE PD/SWELL);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0200;GOES IR TROPICAL SATELLITE IMAGE;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0215;SEA STATE ANALYSIS;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0225;REQUEST FOR COMMENTS/PRODUCT NOTICE;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0245;HIGH SEAS FORECAST (IN ENGLISH);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0600;TEST PATTERN;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0605;U.S./TROPICAL SURFACE ANALYSIS (W HALF);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0620;TROPICAL SURFACE ANALYSIS (E HALF);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0635;48 HR WAVE PERIOD/SWELL DIRECTION;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0645;REBROADCAST OF 0215/1415 (SEA STATE ANAL');120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0655;24 HR SURFACE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0705;48 HR SURFACE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0715;72 HR SURFACE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0725;24 HR WIND/WAVE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0735;CYCLONE DANGER AREA* or 48HR HIGH WIND/WAVES;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0750;48 HR WIND/WAVE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0800;GOES IR TROPICAL SATELLITE IMAGE;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0815;72 HR WIND/WAVE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0825;72 HR WAVE PERIOD/SWELL DIRECTION;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0835;REBROADCAST OF 0215 (SEA STATE ANALYSIS);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;0845;HIGH SEAS FORECAST (IN ENGLISH);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1200;TEST PATTERN;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1205;U.S./TROPICAL SURFACE ANALYSIS (W HALF);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1220;TROPICAL SURFACE ANALYSIS (E HALF);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1235;REBROADCAST OF 1925/0725 (24 HR WIND/WAVE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1245;REBROADCAST OF 1950/0750 (48 HR WIND/WAVE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1255;REBROADCAST OF 2015/0815 (72 HR WIND/WAVE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1305;REBROADCAST OF 1855/0655 (24 HR SURFACE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1315;REBROADCAST OF 1905/0705 (48 HR SURFACE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1325;REBROADCAST OF 1915/0715 (72 HR SURFACE);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1335;CYCLONE DANGER AREA* or 48 HR HIGH WIND/WAVES;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1400;GOES IR TROPICAL SATELLITE IMAGE;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1415;SEA STATE ANALYSIS;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1425;REQUEST FOR COMMENTS/PRODUCT NOTICE;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1445;HIGH SEAS FORECAST (IN ENGLISH);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1800;TEST PATTERN;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1805;U.S./TROPICAL SURFACE ANALYSIS (W HALF);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1820;TROPICAL SURFACE ANALYSIS (E HALF);120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1835;48 HR WAVE PERIOD/SWELL DIRECTION;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1845;REBROADCAST OF 0215/1415 (SEA STATE ANAL');120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1855;24 HR SURFACE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1905;48 HR SURFACE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1915;72 HR SURFACE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1925;24 HR WIND/WAVE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1935;CYCLONE DANGER AREA* or 48HR HIGH WIND/WAVES;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;1950;48 HR WIND/WAVE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;2000;GOES IR TROPICAL SATELLITE IMAGE;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;2015;72 HR WIND/WAVE FORECAST;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;2025;BROADCAST SCHEDULE;120/576;2020-02-12;22-23
+us_new_orleans;North America;U.S.A.;New Orleans, Louisiana;NOAA/NHC + USCG marine weatherfax;active;2045;HIGH SEAS FORECAST (IN ENGLISH);120/576;2020-02-12;22-23
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0230;TEST PATTERN;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0233;PRELIMINARY SURFACE ANALYSIS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0243;BROADCAST SCHEDULE (PART 1);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0254;BROADCAST SCHEDULE (PART 2);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0305;REQUEST FOR COMMENTS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0315;WIND/WAVE ANALYSIS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0325;SURFACE ANALYSIS (PART 1 NE ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0338;SURFACE ANALYSIS (PART 2 NW ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0351;SATELLITE IMAGE;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0402;(REBROADCAST OF 0325/1525 NE ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0415;(REBROADCAST OF 0338/1538 NW ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0428;500MB ANALYSIS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0438;ICE CHART (REBROADCAST);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0452;CYCLONE DANGER AREA* or HIGH WIND/WAVES;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0745;TEST PATTERN;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0755;PRELIMINARY SURFACE ANALYSIS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0805;24HR SURFACE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0815;24HR WIND/WAVE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0825;24HR 500MB FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0835;36HR 500MB FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0845;48HR SURFACE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0855;48HR WIND/WAVE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0905;48HR 500MB FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0915;48HR WAVE PERIOD FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0925;SURFACE ANALYSIS (PART 1 NE ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0938;SURFACE ANALYSIS (PART 2 NW ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;0951;SATELLITE IMAGE;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1002;(REBROADCAST OF 0925/2125 NE ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1015;(REBROADCAST OF 0938/2138 NW ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1028;CYCLONE DANGER AREA* or HIGH WIND/WAVES;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1039;REBROADCAST/N American Ice Service Chart;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1400;TEST PATTERN;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1405;BROADCAST SCHEDULE (PART 1);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1420;BROADCAST SCHEDULE (PART 2);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1433;REQUEST FOR COMMENTS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1443;PRODUCT NOTICE BULLETIN;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1453;PRELIMINARY SURFACE ANALYSIS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1503;SATELLITE IMAGE;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1515;WIND/WAVE ANALYSIS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1525;SURFACE ANALYSIS (PART 1 NE ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1538;SURFACE ANALYSIS (PART 2 NW ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1600;ICE CHART (REBROADCAST);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1720;TEST PATTERN;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1723;(REBROADCAST OF 0325/1525 NE ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1736;(REBROADCAST OF 0338/1538 NW ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1749;500MB ANALYSIS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1759;SEA STATE ANALYSIS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1810;24HR SURFACE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1824;CYCLONE DANGER AREA* or HIGH WIND/WAVES;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1835;24HR WIND/WAVE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1855;24HR 500MB FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1905;36HR 500MB FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1915;96HR SURFACE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1925;96HR WIND/WAVE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1935;96HR 500MB FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1945;96HR WAVE PERIOD FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;1955;48HR SURFACE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2005;48HR WIND/WAVE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2015;48HR 500MB FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2025;48HR WAVE PERIOD FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2035;PRELIMINARY SURFACE ANALYSIS;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2045;72HR SURFACE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2055;72HR WIND/WAVE FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2105;72HR 500MB FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2115;72HR WAVE PERIOD FORECAST;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2125;SURFACE ANALYSIS (PART 1 NE ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2138;SURFACE ANALYSIS (PART 2 NW ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2151;SATELLITE IMAGE;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2202;(REBROADCAST OF 0925/2125 NE ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2215;(REBROADCAST OF 0938/2138 NW ATLANTIC);120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2228;CYCLONE DANGER AREA* or HIGH WIND/WAVES;120/576;2020-02-12;24-25
+us_boston;North America;U.S.A.;Boston, Massachusetts;NOAA/NWS + USCG marine weatherfax;active;2239;REBROADCAST/N American Ice Service Chart;120/576;2020-02-12;24-25
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0000;Indian Ocean MSLP Anal (Manual) Valid 1200;;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0015;VMC/VMW Schedule Page 1 of 2;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0030;VMC/VMW Schedule Page 2 of 2;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0045;VMC/VMW Information Notice;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0100;IPS Recommended Frequencies for VMC (Charleville);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0130;IPS RECOMMENDED FREQUENCIES FOR VMW;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0200;Australian MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0245;Australian MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0300;Australian 500 hPa Anal;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0315;Voice Broadcast Information for VMW (Wiluna) and VMC (Charleville);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0345;Australian MSLP Anal (Manual) Valid 0000;;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0400;Australian 500 hPa (H+24) Prog;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0430;Australian MSLP 4-day forecast, Days 1 and 2;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0445;Australian MSLP 4-day forecast, Days 3 and 4;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0500;Australian MSLP 4-day Forecast, Days 1 and 2;;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0515;Australian MSLP 4-day Forecast, Days 3 and 4;;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0600;Asian (Part A) Gradient Level Wind Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0623;Asian (Part B) Gradient Level Wind Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0730;Indian Ocean MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0745;Australian Wind Waves Ht(m) Prog;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0800;Australian Swell Waves Ht(m) Prog (H+24);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0830;South Pacific Ocean MSLP Anal;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0845;Australian MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0900;Australian MSLP Prog (H+36) (Repeat);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0915;Australian MSLP 4-day forecast, Days 1 and 2 (Repeat);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;0930;Australian MSLP 4-day forecast, Days 3 and 4 (Repeat);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1015;Casey Eastern and Western High Seas (H+24);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1030;S.H. 500 hPa Prog (H+48);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1045;S.H. MSLP Prog (H+48);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1100;Casey Eastern and Western High Seas (H+36);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1115;S.H. 500 hPa Anal;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1130;Asian Sea Surface Temp Anal (Weekly);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1145;VMC/VMW Information Notice;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1200;Australian MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1215;VMC/VMW Schedule Page 1 of 2;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1230;VMC/VMW Schedule Page 2 of 2;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1245;Indian Ocean MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1315;South Pacific Ocean Total Waves (H+48);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1330;Indian Ocean Total Waves (H+48);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1345;Pacific Ocean Sea Surface Temps (Weekly);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1400;Indian Ocean Sea Surface Temps (Weekly);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1415;Casey Eastern and Western High Seas (H+48);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1430;Australian MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1500;Australian 500 hPa Anal;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1515;Australian MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1530;Australian MSLP 4-day forecast, Days 1 and 2;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1545;Australian MSLP 4-day forecast, Days 3 and 4;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1600;Australian 500 hPa (H+24) Prog;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1630;IPS Recommended Frequencies for VMC (Charleville);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1700;IPS Recommended Frequencies for VMW (Wiluna);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1800;Asian (Part A) Gradient Level Wind Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1823;Asian (Part B) Gradient Level Wind Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1915;Indian Ocean MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1930;Australian Wind Waves Ht(m) Prog;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;1945;Australian Swell Waves Ht(m) Prog (H+24);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2000;South Pacific Ocean MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2015;Casey Eastern and Western High Seas (H+24);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2030;Australian MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2215;Casey Eastern and Western High Seas (H+36);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2230;S.H. 500 hPa Prog (H+48);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2245;S.H. MSLP Prog (H+48);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2300;S.H. 500 hPa Anal;120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2315;Casey Eastern and Western High Seas (H+48);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2330;Australian MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_charleville;Pacific Ocean Basin;Australia;Charleville;Australian Bureau of Meteorology marine radiofax;active;2345;Indian Ocean MSLP Prog (H+48);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0000;Indian Ocean MSLP Anal (Manual) Valid 1200;;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0015;VMC/VMW Schedule Page 1 of 2;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0030;VMC/VMW Schedule Page 2 of 2;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0045;VMC/VMW Information Notice;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0100;IPS Recommended Frequencies for VMC (Charleville);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0130;IPS RECOMMENDED FREQUENCIES FOR VMW;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0200;Australian MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0245;Australian MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0300;Australian 500 hPa Anal;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0315;Voice Broadcast Information for VMW (Wiluna) and VMC (Charleville);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0345;Australian MSLP Anal (Manual) Valid 0000;;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0400;Australian 500 hPa (H+24) Prog;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0430;Australian MSLP 4-day forecast, Days 1 and 2;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0445;Australian MSLP 4-day forecast, Days 3 and 4;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0500;Australian MSLP 4-day Forecast, Days 1 and 2;;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0515;Australian MSLP 4-day Forecast, Days 3 and 4;;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0600;Asian (Part A) Gradient Level Wind Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0623;Asian (Part B) Gradient Level Wind Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0730;Indian Ocean MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0745;Australian Wind Waves Ht(m) Prog;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0800;Australian Swell Waves Ht(m) Prog (H+24);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0830;South Pacific Ocean MSLP Anal;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0845;Australian MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0900;Australian MSLP Prog (H+36) (Repeat);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0915;Australian MSLP 4-day forecast, Days 1 and 2 (Repeat);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;0930;Australian MSLP 4-day forecast, Days 3 and 4 (Repeat);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1015;Casey Eastern and Western High Seas (H+24);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1030;S.H. 500 hPa Prog (H+48);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1045;S.H. MSLP Prog (H+48);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1100;Casey Eastern and Western High Seas (H+36);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1115;S.H. 500 hPa Anal;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1130;Asian Sea Surface Temp Anal (Weekly);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1145;VMC/VMW Information Notice;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1200;Australian MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1215;VMC/VMW Schedule Page 1 of 2;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1230;VMC/VMW Schedule Page 2 of 2;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1245;Indian Ocean MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1315;South Pacific Ocean Total Waves (H+48);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1330;Indian Ocean Total Waves (H+48);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1345;Pacific Ocean Sea Surface Temps (Weekly);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1400;Indian Ocean Sea Surface Temps (Weekly);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1415;Casey Eastern and Western High Seas (H+48);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1430;Australian MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1500;Australian 500 hPa Anal;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1515;Australian MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1530;Australian MSLP 4-day forecast, Days 1 and 2;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1545;Australian MSLP 4-day forecast, Days 3 and 4;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1600;Australian 500 hPa (H+24) Prog;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1630;IPS Recommended Frequencies for VMC (Charleville);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1700;IPS Recommended Frequencies for VMW (Wiluna);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1800;Asian (Part A) Gradient Level Wind Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1823;Asian (Part B) Gradient Level Wind Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1915;Indian Ocean MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1930;Australian Wind Waves Ht(m) Prog;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;1945;Australian Swell Waves Ht(m) Prog (H+24);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2000;South Pacific Ocean MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2015;Casey Eastern and Western High Seas (H+24);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2030;Australian MSLP Anal (Manual);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2215;Casey Eastern and Western High Seas (H+36);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2230;S.H. 500 hPa Prog (H+48);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2245;S.H. MSLP Prog (H+48);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2300;S.H. 500 hPa Anal;120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2315;Casey Eastern and Western High Seas (H+48);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2330;Australian MSLP Prog (H+36);120/576;2022-04-20;27-28
+au_wiluna;Pacific Ocean Basin;Australia;Wiluna;Australian Bureau of Meteorology marine radiofax;active;2345;Indian Ocean MSLP Prog (H+48);120/576;2022-04-20;27-28
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0014;SURFACE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0034;EAST PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0048;SW PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0100;SCHEDULE PART I;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0120;SCHEDULE PART II;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0140;SYMBOLS OR PRODUCT NOTICE BULLETIN;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0200;24HR TROPICAL SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0210;48HR TROPICAL SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0220;72HR TROPICAL SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0230;48/72HR TROPICAL WAVE PERIOD,SWELL DIR;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0240;TROPICAL SEA STATE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0250;rebroadcast 24HR TROPICAL WIND/WAVE FORECASTS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0300;48HR TROPICAL WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0310;72HR TROPICAL WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0320;rebroadcast/SEA STATE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0330;SURFACE ANALYSIS(PART 1 NE PAC);120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0343;SURFACE ANALYSIS(PART 2 NW PAC);120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0356;TROPICAL SURFACE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0519;TEST PATTERN;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0535;CYCLONE DANGER AREA;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0555;STREAMLINE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0615;SURFACE ANALYSIS;120/570;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0635;EAST PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0649;SW PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0701;24HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0714;48HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0727;72HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0740;WIND/WAVE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0753;24HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0806;24HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0816;48HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0826;48HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0836;48/96HR WAVE PERIOD,SWELL DIRECTION;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0846;rebroadcast/ 96HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0856;rebroadcast/ 96HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0906;PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0917;SURFACE ANALYSIS (PART 1 NE PACIFIC);120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0930;SURFACE ANALYSIS (PART 2 NW PACIFIC);120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0943;TROPICAL GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;0954;TROPICAL SURFACE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1008;24HR TROPICAL WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1042;CYCLONE DANGER AREA;120/570;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1102;48HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1115;72HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1128;SEA SURFACE TEMPS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1141;rebroadcast 24HR WIND/WAVE FORECASTS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1154;STREAMLINE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1214;SURFACE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1234;EAST PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1248;SW PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1300;SCHEDULE PART I;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1320;SCHEDULE PART II;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1340;SYMBOLS OR PRODUCT NOTICE BULLETIN;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1400;24HR TROPICAL SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1410;48HR TROPICAL SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1420;72HR TROPICAL SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1430;48/72HR TROPICAL WAVE PERIOD,SWELL DIR;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1440;TROPICAL SEA STATE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1450;rebroadcast 24HR TROPICAL WIND/WAVE FORECASTS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1500;48HR TROPICAL WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1510;72HR TROPICAL WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1520;rebroadcast/SEA STATE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1530;SURFACE ANALYSIS(PART 1 NE PAC);120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1543;SURFACE ANALYSIS(PART 2 NW PAC);120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1556;TROPICAL SURFACE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1719;TEST PATTERN;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1735;CYCLONE DANGER AREA;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1755;STREAMLINE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1815;SURFACE ANALYSIS;120/570;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1835;EAST PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1849;SW PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1901;24HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1914;48HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1927;72HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1940;WIND/WAVE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;1953;24HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2006;24HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2016;48HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2026;48HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2036;48/96HR WAVE PERIOD,SWELL DIRECTION;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2046;rebroadcast/ 96HR SURFACE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2056;rebroadcast/ 96HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2106;PACIFIC GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2117;SURFACE ANALYSIS (PART 1 NE PACIFIC);120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2130;SURFACE ANALYSIS (PART 2 NW PACIFIC);120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2143;TROPICAL GOES IR SATELLITE IMAGE;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2154;TROPICAL SURFACE ANALYSIS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2208;24HR TROPICAL WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2242;CYCLONE DANGER AREA;120/570;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2302;48HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2315;72HR WIND/WAVE FORECAST;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2328;SEA SURFACE TEMPS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2341;rebroadcast 24HR WIND/WAVE FORECASTS;120/576;2020-02-12;29-30
+us_honolulu;Pacific Ocean Basin;U.S.A.;Honolulu, Hawaii;NOAA/NWS marine weatherfax;active;2354;STREAMLINE ANALYSIS;120/576;2020-02-12;29-30
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;0845;SURFACE ANALYSIS;120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;0857;SURFACE PROG (H+42);120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;0909;SURFACE PROG (H+66);120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;0921;WAVE HEIGHT PROG (H+30);120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;0933;WAVE HEIGHT PROG (H+36);120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;0945;WAVE HEIGHT PROG (H+42);120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;0957;WAVE HEIGHT PROG (H+48);120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;1009;WAVE HEIGHT PROG (H+30);120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;1021;WAVE HEIGHT PROG (H+36);120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;1033;WAVE HEIGHT PROG (H+42);120/576;Jan 2019;32
+gr_athens;Europe;Greece;Athens;Greek marine weatherfax;active;1044;WAVE HEIGHT PROG (H+48);120/576;Jan 2019;32
+ru_murmansk;Europe;Russia;Murmansk;Marine / ice weatherfax;uncertain;0700;36HR SURFACE PROG;120/576;listener update 2024-10-19;32
+ru_murmansk;Europe;Russia;Murmansk;Marine / ice weatherfax;uncertain;0800;SEA STATE ANALYSIS;120/576;listener update 2024-10-19;32
+ru_murmansk;Europe;Russia;Murmansk;Marine / ice weatherfax;uncertain;1400;SURFACE TEMP ANALYSIS/ICEBERG POSITIONS;120/576;listener update 2024-10-19;32
+ru_murmansk;Europe;Russia;Murmansk;Marine / ice weatherfax;uncertain;1400;ANAL OF ICEBERG POSITIONS FOR PAST+24HR;120/576;listener update 2024-10-19;32
+ru_murmansk;Europe;Russia;Murmansk;Marine / ice weatherfax;uncertain;1430;24HR SEA STATE PROG;120/576;listener update 2024-10-19;32
+ru_murmansk;Europe;Russia;Murmansk;Marine / ice weatherfax;uncertain;1850;BROADCAST SCHEDULE;90/576;listener update 2024-10-19;32
+ru_murmansk;Europe;Russia;Murmansk;Marine / ice weatherfax;uncertain;2000;ICEBERG PROGNOSIS;120/576;listener update 2024-10-19;32
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0430;Surface Analysis North Atlantic, Europe;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0512;36HR-forecast surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0525;surface pressure analysis, arrows showing the movement of pressure systems, significant weather, ice;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0555-0635;Voice-transmission on 5905 kHz and 6180 kHz;;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0638;Information of tropical storms, North Atlantic (during season only);120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0651;12HR, 24HR 500 hPa H+T, surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0704;12HR, 24HR 850 hPa H+T, 700 hPa relative humidity;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0717;Repetition chart 05.12 UTC;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0730;48HR-forecast surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0743;60HR-forecast surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0804;84HR-forecast surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0817;108HR-forecast surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0830;24HR-forecast significant height of combined wind waves and swell, wind 10m;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0842;48HR-forecast significant height of combined wind waves and swell, wind 10m;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0854;72HR-forecast significant height of combined wind waves and swell, wind 10m;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0906;96HR-forecast significant height of combined wind waves and swell, wind 10m;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0930;36HR, 48HR 500 hPa H+T, surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;0945;Sea surface temperature North Sea;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1007;Ice conditions chart Western Baltic Sea or special area if ice situation requires;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1029;48HR wave prediction North Atlantic;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1050;Surface Analysis North Atlantic, Europe;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1111;36HR, 48HR 850 hPa H+T, 700 hPa relative humidity;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1123;60HR, 72HR 500 hPa H+T, surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1135;60HR, 72HR 850 hPa H+T, 700 hPa relative humidity;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1155-1235;Voice-transmission on 5905 kHz and 6180 kHz;;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1236;Repetition chart 10.50 UTC;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1256;Repetition chart 05.12 UTC;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1308;Repetition chart 07.30 UTC;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1320;Repetition chart 07.43 UTC;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1332;Repetition chart 08.04 UTC;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1344;Repetition chart 08.17 UTC;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1356;Repetition chart 10.50 UTC;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1425;Transmission schedule part 1;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1445;Transmission schedule part 2;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1508;Ice conditions chart Northwest Atlantic, Canadian Ice serv., or int. Ice Patrol;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1520;Ice conditions chart Baltic Sea or special area;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1540;Ice conditions chart European Arctic Sea or special area;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1555-1635;Voice-transmission on 5905 kHz and 6180 kHz;;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1636;Surface Analysis North Atlantic, Europe;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1800;surface pressure analysis, arrows showing the movement of pressure systems, significant weather, ice;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1821;Information of tropical storms, North Atlantic (during season only);120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1834;36HR-forecast surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1847;48HR-forecast surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1900;84HR-forecast surface pressure;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1913;24HR-forecast significant height of combined wind waves and swell, wind 10m;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1926;48HR-forecast significant height of combined wind waves and swell, wind 10m;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1939;72HR-forecast significant height of combined wind waves and swell, wind 10m;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;1955-2035;Voice-transmission on 5905 kHz and 6180 kHz;;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;2100;Ice conditions chart Northwest Atlantic;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;2115;Ice conditions chart Baltic Sea or special area;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;2136;48HR wave prediction Surface weather chart North Atlantic;120/576;2024-07-24;33-34
+de_hamburg;Europe;Germany;Hamburg / Pinneberg;Deutscher Wetterdienst (DWD);active;2200;Surface Analysis North Atlantic, Europe;120/576;2024-07-24;33-34
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0000;18Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0012;18Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0024;18Z PRECIPITATION AND REDUCED VIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0036;18Z PRECIPITATION AND REDUCED VIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0048;18Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0100;18Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0112;18Z SEA AND SWELL T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0124;18Z SEA AND SWELL T+72;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0136;OCEAN FRONTS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0148;18Z SEA AND SWELL T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0200;18Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0212;00Z SEA SURFACE TEMP;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0224;18Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0236;00Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0300;00Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0312;00Z ANPS PROGNOSIS T+24 1512;;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0324;18Z SFC WINDS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0336;00Z ANPS PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0348;00Z ANPS PROGNOSIS T+72;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0400;00Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0424;18Z SFC WINDS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0436;00Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0448;18Z SFC WINDS T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0500;00Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0512;00Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0524;00Z SFC PROGNOSIS T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0548;06Z GALE WARNING;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0600;12Z SFC ANALYSIS 1800;;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0612;00Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0624;00Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0636;00Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0648;00Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0700;00Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0712;00Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0724;00Z SFC PROGNOSIS T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0736;00Z SFC PROGNOSIS T+72;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0748;00Z SFC PROGNOSIS T+96;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0800;00Z SFC PROGNOSIS T+120;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0812;00Z SFC PROGNOSIS T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0824;00Z PRECIPITATION AND REDUCED VIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0836;00Z PRECIPITATION AND REDUCED VIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0848;00Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0900;06Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0912;12Z PRECIPITATION AND REDUCED VIS 2112;;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0924;00Z ANPS PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;0936;00Z ANPS PROGNOSIS T+120;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1000;06Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1012;06Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1036;00Z ANPS PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1100;06Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1112;06Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1124;06Z SEA AND SWELL T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1136;06Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1148;06Z SEA AND SWELL T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1200;06Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1212;06Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1224;06Z PRECIPITATION AND REDUCED VIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1236;06Z PRECIPITATION AND REDUCED VIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1248;06Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1300;06Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1312;06Z SFC WINDS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1324;06Z GALE WARNING;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1336;OCEAN FRONTS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1348;06Z SEA AND SWELL T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1400;00Z SEA SURFACE TEMP;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1412;06Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1424;06Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1436;12Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1500;12Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1524;00Z ANPS PROGNOSIS T+120;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1536;06Z SEA AND SWELL T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1600;12Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1624;06Z SFC WINDS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1636;12Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1648;06Z SFC WINDS T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1700;12Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1712;12Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1724;12Z SFC PROGNOSIS T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1748;06Z SEA AND SWELL T+72;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1812;12Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1824;12Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1836;12Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1848;12Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1900;12Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1924;12Z SFC PROGNOSIS T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1936;12Z SFC PROGNOSIS T+72;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;1948;12Z SFC PROGNOSIS T+96;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2012;12Z SFC PROGNOSIS T+120;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2024;12Z SFC PROGNOSIS T+48;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2036;12Z PRECIPITATION AND REDUCED VIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2048;12Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2100;18Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2124;00Z ANPS PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2136;00Z ANPS PROGNOSIS T+120;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2200;18Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2212;18Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2236;00Z ANPS PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2300;18Z SFC ANALYSIS;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2312;18Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2324;18Z SEA AND SWELL T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2336;18Z SFC PROGNOSIS T+24;120/576;2022-01-05;35-36
+uk_northwood;Europe;United Kingdom;Northwood;JOMOC HF-Fax / North Atlantic;active;2348;18Z SEA AND SWELL T+24;120/576;2022-01-05;35-36
