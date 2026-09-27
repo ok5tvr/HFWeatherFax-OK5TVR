@@ -5,10 +5,11 @@ import os
 import json
 from pathlib import Path
 from datetime import datetime
+from collections import deque
 import numpy as np
 import soundfile as sf
 
-from PySide6.QtCore import QTimer, Qt, QSettings, QLocale
+from PySide6.QtCore import QTimer, Qt, QSettings, QLocale, QObject, Signal, QRunnable, QThreadPool
 from PySide6.QtGui import QImage, QPixmap, QIcon
 from PySide6.QtWidgets import (
     QApplication, QCheckBox, QComboBox, QFileDialog, QGridLayout, QGroupBox,
@@ -36,6 +37,43 @@ def resource_path(*parts: str) -> Path:
     else:
         base = Path(__file__).resolve().parent.parent
     return base.joinpath(*parts)
+
+
+class _CatPollSignals(QObject):
+    result = Signal(object)
+
+
+class _CatPollTask(QRunnable):
+    """One non-blocking CAT status snapshot for the GUI."""
+
+    def __init__(self, rig: HamlibRig, vfo: int):
+        super().__init__()
+        self.rig = rig
+        self.vfo = int(vfo)
+        self.rig_id = id(rig)
+        self.signals = _CatPollSignals()
+
+    def run(self):
+        try:
+            hz, mode, width, strength = self.rig.get_status_snapshot(self.vfo)
+            payload = {
+                "rig_id": self.rig_id,
+                "hz": hz,
+                "mode": mode,
+                "width": width,
+                "strength": strength,
+                "error": None,
+            }
+        except Exception as exc:
+            payload = {
+                "rig_id": self.rig_id,
+                "hz": None,
+                "mode": None,
+                "width": None,
+                "strength": None,
+                "error": str(exc),
+            }
+        self.signals.result.emit(payload)
 
 
 class MainWindow(QMainWindow):
@@ -87,7 +125,18 @@ class MainWindow(QMainWindow):
 
         self.timer = QTimer(self)
         self.timer.setInterval(40)
+        self.timer.setTimerType(Qt.TimerType.PreciseTimer)
         self.timer.timeout.connect(self.process_audio)
+
+        # Live diagnostics run on their own modest refresh cadence.  The decoder
+        # remains sample-complete, while spectrum/waterfall are allowed to skip
+        # stale display audio instead of blocking the GUI trying to catch up.
+        self.diagnostics_timer = QTimer(self)
+        self.diagnostics_timer.setInterval(80)  # 12.5 FPS: smooth but notebook-friendly
+        self.diagnostics_timer.setTimerType(Qt.TimerType.PreciseTimer)
+        self.diagnostics_timer.timeout.connect(self.refresh_live_diagnostics)
+        self._diagnostic_audio_chunks = deque(maxlen=6)
+        self._diagnostic_sample_rate = 48000
 
         self.cat_timer = QTimer(self)
         self.cat_timer.setInterval(1000)
@@ -97,6 +146,12 @@ class MainWindow(QMainWindow):
         self.cat_last_mode = None
         self.cat_last_width = None
         self.cat_last_strength_db = None
+        # Periodic CAT reads can block on a serial transaction. Keep them off
+        # the GUI thread so spectrum/waterfall animation stays fluid.
+        self.cat_poll_pool = QThreadPool(self)
+        self.cat_poll_pool.setMaxThreadCount(1)
+        self.cat_poll_inflight = False
+        self._cat_poll_task = None
 
         self.last_audio_db = -120.0
         self._build_ui()
@@ -104,6 +159,7 @@ class MainWindow(QMainWindow):
         self.refresh_devices()
         self._restore_ui_settings()
         self._update_signal_diagnostics(-120.0)
+        self.diagnostics_timer.start()
         self.update_status(self._tr("ready"))
 
     def _tr(self, key: str, **kwargs) -> str:
@@ -396,8 +452,71 @@ class MainWindow(QMainWindow):
 
     def _set_percent_meter(self, bar: QProgressBar, confidence: float) -> None:
         pct = int(round(float(np.clip(confidence, 0.0, 1.0)) * 100.0))
-        bar.setValue(pct)
-        bar.setFormat(f"{pct}%")
+        if bar.value() != pct:
+            bar.setValue(pct)
+        fmt = f"{pct}%"
+        if bar.format() != fmt:
+            bar.setFormat(fmt)
+
+    def _queue_diagnostic_audio(self, chunks, sample_rate: int) -> None:
+        """Queue only recent audio for the visual diagnostics.
+
+        This path is intentionally lossy: the decoder/autodetector still sees
+        every sample, but the display keeps only a short newest slice so a slow
+        repaint can never build a diagnostic backlog and freeze the interface.
+        """
+        self._diagnostic_sample_rate = int(sample_rate)
+        max_piece = max(2048, int(self._diagnostic_sample_rate * 0.16))
+        for chunk in chunks:
+            x = np.asarray(chunk, dtype=np.float32).reshape(-1)
+            if x.size == 0:
+                continue
+            if x.size > max_piece:
+                x = x[-max_piece:]
+            self._diagnostic_audio_chunks.append(x)
+
+        if self.audio is not None:
+            self.last_audio_db = float(self.audio.last_level_db)
+        elif chunks:
+            x = np.asarray(chunks[-1], dtype=np.float32).reshape(-1)
+            if x.size:
+                # A short tail is enough for a stable dBFS meter during fast WAV decode.
+                x = x[-max_piece:]
+                rms = float(np.sqrt(np.mean(x.astype(np.float64, copy=False) ** 2) + 1e-12))
+                self.last_audio_db = 20.0 * np.log10(max(rms, 1e-9))
+
+    def refresh_live_diagnostics(self) -> None:
+        """Refresh meters/spectrum independently from audio decoding (~12.5 FPS)."""
+        # Meters are cheap and may still change as the detector processes audio.
+        self._update_signal_diagnostics()
+
+        if not hasattr(self, "spectrum") or not self._diagnostic_audio_chunks:
+            return
+
+        chunks = list(self._diagnostic_audio_chunks)
+        self._diagnostic_audio_chunks.clear()
+        if not chunks:
+            return
+
+        # Bound one visual update to about 240 ms of newest signal.  Older
+        # display-only samples are discarded; decoding is unaffected.
+        max_samples = max(2048, int(self._diagnostic_sample_rate * 0.24))
+        if len(chunks) == 1:
+            audio = chunks[0]
+        else:
+            audio = np.concatenate(chunks)
+        if audio.size > max_samples:
+            audio = audio[-max_samples:]
+
+        self.spectrum.update_audio(audio, self._diagnostic_sample_rate)
+        peak = "--" if self.spectrum.peak_hz is None else f"{self.spectrum.peak_hz:.0f} Hz"
+        if (self.auto_start_stop.isChecked() or self.auto_lpm.isChecked()) and self.autodetector.state == "RECEIVING":
+            tuning = self._tr("image_active_tuning_disabled")
+        else:
+            tuning = self._spectrum_tuning_text()
+        text = self._tr("spectrum_live", peak=peak, tuning=tuning)
+        if self.spectrum_info.text() != text:
+            self.spectrum_info.setText(text)
 
     def _update_signal_diagnostics(self, audio_db: float | None = None) -> None:
         """Refresh the compact live signal diagnostics used on small displays."""
@@ -407,13 +526,15 @@ class MainWindow(QMainWindow):
         if hasattr(self, "audio_level_meter"):
             db = float(self.last_audio_db)
             mapped = int(round(np.clip(db + 60.0, 0.0, 60.0)))
-            self.audio_level_meter.setValue(mapped)
-            if db <= -119.0:
-                self.audio_level_meter.setFormat("-- dBFS")
-            else:
-                self.audio_level_meter.setFormat(f"{db:.1f} dBFS")
+            if self.audio_level_meter.value() != mapped:
+                self.audio_level_meter.setValue(mapped)
+            fmt = "-- dBFS" if db <= -119.0 else f"{db:.1f} dBFS"
+            if self.audio_level_meter.format() != fmt:
+                self.audio_level_meter.setFormat(fmt)
             if hasattr(self, "level"):
-                self.level.setText(self._tr("level") if db <= -119.0 else self._tr("level_value", db=db))
+                level_text = self._tr("level") if db <= -119.0 else self._tr("level_value", db=db)
+                if self.level.text() != level_text:
+                    self.level.setText(level_text)
 
         if not hasattr(self, "autodetector"):
             return
@@ -1584,6 +1705,8 @@ class MainWindow(QMainWindow):
             except Exception:
                 pass
         self.cat = None
+        self.cat_poll_inflight = False
+        self._cat_poll_task = None
         self.cat_freq_dirty = False
         self.cat_last_rig_hz = None
         self.cat_last_mode = None
@@ -1602,11 +1725,11 @@ class MainWindow(QMainWindow):
             return
         try:
             vfo = self._cat_vfo_value()
-            hz = self.cat.get_frequency(vfo)
+            hz, mode, width, strength_db = self.cat.get_status_snapshot(vfo)
             self.cat_last_rig_hz = hz
-            mode, width = self.cat.get_mode(vfo)
-            strength_db = self.cat.get_signal_strength_db(vfo)
+            self.cat_last_mode = mode
             self.cat_last_width = width
+            self.cat_last_strength_db = strength_db
             self._update_trx_display(
                 connected=True, hz=hz, mode=mode,
                 strength_db=strength_db, strength_valid=True,
@@ -1696,10 +1819,72 @@ class MainWindow(QMainWindow):
             self.set_cat_mode()
 
     def poll_cat(self):
-        if self.cat_poll.isChecked() and self.cat is not None and self.cat.connected:
-            # Polling reports the real rig state in CAT status only. Manual
-            # selections in Mode and Filter are never overwritten here.
-            self.read_cat(silent=True, update_controls=False)
+        if not (self.cat_poll.isChecked() and self.cat is not None and self.cat.connected):
+            return
+        if self.cat_poll_inflight:
+            # A slow serial response must never create a queue of old CAT polls.
+            return
+
+        try:
+            vfo = self._cat_vfo_value()
+            task = _CatPollTask(self.cat, vfo)
+            task.signals.result.connect(self._apply_cat_poll_result)
+            self.cat_poll_inflight = True
+            self._cat_poll_task = task
+            self.cat_poll_pool.start(task)
+        except Exception as exc:
+            self.cat_poll_inflight = False
+            self._cat_poll_task = None
+            self._update_trx_display(connected=False)
+            self.cat_status.setText(self._tr("cat_error", error=exc))
+
+    def _apply_cat_poll_result(self, payload):
+        """Apply a worker-thread CAT snapshot on the Qt GUI thread."""
+        self.cat_poll_inflight = False
+        self._cat_poll_task = None
+        if not isinstance(payload, dict):
+            return
+        if self.cat is None or id(self.cat) != payload.get("rig_id") or not self.cat.connected:
+            return
+
+        error = payload.get("error")
+        if error:
+            self._update_trx_display(connected=False)
+            self.cat_status.setText(self._tr("cat_error", error=error))
+            return
+
+        hz = float(payload.get("hz"))
+        mode = str(payload.get("mode") or "--")
+        raw_width = payload.get("width")
+        width = int(raw_width) if raw_width is not None else -1
+        strength_db = payload.get("strength")
+        self.cat_last_rig_hz = hz
+        self.cat_last_mode = mode
+        self.cat_last_width = width
+        self.cat_last_strength_db = strength_db
+        self._update_trx_display(
+            connected=True, hz=hz, mode=mode,
+            strength_db=strength_db, strength_valid=True,
+        )
+
+        # Monitoring remains read-only for the operator's prepared mode/filter.
+        # Frequency follows the rig only if the edit field is not being edited.
+        freq_editor_has_focus = self.cat_freq.hasFocus() or self.cat_freq.lineEdit().hasFocus()
+        if not self.cat_freq_dirty and not freq_editor_has_focus:
+            self.cat_freq.blockSignals(True)
+            self.cat_freq.setValue(hz / 1e6)
+            self.cat_freq.blockSignals(False)
+
+        if self.cat_freq_dirty:
+            self.cat_status.setText(self._tr(
+                "cat_pending", rig=hz/1e6, pending=self.cat_freq.value(), mode=mode,
+            ))
+        else:
+            self.cat_status.setText(self._tr(
+                "cat_rig_status",
+                model=self._selected_cat_model_label(),
+                mhz=hz/1e6, mode=mode, width=width,
+            ))
 
     def default_autosave_dir(self) -> Path:
         base = Path.home() / "Pictures" / "HFWeatherFax"
@@ -1906,6 +2091,8 @@ class MainWindow(QMainWindow):
         if hasattr(self, "level_cal_status"):
             self.level_cal_status.setText(self._tr("levels_nominal"))
         self.last_audio_db = -120.0
+        if hasattr(self, "_diagnostic_audio_chunks"):
+            self._diagnostic_audio_chunks.clear()
         self._update_signal_diagnostics(-120.0)
         self.auto_realign_done = False
 
@@ -1936,12 +2123,13 @@ class MainWindow(QMainWindow):
 
         chunks = []
         if self.audio is not None:
-            for _ in range(8):
+            # Bound work per GUI tick.  Four 4096-sample blocks already allow
+            # ample catch-up while preventing one delayed tick from freezing the UI.
+            for _ in range(4):
                 try:
                     chunks.append(self.audio.queue.get_nowait())
                 except Exception:
                     break
-            self._update_signal_diagnostics(self.audio.last_level_db)
         elif self.wav_data is not None:
             # Faster than real-time file decoding while keeping GUI responsive.
             n = int(self.wav_rate * 1.5)
@@ -1959,18 +2147,8 @@ class MainWindow(QMainWindow):
         added = 0
         stop_detected_this_cycle = False
         if chunks:
-            spectrum_audio = np.concatenate(chunks) if len(chunks) > 1 else chunks[0]
             current_sr = self.audio.sample_rate if self.audio is not None else self.wav_rate
-            rms = float(np.sqrt(np.mean(np.asarray(spectrum_audio, dtype=np.float64) ** 2) + 1e-12))
-            audio_db = 20.0 * np.log10(max(rms, 1e-9))
-            self._update_signal_diagnostics(audio_db)
-            self.spectrum.update_audio(spectrum_audio, current_sr)
-            peak = "--" if self.spectrum.peak_hz is None else f"{self.spectrum.peak_hz:.0f} Hz"
-            if (self.auto_start_stop.isChecked() or self.auto_lpm.isChecked()) and self.autodetector.state == "RECEIVING":
-                tuning = self._tr("image_active_tuning_disabled")
-            else:
-                tuning = self._spectrum_tuning_text()
-            self.spectrum_info.setText(self._tr("spectrum_live", peak=peak, tuning=tuning))
+            self._queue_diagnostic_audio(chunks, current_sr)
 
         for chunk in chunks:
             locked_this_chunk = False
@@ -2133,8 +2311,6 @@ class MainWindow(QMainWindow):
                             self.slant.setValue(applied)
                             self.slant.blockSignals(False)
 
-        self._update_signal_diagnostics()
-
         if added:
             if self.auto_line_start.isChecked() and (not self.auto_realign_done) and len(self.image_lines) >= 60:
                 shift, conf, seam = estimate_wrap_shift(self.image_lines)
@@ -2264,12 +2440,18 @@ class MainWindow(QMainWindow):
             state = self._tr("marginal")
         else:
             state = self._tr("no_lock")
-        label.setText(f"{self._tr(name_key)}: {state}")
-        bar.setValue(pct)
-        bar.setFormat(f"{pct}%")
+        label_text = f"{self._tr(name_key)}: {state}"
+        if label.text() != label_text:
+            label.setText(label_text)
+        if bar.value() != pct:
+            bar.setValue(pct)
+        fmt = f"{pct}%"
+        if bar.format() != fmt:
+            bar.setFormat(fmt)
 
     def update_status(self, text: str):
-        self.status.setText(text)
+        if self.status.text() != text:
+            self.status.setText(text)
 
     def closeEvent(self, event):
         self._save_audio_device()

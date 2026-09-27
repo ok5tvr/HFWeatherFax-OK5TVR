@@ -30,17 +30,40 @@ class SpectrumWidget(QWidget):
         self.db_min = -90.0
         self.db_max = -10.0
 
-        self.waterfall_rows = 150
-        self.waterfall_cols = 640
+        self.waterfall_rows = 140
+        self.waterfall_cols = 560
         self.waterfall = np.zeros((self.waterfall_rows, self.waterfall_cols), dtype=np.uint8)
         # Event timeline aligned 1:1 with waterfall rows. Codes: 0 none, 1 START, 2 PHASING, 3 IMAGE, 4 STOP.
         self.event_rows = np.zeros(self.waterfall_rows, dtype=np.uint8)
 
-        # Waterfall analysis parameters. Around 25 rows/s gives visibly smooth scrolling.
+        # Diagnostics are deliberately lighter than the decoder.  About 12.5
+        # waterfall rows/s is visually fluid on a notebook while avoiding a
+        # second full-rate DSP workload in the GUI thread.
+        self.waterfall_fps = 12.5
         self._wf_fft = 2048
-        self._wf_hop = 1920
+        self._wf_hop = 3840
         self._wf_buffer = np.empty(0, dtype=np.float32)
         self._wf_window = np.hanning(self._wf_fft).astype(np.float32)
+        self._wf_target_f = np.linspace(self.f_min, self.f_max, self.waterfall_cols).astype(np.float32)
+        self._wf_freqs = np.empty(0, dtype=np.float32)
+        self._wf_plan_key = None
+        self._wf_image_cache = None
+        self._wf_image_dirty = True
+
+        # Cached spectrum FFT plan/windows.  8192 points already gives about
+        # 5.9 Hz/bin at 48 kHz, which is more than enough for WEFAX tuning.
+        self._spec_plan_key = None
+        self._spec_window = np.empty(0, dtype=np.float32)
+        self._spec_freqs = np.empty(0, dtype=np.float32)
+
+        # Pre-computed waterfall colour lookup table avoids three full-image
+        # floating point transforms on every paint event.
+        gv = np.arange(256, dtype=np.float32) / 255.0
+        lut = np.empty((256, 3), dtype=np.uint8)
+        lut[:, 0] = np.clip((gv - 0.45) * 2.2, 0.0, 1.0) * 255.0
+        lut[:, 1] = np.clip(gv * 1.5, 0.0, 1.0) * 255.0
+        lut[:, 2] = np.clip(0.25 + gv * 1.4, 0.0, 1.0) * 255.0
+        self._wf_lut = lut
 
     def reset(self):
         self.freqs = np.empty(0, dtype=np.float32)
@@ -54,36 +77,56 @@ class SpectrumWidget(QWidget):
         self.waterfall[:] = 0
         self.event_rows[:] = 0
         self._wf_buffer = np.empty(0, dtype=np.float32)
+        self._wf_image_cache = None
+        self._wf_image_dirty = True
         self.update()
 
     def update_audio(self, audio: np.ndarray, sample_rate: int):
+        """Refresh the diagnostics from a bounded slice of the newest audio.
+
+        The caller intentionally invokes this at a modest UI rate rather than
+        for every sound-card block.  Old diagnostic audio may be skipped; the
+        decoder itself never drops samples because it has a separate path.
+        """
         x = np.asarray(audio, dtype=np.float32).reshape(-1)
         if x.size < 256:
             return
         self.sample_rate = int(sample_rate)
 
-        # Spectrum display from latest audio.
+        # Never let a delayed UI create an ever-growing diagnostic backlog.
+        max_input = max(2048, int(self.sample_rate * 0.30))
+        if x.size > max_input:
+            x = x[-max_input:]
+
         self._update_spectrum(x)
 
-        # Waterfall gets its own short-time FFT stream so each call can add multiple rows.
         self._wf_buffer = np.concatenate((self._wf_buffer, x))
-        self._consume_waterfall_frames()
+        max_wf_buffer = max(self._wf_fft * 2, int(self.sample_rate * 0.40))
+        if self._wf_buffer.size > max_wf_buffer:
+            self._wf_buffer = self._wf_buffer[-max_wf_buffer:]
+        self._consume_waterfall_frames(max_frames=4)
 
         self.update()
 
     def _update_spectrum(self, x: np.ndarray):
-        max_n = min(x.size, int(self.sample_rate * 0.35))
-        x = x[-max_n:].astype(np.float64, copy=False)
+        max_n = min(x.size, int(self.sample_rate * 0.22))
+        x = x[-max_n:]
         nfft = 1 << int(np.floor(np.log2(max(512, x.size))))
-        nfft = min(nfft, 16384)
-        x = x[-nfft:]
-        x = x - np.mean(x)
-        x *= np.hanning(x.size)
+        nfft = min(nfft, 8192)
+        x = x[-nfft:].astype(np.float32, copy=False)
 
-        spec = np.fft.rfft(x)
-        mag = np.abs(spec) / max(1.0, x.size / 2.0)
+        key = (self.sample_rate, nfft)
+        if self._spec_plan_key != key:
+            self._spec_plan_key = key
+            self._spec_window = np.hanning(nfft).astype(np.float32)
+            self._spec_freqs = np.fft.rfftfreq(nfft, 1.0 / self.sample_rate).astype(np.float32)
+            self._smoothed = None
+
+        work = (x - np.mean(x, dtype=np.float64)) * self._spec_window
+        spec = np.fft.rfft(work)
+        mag = np.abs(spec) / max(1.0, nfft / 2.0)
         db = 20.0 * np.log10(np.maximum(mag, 1e-8))
-        freqs = np.fft.rfftfreq(x.size, 1.0 / self.sample_rate)
+        freqs = self._spec_freqs
 
         mask = (freqs >= self.f_min) & (freqs <= self.f_max)
         f = freqs[mask]
@@ -126,36 +169,52 @@ class SpectrumWidget(QWidget):
                     self.tune_text = f"Signal high by {abs(off):.0f} Hz - tune receiver lower"
                     self.tune_state = "high"
 
-    def _consume_waterfall_frames(self):
-        # At lower sample rates keep about the same visual time speed.
-        target_hop = max(512, int(round(self.sample_rate / 25.0)))
-        self._wf_hop = target_hop
-        if self._wf_fft > self.sample_rate // 4:
-            self._wf_fft = 1024
+    def _consume_waterfall_frames(self, max_frames: int = 4):
+        # Roughly 12.5 rows/s is smooth enough visually and halves the FFT work
+        # compared with the former 25 rows/s display.
+        self._wf_hop = max(512, int(round(self.sample_rate / self.waterfall_fps)))
+        desired_fft = 1024 if self.sample_rate < 16000 else 2048
+        if self._wf_fft != desired_fft:
+            self._wf_fft = desired_fft
             self._wf_window = np.hanning(self._wf_fft).astype(np.float32)
+            self._wf_plan_key = None
 
-        while self._wf_buffer.size >= self._wf_fft:
-            frame = self._wf_buffer[:self._wf_fft].astype(np.float64, copy=False)
-            self._wf_buffer = self._wf_buffer[self._wf_hop:]
-            frame = frame - np.mean(frame)
-            frame *= self._wf_window
+        key = (self.sample_rate, self._wf_fft)
+        if self._wf_plan_key != key:
+            self._wf_plan_key = key
+            self._wf_freqs = np.fft.rfftfreq(self._wf_fft, 1.0 / self.sample_rate).astype(np.float32)
 
-            spec = np.fft.rfft(frame)
+        frames_done = 0
+        changed = False
+        while self._wf_buffer.size >= self._wf_fft and frames_done < max_frames:
+            frame = self._wf_buffer[:self._wf_fft]
+            advance = min(self._wf_hop, self._wf_buffer.size)
+            self._wf_buffer = self._wf_buffer[advance:]
+            work = (frame - np.mean(frame, dtype=np.float64)) * self._wf_window
+
+            spec = np.fft.rfft(work)
             mag = np.abs(spec) / max(1.0, frame.size / 2.0)
             db = 20.0 * np.log10(np.maximum(mag, 1e-8))
-            freqs = np.fft.rfftfreq(frame.size, 1.0 / self.sample_rate)
 
-            target_f = np.linspace(self.f_min, self.f_max, self.waterfall_cols)
-            row = np.interp(target_f, freqs, db, left=self.db_min, right=self.db_min)
-            scaled = (row - self.db_min) / (self.db_max - self.db_min)
-            scaled = np.clip(scaled, 0.0, 1.0)
-            scaled = np.power(scaled, 0.60)
-            row8 = np.round(scaled * 255.0).astype(np.uint8)
+            row = np.interp(self._wf_target_f, self._wf_freqs, db, left=self.db_min, right=self.db_min)
+            scaled = np.clip((row - self.db_min) / (self.db_max - self.db_min), 0.0, 1.0)
+            row8 = np.round(np.power(scaled, 0.60) * 255.0).astype(np.uint8)
 
             self.waterfall[:-1] = self.waterfall[1:]
             self.waterfall[-1] = row8
             self.event_rows[:-1] = self.event_rows[1:]
             self.event_rows[-1] = 0
+            frames_done += 1
+            changed = True
+
+        # If diagnostics fell behind, keep only the newest context instead of
+        # spending multiple GUI frames catching up with stale waterfall data.
+        max_backlog = max(self._wf_fft, self._wf_hop * 2)
+        if self._wf_buffer.size > max_backlog:
+            self._wf_buffer = self._wf_buffer[-max_backlog:]
+
+        if changed:
+            self._wf_image_dirty = True
 
 
     def mark_event(self, kind: str):
@@ -170,6 +229,9 @@ class SpectrumWidget(QWidget):
                         self.event_rows[i] = self.event_rows[-1]
                         break
             self.event_rows[-1] = code
+            # Events are rare, so requesting a repaint here keeps the marker
+            # visible even if audio stops immediately afterwards (for example
+            # a STOP at the end of a WAV file). Qt coalesces duplicate updates.
             self.update()
 
     @staticmethod
@@ -201,25 +263,26 @@ class SpectrumWidget(QWidget):
                 p.drawText(int(x + 4), int(top + 14), label)
 
     def _waterfall_qimage(self) -> QImage:
-        # Blue -> cyan -> yellow -> white palette makes weak and strong signals easy to distinguish.
-        g = self.waterfall.astype(np.uint8)
-        rgb = np.empty((g.shape[0], g.shape[1], 3), dtype=np.uint8)
-        v = g.astype(np.float32) / 255.0
-        rgb[..., 0] = np.clip((v - 0.45) * 2.2, 0, 1) * 255
-        rgb[..., 1] = np.clip(v * 1.5, 0, 1) * 255
-        rgb[..., 2] = np.clip(0.25 + v * 1.4, 0, 1) * 255
-        self._wf_rgb = np.ascontiguousarray(rgb)
-        return QImage(
+        if self._wf_image_cache is not None and not self._wf_image_dirty:
+            return self._wf_image_cache
+
+        # Palette conversion is done only when a new waterfall row arrives.
+        self._wf_rgb = np.ascontiguousarray(self._wf_lut[self.waterfall])
+        self._wf_image_cache = QImage(
             self._wf_rgb.data,
             self._wf_rgb.shape[1],
             self._wf_rgb.shape[0],
             self._wf_rgb.strides[0],
             QImage.Format_RGB888,
         ).copy()
+        self._wf_image_dirty = False
+        return self._wf_image_cache
 
     def paintEvent(self, event):
         p = QPainter(self)
-        p.setRenderHint(QPainter.Antialiasing, True)
+        # Keep grid/text/waterfall raster drawing cheap; enable antialiasing
+        # only for the spectrum curve itself.
+        p.setRenderHint(QPainter.Antialiasing, False)
         r = self.rect()
         p.fillRect(r, self.palette().base())
 
@@ -256,7 +319,11 @@ class SpectrumWidget(QWidget):
         if self.freqs.size and self.db.size:
             path = QPainterPath()
             first = True
-            for hz, db in zip(self.freqs, self.db):
+            # More points than screen pixels do not improve the picture, but
+            # they make QPainter considerably more expensive on small laptops.
+            max_points = max(220, int(w))
+            step = max(1, int(np.ceil(self.freqs.size / max_points)))
+            for hz, db in zip(self.freqs[::step], self.db[::step]):
                 x = self._x(float(hz), left, w)
                 y = self._y(float(db), top, spectrum_h)
                 if first:
@@ -264,8 +331,10 @@ class SpectrumWidget(QWidget):
                     first = False
                 else:
                     path.lineTo(x, y)
+            p.setRenderHint(QPainter.Antialiasing, True)
             p.setPen(QPen(self.palette().highlight().color(), 1.6))
             p.drawPath(path)
+            p.setRenderHint(QPainter.Antialiasing, False)
 
         if self.centroid_hz is not None and self.f_min <= self.centroid_hz <= self.f_max:
             x = self._x(self.centroid_hz, left, w)

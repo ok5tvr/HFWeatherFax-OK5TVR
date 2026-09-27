@@ -40,6 +40,7 @@ Jazyk se přepíná položkou **Jazyk / Language** v ovládacím panelu. Volba s
 - automatická i ruční korekce sklonu,
 - automatická korekce začátku řádku / přetočení obrazu,
 - živé FFT spektrum a waterfall se značkami START / PHASING / IMAGE / STOP,
+- optimalizovaná živá diagnostika (~12,5 FPS) oddělená od dekodéru; pomalejší vykreslení ani CAT polling neblokují příjem faxu,
 - kompaktní rozhraní pro notebooky s kartami **Příjem / CAT / Stanice** a nastavitelnými dělicími panely,
 - živé indikátory **úroveň audia / START 300 Hz / STOP 450 Hz / SYNC**,
 - zapamatování vybrané zvukové karty i rozložení hlavního okna mezi spuštěními,
@@ -99,8 +100,8 @@ V repozitáři je připraven workflow `.github/workflows/windows-release.yml`.
 Pro vydání nové verze stačí například:
 
 ```bash
-git tag v1.10.4
-git push origin v1.10.4
+git tag v1.10.5
+git push origin v1.10.5
 ```
 
 GitHub Actions potom na Windows runneru:
@@ -137,7 +138,7 @@ Dokud nebude do buildu doplněn certifikát pro podepisování kódu, EXE nebude
 
 ### CAT: ruční volba režimu a filtru
 
-Při zapnutém **Číst po 1 s** se aktuální režim a šířka filtru rádia zobrazují ve stavovém řádku CAT, ale **nepřepisují** hodnoty zvolené v polích **Režim** a **Filtr**. Tlačítko **Načíst rádio** je načte z TRX záměrně. Volbu odešlete tlačítkem **Nastavit režim**.
+Při zapnutém **Číst po 1 s** se aktuální režim a šířka filtru rádia zobrazují ve stavovém řádku CAT, ale **nepřepisují** hodnoty zvolené v polích **Režim** a **Filtr**. Tlačítko **Načíst rádio** je načte z TRX záměrně. Volbu odešlete tlačítkem **Nastavit režim**. Automatické čtení po 1 s probíhá od verze 1.10.5 na pracovním vlákně, takže pomalejší sériová odpověď rádia nezastavuje živé spektrum.
 
 
 ### Displej transceiveru

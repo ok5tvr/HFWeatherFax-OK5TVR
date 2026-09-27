@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.10.5 - 2026-09-27
+
+- Optimized **Live signal diagnostics** for smoother operation on smaller/slower notebooks.
+- Spectrum/waterfall rendering is now decoupled from sample-complete fax decoding and refreshed at a bounded ~12.5 FPS; stale display-only audio is dropped instead of building a GUI backlog.
+- Reduced spectrum FFT size to a WEFAX-appropriate maximum of 8192 points, cached FFT windows/frequency axes, and reduced waterfall refresh from 25 to ~12.5 rows/s.
+- Waterfall colour conversion is cached and the spectrum curve is downsampled to approximately one point per screen pixel before painting.
+- Removed redundant raw-audio START/STOP processing and stopped maintaining expensive phasing/history arrays once an image is already locked; APT STOP/RESTART detection remains active.
+- Limited each GUI audio-processing tick to four queued sound-card blocks, preventing one delayed timer tick from monopolizing the event loop.
+- Periodic Hamlib CAT polling now runs in a worker thread. Slow serial CAT replies no longer pause the spectrum/waterfall animation every second.
+- Added serialized Hamlib I/O so background CAT polling cannot collide with manual frequency/mode commands.
+- START and STOP synthetic regression checks continue to pass after the performance changes.
+
 ## 1.10.4 - 2026-09-27
 
 - Added a dedicated **Start image decoding** / **Spustit dekódování obrazu** button.

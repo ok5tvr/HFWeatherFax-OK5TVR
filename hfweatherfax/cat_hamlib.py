@@ -4,6 +4,7 @@ import ctypes
 import ctypes.util
 import os
 import sys
+import threading
 from pathlib import Path
 
 
@@ -74,6 +75,10 @@ class HamlibRig:
         self.rig = None
         self.connected = False
         self._dll_dir_handles = []
+        # Serialize Hamlib/serial I/O. Periodic CAT polling runs in a worker
+        # thread so the GUI does not freeze, while operator commands may still
+        # arrive from the main thread.
+        self._io_lock = threading.RLock()
         self.loaded_path = ""
         self.loaded_dir = ""
         self._load_library()
@@ -342,98 +347,127 @@ class HamlibRig:
         return True
 
     def connect(self, model_id: int, rig_pathname: str, serial_speed: int | None = None, extra_conf: dict[str, str] | None = None):
-        self.disconnect()
-        self.rig = self.lib.rig_init(int(model_id))
-        if not self.rig:
-            raise HamlibError(f"Unknown or unavailable Hamlib model ID {model_id}")
-        try:
-            self._set_conf("rig_pathname", rig_pathname, required=True)
-            if serial_speed:
-                self._set_conf("serial_speed", str(int(serial_speed)), required=False)
-            for key, value in (extra_conf or {}).items():
-                if key.strip():
-                    self._set_conf(key.strip(), value, required=False)
-            rc = self.lib.rig_open(self.rig)
-            self._check(rc, "rig_open")
-            self.connected = True
-        except Exception:
+        with self._io_lock:
+            self.disconnect()
+            self.rig = self.lib.rig_init(int(model_id))
+            if not self.rig:
+                raise HamlibError(f"Unknown or unavailable Hamlib model ID {model_id}")
             try:
-                self.lib.rig_cleanup(self.rig)
+                self._set_conf("rig_pathname", rig_pathname, required=True)
+                if serial_speed:
+                    self._set_conf("serial_speed", str(int(serial_speed)), required=False)
+                for key, value in (extra_conf or {}).items():
+                    if key.strip():
+                        self._set_conf(key.strip(), value, required=False)
+                rc = self.lib.rig_open(self.rig)
+                self._check(rc, "rig_open")
+                self.connected = True
             except Exception:
-                pass
-            self.rig = None
-            self.connected = False
-            raise
-
-    def disconnect(self):
-        if self.rig:
-            try:
-                if self.connected:
-                    self.lib.rig_close(self.rig)
-            finally:
                 try:
                     self.lib.rig_cleanup(self.rig)
+                except Exception:
+                    pass
+                self.rig = None
+                self.connected = False
+                raise
+
+    def disconnect(self):
+        with self._io_lock:
+            if self.rig:
+                try:
+                    if self.connected:
+                        self.lib.rig_close(self.rig)
                 finally:
-                    self.rig = None
-                    self.connected = False
+                    try:
+                        self.lib.rig_cleanup(self.rig)
+                    finally:
+                        self.rig = None
+                        self.connected = False
 
     def _require(self):
         if not self.rig or not self.connected:
             raise HamlibError("CAT is not connected")
 
     def get_frequency(self, vfo: int | None = None) -> float:
-        self._require()
-        value = ctypes.c_double()
-        rc = self.lib.rig_get_freq(self.rig, int(vfo or self.RIG_VFO_CURR), ctypes.byref(value))
-        self._check(rc, "get frequency")
-        return float(value.value)
+        with self._io_lock:
+            self._require()
+            value = ctypes.c_double()
+            rc = self.lib.rig_get_freq(self.rig, int(vfo or self.RIG_VFO_CURR), ctypes.byref(value))
+            self._check(rc, "get frequency")
+            return float(value.value)
 
     def set_frequency(self, hz: float, vfo: int | None = None):
-        self._require()
-        rc = self.lib.rig_set_freq(self.rig, int(vfo or self.RIG_VFO_CURR), float(hz))
-        self._check(rc, "set frequency")
+        with self._io_lock:
+            self._require()
+            rc = self.lib.rig_set_freq(self.rig, int(vfo or self.RIG_VFO_CURR), float(hz))
+            self._check(rc, "set frequency")
 
     def get_mode(self, vfo: int | None = None) -> tuple[str, int]:
-        self._require()
-        mode = ctypes.c_int()
-        width = ctypes.c_long()
-        rc = self.lib.rig_get_mode(self.rig, int(vfo or self.RIG_VFO_CURR), ctypes.byref(mode), ctypes.byref(width))
-        self._check(rc, "get mode")
-        return self.VALUE_TO_MODE.get(int(mode.value), f"0x{int(mode.value):x}"), int(width.value)
+        with self._io_lock:
+            self._require()
+            mode = ctypes.c_int()
+            width = ctypes.c_long()
+            rc = self.lib.rig_get_mode(self.rig, int(vfo or self.RIG_VFO_CURR), ctypes.byref(mode), ctypes.byref(width))
+            self._check(rc, "get mode")
+            return self.VALUE_TO_MODE.get(int(mode.value), f"0x{int(mode.value):x}"), int(width.value)
 
     def set_mode(self, mode_name: str, width_hz: int = -1, vfo: int | None = None):
-        self._require()
-        key = mode_name.upper().strip()
-        if key not in self.MODE_TO_VALUE:
-            raise HamlibError(f"Unsupported mode name: {mode_name}")
-        rc = self.lib.rig_set_mode(
-            self.rig,
-            int(vfo or self.RIG_VFO_CURR),
-            int(self.MODE_TO_VALUE[key]),
-            int(width_hz),
-        )
-        self._check(rc, "set mode")
+        with self._io_lock:
+            self._require()
+            key = mode_name.upper().strip()
+            if key not in self.MODE_TO_VALUE:
+                raise HamlibError(f"Unsupported mode name: {mode_name}")
+            rc = self.lib.rig_set_mode(
+                self.rig,
+                int(vfo or self.RIG_VFO_CURR),
+                int(self.MODE_TO_VALUE[key]),
+                int(width_hz),
+            )
+            self._check(rc, "set mode")
 
     def get_signal_strength_db(self, vfo: int | None = None) -> int | None:
-        """Return calibrated RX strength in dB relative to S9, or None if unsupported.
+        """Return calibrated RX strength in dB relative to S9, or None if unsupported."""
+        with self._io_lock:
+            self._require()
+            if not hasattr(self.lib, "rig_get_level"):
+                return None
+            value = _HamlibValue()
+            rc = self.lib.rig_get_level(
+                self.rig,
+                int(vfo or self.RIG_VFO_CURR),
+                ctypes.c_ulong(self.RIG_LEVEL_STRENGTH),
+                ctypes.byref(value),
+            )
+            if int(rc) != 0:
+                return None
+            return int(value.i)
 
-        Hamlib defines RIG_LEVEL_STRENGTH as an integer dB value relative to S9
-        (S9 == 0 dB). Some backends do not expose an S-meter; that is not a
-        fatal CAT error for HFWeatherFax, so unsupported/error returns None.
-        """
-        self._require()
-        if not hasattr(self.lib, "rig_get_level"):
-            return None
-        value = _HamlibValue()
-        rc = self.lib.rig_get_level(
-            self.rig,
-            int(vfo or self.RIG_VFO_CURR),
-            ctypes.c_ulong(self.RIG_LEVEL_STRENGTH),
-            ctypes.byref(value),
-        )
-        if int(rc) != 0:
-            return None
-        return int(value.i)
+    def get_status_snapshot(self, vfo: int | None = None) -> tuple[float, str, int, int | None]:
+        """Read frequency, mode/filter and S-meter as one serialized CAT transaction."""
+        with self._io_lock:
+            self._require()
+            v = int(vfo or self.RIG_VFO_CURR)
+
+            frequency = ctypes.c_double()
+            rc = self.lib.rig_get_freq(self.rig, v, ctypes.byref(frequency))
+            self._check(rc, "get frequency")
+
+            mode_value = ctypes.c_int()
+            width = ctypes.c_long()
+            rc = self.lib.rig_get_mode(self.rig, v, ctypes.byref(mode_value), ctypes.byref(width))
+            self._check(rc, "get mode")
+            mode = self.VALUE_TO_MODE.get(int(mode_value.value), f"0x{int(mode_value.value):x}")
+
+            strength = None
+            if hasattr(self.lib, "rig_get_level"):
+                value = _HamlibValue()
+                rc = self.lib.rig_get_level(
+                    self.rig, v, ctypes.c_ulong(self.RIG_LEVEL_STRENGTH), ctypes.byref(value)
+                )
+                if int(rc) == 0:
+                    strength = int(value.i)
+
+            return float(frequency.value), mode, int(width.value), strength
 
     def __del__(self):
         try:

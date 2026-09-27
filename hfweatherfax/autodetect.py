@@ -203,35 +203,14 @@ class WefaxAutoDetector:
         return events
 
     def _process_tones(self, x: np.ndarray) -> list[AutoEvent]:
-        events: list[AutoEvent] = []
-        self._tone_buffer = np.concatenate((self._tone_buffer, x))
+        """Legacy raw-audio APT path kept as a no-op.
 
-        while self._tone_buffer.size >= self._tone_frame_n:
-            frame = self._tone_buffer[:self._tone_frame_n]
-            self._tone_buffer = self._tone_buffer[self._tone_hop_n:]
-
-            # In SSB reception the whole audio spectrum moves with receiver
-            # tuning error. Once phasing has calibrated BLACK/WHITE levels we
-            # therefore shift the expected APT START/STOP tones by the same
-            # offset. Keep a nominal fallback for a new station or imperfect
-            # calibration.
-            # START/STOP are deliberately NOT detected from raw audio. In
-            # WEFAX they are 300/450 Hz square-wave modulation rates of the FM
-            # subcarrier, detected after demodulation in _process_apt_modulation.
-            start_conf = 0.0
-
-            # STOP is deliberately NOT detected from raw audio.  In WEFAX it
-            # is a 450 Hz square-wave modulation of the FM subcarrier.  The
-            # correct detector runs on the demodulated signal below.
-            stop_conf = 0.0
-
-            dt = self._tone_hop_n / self.sample_rate
-            self.last_start_confidence = start_conf
-            tone_thr = float(self.profile["tone_thr"])
-            stop_thr = float(self.profile["stop_thr"])
-
-
-        return events
+        WEFAX START/STOP are modulation rates of the demodulated subcarrier,
+        not standalone 300/450 Hz audio tones.  The real detector therefore
+        runs in _process_apt_modulation().  Avoiding the old buffering loop
+        removes needless copies from every sound-card block.
+        """
+        return []
 
     def _tone_confidence(self, frame: np.ndarray, target_hz: float) -> float:
         """Adaptive narrow-band tone score robust to weak signals and noise.
@@ -305,6 +284,14 @@ class WefaxAutoDetector:
         # the demodulated WEFAX subcarrier.  A small decimated stream is enough
         # to identify 300/450 Hz robustly and is independent of SSB tuning.
         events.extend(self._process_apt_modulation(gray))
+
+        # Once the image is locked, phasing/LPM/level history is no longer
+        # needed.  Continuing to concatenate two multi-second history arrays
+        # during the whole fax was one of the largest avoidable CPU/memory-copy
+        # costs in the GUI thread.  APT STOP/RESTART has already been evaluated
+        # above, so returning here does not weaken end/start detection.
+        if self.state == "RECEIVING":
+            return events
 
         self._demod_accum = np.concatenate((self._demod_accum, gray))
         self._gray_total += int(gray.size)
