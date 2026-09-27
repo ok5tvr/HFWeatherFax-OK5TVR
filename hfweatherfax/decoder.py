@@ -41,6 +41,9 @@ class FaxImageDecoder:
     def set_levels(self, black_hz: float, white_hz: float) -> None:
         self.demod.set_levels(black_hz, white_hz)
 
+    def set_filter_options(self, bandpass: bool = True, notch_50: bool = False, notch_100: bool = False) -> None:
+        self.demod.set_filter_options(bandpass, notch_50, notch_100)
+
     def set_initial_sync(self, skip_samples: int | None) -> None:
         self.pending_sync_skip = max(0, int(skip_samples or 0))
 

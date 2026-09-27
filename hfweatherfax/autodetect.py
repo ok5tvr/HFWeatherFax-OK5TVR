@@ -97,6 +97,10 @@ class WefaxAutoDetector:
         self.sensitivity = sensitivity
         self.profile = self._profiles[sensitivity]
 
+    def set_filter_options(self, bandpass: bool = True, notch_50: bool = False, notch_100: bool = False) -> None:
+        """Apply the same audio front-end filtering used by the image decoder."""
+        self._demod.set_filter_options(bandpass, notch_50, notch_100)
+
     def set_modes(self, auto_start_stop: bool, auto_lpm: bool, manual_lpm: int = 120) -> None:
         """Update receive automation without recreating the detector.
 

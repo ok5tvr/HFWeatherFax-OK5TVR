@@ -23,6 +23,8 @@ class SpectrumWidget(QWidget):
         self.tune_text = "No signal"
         self.tune_state = "no_signal"
         self.tune_offset_hz = 0.0
+        self.hum_50_db = None
+        self.hum_100_db = None
         self._smoothed = None
 
         self.f_min = 700.0
@@ -73,6 +75,8 @@ class SpectrumWidget(QWidget):
         self.tune_text = "No signal"
         self.tune_state = "no_signal"
         self.tune_offset_hz = 0.0
+        self.hum_50_db = None
+        self.hum_100_db = None
         self._smoothed = None
         self.waterfall[:] = 0
         self.event_rows[:] = 0
@@ -108,6 +112,18 @@ class SpectrumWidget(QWidget):
 
         self.update()
 
+    @staticmethod
+    def _tone_dbfs(x: np.ndarray, window: np.ndarray, sample_rate: int, target_hz: float) -> float:
+        """Estimate one sinusoidal component as peak dBFS at an exact frequency."""
+        if x.size < 128 or window.size != x.size:
+            return -120.0
+        centered = x.astype(np.float64, copy=False) - float(np.mean(x, dtype=np.float64))
+        w = window.astype(np.float64, copy=False)
+        phase = -2j * np.pi * float(target_hz) * np.arange(x.size, dtype=np.float64) / float(sample_rate)
+        coherent_gain = max(1e-12, float(np.sum(w)))
+        amp = 2.0 * abs(np.sum(centered * w * np.exp(phase))) / coherent_gain
+        return float(20.0 * np.log10(max(amp, 1e-9)))
+
     def _update_spectrum(self, x: np.ndarray):
         max_n = min(x.size, int(self.sample_rate * 0.22))
         x = x[-max_n:]
@@ -123,6 +139,10 @@ class SpectrumWidget(QWidget):
             self._smoothed = None
 
         work = (x - np.mean(x, dtype=np.float64)) * self._spec_window
+        # Measure raw mains components even though the displayed spectrum starts
+        # at 700 Hz. These values are diagnostic only and do not alter decoding.
+        self.hum_50_db = self._tone_dbfs(x, self._spec_window, self.sample_rate, 50.0)
+        self.hum_100_db = self._tone_dbfs(x, self._spec_window, self.sample_rate, 100.0)
         spec = np.fft.rfft(work)
         mag = np.abs(spec) / max(1.0, nfft / 2.0)
         db = 20.0 * np.log10(np.maximum(mag, 1e-8))

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import numpy as np
-from scipy.signal import butter, sosfilt, resample
+from scipy.signal import butter, iirnotch, resample, sosfilt, tf2sos
 
 
 class FaxDemodulator:
@@ -28,9 +28,19 @@ class FaxDemodulator:
         self.center_hz = float(center_hz)
 
         nyq = self.sample_rate * 0.5
-        lo = max(50.0, band_low) / nyq
-        hi = min(nyq - 50.0, band_high) / nyq
+        self.band_low = float(max(50.0, band_low))
+        self.band_high = float(min(nyq - 50.0, band_high))
+        lo = self.band_low / nyq
+        hi = self.band_high / nyq
         self.sos = butter(4, [lo, hi], btype="bandpass", output="sos")
+
+        # The WEFAX band-pass has always been part of the demodulator.  From
+        # v1.10.6 it is operator-selectable and optional 50/100 Hz notches can
+        # be enabled for diagnostic comparison with mains-hum contaminated audio.
+        self.bandpass_enabled = True
+        self.notch_50_enabled = False
+        self.notch_100_enabled = False
+        self._hum_sos = np.empty((0, 6), dtype=np.float64)
 
         # After mixing 1900 Hz to DC, the WEFAX deviation occupies roughly
         # +/-400 Hz. A 1.2 kHz low-pass keeps image detail while strongly
@@ -39,21 +49,61 @@ class FaxDemodulator:
         self.bb_sos = butter(4, lp_hz / nyq, btype="lowpass", output="sos")
 
         self._zi = None
+        self._hum_zi = None
         self._bb_zi = None
         self._osc_phase = 0.0
         self._last_complex = None
+        self._rebuild_hum_filter()
 
     def reset(self) -> None:
         self._zi = None
+        self._hum_zi = None
         self._bb_zi = None
         self._osc_phase = 0.0
         self._last_complex = None
 
+    def _rebuild_hum_filter(self) -> None:
+        sections = []
+        nyq = self.sample_rate * 0.5
+        for enabled, hz in ((self.notch_50_enabled, 50.0), (self.notch_100_enabled, 100.0)):
+            if enabled and hz < nyq * 0.95:
+                # Q=30 is narrow enough not to disturb wanted WEFAX audio while
+                # suppressing a stable mains tone and its first harmonic.
+                b, a = iirnotch(hz, 30.0, fs=self.sample_rate)
+                sections.append(tf2sos(b, a))
+        self._hum_sos = np.vstack(sections) if sections else np.empty((0, 6), dtype=np.float64)
+        self._hum_zi = None
+
+    def set_filter_options(self, bandpass: bool = True, notch_50: bool = False, notch_100: bool = False) -> None:
+        bandpass = bool(bandpass)
+        notch_50 = bool(notch_50)
+        notch_100 = bool(notch_100)
+        changed = (
+            bandpass != self.bandpass_enabled
+            or notch_50 != self.notch_50_enabled
+            or notch_100 != self.notch_100_enabled
+        )
+        self.bandpass_enabled = bandpass
+        self.notch_50_enabled = notch_50
+        self.notch_100_enabled = notch_100
+        if changed:
+            self._rebuild_hum_filter()
+            self._zi = None
+            self._bb_zi = None
+            self._last_complex = None
+
     def _bandpass(self, x: np.ndarray) -> np.ndarray:
         x = np.asarray(x, dtype=np.float64)
+        y = x
+        if self._hum_sos.size:
+            if self._hum_zi is None:
+                self._hum_zi = np.zeros((self._hum_sos.shape[0], 2), dtype=np.float64)
+            y, self._hum_zi = sosfilt(self._hum_sos, y, zi=self._hum_zi)
+        if not self.bandpass_enabled:
+            return y
         if self._zi is None:
             self._zi = np.zeros((self.sos.shape[0], 2), dtype=np.float64)
-        y, self._zi = sosfilt(self.sos, x, zi=self._zi)
+        y, self._zi = sosfilt(self.sos, y, zi=self._zi)
         return y
 
     def _baseband(self, y: np.ndarray) -> np.ndarray:

@@ -100,8 +100,8 @@ V repozitáři je připraven workflow `.github/workflows/windows-release.yml`.
 Pro vydání nové verze stačí například:
 
 ```bash
-git tag v1.10.5
-git push origin v1.10.5
+git tag v1.10.6
+git push origin v1.10.6
 ```
 
 GitHub Actions potom na Windows runneru:
@@ -148,3 +148,8 @@ Karta **CAT / rádio** obsahuje živý displej skutečného stavu transceiveru: 
 ### Ruční spuštění dekódování obrazu
 
 Tlačítko **Spustit dekódování obrazu** umožní okamžitě zahájit raster při právě zvoleném LPM (výchozí 120), i když automatika nezachytila START nebo phasing. Je-li zapnutý Automatický START / STOP, automatická detekce STOP zůstává aktivní a může obraz normálně ukončit a uložit. Pokud už jsou v obrazu řádky, ruční start na ně naváže; pro nový fax nejprve použijte **Vymazat obrázek**.
+
+
+### Potlačení síťového brumu a diagnostika 50/100 Hz
+
+V kartě **Příjem** je v nastavení/korekcích dostupný standardní **WEFAX band-pass 1000-2800 Hz** (ve výchozím stavu zapnutý) a volitelné notch filtry **50 Hz** a **100 Hz**. Live diagnostika zobrazuje úroveň obou síťových složek v dBFS a stav OK / zvýšený / HUM. Hodnoty jsou měřeny z nezpracovaného audio vstupu, takže slouží k ověření zdroje rušení; samotný obrazový dekodér nadále používá vlastní stavové DSP filtry.

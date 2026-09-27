@@ -331,6 +331,9 @@ class MainWindow(QMainWindow):
             db = float(getattr(self, "last_audio_db", -120.0))
             self.level.setText(self._tr("level") if db <= -119.0 else self._tr("level_value", db=db))
 
+        if hasattr(self, "hum_50_value"):
+            self._update_hum_diagnostics()
+
         if hasattr(self, "status"):
             if self.audio is not None:
                 if self.image_lines:
@@ -509,6 +512,7 @@ class MainWindow(QMainWindow):
             audio = audio[-max_samples:]
 
         self.spectrum.update_audio(audio, self._diagnostic_sample_rate)
+        self._update_hum_diagnostics()
         peak = "--" if self.spectrum.peak_hz is None else f"{self.spectrum.peak_hz:.0f} Hz"
         if (self.auto_start_stop.isChecked() or self.auto_lpm.isChecked()) and self.autodetector.state == "RECEIVING":
             tuning = self._tr("image_active_tuning_disabled")
@@ -556,6 +560,48 @@ class MainWindow(QMainWindow):
         if hasattr(self, "sync_quality"):
             self._set_percent_meter(self.sync_quality, sync_conf)
 
+    def _hum_state(self, db: float | None) -> tuple[str, str]:
+        if db is None or not np.isfinite(db) or self.last_audio_db <= -90.0:
+            return self._tr("hum_no_signal"), "#9aa0a6"
+        # Use both absolute level and level relative to total audio. This is an
+        # operator diagnostic, not a hard decoder decision.
+        rel = float(db) - float(self.last_audio_db)
+        if db >= -35.0 or rel >= -7.0:
+            return self._tr("hum_high"), "#e24a4a"
+        if db >= -50.0 or rel >= -14.0:
+            return self._tr("hum_elevated"), "#e0a52b"
+        return self._tr("hum_ok"), "#4caf50"
+
+    def _update_hum_diagnostics(self) -> None:
+        if not hasattr(self, "hum_50_value"):
+            return
+        for hz, widget, attr in (
+            (50.0, self.hum_50_value, "hum_50_db"),
+            (100.0, self.hum_100_value, "hum_100_db"),
+        ):
+            db = getattr(self.spectrum, attr, None) if hasattr(self, "spectrum") else None
+            if db is None or not np.isfinite(db) or self.last_audio_db <= -90.0:
+                widget.setText(f"{hz:.0f} Hz: --")
+                widget.setStyleSheet("color: #9aa0a6;")
+                continue
+            state, color = self._hum_state(float(db))
+            widget.setText(self._tr("hum_value", hz=hz, db=float(db), state=state))
+            widget.setStyleSheet(f"color: {color}; font-weight: 600;")
+
+    def _current_filter_options(self) -> tuple[bool, bool, bool]:
+        return (
+            bool(getattr(self, "wefax_bandpass", None) and self.wefax_bandpass.isChecked()),
+            bool(getattr(self, "notch_50", None) and self.notch_50.isChecked()),
+            bool(getattr(self, "notch_100", None) and self.notch_100.isChecked()),
+        )
+
+    def _filter_options_changed(self, _checked: bool | None = None) -> None:
+        bandpass, notch_50, notch_100 = self._current_filter_options()
+        if hasattr(self, "decoder") and self.decoder is not None:
+            self.decoder.set_filter_options(bandpass, notch_50, notch_100)
+        if hasattr(self, "autodetector") and self.autodetector is not None:
+            self.autodetector.set_filter_options(bandpass, notch_50, notch_100)
+
     def _restore_ui_settings(self) -> None:
         geometry = self.settings.value("ui/geometry")
         if geometry is not None:
@@ -597,6 +643,13 @@ class MainWindow(QMainWindow):
             self.auto_start_stop.setChecked(self._settings_bool("receive/auto_start_stop", True))
         if hasattr(self, "auto_lpm"):
             self.auto_lpm.setChecked(self._settings_bool("receive/auto_lpm", False))
+        if hasattr(self, "wefax_bandpass"):
+            self.wefax_bandpass.setChecked(self._settings_bool("receive/wefax_bandpass", True))
+        if hasattr(self, "notch_50"):
+            self.notch_50.setChecked(self._settings_bool("receive/notch_50", False))
+        if hasattr(self, "notch_100"):
+            self.notch_100.setChecked(self._settings_bool("receive/notch_100", False))
+        self._filter_options_changed()
         self._receive_mode_changed()
 
     def _save_ui_settings(self) -> None:
@@ -613,6 +666,13 @@ class MainWindow(QMainWindow):
             self.settings.setValue("receive/auto_start_stop", self.auto_start_stop.isChecked())
         if hasattr(self, "auto_lpm"):
             self.settings.setValue("receive/auto_lpm", self.auto_lpm.isChecked())
+
+        if hasattr(self, "wefax_bandpass"):
+            self.settings.setValue("receive/wefax_bandpass", self.wefax_bandpass.isChecked())
+        if hasattr(self, "notch_50"):
+            self.settings.setValue("receive/notch_50", self.notch_50.isChecked())
+        if hasattr(self, "notch_100"):
+            self.settings.setValue("receive/notch_100", self.notch_100.isChecked())
 
     def _audio_device_identity(self):
         if not hasattr(self, "device") or self.device.currentIndex() < 0:
@@ -934,6 +994,26 @@ class MainWindow(QMainWindow):
         self.shift_right_1_btn.clicked.connect(lambda: self.nudge_image(1.0))
         self.shift_right_5_btn.clicked.connect(lambda: self.nudge_image(5.0))
         self.line_start_status = QLabel(self._tr("line_start_not_evaluated"))
+
+        self.interference_box = self._group("interference_filters")
+        ifg = QGridLayout(self.interference_box)
+        ifg.setContentsMargins(6, 5, 6, 5)
+        ifg.setHorizontalSpacing(8)
+        ifg.setVerticalSpacing(3)
+        self.wefax_bandpass = self._check("wefax_bandpass")
+        self.wefax_bandpass.setChecked(True)
+        self.notch_50 = self._check("notch_50")
+        self.notch_100 = self._check("notch_100")
+        self.filter_hint = self._label("interference_filter_hint")
+        self.filter_hint.setWordWrap(True)
+        self.wefax_bandpass.toggled.connect(self._filter_options_changed)
+        self.notch_50.toggled.connect(self._filter_options_changed)
+        self.notch_100.toggled.connect(self._filter_options_changed)
+        ifg.addWidget(self.wefax_bandpass, 0, 0, 1, 2)
+        ifg.addWidget(self.notch_50, 1, 0)
+        ifg.addWidget(self.notch_100, 1, 1)
+        ifg.addWidget(self.filter_hint, 2, 0, 1, 2)
+
         self.auto_slant_status.setWordWrap(True)
         self.level_cal_status.setWordWrap(True)
         self.line_start_status.setWordWrap(True)
@@ -955,6 +1035,7 @@ class MainWindow(QMainWindow):
         shift_row.addWidget(self.shift_right_5_btn)
         cg.addLayout(shift_row, 5, 0, 1, 4)
         cg.addWidget(self.line_start_status, 6, 0, 1, 4)
+        cg.addWidget(self.interference_box, 7, 0, 1, 4)
 
         image_box = self._group("images")
         ig = QVBoxLayout(image_box)
@@ -1091,6 +1172,18 @@ class MainWindow(QMainWindow):
         meters.addWidget(self.hsync_quality_label, 2, 2)
         meters.addWidget(self.hsync_quality, 2, 3)
         dg.addLayout(meters)
+
+        hum_row = QHBoxLayout()
+        hum_caption = self._label("hum_diagnostics")
+        hum_caption.setStyleSheet("font-weight: 600;")
+        self.hum_50_value = QLabel("50 Hz: --")
+        self.hum_100_value = QLabel("100 Hz: --")
+        hum_row.addWidget(hum_caption)
+        hum_row.addStretch(1)
+        hum_row.addWidget(self.hum_50_value)
+        hum_row.addSpacing(12)
+        hum_row.addWidget(self.hum_100_value)
+        dg.addLayout(hum_row)
 
         self.spectrum = SpectrumWidget()
         self.spectrum.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -1946,6 +2039,8 @@ class MainWindow(QMainWindow):
         )
         self.decoder.set_phase_percent(self.phase.value())
         self.decoder.set_slant_ppm(self.slant.value())
+        bandpass, notch_50, notch_100 = self._current_filter_options()
+        self.decoder.set_filter_options(bandpass, notch_50, notch_100)
         if hasattr(self, "slant_estimator"):
             self.slant_estimator.reset(self.decoder.width)
 
@@ -1966,6 +2061,7 @@ class MainWindow(QMainWindow):
                 auto_lpm=self.auto_lpm.isChecked(),
                 manual_lpm=int(self.lpm.currentText()),
             )
+            self.autodetector.set_filter_options(*self._current_filter_options())
             self.slant_estimator = AutoSlantEstimator(self.decoder.width)
             self.audio = LiveAudioInput(device=dev, sample_rate=sr)
             self.audio.start()
@@ -2053,6 +2149,7 @@ class MainWindow(QMainWindow):
                 auto_lpm=self.auto_lpm.isChecked(),
                 manual_lpm=int(self.lpm.currentText()),
             )
+            self.autodetector.set_filter_options(*self._current_filter_options())
             self.slant_estimator = AutoSlantEstimator(self.decoder.width)
             self.image_capture_active = not (
                 self.auto_start_stop.isChecked() or self.auto_lpm.isChecked()
@@ -2094,6 +2191,8 @@ class MainWindow(QMainWindow):
         if hasattr(self, "_diagnostic_audio_chunks"):
             self._diagnostic_audio_chunks.clear()
         self._update_signal_diagnostics(-120.0)
+        if hasattr(self, "hum_50_value"):
+            self._update_hum_diagnostics()
         self.auto_realign_done = False
 
     def clear_image(self):

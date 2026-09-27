@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.10.6 - 2026-09-27
+
+- Exposed the decoder's existing **WEFAX 1000-2800 Hz band-pass** as an operator-selectable option; it remains enabled by default.
+- Added optional stateful **50 Hz** and **100 Hz notch filters** for controlled comparison when mains hum is suspected.
+- Filter choices are applied consistently to both the image decoder and START/STOP/LPM detector and are remembered between launches.
+- Added live raw-audio mains-hum diagnostics showing exact **50 Hz** and **100 Hz** component levels in dBFS.
+- Added simple OK / elevated / HUM indication so suspected power-line contamination can be correlated with visible image bands.
+- HUM measurement is diagnostic only and does not change the decoder thresholds.
+
 ## 1.10.5 - 2026-09-27
 
 - Optimized **Live signal diagnostics** for smoother operation on smaller/slower notebooks.

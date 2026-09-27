@@ -108,8 +108,8 @@ The repository contains `.github/workflows/windows-release.yml`.
 A tagged version such as:
 
 ```bash
-git tag v1.10.5
-git push origin v1.10.5
+git tag v1.10.6
+git push origin v1.10.6
 ```
 
 starts a Windows build on GitHub Actions. The workflow builds the EXE, generates `SHA256SUMS.txt`, uploads a build artifact and publishes the files to the matching GitHub Release.
@@ -151,3 +151,8 @@ The **CAT / radio** tab includes a live display of the rig state: frequency, mod
 ### Manual image decoding start
 
 The **Start image decoding** button immediately begins raster capture at the currently selected LPM (120 by default), even if automatic START or phasing acquisition was missed. When Automatic START / STOP is enabled, automatic STOP detection remains active and can finish and save the image normally. Existing decoded lines are preserved when capture is manually resumed; use **Clear image** first for a new fax.
+
+
+### Mains-hum suppression and 50/100 Hz diagnostics
+
+The **Receive** settings now expose the decoder's standard **WEFAX 1000-2800 Hz band-pass** (enabled by default) plus optional **50 Hz** and **100 Hz** notch filters. Live diagnostics show both raw-audio mains components in dBFS with OK / elevated / HUM status. The measurements are taken from the unprocessed input so they can be correlated with visible image banding; the image decoder itself continues to use stateful DSP filtering.
