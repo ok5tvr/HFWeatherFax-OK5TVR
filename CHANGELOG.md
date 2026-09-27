@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.3 - 2026-09-27
+
+- Renamed the station action to **Tune frequency via CAT** / **Naladit frekvenci přes CAT** so its behavior is explicit.
+- The action now contains its own frequency-only path and never sends modulation or filter bandwidth.
+- Double-clicking a station follows the same frequency-only CAT behavior.
+
 ## 1.9.2 - 2026-09-27
 
 - Station-library actions now transfer/tune **frequency only**.

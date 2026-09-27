@@ -932,11 +932,19 @@ class MainWindow(QMainWindow):
         f=self.station_frequency.currentData() if hasattr(self,"station_frequency") else None
         if station is None or not f:
             return
-        self.copy_station_to_cat_field()
+
+        # "Tune frequency via CAT" is intentionally frequency-only.
+        # A station-library action must never change the operator-selected
+        # modulation or filter bandwidth. Those are sent only by the separate
+        # CAT mode/filter control.
+        cat_khz=float(f.get("cat_khz", f.get("khz", 0.0)))
+        self.cat_freq.blockSignals(True)
+        self.cat_freq.setValue(cat_khz/1000.0)
+        self.cat_freq.blockSignals(False)
+        self.cat_freq_dirty=True
+
         if self.cat is not None and self.cat.connected:
             try:
-                # Library tuning deliberately sends only frequency.
-                # Modulation and filter remain under manual CAT control.
                 self.set_cat_frequency()
                 self.cat_status.setText(self._tr(
                     "cat_tuned_station",
