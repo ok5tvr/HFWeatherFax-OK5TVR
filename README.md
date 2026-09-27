@@ -29,6 +29,7 @@ Use the **Language / Jazyk** selector in the program controls. The selected lang
 - 1500 Hz BLACK / 2300 Hz WHITE FM-subcarrier decoding,
 - IOC 288 / 576 and LPM 60 / 90 / 120 / 240,
 - automatic 300 Hz START and 450 Hz STOP detection,
+- recovery from a missed STOP: a new START finalizes the previous fax and begins a new image,
 - automatic phasing / LPM and horizontal synchronization,
 - automatic BLACK/WHITE calibration,
 - automatic and manual slant correction,
@@ -36,9 +37,10 @@ Use the **Language / Jazyk** selector in the program controls. The selected lang
 - live FFT spectrum and scrolling waterfall with START / PHASING / IMAGE / STOP markers,
 - automatic PNG saving,
 - direct Hamlib CAT control without `rigctld`,
+- persistent Hamlib path and rig/CAT settings across restarts,
 - Hamlib radio model list loaded from the DLL,
 - station database, country/service/band filters, favorites and UTC schedules,
-- one-click station frequency transfer/tuning through CAT.
+- one-click station frequency transfer/tuning through CAT; station-library actions do not change modulation or filter bandwidth.
 
 ## Station database
 
@@ -97,8 +99,8 @@ The repository contains `.github/workflows/windows-release.yml`.
 A tagged version such as:
 
 ```bash
-git tag v1.8.0
-git push origin v1.8.0
+git tag v1.9.2
+git push origin v1.9.2
 ```
 
 starts a Windows build on GitHub Actions. The workflow builds the EXE, generates `SHA256SUMS.txt`, uploads a build artifact and publishes the files to the matching GitHub Release.
@@ -127,3 +129,8 @@ CHANGELOG.md                  version history
 ## Notes about Windows SmartScreen
 
 The generated EXE is not code-signed unless a code-signing certificate is added to the build process. Windows may therefore display a SmartScreen warning for a newly downloaded Release even when its SHA-256 matches the published checksum. Code signing can be added later without changing the program architecture.
+
+### CAT: manual mode and filter selection
+
+With **Poll 1 s** enabled, the rig's actual mode and filter width are shown in the CAT status line but do **not overwrite** the values selected in **Mode** and **Filter**. Use **Read rig** to intentionally load them from the transceiver and **Set mode** to send your selected values.
+

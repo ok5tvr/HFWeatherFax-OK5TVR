@@ -35,9 +35,9 @@ class WefaxAutoDetector:
         self.sample_rate = int(sample_rate)
         self.sensitivity = sensitivity if sensitivity in ("Normal", "High", "Weak signal") else "Normal"
         self._profiles = {
-            "Normal": {"tone_thr": 0.62, "confirm_s": 1.00, "stop_thr": 0.62, "stop_confirm_s": 1.20, "phase_thr": 0.48, "fallback_thr": 0.67, "spread": 28.0},
-            "High": {"tone_thr": 0.54, "confirm_s": 1.10, "stop_thr": 0.54, "stop_confirm_s": 1.35, "phase_thr": 0.42, "fallback_thr": 0.60, "spread": 22.0},
-            "Weak signal": {"tone_thr": 0.44, "confirm_s": 1.50, "stop_thr": 0.46, "stop_confirm_s": 1.65, "phase_thr": 0.36, "fallback_thr": 0.54, "spread": 16.0},
+            "Normal": {"tone_thr": 0.62, "confirm_s": 1.00, "stop_thr": 0.58, "stop_confirm_s": 1.00, "phase_thr": 0.48, "fallback_thr": 0.67, "spread": 28.0},
+            "High": {"tone_thr": 0.54, "confirm_s": 1.10, "stop_thr": 0.50, "stop_confirm_s": 1.15, "phase_thr": 0.42, "fallback_thr": 0.60, "spread": 22.0},
+            "Weak signal": {"tone_thr": 0.44, "confirm_s": 1.50, "stop_thr": 0.42, "stop_confirm_s": 1.45, "phase_thr": 0.36, "fallback_thr": 0.54, "spread": 16.0},
         }
         self.profile = self._profiles[self.sensitivity]
         self.state = "WAIT_START"
@@ -52,7 +52,7 @@ class WefaxAutoDetector:
 
         # APT START/STOP are modulation rates of the WEFAX subcarrier, not
         # standalone low-frequency audio tones.  Detect them after FM demodulation.
-        self._apt_rate = 2000.0
+        self._apt_rate = 4000.0
         self._apt_block = max(1, int(round(self.sample_rate / self._apt_rate)))
         self._apt_accum = np.empty(0, dtype=np.float32)
         self._apt_series = np.empty(0, dtype=np.float32)
@@ -68,6 +68,10 @@ class WefaxAutoDetector:
         self._apt_last_processed = 0
         self._start_seconds = 0.0
         self._stop_seconds = 0.0
+        # Guard against re-detecting the same START tone immediately after
+        # phasing lock. New START detection while RECEIVING is enabled only
+        # after this short guard expires.
+        self._restart_guard_s = 0.0
         self.last_start_confidence = 0.0
         self.last_stop_confidence = 0.0
 
@@ -101,7 +105,7 @@ class WefaxAutoDetector:
 
         # APT START/STOP are modulation rates of the WEFAX subcarrier, not
         # standalone low-frequency audio tones.  Detect them after FM demodulation.
-        self._apt_rate = 2000.0
+        self._apt_rate = 4000.0
         self._apt_block = max(1, int(round(self.sample_rate / self._apt_rate)))
         self._apt_accum = np.empty(0, dtype=np.float32)
         self._apt_series = np.empty(0, dtype=np.float32)
@@ -112,6 +116,10 @@ class WefaxAutoDetector:
         self._apt_last_processed = 0
         self._start_seconds = 0.0
         self._stop_seconds = 0.0
+        # Guard against re-detecting the same START tone immediately after
+        # phasing lock. New START detection while RECEIVING is enabled only
+        # after this short guard expires.
+        self._restart_guard_s = 0.0
         self.last_start_confidence = 0.0
         self.last_stop_confidence = 0.0
         self._demod.reset()
@@ -296,6 +304,11 @@ class WefaxAutoDetector:
                     self.tuning_offset_hz = float(np.clip(midpoint - 1900.0, -650.0, 650.0))
                 self.locked_phasing_confidence = conf
                 self.last_hsync_confidence = hsync_conf or 0.0
+                # The APT history may still contain the START that led to this
+                # lock. Drop it so it cannot be mistaken for a second START.
+                self._apt_accum = np.empty(0, dtype=np.float32)
+                self._apt_series = np.empty(0, dtype=np.float32)
+                self._restart_guard_s = 2.0
                 events.append(AutoEvent(
                     "LOCK", f"Phasing locked: {lpm} LPM", lpm=lpm, confidence=conf,
                     sync_skip=sync_skip, line_samples=line_n, phase_percent=phase_pct,
@@ -321,6 +334,11 @@ class WefaxAutoDetector:
                     self.tuning_offset_hz = float(np.clip(midpoint - 1900.0, -650.0, 650.0))
                 self.locked_phasing_confidence = conf
                 self.last_hsync_confidence = hsync_conf or 0.0
+                # The APT history may still contain the START that led to this
+                # lock. Drop it so it cannot be mistaken for a second START.
+                self._apt_accum = np.empty(0, dtype=np.float32)
+                self._apt_series = np.empty(0, dtype=np.float32)
+                self._restart_guard_s = 2.0
                 events.append(AutoEvent(
                     "LOCK", f"Phasing-only lock: {lpm} LPM", lpm=lpm, confidence=conf,
                     sync_skip=sync_skip, line_samples=line_n, phase_percent=phase_pct,
@@ -373,6 +391,13 @@ class WefaxAutoDetector:
         return None, None, 0.0
 
     def _process_apt_modulation(self, gray: np.ndarray) -> list[AutoEvent]:
+        """Detect APT START/STOP modulation, including a new START mid-image.
+
+        A missed STOP must not make two consecutive faxes grow into one long
+        raster. While RECEIVING we therefore keep watching for a confirmed
+        300 Hz START. A new START emits RESTART, switches back to PHASING and
+        lets the UI finalize the previous image before the next fax begins.
+        """
         events: list[AutoEvent] = []
         g = np.asarray(gray, dtype=np.float32).reshape(-1)
         if g.size == 0:
@@ -389,89 +414,144 @@ class WefaxAutoDetector:
             self._apt_accum = self._apt_accum[take:]
             self._apt_series = np.concatenate((self._apt_series, reduced))
 
-        max_len = int(round(self._apt_rate * 4.0))
+        # Keep enough history for a short responsive window and a longer
+        # confirmation window. The longer view materially helps weak STOPs.
+        max_len = int(round(self._apt_rate * 6.0))
         if self._apt_series.size > max_len:
             self._apt_series = self._apt_series[-max_len:]
 
-        # Evaluate on about 0.75 s; refresh often, but integrate confidence in
-        # time before declaring STOP. This is much harder to false-trigger on
-        # chart texture than a single FFT window.
-        frame_n = int(round(self._apt_rate * 0.75))
-        if self._apt_series.size < frame_n:
+        short_n = int(round(self._apt_rate * 0.75))
+        if self._apt_series.size < short_n:
             return events
 
-        frame = self._apt_series[-frame_n:]
-        start_conf = self._apt_modulation_confidence(frame, 300.0)
-        stop_conf = self._apt_modulation_confidence(frame, 450.0)
+        short = self._apt_series[-short_n:]
+        start_short = self._apt_modulation_confidence(short, 300.0)
+        stop_short = self._apt_modulation_confidence(short, 450.0)
+
+        long_n = int(round(self._apt_rate * 1.50))
+        if self._apt_series.size >= long_n:
+            long_frame = self._apt_series[-long_n:]
+            start_long = self._apt_modulation_confidence(long_frame, 300.0)
+            stop_long = self._apt_modulation_confidence(long_frame, 450.0)
+            # Use the best supported view, but slightly discount the long
+            # window so a recent frequency change remains responsive.
+            start_conf = max(start_short, 0.95 * start_long)
+            stop_conf = max(stop_short, 0.95 * stop_long)
+        else:
+            start_conf = start_short
+            stop_conf = stop_short
+
         self.last_start_confidence = start_conf
         self.last_stop_confidence = stop_conf
 
         # Estimate elapsed new demodulated time since the previous evaluation.
         # push_audio cadence can vary (live vs WAV), so cap each update.
         dt = min(0.35, max(0.04, g.size / float(self.sample_rate)))
+        self._restart_guard_s = max(0.0, self._restart_guard_s - dt)
 
         if self.state == "WAIT_START":
             thr = float(self.profile["tone_thr"])
-            if start_conf >= thr:
+            if start_conf >= thr and start_conf >= stop_conf + 0.06:
                 self._start_seconds += dt
                 self.last_tone = f"APT START {start_conf:.0%}"
             else:
                 self._start_seconds = max(0.0, self._start_seconds - 1.8 * dt)
 
             if self._start_seconds >= float(self.profile["confirm_s"]):
-                self.state = "PHASING"
-                self.detected_lpm = None
-                self.locked_phasing_confidence = 0.0
-                self.last_hsync_confidence = 0.0
-                self._phase_series = np.empty(0, dtype=np.float32)
-                self._phase_lock_count = 0
-                self._phase_only_lock_count = 0
-                self._demod_accum = np.empty(0, dtype=np.float32)
-                self._gray_history = np.empty(0, dtype=np.float32)
-                self._freq_history = np.empty(0, dtype=np.float32)
-                self._gray_total = 0
-                self._start_seconds = 0.0
+                self._enter_phasing()
                 events.append(AutoEvent(
                     "START", "APT START 300 Hz modulation detected",
                     confidence=start_conf,
                 ))
+            return events
 
         if self.state == "RECEIVING":
-            thr = float(self.profile["stop_thr"])
-            if stop_conf >= thr:
+            # First priority: a fresh START. This is the safety net for a STOP
+            # that was faded or missed. Require a slightly stronger/longer
+            # confirmation than when idle so ordinary chart detail cannot split
+            # an image too easily.
+            restart_thr = min(0.92, float(self.profile["tone_thr"]) + 0.06)
+            restart_confirm = float(self.profile["confirm_s"]) + 0.25
+            if (self._restart_guard_s <= 0.0 and
+                    start_conf >= restart_thr and
+                    start_conf >= stop_conf + 0.10):
+                self._start_seconds += dt
+                self.last_tone = f"APT NEW START {start_conf:.0%}"
+            else:
+                self._start_seconds = max(0.0, self._start_seconds - 2.0 * dt)
+
+            if self._start_seconds >= restart_confirm:
+                old_lpm = self.detected_lpm
+                self._enter_phasing()
+                events.append(AutoEvent(
+                    "RESTART", "New APT START detected while receiving",
+                    lpm=old_lpm, confidence=start_conf,
+                ))
+                return events
+
+            # STOP remains active in parallel. A slightly lower threshold plus
+            # the 1.5 s confidence window makes weak/faded STOP tones easier to
+            # catch without relying on a single FFT frame.
+            stop_thr = float(self.profile["stop_thr"])
+            if stop_conf >= stop_thr and stop_conf >= start_conf + 0.04:
                 self._stop_seconds += dt
                 self.last_tone = f"APT STOP {stop_conf:.0%}"
+            elif stop_conf >= max(0.30, stop_thr - 0.08) and stop_conf >= start_conf + 0.08:
+                self._stop_seconds += 0.45 * dt
             else:
-                # Leaky integration tolerates brief fades without letting a
-                # historical near-match accumulate forever.
-                self._stop_seconds = max(0.0, self._stop_seconds - 1.8 * dt)
+                self._stop_seconds = max(0.0, self._stop_seconds - 1.25 * dt)
 
             if self._stop_seconds >= float(self.profile["stop_confirm_s"]):
                 old_lpm = self.detected_lpm
-                self.state = "WAIT_START"
-                self.detected_lpm = None
-                self.last_phasing_confidence = 0.0
-                self.locked_phasing_confidence = 0.0
-                self.last_hsync_confidence = 0.0
-                self._stop_seconds = 0.0
-                self._phase_series = np.empty(0, dtype=np.float32)
-                self._phase_lock_count = 0
-                self._phase_only_lock_count = 0
-                self._demod.reset()
-                self._demod_accum = np.empty(0, dtype=np.float32)
-                self._gray_history = np.empty(0, dtype=np.float32)
-                self._freq_history = np.empty(0, dtype=np.float32)
-                self._gray_total = 0
-                self._apt_accum = np.empty(0, dtype=np.float32)
-                self._apt_series = np.empty(0, dtype=np.float32)
+                self._enter_wait_start()
                 events.append(AutoEvent(
                     "STOP", "APT STOP 450 Hz modulation detected",
                     lpm=old_lpm, confidence=stop_conf,
                 ))
-        else:
-            self._stop_seconds = 0.0
+            return events
 
+        # During PHASING we do not integrate START/STOP decisions.
+        self._start_seconds = 0.0
+        self._stop_seconds = 0.0
         return events
+
+    def _enter_phasing(self) -> None:
+        self.state = "PHASING"
+        self.detected_lpm = None
+        self.locked_phasing_confidence = 0.0
+        self.last_hsync_confidence = 0.0
+        self._phase_series = np.empty(0, dtype=np.float32)
+        self._phase_lock_count = 0
+        self._phase_only_lock_count = 0
+        self._demod_accum = np.empty(0, dtype=np.float32)
+        self._gray_history = np.empty(0, dtype=np.float32)
+        self._freq_history = np.empty(0, dtype=np.float32)
+        self._gray_total = 0
+        self._start_seconds = 0.0
+        self._stop_seconds = 0.0
+        self._restart_guard_s = 0.0
+        self._apt_accum = np.empty(0, dtype=np.float32)
+        self._apt_series = np.empty(0, dtype=np.float32)
+
+    def _enter_wait_start(self) -> None:
+        self.state = "WAIT_START"
+        self.detected_lpm = None
+        self.last_phasing_confidence = 0.0
+        self.locked_phasing_confidence = 0.0
+        self.last_hsync_confidence = 0.0
+        self._start_seconds = 0.0
+        self._stop_seconds = 0.0
+        self._restart_guard_s = 0.0
+        self._phase_series = np.empty(0, dtype=np.float32)
+        self._phase_lock_count = 0
+        self._phase_only_lock_count = 0
+        self._demod.reset()
+        self._demod_accum = np.empty(0, dtype=np.float32)
+        self._gray_history = np.empty(0, dtype=np.float32)
+        self._freq_history = np.empty(0, dtype=np.float32)
+        self._gray_total = 0
+        self._apt_accum = np.empty(0, dtype=np.float32)
+        self._apt_series = np.empty(0, dtype=np.float32)
 
     def _apt_modulation_confidence(self, frame: np.ndarray, target_hz: float) -> float:
         x = np.asarray(frame, dtype=np.float64)

@@ -29,6 +29,7 @@ Jazyk se přepíná položkou **Jazyk / Language** v ovládacím panelu. Volba s
 - dekódování FM subnosné BLACK 1500 Hz / WHITE 2300 Hz,
 - IOC 288 / 576 a LPM 60 / 90 / 120 / 240,
 - automatická detekce START 300 Hz a STOP 450 Hz,
+- ochrana při zmeškaném STOP: nový START ukončí předchozí fax a začne nový obrázek,
 - automatická detekce phasingu, LPM a horizontální synchronizace,
 - automatická kalibrace BLACK/WHITE,
 - automatická i ruční korekce sklonu,
@@ -36,10 +37,11 @@ Jazyk se přepíná položkou **Jazyk / Language** v ovládacím panelu. Volba s
 - živé FFT spektrum a waterfall se značkami START / PHASING / IMAGE / STOP,
 - automatické ukládání PNG,
 - přímé CAT ovládání přes Hamlib bez `rigctld`,
+- zapamatování cesty k Hamlibu a nastavení rádia/CAT mezi spuštěními,
 - skutečný seznam modelů rádií načítaný z Hamlib DLL,
 - databáze HF FAX stanic s filtrem země/služba/pásmo,
 - oblíbené stanice a UTC rozvrhy,
-- přenos frekvence stanice do CAT a přímé naladění rádia.
+- přenos frekvence stanice do CAT a přímé naladění rádia; volba z knihovny nemění modulaci ani šířku filtru.
 
 ## Databáze stanic
 
@@ -89,8 +91,8 @@ V repozitáři je připraven workflow `.github/workflows/windows-release.yml`.
 Pro vydání nové verze stačí například:
 
 ```bash
-git tag v1.8.0
-git push origin v1.8.0
+git tag v1.9.2
+git push origin v1.9.2
 ```
 
 GitHub Actions potom na Windows runneru:
@@ -124,3 +126,8 @@ CHANGELOG.md                  historie verzí
 ## Windows SmartScreen
 
 Dokud nebude do buildu doplněn certifikát pro podepisování kódu, EXE nebude digitálně podepsané. Windows proto může u nově staženého Release zobrazit SmartScreen upozornění, i když souhlasí SHA-256. Podepisování lze později doplnit bez změny programu.
+
+### CAT: ruční volba režimu a filtru
+
+Při zapnutém **Číst po 1 s** se aktuální režim a šířka filtru rádia zobrazují ve stavovém řádku CAT, ale **nepřepisují** hodnoty zvolené v polích **Režim** a **Filtr**. Tlačítko **Načíst rádio** je načte z TRX záměrně. Volbu odešlete tlačítkem **Nastavit režim**.
+

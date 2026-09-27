@@ -65,6 +65,7 @@ class MainWindow(QMainWindow):
         self.wav_rate = 48000
         self.current_source_name = "live"
         self.last_autosave_signature = None
+        self.image_generation = 0
         self.image_shift_px = 0
         self.auto_realign_done = False
         self.cat = None
@@ -83,6 +84,7 @@ class MainWindow(QMainWindow):
         self.cat_last_rig_hz = None
 
         self._build_ui()
+        self._restore_cat_settings()
         self.refresh_devices()
         self.update_status(self._tr("ready"))
 
@@ -462,7 +464,11 @@ class MainWindow(QMainWindow):
         self.cat_vfo.addItem("A", "A")
         self.cat_vfo.addItem("B", "B")
         self.cat_radio_mode = QComboBox()
-        self.cat_radio_mode.addItems(["USB", "LSB", "AM", "FAX", "PKTUSB", "CW", "FM", "RTTY", "RTTYR"])
+        self.cat_radio_mode.addItems([
+            "USB", "LSB", "AM", "FAX",
+            "PKTUSB", "PKTLSB", "PKTFM",
+            "CW", "CWR", "FM", "RTTY", "RTTYR",
+        ])
         self.cat_radio_mode.setCurrentText("USB")
         self.cat_freq = QDoubleSpinBox()
         self.cat_freq.setRange(0.001, 1300.0)
@@ -908,8 +914,9 @@ class MainWindow(QMainWindow):
         self.cat_freq.blockSignals(True)
         self.cat_freq.setValue(cat_khz/1000.0)
         self.cat_freq.blockSignals(False)
-        if self.cat_radio_mode.findText("USB") >= 0:
-            self.cat_radio_mode.setCurrentText("USB")
+        # Selecting/copying a station from the library must affect only
+        # the CAT frequency. Keep the operator-selected modulation and
+        # filter bandwidth unchanged.
         self.cat_freq_dirty=True
         self.cat_status.setText(
             self._tr(
@@ -928,9 +935,9 @@ class MainWindow(QMainWindow):
         self.copy_station_to_cat_field()
         if self.cat is not None and self.cat.connected:
             try:
+                # Library tuning deliberately sends only frequency.
+                # Modulation and filter remain under manual CAT control.
                 self.set_cat_frequency()
-                self.cat_radio_mode.setCurrentText("USB")
-                self.set_cat_mode()
                 self.cat_status.setText(self._tr(
                     "cat_tuned_station",
                     location=station.get("location", ""),
@@ -952,6 +959,85 @@ class MainWindow(QMainWindow):
         if hasattr(self, "auto_status"):
             self.auto_status.setText(self._tr("auto_sensitivity", value=self.sensitivity.currentText()))
 
+    def _settings_bool(self, key: str, default: bool) -> bool:
+        value = self.settings.value(key, default)
+        if isinstance(value, bool):
+            return value
+        return str(value).strip().lower() in ("1", "true", "yes", "on")
+
+    def _restore_cat_settings(self) -> None:
+        """Restore Hamlib path and rig configuration from QSettings."""
+        path = str(self.settings.value("cat/hamlib_path", "") or "")
+        self.cat_dll.setText(path)
+
+        port = str(self.settings.value("cat/port", "COM3") or "COM3")
+        self.cat_port.setCurrentText(port)
+
+        baud = str(self.settings.value("cat/baud", "115200") or "115200")
+        idx = self.cat_baud.findText(baud)
+        if idx >= 0:
+            self.cat_baud.setCurrentIndex(idx)
+
+        vfo = str(self.settings.value("cat/vfo", "Current") or "Current")
+        idx = self.cat_vfo.findData(vfo)
+        self.cat_vfo.setCurrentIndex(idx if idx >= 0 else 0)
+
+        mode = str(self.settings.value("cat/mode", "USB") or "USB")
+        idx = self.cat_radio_mode.findText(mode)
+        if idx >= 0:
+            self.cat_radio_mode.setCurrentIndex(idx)
+
+        try:
+            self.cat_width.setValue(int(self.settings.value("cat/width", -1)))
+        except (TypeError, ValueError):
+            self.cat_width.setValue(-1)
+        try:
+            self.cat_freq.setValue(float(self.settings.value("cat/frequency_mhz", 10.100000)))
+        except (TypeError, ValueError):
+            self.cat_freq.setValue(10.100000)
+        self.cat_poll.setChecked(self._settings_bool("cat/poll", True))
+
+        saved_model_id = self.settings.value("cat/model_id", None)
+        saved_model_label = str(self.settings.value("cat/model_label", "") or "")
+        try:
+            saved_model_id = int(saved_model_id) if saved_model_id not in (None, "") else None
+        except (TypeError, ValueError):
+            saved_model_id = None
+
+        if saved_model_id is not None:
+            # Put the stored rig into the control immediately. If Hamlib can be
+            # loaded, refresh the full model list and keep this model selected.
+            self.cat_model.clear()
+            self.cat_model.addItem(saved_model_label or f"Rig [#{saved_model_id}]", saved_model_id)
+            loaded = self.load_hamlib_models(silent=True, preferred_model_id=saved_model_id)
+        else:
+            loaded = None
+
+        self.cat_freq_dirty = False
+        if (path or saved_model_id is not None) and loaded is not False:
+            self.cat_status.setText(self._tr("cat_settings_restored"))
+
+    def _save_cat_settings(self) -> None:
+        """Persist Hamlib path and rig settings for the next program start."""
+        if not hasattr(self, "cat_dll"):
+            return
+        self.settings.setValue("cat/hamlib_path", self.cat_dll.text().strip())
+        try:
+            model_id = self._selected_cat_model_id()
+        except Exception:
+            model_id = None
+        if model_id is not None:
+            self.settings.setValue("cat/model_id", int(model_id))
+            self.settings.setValue("cat/model_label", self._selected_cat_model_label())
+        self.settings.setValue("cat/port", self.cat_port.currentText().strip())
+        self.settings.setValue("cat/baud", self.cat_baud.currentText())
+        self.settings.setValue("cat/vfo", self.cat_vfo.currentData() or "Current")
+        self.settings.setValue("cat/mode", self.cat_radio_mode.currentText())
+        self.settings.setValue("cat/width", self.cat_width.value())
+        self.settings.setValue("cat/frequency_mhz", self.cat_freq.value())
+        self.settings.setValue("cat/poll", self.cat_poll.isChecked())
+        self.settings.sync()
+
     def browse_hamlib_dll(self):
         # Prefer selecting the whole Hamlib bin directory because libhamlib-4.dll
         # may depend on other DLLs located next to it.
@@ -959,6 +1045,7 @@ class MainWindow(QMainWindow):
         if folder:
             self.cat_dll.setText(folder)
             self.load_hamlib_models(silent=True)
+            self._save_cat_settings()
             return
         fn, _ = QFileDialog.getOpenFileName(
             self, self._tr("select_hamlib_dll"), "",
@@ -967,9 +1054,10 @@ class MainWindow(QMainWindow):
         if fn:
             self.cat_dll.setText(fn)
             self.load_hamlib_models(silent=True)
+            self._save_cat_settings()
 
-    def load_hamlib_models(self, silent: bool = False):
-        current_id = self.cat_model.currentData()
+    def load_hamlib_models(self, silent: bool = False, preferred_model_id: int | None = None):
+        current_id = preferred_model_id if preferred_model_id is not None else self.cat_model.currentData()
         try:
             loader = HamlibRig(self.cat_dll.text().strip() or None)
             models = loader.list_models()
@@ -990,10 +1078,13 @@ class MainWindow(QMainWindow):
                 self.cat_model.completer().setCaseSensitivity(Qt.CaseInsensitive)
                 self.cat_model.completer().setFilterMode(Qt.MatchContains)
             self.cat_status.setText(self._tr("cat_loaded_models", count=len(models)))
+            self._save_cat_settings()
+            return True
         except Exception as exc:
             if not silent:
                 QMessageBox.warning(self, self._tr("hamlib_models_title"), str(exc))
             self.cat_status.setText(self._tr("cat_model_list_error", error=exc))
+            return False
 
     def _selected_cat_model_id(self) -> int:
         data = self.cat_model.currentData()
@@ -1046,7 +1137,10 @@ class MainWindow(QMainWindow):
                 path=rig.loaded_path,
             ))
             self.cat_timer.start()
-            self.read_cat(silent=True)
+            # Read the actual rig state for the status line, but keep the
+            # operator's restored/preselected mode and filter untouched.
+            self.read_cat(silent=True, update_controls=False)
+            self._save_cat_settings()
         except Exception as exc:
             self.disconnect_cat()
             QMessageBox.critical(self, "CAT / Hamlib", str(exc))
@@ -1067,7 +1161,7 @@ class MainWindow(QMainWindow):
         if hasattr(self, "cat_status"):
             self.cat_status.setText(self._tr("cat_disconnected"))
 
-    def read_cat(self, silent: bool = False):
+    def read_cat(self, silent: bool = False, update_controls: bool = True):
         if self.cat is None or not self.cat.connected:
             if not silent:
                 QMessageBox.information(self, "CAT", self._tr("cat_not_connected"))
@@ -1085,10 +1179,24 @@ class MainWindow(QMainWindow):
                 self.cat_freq.blockSignals(True)
                 self.cat_freq.setValue(hz / 1e6)
                 self.cat_freq.blockSignals(False)
-            if self.cat_radio_mode.findText(mode) >= 0:
-                self.cat_radio_mode.setCurrentText(mode)
-            if -1 <= width <= 20000:
-                self.cat_width.setValue(width)
+            # Periodic CAT polling is monitoring only. It must not overwrite
+            # the mode/filter values the operator has selected for the next
+            # command. Only the explicit "Read rig" action updates these
+            # controls from the transceiver.
+            if update_controls:
+                self.cat_radio_mode.blockSignals(True)
+                try:
+                    if self.cat_radio_mode.findText(mode) >= 0:
+                        self.cat_radio_mode.setCurrentText(mode)
+                finally:
+                    self.cat_radio_mode.blockSignals(False)
+
+                self.cat_width.blockSignals(True)
+                try:
+                    if -1 <= width <= 20000:
+                        self.cat_width.setValue(width)
+                finally:
+                    self.cat_width.blockSignals(False)
             if self.cat_freq_dirty:
                 pending = self.cat_freq.value()
                 self.cat_status.setText(self._tr(
@@ -1120,7 +1228,8 @@ class MainWindow(QMainWindow):
             self.cat.set_frequency(hz, vfo)
             self.cat_freq_dirty = False
             self.cat_status.setText(self._tr("cat_frequency_sent", mhz=hz/1e6))
-            QTimer.singleShot(250, lambda: self.read_cat(silent=True))
+            self._save_cat_settings()
+            QTimer.singleShot(250, lambda: self.read_cat(silent=True, update_controls=False))
         except Exception as exc:
             self.cat_status.setText(self._tr("cat_error", error=exc))
             QMessageBox.warning(self, self._tr("cat_frequency_title"), str(exc))
@@ -1133,7 +1242,8 @@ class MainWindow(QMainWindow):
             vfo = self._cat_vfo_value()
             self.cat.set_mode(self.cat_radio_mode.currentText(), self.cat_width.value(), vfo)
             self.cat_status.setText(self._tr("cat_mode_sent", mode=self.cat_radio_mode.currentText()))
-            QTimer.singleShot(250, lambda: self.read_cat(silent=True))
+            self._save_cat_settings()
+            QTimer.singleShot(250, lambda: self.read_cat(silent=True, update_controls=False))
         except Exception as exc:
             self.cat_status.setText(self._tr("cat_error", error=exc))
             QMessageBox.warning(self, self._tr("cat_mode_title"), str(exc))
@@ -1146,7 +1256,9 @@ class MainWindow(QMainWindow):
 
     def poll_cat(self):
         if self.cat_poll.isChecked() and self.cat is not None and self.cat.connected:
-            self.read_cat(silent=True)
+            # Polling reports the real rig state in CAT status only. Manual
+            # selections in Mode and Filter are never overwritten here.
+            self.read_cat(silent=True, update_controls=False)
 
     def default_autosave_dir(self) -> Path:
         base = Path.home() / "Pictures" / "HFWeatherFax"
@@ -1268,6 +1380,8 @@ class MainWindow(QMainWindow):
 
     def clear_image(self):
         self.image_lines.clear()
+        self.image_generation += 1
+        self.last_autosave_signature = None
         self.image_shift_px = 0
         self.auto_realign_done = False
         if hasattr(self, "line_start_status"):
@@ -1330,19 +1444,32 @@ class MainWindow(QMainWindow):
             if self.auto_detect.isChecked():
                 events = self.autodetector.push_audio(chunk)
                 for event in events:
-                    if event.kind == "START":
+                    if event.kind in ("START", "RESTART"):
                         self.spectrum.mark_event("START")
                         self.spectrum.mark_event("PHASING")
-                        if self.auto_clear.isChecked() and self.image_lines:
-                            self.auto_save_image(reason="new_start")
-                            self.clear_image()
-                        elif self.auto_clear.isChecked():
+
+                        # A RESTART is a newly detected 300 Hz START while an
+                        # image is already being received. This is deliberately
+                        # handled even when the previous 450 Hz STOP was missed:
+                        # finalize the old fax, clear it and wait for new phasing.
+                        saved = None
+                        if self.image_lines:
+                            saved = self.auto_save_image(reason="new_start")
+
+                        if self.auto_clear.isChecked():
                             self.clear_image()
                         else:
                             self.decoder.reset()
+
                         self._set_lock_quality(self.phasing_quality_label, self.phasing_quality, 0.0, "phasing_lock")
                         self._set_lock_quality(self.hsync_quality_label, self.hsync_quality, 0.0, "hsync_lock")
-                        self.update_status(self._tr("auto_start_detected"))
+                        if event.kind == "RESTART":
+                            if saved is not None:
+                                self.update_status(self._tr("auto_restart_saved", name=saved.name))
+                            else:
+                                self.update_status(self._tr("auto_restart_detected"))
+                        else:
+                            self.update_status(self._tr("auto_start_detected"))
 
                     elif event.kind == "LOCK" and event.lpm is not None:
                         self.spectrum.mark_event("IMAGE")
@@ -1508,7 +1635,10 @@ class MainWindow(QMainWindow):
         img = self.current_image_array()
         if img is None or img.shape[0] < 40 or img.shape[1] < 100:
             return None
-        signature = (reason, len(self.image_lines), img.shape[1], img.shape[0])
+        signature = (
+            self.image_generation, len(self.image_lines), img.shape[1], img.shape[0],
+            int(self.image_shift_px), bool(self.invert),
+        )
         if signature == self.last_autosave_signature:
             return None
         out_dir = self.autosave_dir()
@@ -1557,6 +1687,7 @@ class MainWindow(QMainWindow):
         self.status.setText(text)
 
     def closeEvent(self, event):
+        self._save_cat_settings()
         self.stop_all()
         self.disconnect_cat()
         event.accept()
