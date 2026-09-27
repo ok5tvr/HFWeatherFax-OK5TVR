@@ -99,8 +99,8 @@ V repozitáři je připraven workflow `.github/workflows/windows-release.yml`.
 Pro vydání nové verze stačí například:
 
 ```bash
-git tag v1.10.1
-git push origin v1.10.1
+git tag v1.10.4
+git push origin v1.10.4
 ```
 
 GitHub Actions potom na Windows runneru:
@@ -139,3 +139,11 @@ Dokud nebude do buildu doplněn certifikát pro podepisování kódu, EXE nebude
 
 Při zapnutém **Číst po 1 s** se aktuální režim a šířka filtru rádia zobrazují ve stavovém řádku CAT, ale **nepřepisují** hodnoty zvolené v polích **Režim** a **Filtr**. Tlačítko **Načíst rádio** je načte z TRX záměrně. Volbu odešlete tlačítkem **Nastavit režim**.
 
+
+### Displej transceiveru
+
+Karta **CAT / rádio** obsahuje živý displej skutečného stavu transceiveru: frekvenci, modulaci, S-metr a zelenou/červenou kontrolku CAT. S-metr používá Hamlib `RIG_LEVEL_STRENGTH`; pokud jej rádio nepodporuje, zobrazí se `S --`. Displej je pouze monitorovací a nepřepisuje ručně připravené hodnoty CAT.
+
+### Ruční spuštění dekódování obrazu
+
+Tlačítko **Spustit dekódování obrazu** umožní okamžitě zahájit raster při právě zvoleném LPM (výchozí 120), i když automatika nezachytila START nebo phasing. Je-li zapnutý Automatický START / STOP, automatická detekce STOP zůstává aktivní a může obraz normálně ukončit a uložit. Pokud už jsou v obrazu řádky, ruční start na ně naváže; pro nový fax nejprve použijte **Vymazat obrázek**.

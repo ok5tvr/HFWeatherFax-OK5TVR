@@ -107,8 +107,8 @@ The repository contains `.github/workflows/windows-release.yml`.
 A tagged version such as:
 
 ```bash
-git tag v1.10.1
-git push origin v1.10.1
+git tag v1.10.4
+git push origin v1.10.4
 ```
 
 starts a Windows build on GitHub Actions. The workflow builds the EXE, generates `SHA256SUMS.txt`, uploads a build artifact and publishes the files to the matching GitHub Release.
@@ -142,3 +142,11 @@ The generated EXE is not code-signed unless a code-signing certificate is added 
 
 With **Poll 1 s** enabled, the rig's actual mode and filter width are shown in the CAT status line but do **not overwrite** the values selected in **Mode** and **Filter**. Use **Read rig** to intentionally load them from the transceiver and **Set mode** to send your selected values.
 
+
+### Transceiver display
+
+The **CAT / radio** tab includes a live display of the rig state: frequency, modulation, S-meter and a green/red CAT indicator. The S-meter uses Hamlib `RIG_LEVEL_STRENGTH`; unsupported radios show `S --`. The display is monitoring-only and does not overwrite operator-prepared CAT command values.
+
+### Manual image decoding start
+
+The **Start image decoding** button immediately begins raster capture at the currently selected LPM (120 by default), even if automatic START or phasing acquisition was missed. When Automatic START / STOP is enabled, automatic STOP detection remains active and can finish and save the image normally. Existing decoded lines are preserved when capture is manually resumed; use **Clear image** first for a new fax.

@@ -14,6 +14,16 @@ class _RigCapsHead(ctypes.Structure):
         ("mfg_name", ctypes.c_char_p),
     ]
 
+class _HamlibValue(ctypes.Union):
+    """ctypes equivalent of Hamlib value_t."""
+
+    _fields_ = [
+        ("i", ctypes.c_int),
+        ("f", ctypes.c_float),
+        ("s", ctypes.c_char_p),
+        ("cs", ctypes.c_char_p),
+    ]
+
 class HamlibError(RuntimeError):
     pass
 
@@ -25,6 +35,9 @@ class HamlibRig:
     RIG_VFO_A = 1 << 0
     RIG_VFO_B = 1 << 1
     RIG_VFO_CURR = 1 << 29
+
+    # Hamlib rig_level_e: calibrated receive signal strength in dB relative to S9.
+    RIG_LEVEL_STRENGTH = 1 << 30
 
     MODE_TO_VALUE = {
         "AM": 1 << 0,
@@ -233,6 +246,11 @@ class HamlibRig:
         L.rig_set_mode.restype = ctypes.c_int
         L.rig_get_mode.argtypes = [ctypes.c_void_p, ctypes.c_uint, ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_long)]
         L.rig_get_mode.restype = ctypes.c_int
+        if hasattr(L, "rig_get_level"):
+            L.rig_get_level.argtypes = [
+                ctypes.c_void_p, ctypes.c_uint, ctypes.c_ulong, ctypes.POINTER(_HamlibValue)
+            ]
+            L.rig_get_level.restype = ctypes.c_int
         L.rigerror.argtypes = [ctypes.c_int]
         L.rigerror.restype = ctypes.c_char_p
 
@@ -395,6 +413,27 @@ class HamlibRig:
             int(width_hz),
         )
         self._check(rc, "set mode")
+
+    def get_signal_strength_db(self, vfo: int | None = None) -> int | None:
+        """Return calibrated RX strength in dB relative to S9, or None if unsupported.
+
+        Hamlib defines RIG_LEVEL_STRENGTH as an integer dB value relative to S9
+        (S9 == 0 dB). Some backends do not expose an S-meter; that is not a
+        fatal CAT error for HFWeatherFax, so unsupported/error returns None.
+        """
+        self._require()
+        if not hasattr(self.lib, "rig_get_level"):
+            return None
+        value = _HamlibValue()
+        rc = self.lib.rig_get_level(
+            self.rig,
+            int(vfo or self.RIG_VFO_CURR),
+            ctypes.c_ulong(self.RIG_LEVEL_STRENGTH),
+            ctypes.byref(value),
+        )
+        if int(rc) != 0:
+            return None
+        return int(value.i)
 
     def __del__(self):
         try:

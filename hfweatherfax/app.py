@@ -74,6 +74,10 @@ class MainWindow(QMainWindow):
         self.current_source_name = "live"
         self.last_autosave_signature = None
         self.image_generation = 0
+        # True only while raster lines are allowed to be appended to the current fax.
+        # Live audio/spectrum may continue after an automatic STOP so the detector can
+        # wait for the next START without extending the finished image.
+        self.image_capture_active = False
         self.image_shift_px = 0
         self.auto_realign_done = False
         self.cat = None
@@ -90,6 +94,9 @@ class MainWindow(QMainWindow):
         self.cat_timer.timeout.connect(self.poll_cat)
         self.cat_freq_dirty = False
         self.cat_last_rig_hz = None
+        self.cat_last_mode = None
+        self.cat_last_width = None
+        self.cat_last_strength_db = None
 
         self.last_audio_db = -120.0
         self._build_ui()
@@ -233,6 +240,13 @@ class MainWindow(QMainWindow):
         if hasattr(self, "cat_model") and self.cat_model.count() == 1 and self.cat_model.itemData(0) == 1:
             self.cat_model.setItemText(0, self._tr("load_hamlib_models"))
 
+        if hasattr(self, "trx_freq_display"):
+            self._update_trx_display(
+                connected=bool(self.cat is not None and self.cat.connected),
+                strength_db=self.cat_last_strength_db,
+                strength_valid=True,
+            )
+
         if hasattr(self, "auto_status"):
             self.auto_status.setText(self._auto_status_text())
         if hasattr(self, "auto_slant_status"):
@@ -281,7 +295,7 @@ class MainWindow(QMainWindow):
         if hasattr(self, "cat_connect_btn"):
             if self.cat is not None and self.cat.connected:
                 self.cat_connect_btn.setText(self._tr("disconnect_cat"))
-                self.read_cat(silent=True)
+                self.read_cat(silent=True, update_controls=False)
             else:
                 self.cat_connect_btn.setText(self._tr("connect_cat"))
                 if hasattr(self, "cat_status"):
@@ -555,6 +569,7 @@ class MainWindow(QMainWindow):
 
         self.start_btn = self._button("start_live")
         self.stop_btn = self._button("stop")
+        self.manual_decode_btn = self._button("manual_decode_image")
         self.open_btn = self._button("open_audio")
         self.save_btn = self._button("save_png")
         self.clear_btn = self._button("clear_image")
@@ -568,6 +583,7 @@ class MainWindow(QMainWindow):
 
         self.start_btn.clicked.connect(self.start_live)
         self.stop_btn.clicked.connect(self.stop_all)
+        self.manual_decode_btn.clicked.connect(self.start_image_decode_manual)
         self.open_btn.clicked.connect(self.open_audio_file)
         self.save_btn.clicked.connect(self.save_png)
         self.clear_btn.clicked.connect(self.clear_image)
@@ -596,7 +612,8 @@ class MainWindow(QMainWindow):
         btns.addWidget(self.stop_btn, 0, 1)
         btns.addWidget(self.open_btn, 1, 0)
         btns.addWidget(self.save_btn, 1, 1)
-        btns.addWidget(self.clear_btn, 2, 0, 1, 2)
+        btns.addWidget(self.manual_decode_btn, 2, 0)
+        btns.addWidget(self.clear_btn, 2, 1)
         g.addLayout(btns, 5, 0, 1, 3)
 
         g.addWidget(self.auto_save, 5, 3, 1, 3)
@@ -620,6 +637,63 @@ class MainWindow(QMainWindow):
         catg.setContentsMargins(8, 8, 8, 8)
         catg.setHorizontalSpacing(6)
         catg.setVerticalSpacing(5)
+
+        # Compact live transceiver display. These labels show the actual rig
+        # state read through Hamlib and are deliberately independent from the
+        # editable CAT command fields below.
+        self.trx_display = self._group("trx_display")
+        trxg = QGridLayout(self.trx_display)
+        trxg.setContentsMargins(10, 8, 10, 8)
+        trxg.setHorizontalSpacing(10)
+        trxg.setVerticalSpacing(4)
+        self.trx_panel = QWidget()
+        self.trx_panel.setObjectName("trxPanel")
+        self.trx_panel.setStyleSheet(
+            "QWidget#trxPanel { background: #101317; border: 1px solid #4b5057; border-radius: 6px; }"
+        )
+        trxp = QGridLayout(self.trx_panel)
+        trxp.setContentsMargins(10, 6, 10, 8)
+        trxp.setHorizontalSpacing(10)
+        trxp.setVerticalSpacing(3)
+
+        self.trx_cat_caption = QLabel("CAT")
+        self.trx_cat_caption.setStyleSheet("color: #d7dde5; font-weight: 600;")
+        self.trx_cat_led = QLabel("●")
+        self.trx_cat_led.setAlignment(Qt.AlignCenter)
+        self.trx_cat_led.setFixedWidth(24)
+        self.trx_cat_led.setStyleSheet("color: #d63b3b; font-size: 20px; font-weight: 700;")
+        self.trx_freq_display = QLabel("--.------ MHz")
+        self.trx_freq_display.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        self.trx_freq_display.setStyleSheet(
+            "color: #8cff66; font-family: Consolas, 'Courier New', monospace; "
+            "font-size: 25px; font-weight: 700; letter-spacing: 1px;"
+        )
+        self.trx_mode_caption = self._label("mode")
+        self.trx_mode_caption.setStyleSheet("color: #aeb6c2;")
+        self.trx_mode_display = QLabel("---")
+        self.trx_mode_display.setStyleSheet(
+            "color: #f4f5f7; font-family: Consolas, 'Courier New', monospace; font-size: 16px; font-weight: 700;"
+        )
+        self.trx_signal_caption = self._label("trx_signal")
+        self.trx_signal_caption.setStyleSheet("color: #aeb6c2;")
+        self.trx_signal_meter = QProgressBar()
+        self.trx_signal_meter.setRange(0, 150)
+        self.trx_signal_meter.setValue(0)
+        self.trx_signal_meter.setFormat("S --")
+        self.trx_signal_meter.setTextVisible(True)
+        self.trx_signal_meter.setMinimumHeight(20)
+
+        trxp.addWidget(self.trx_cat_caption, 0, 0)
+        trxp.addWidget(self.trx_cat_led, 0, 1)
+        trxp.addWidget(self.trx_freq_display, 0, 2, 1, 3)
+        trxp.addWidget(self.trx_mode_caption, 1, 0)
+        trxp.addWidget(self.trx_mode_display, 1, 1)
+        trxp.addWidget(self.trx_signal_caption, 1, 2)
+        trxp.addWidget(self.trx_signal_meter, 1, 3, 1, 2)
+        trxp.setColumnStretch(3, 1)
+        trxg.addWidget(self.trx_panel, 0, 0)
+        self.trx_display.setMaximumHeight(118)
+
         self.cat_dll = QLineEdit()
         self._bind_tr(self.cat_dll, "hamlib_placeholder", "setPlaceholderText")
         self.cat_dll_btn = QPushButton("Hamlib…")
@@ -934,6 +1008,13 @@ class MainWindow(QMainWindow):
         stations_tab = make_scroll_tab(stations_box)
         self.tab_stations_index = self.side_tabs.addTab(stations_tab, self._tr("tab_stations"))
 
+        self.sidebar = QWidget()
+        sidebar_layout = QVBoxLayout(self.sidebar)
+        sidebar_layout.setContentsMargins(0, 0, 0, 0)
+        sidebar_layout.setSpacing(5)
+        sidebar_layout.addWidget(self.trx_display)
+        sidebar_layout.addWidget(self.side_tabs, 1)
+
         self.workspace_splitter = QSplitter(Qt.Vertical)
         self.workspace_splitter.addWidget(image_box)
         self.workspace_splitter.addWidget(self.diagnostics_box)
@@ -942,7 +1023,7 @@ class MainWindow(QMainWindow):
         self.workspace_splitter.setSizes([470, 250])
 
         self.main_splitter = QSplitter(Qt.Horizontal)
-        self.main_splitter.addWidget(self.side_tabs)
+        self.main_splitter.addWidget(self.sidebar)
         self.main_splitter.addWidget(self.workspace_splitter)
         self.main_splitter.setStretchFactor(0, 0)
         self.main_splitter.setStretchFactor(1, 1)
@@ -1240,6 +1321,13 @@ class MainWindow(QMainWindow):
                 self.auto_lpm.isChecked(),
                 manual_lpm,
             )
+        if hasattr(self, "image_capture_active"):
+            source_running = bool(self.audio is not None or self.wav_data is not None)
+            if source_running:
+                if not self.auto_start_stop.isChecked() and not self.auto_lpm.isChecked():
+                    self.image_capture_active = True
+                elif getattr(self.autodetector, "state", "WAIT_START") != "RECEIVING":
+                    self.image_capture_active = False
         if hasattr(self, "auto_status"):
             self.auto_status.setText(self._auto_status_text())
 
@@ -1401,6 +1489,63 @@ class MainWindow(QMainWindow):
         else:
             self.cat_status.setText(self._tr("cat_editing"))
 
+    @staticmethod
+    def _s_meter_text(strength_db: int | None) -> str:
+        """Convert Hamlib dB relative to S9 into a familiar S-meter label."""
+        if strength_db is None:
+            return "S --"
+        db = int(round(strength_db))
+        if db <= 0:
+            s_unit = int(round((db + 54.0) / 6.0))
+            s_unit = max(0, min(9, s_unit))
+            return f"S{s_unit} ({db:+d} dB)"
+        return f"S9+{db:d} dB"
+
+    @staticmethod
+    def _s_meter_value(strength_db: int | None) -> int:
+        """Map S0..S9+60 to the 0..150 progress-bar range."""
+        if strength_db is None:
+            return 0
+        db = float(strength_db)
+        if db <= 0.0:
+            units = max(0.0, min(9.0, (db + 54.0) / 6.0))
+        else:
+            units = 9.0 + min(db, 60.0) / 10.0
+        return int(round(units * 10.0))
+
+    def _update_trx_display(
+        self,
+        *,
+        connected: bool | None = None,
+        hz: float | None = None,
+        mode: str | None = None,
+        strength_db: int | None = None,
+        strength_valid: bool = False,
+    ) -> None:
+        """Update the live radio display without touching editable CAT controls."""
+        if connected is not None and hasattr(self, "trx_cat_led"):
+            self.trx_cat_led.setStyleSheet(
+                ("color: #43d17a;" if connected else "color: #d63b3b;")
+                + " font-size: 20px; font-weight: 700;"
+            )
+        if hz is not None:
+            self.cat_last_rig_hz = float(hz)
+        if mode is not None:
+            self.cat_last_mode = str(mode)
+        if strength_valid:
+            self.cat_last_strength_db = strength_db
+
+        if hasattr(self, "trx_freq_display"):
+            if self.cat_last_rig_hz is None:
+                self.trx_freq_display.setText("--.------ MHz")
+            else:
+                self.trx_freq_display.setText(f"{self.cat_last_rig_hz / 1e6:.6f} MHz")
+        if hasattr(self, "trx_mode_display"):
+            self.trx_mode_display.setText(self.cat_last_mode or "---")
+        if hasattr(self, "trx_signal_meter"):
+            self.trx_signal_meter.setValue(self._s_meter_value(self.cat_last_strength_db))
+            self.trx_signal_meter.setFormat(self._s_meter_text(self.cat_last_strength_db))
+
     def toggle_cat(self):
         if self.cat is not None and self.cat.connected:
             self.disconnect_cat()
@@ -1415,6 +1560,7 @@ class MainWindow(QMainWindow):
             self.cat = rig
             self.cat_freq_dirty = False
             self.cat_connect_btn.setText(self._tr("disconnect_cat"))
+            self._update_trx_display(connected=True)
             self.cat_status.setText(self._tr(
                 "cat_connected",
                 model=self._selected_cat_model_label(),
@@ -1440,6 +1586,10 @@ class MainWindow(QMainWindow):
         self.cat = None
         self.cat_freq_dirty = False
         self.cat_last_rig_hz = None
+        self.cat_last_mode = None
+        self.cat_last_width = None
+        self.cat_last_strength_db = None
+        self._update_trx_display(connected=False, strength_valid=True)
         if hasattr(self, "cat_connect_btn"):
             self.cat_connect_btn.setText(self._tr("connect_cat"))
         if hasattr(self, "cat_status"):
@@ -1455,6 +1605,12 @@ class MainWindow(QMainWindow):
             hz = self.cat.get_frequency(vfo)
             self.cat_last_rig_hz = hz
             mode, width = self.cat.get_mode(vfo)
+            strength_db = self.cat.get_signal_strength_db(vfo)
+            self.cat_last_width = width
+            self._update_trx_display(
+                connected=True, hz=hz, mode=mode,
+                strength_db=strength_db, strength_valid=True,
+            )
             # Never overwrite a value the user is currently typing or has typed
             # but not yet sent. Polling continues in the background and the
             # actual rig frequency remains visible in CAT status.
@@ -1498,6 +1654,7 @@ class MainWindow(QMainWindow):
                     width=width,
                 ))
         except Exception as exc:
+            self._update_trx_display(connected=False)
             self.cat_status.setText(self._tr("cat_error", error=exc))
             if not silent:
                 QMessageBox.warning(self, self._tr("cat_read_title"), str(exc))
@@ -1630,6 +1787,11 @@ class MainWindow(QMainWindow):
             self.wav_data = None
             self.current_source_name = "live"
             self.last_autosave_signature = None
+            # In fully manual mode the Start button begins raster capture immediately.
+            # With any automation enabled, capture starts only after phasing lock.
+            self.image_capture_active = not (
+                self.auto_start_stop.isChecked() or self.auto_lpm.isChecked()
+            )
             self.timer.start()
             self.update_status(self._tr(
                 "live_receiving",
@@ -1640,6 +1802,50 @@ class MainWindow(QMainWindow):
         except Exception as e:
             QMessageBox.critical(self, self._tr("audio_input_error"), str(e))
             self.stop_all()
+
+    def start_image_decode_manual(self):
+        """Immediately start raster decoding at the currently selected LPM.
+
+        This is an operator override for a missed START/phasing lock.  The audio
+        source remains unchanged and Automatic START/STOP may still detect STOP
+        and finish the image normally.  Existing decoded lines are preserved, so
+        the button can also resume capture after an unwanted stop; use Clear image
+        first when a completely new raster is desired.
+        """
+        # If reception is not running yet, start the selected live input first.
+        if self.audio is None and self.wav_data is None:
+            self.start_live()
+            if self.audio is None and self.wav_data is None:
+                return
+
+        if self.image_capture_active:
+            self.update_status(self._tr("manual_decode_already_active"))
+            return
+
+        try:
+            lpm = int(self.lpm.currentText())
+        except Exception:
+            lpm = 120
+
+        current_sr = self.audio.sample_rate if self.audio is not None else self.wav_rate
+        self.configure_decoder(current_sr)
+        self.autodetector.set_modes(
+            self.auto_start_stop.isChecked(),
+            self.auto_lpm.isChecked(),
+            lpm,
+        )
+        self.autodetector.force_receiving(lpm)
+        self.image_capture_active = True
+        self.auto_realign_done = False
+        self.spectrum.mark_event("IMAGE")
+        self._set_lock_quality(
+            self.phasing_quality_label, self.phasing_quality, 0.0, "phasing_lock"
+        )
+        self._set_lock_quality(
+            self.hsync_quality_label, self.hsync_quality, 0.0, "hsync_lock"
+        )
+        self.auto_status.setText(self._tr("manual_decode_active", lpm=lpm))
+        self.update_status(self._tr("manual_decode_started", lpm=lpm))
 
     def open_audio_file(self):
         fn, _ = QFileDialog.getOpenFileName(
@@ -1663,6 +1869,9 @@ class MainWindow(QMainWindow):
                 manual_lpm=int(self.lpm.currentText()),
             )
             self.slant_estimator = AutoSlantEstimator(self.decoder.width)
+            self.image_capture_active = not (
+                self.auto_start_stop.isChecked() or self.auto_lpm.isChecked()
+            )
             self.timer.start()
             self.update_status(self._tr("decoding_file", name=Path(fn).name, sr=sr))
         except Exception as e:
@@ -1670,6 +1879,7 @@ class MainWindow(QMainWindow):
 
     def stop_all(self):
         self.timer.stop()
+        self.image_capture_active = False
         if self.audio is not None:
             try:
                 self.audio.stop()
@@ -1747,6 +1957,7 @@ class MainWindow(QMainWindow):
                     self.update_status(self._tr("file_finished"))
 
         added = 0
+        stop_detected_this_cycle = False
         if chunks:
             spectrum_audio = np.concatenate(chunks) if len(chunks) > 1 else chunks[0]
             current_sr = self.audio.sample_rate if self.audio is not None else self.wav_rate
@@ -1781,6 +1992,10 @@ class MainWindow(QMainWindow):
                 if event.kind in ("START", "RESTART"):
                     self.spectrum.mark_event("START")
                     self.spectrum.mark_event("PHASING")
+                    # A START begins a new receive cycle, but raster capture must wait
+                    # until phasing is locked. This also guarantees that a new START
+                    # cannot append its APT/phasing tones to the previous image.
+                    self.image_capture_active = False
 
                     # A RESTART is a newly detected 300 Hz START while an image
                     # is already being received. It remains the safety net for a
@@ -1811,6 +2026,7 @@ class MainWindow(QMainWindow):
                 elif event.kind == "LOCK" and event.lpm is not None:
                     self.spectrum.mark_event("IMAGE")
                     self.auto_realign_done = False
+                    self.image_capture_active = True
 
                     # Only Auto LPM may change the LPM selector. In fixed/manual
                     # mode the operator's selected value (120 by default) wins.
@@ -1856,6 +2072,11 @@ class MainWindow(QMainWindow):
 
                 elif event.kind == "STOP":
                     self.spectrum.mark_event("STOP")
+                    # Finish the current image immediately.  Keep the live audio
+                    # stream and detector running so we can wait for the next START,
+                    # but never append any more raster lines to this finished fax.
+                    self.image_capture_active = False
+                    stop_detected_this_cycle = True
                     saved = self.auto_save_image(reason="stop")
                     self.decoder.reset()
                     self._set_lock_quality(
@@ -1884,12 +2105,14 @@ class MainWindow(QMainWindow):
                 )
 
             # Fully manual mode decodes immediately at the selected LPM. If
-            # either automation is enabled, wait until its phasing state locks.
-            decode_this_chunk = True
+            # either automation is enabled, raster capture is explicitly gated by
+            # image_capture_active.  Automatic STOP clears this flag immediately,
+            # freezing the finished image while audio monitoring continues.
+            if not automation_gated:
+                self.image_capture_active = True
+            decode_this_chunk = self.image_capture_active and not locked_this_chunk
             if automation_gated:
-                decode_this_chunk = (
-                    self.autodetector.state == "RECEIVING" and not locked_this_chunk
-                )
+                decode_this_chunk = decode_this_chunk and self.autodetector.state == "RECEIVING"
 
             if decode_this_chunk:
                 new_lines = self.decoder.push_audio(chunk)
@@ -1925,12 +2148,15 @@ class MainWindow(QMainWindow):
                         self.auto_realign_done = True
                         self.line_start_status.setText(self._tr("line_no_seam", conf=conf))
             self.render_image()
-            lpm = (
-                self.autodetector.detected_lpm
-                if self.auto_lpm.isChecked() and self.autodetector.detected_lpm is not None
-                else self.lpm.currentText()
-            )
-            self.update_status(self._tr("receiving_lpm", lpm=lpm, lines=len(self.image_lines)))
+            # Do not overwrite the STOP message with a stale "receiving" status
+            # when earlier chunks in the same timer pass added the final lines.
+            if not stop_detected_this_cycle:
+                lpm = (
+                    self.autodetector.detected_lpm
+                    if self.auto_lpm.isChecked() and self.autodetector.detected_lpm is not None
+                    else self.lpm.currentText()
+                )
+                self.update_status(self._tr("receiving_lpm", lpm=lpm, lines=len(self.image_lines)))
 
     def nudge_image(self, percent: float):
         if not self.image_lines:

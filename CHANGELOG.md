@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.10.4 - 2026-09-27
+
+- Added a dedicated **Start image decoding** / **Spustit dekódování obrazu** button.
+- The manual image start immediately begins raster capture at the currently selected LPM (120 LPM by default), bypassing a missed START/phasing lock.
+- If live reception is not running yet, the manual image-start button starts the selected audio input first.
+- Automatic START/STOP can remain enabled: after a manual image start, normal automatic STOP detection still finishes and optionally saves the image.
+- Existing decoded lines are preserved when manually resuming capture; use Clear image first when a new raster is desired.
+- Added a detector-side forced RECEIVING state with a short restart guard to avoid immediately mistaking the current signal for a new START.
+
+## 1.10.3 - 2026-09-27
+
+- Added a compact **live transceiver display** to the CAT/radio controls.
+- The display shows the actual CAT frequency, current modulation/mode, signal strength and CAT connection state.
+- CAT connection uses a simple green/red status LED as requested.
+- Added Hamlib `RIG_LEVEL_STRENGTH` reading for an S-meter; unsupported radios show `S --` without breaking CAT polling.
+- S-meter values are presented as familiar S-units (S0–S9 / S9+ dB) from Hamlib's calibrated dB-relative-to-S9 value.
+- The live display is independent from the editable frequency/mode/filter command controls, so monitoring never overwrites prepared operator settings.
+
+## 1.10.2 - 2026-09-27
+
+- Automatic STOP now explicitly **finishes the current image capture** instead of only returning the detector to WAIT_START.
+- Live audio, spectrum and START detector continue running after STOP so the program can wait for the next fax without appending lines to the completed image.
+- Added an independent raster-capture gate: START/phasing pauses image writing, phasing LOCK enables it, and STOP disables it immediately.
+- Prevented the final timer cycle from overwriting the STOP status with a stale "receiving" message.
+- The completed fax remains visible and can be saved while the receiver waits for the next START.
+
 ## 1.10.1 - 2026-09-27
 
 - Split receive automation into independent **Automatic START / STOP** and **Automatic LPM** controls.

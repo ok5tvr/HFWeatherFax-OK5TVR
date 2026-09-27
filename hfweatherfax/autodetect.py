@@ -113,6 +113,32 @@ class WefaxAutoDetector:
             value = 120
         self.manual_lpm = value if value in self.LPM_CANDIDATES else 120
 
+    def force_receiving(self, lpm: int = 120) -> None:
+        """Force the detector into RECEIVING for a manual image start.
+
+        This bypasses START/phasing acquisition for the current image while
+        retaining normal APT STOP monitoring when Auto START/STOP is enabled.
+        Recent APT history is cleared and a short restart guard prevents the
+        currently audible START/phasing sequence from immediately creating a
+        false RESTART event.
+        """
+        try:
+            value = int(lpm)
+        except (TypeError, ValueError):
+            value = 120
+        if value not in self.LPM_CANDIDATES:
+            value = 120
+
+        self._enter_wait_start()
+        self.manual_lpm = value
+        self.detected_lpm = value
+        self.state = "RECEIVING"
+        self._restart_guard_s = 3.0
+        self._start_seconds = 0.0
+        self._stop_seconds = 0.0
+        self._apt_accum = np.empty(0, dtype=np.float32)
+        self._apt_series = np.empty(0, dtype=np.float32)
+
     def reset(self):
         self.state = "WAIT_START"
         self.detected_lpm = None
