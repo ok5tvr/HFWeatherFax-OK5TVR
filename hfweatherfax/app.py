@@ -249,7 +249,7 @@ class MainWindow(QMainWindow):
                 peak = f"{self.spectrum.peak_hz:.0f} Hz"
                 tuning = (
                     self._tr("image_active_tuning_disabled")
-                    if self.auto_detect.isChecked() and self.autodetector.state == "RECEIVING"
+                    if (self.auto_start_stop.isChecked() or self.auto_lpm.isChecked()) and self.autodetector.state == "RECEIVING"
                     else self._spectrum_tuning_text()
                 )
                 self.spectrum_info.setText(self._tr("spectrum_live", peak=peak, tuning=tuning))
@@ -304,7 +304,25 @@ class MainWindow(QMainWindow):
 
     def _auto_status_text(self) -> str:
         d = self.autodetector
+        auto_start_stop = bool(getattr(self, "auto_start_stop", None) and self.auto_start_stop.isChecked())
+        auto_lpm = bool(getattr(self, "auto_lpm", None) and self.auto_lpm.isChecked())
+        manual_lpm = self.lpm.currentText() if hasattr(self, "lpm") else "120"
+
+        if not auto_start_stop and not auto_lpm:
+            return self._tr("manual_receive_status", lpm=manual_lpm)
+
         if d.state == "WAIT_START":
+            if auto_lpm and not auto_start_stop:
+                return self._tr(
+                    "auto_lpm_manual_start_stop",
+                    conf=d.last_phasing_confidence,
+                )
+            if auto_start_stop and not auto_lpm:
+                return self._tr(
+                    "auto_start_stop_manual_lpm_wait",
+                    lpm=manual_lpm,
+                    tone=d.last_start_confidence,
+                )
             if d.last_phasing_confidence >= 0.45:
                 return self._tr("auto_checking_phasing", conf=d.last_phasing_confidence)
             tone = max(d.last_start_confidence, d.last_stop_confidence)
@@ -313,14 +331,30 @@ class MainWindow(QMainWindow):
                 sensitivity=self._display_sensitivity(d.sensitivity),
                 tone=tone,
             )
+
         if d.state == "PHASING":
+            if not auto_lpm:
+                return self._tr(
+                    "auto_start_manual_lpm_phasing",
+                    lpm=manual_lpm,
+                    conf=d.last_phasing_confidence,
+                )
             return self._tr(
                 "auto_start_phasing",
                 conf=d.last_phasing_confidence,
                 sensitivity=self._display_sensitivity(d.sensitivity),
             )
+
         if d.state == "RECEIVING":
-            lpm = d.detected_lpm or "?"
+            lpm = d.detected_lpm or manual_lpm
+            if auto_start_stop and not auto_lpm:
+                return self._tr(
+                    "auto_start_stop_manual_lpm_receiving",
+                    lpm=manual_lpm,
+                    conf=d.last_stop_confidence,
+                )
+            if auto_lpm and not auto_start_stop:
+                return self._tr("auto_lpm_receiving_manual_stop", lpm=lpm)
             return self._tr("auto_receiving_detail", lpm=lpm, conf=d.last_stop_confidence)
         return "AUTO"
 
@@ -416,6 +450,20 @@ class MainWindow(QMainWindow):
             except Exception:
                 pass
 
+        # Receive automation: START/STOP remains enabled by default, while LPM
+        # is deliberately manual at 120 LPM unless the operator enables Auto LPM.
+        if hasattr(self, "lpm"):
+            saved_lpm = str(self.settings.value("receive/lpm", "120") or "120")
+            if self.lpm.findText(saved_lpm) >= 0:
+                self.lpm.setCurrentText(saved_lpm)
+            else:
+                self.lpm.setCurrentText("120")
+        if hasattr(self, "auto_start_stop"):
+            self.auto_start_stop.setChecked(self._settings_bool("receive/auto_start_stop", True))
+        if hasattr(self, "auto_lpm"):
+            self.auto_lpm.setChecked(self._settings_bool("receive/auto_lpm", False))
+        self._receive_mode_changed()
+
     def _save_ui_settings(self) -> None:
         self.settings.setValue("ui/geometry", self.saveGeometry())
         if hasattr(self, "main_splitter"):
@@ -424,6 +472,12 @@ class MainWindow(QMainWindow):
             self.settings.setValue("ui/workspace_splitter", self.workspace_splitter.saveState())
         if hasattr(self, "side_tabs"):
             self.settings.setValue("ui/sidebar_tab", self.side_tabs.currentIndex())
+        if hasattr(self, "lpm"):
+            self.settings.setValue("receive/lpm", self.lpm.currentText())
+        if hasattr(self, "auto_start_stop"):
+            self.settings.setValue("receive/auto_start_stop", self.auto_start_stop.isChecked())
+        if hasattr(self, "auto_lpm"):
+            self.settings.setValue("receive/auto_lpm", self.auto_lpm.isChecked())
 
     def _audio_device_identity(self):
         if not hasattr(self, "device") or self.device.currentIndex() < 0:
@@ -468,8 +522,11 @@ class MainWindow(QMainWindow):
         self.ioc = QComboBox()
         self.ioc.addItems(["576", "288"])
 
-        self.auto_detect = self._check("auto_detect")
-        self.auto_detect.setChecked(True)
+        self.auto_start_stop = self._check("auto_start_stop")
+        self.auto_start_stop.setChecked(True)
+        self.auto_lpm = self._check("auto_lpm")
+        # Fixed 120 LPM is the default operating mode; auto LPM is opt-in.
+        self.auto_lpm.setChecked(False)
         self.auto_hsync = self._check("auto_hsync")
         self.auto_hsync.setChecked(True)
         self.auto_clear = self._check("auto_clear")
@@ -479,6 +536,9 @@ class MainWindow(QMainWindow):
         self.sensitivity = QComboBox()
         self._populate_sensitivity_combo("High")
         self.sensitivity.currentIndexChanged.connect(self._change_detection_sensitivity)
+        self.auto_start_stop.toggled.connect(self._receive_mode_changed)
+        self.auto_lpm.toggled.connect(self._receive_mode_changed)
+        self.lpm.currentTextChanged.connect(self._receive_mode_changed)
 
         # Detailed lock indicators live in the diagnostics panel so the
         # control tab stays compact on notebook displays.
@@ -521,12 +581,13 @@ class MainWindow(QMainWindow):
         g.addWidget(self.lpm, 1, 3)
         g.addWidget(QLabel("IOC"), 1, 4)
         g.addWidget(self.ioc, 1, 5)
-        g.addWidget(self.auto_detect, 2, 0, 1, 3)
-        g.addWidget(self.auto_hsync, 2, 3, 1, 3)
+        g.addWidget(self.auto_start_stop, 2, 0, 1, 3)
+        g.addWidget(self.auto_lpm, 2, 3, 1, 3)
         g.addWidget(self.auto_clear, 3, 0, 1, 3)
-        g.addWidget(self._label("detection_sensitivity"), 3, 3)
-        g.addWidget(self.sensitivity, 3, 4, 1, 2)
-        g.addWidget(self.auto_status, 4, 0, 1, 6)
+        g.addWidget(self.auto_hsync, 3, 3, 1, 3)
+        g.addWidget(self._label("detection_sensitivity"), 4, 0)
+        g.addWidget(self.sensitivity, 4, 1, 1, 2)
+        g.addWidget(self.auto_status, 4, 3, 1, 3)
 
         btns = QGridLayout()
         btns.setHorizontalSpacing(6)
@@ -1160,6 +1221,28 @@ class MainWindow(QMainWindow):
         if hasattr(self, "auto_status"):
             self.auto_status.setText(self._tr("auto_sensitivity", value=self.sensitivity.currentText()))
 
+    def _receive_mode_changed(self, _value=None) -> None:
+        """Apply independent START/STOP and LPM automation settings.
+
+        Auto LPM is opt-in. With it disabled the selected LPM remains under
+        operator control (120 LPM by default). The detector can still use
+        phasing at that fixed LPM for image start/H-sync when START/STOP is on.
+        """
+        if hasattr(self, "auto_lpm") and hasattr(self, "lpm"):
+            self.lpm.setEnabled(not self.auto_lpm.isChecked())
+        if hasattr(self, "autodetector") and hasattr(self, "auto_start_stop") and hasattr(self, "auto_lpm"):
+            try:
+                manual_lpm = int(self.lpm.currentText())
+            except Exception:
+                manual_lpm = 120
+            self.autodetector.set_modes(
+                self.auto_start_stop.isChecked(),
+                self.auto_lpm.isChecked(),
+                manual_lpm,
+            )
+        if hasattr(self, "auto_status"):
+            self.auto_status.setText(self._auto_status_text())
+
     def _settings_bool(self, key: str, default: bool) -> bool:
         value = self.settings.value(key, default)
         if isinstance(value, bool):
@@ -1535,7 +1618,12 @@ class MainWindow(QMainWindow):
                 dev = device_data
             self._save_audio_device()
             self.configure_decoder(sr)
-            self.autodetector = WefaxAutoDetector(sr, self.sensitivity.currentData() or "Normal")
+            self.autodetector = WefaxAutoDetector(
+                sr, self.sensitivity.currentData() or "Normal",
+                auto_start_stop=self.auto_start_stop.isChecked(),
+                auto_lpm=self.auto_lpm.isChecked(),
+                manual_lpm=int(self.lpm.currentText()),
+            )
             self.slant_estimator = AutoSlantEstimator(self.decoder.width)
             self.audio = LiveAudioInput(device=dev, sample_rate=sr)
             self.audio.start()
@@ -1568,7 +1656,12 @@ class MainWindow(QMainWindow):
             self.current_source_name = Path(fn).stem
             self.last_autosave_signature = None
             self.configure_decoder(self.wav_rate)
-            self.autodetector = WefaxAutoDetector(self.wav_rate, self.sensitivity.currentData() or "Normal")
+            self.autodetector = WefaxAutoDetector(
+                self.wav_rate, self.sensitivity.currentData() or "Normal",
+                auto_start_stop=self.auto_start_stop.isChecked(),
+                auto_lpm=self.auto_lpm.isChecked(),
+                manual_lpm=int(self.lpm.currentText()),
+            )
             self.slant_estimator = AutoSlantEstimator(self.decoder.width)
             self.timer.start()
             self.update_status(self._tr("decoding_file", name=Path(fn).name, sr=sr))
@@ -1591,7 +1684,7 @@ class MainWindow(QMainWindow):
         if hasattr(self, "autodetector"):
             self.autodetector.reset()
         if hasattr(self, "auto_status"):
-            self.auto_status.setText(self._tr("auto_waiting"))
+            self.auto_status.setText(self._auto_status_text())
         if hasattr(self, "phasing_quality"):
             self._set_lock_quality(self.phasing_quality_label, self.phasing_quality, 0.0, "phasing_lock")
         if hasattr(self, "hsync_quality"):
@@ -1662,109 +1755,141 @@ class MainWindow(QMainWindow):
             self._update_signal_diagnostics(audio_db)
             self.spectrum.update_audio(spectrum_audio, current_sr)
             peak = "--" if self.spectrum.peak_hz is None else f"{self.spectrum.peak_hz:.0f} Hz"
-            if self.auto_detect.isChecked() and self.autodetector.state == "RECEIVING":
+            if (self.auto_start_stop.isChecked() or self.auto_lpm.isChecked()) and self.autodetector.state == "RECEIVING":
                 tuning = self._tr("image_active_tuning_disabled")
             else:
                 tuning = self._spectrum_tuning_text()
             self.spectrum_info.setText(self._tr("spectrum_live", peak=peak, tuning=tuning))
 
         for chunk in chunks:
-            decode_this_chunk = True
             locked_this_chunk = False
+            auto_start_stop = self.auto_start_stop.isChecked()
+            auto_lpm = self.auto_lpm.isChecked()
+            automation_gated = auto_start_stop or auto_lpm
 
-            if self.auto_detect.isChecked():
-                events = self.autodetector.push_audio(chunk)
-                for event in events:
-                    if event.kind in ("START", "RESTART"):
-                        self.spectrum.mark_event("START")
-                        self.spectrum.mark_event("PHASING")
+            # The detector always runs so START/STOP/SYNC meters remain useful
+            # even in fully manual mode. Its automation flags decide whether it
+            # may change receive state or emit control events.
+            self.autodetector.set_modes(
+                auto_start_stop,
+                auto_lpm,
+                int(self.lpm.currentText()),
+            )
+            events = self.autodetector.push_audio(chunk)
 
-                        # A RESTART is a newly detected 300 Hz START while an
-                        # image is already being received. This is deliberately
-                        # handled even when the previous 450 Hz STOP was missed:
-                        # finalize the old fax, clear it and wait for new phasing.
-                        saved = None
-                        if self.image_lines:
-                            saved = self.auto_save_image(reason="new_start")
+            for event in events:
+                if event.kind in ("START", "RESTART"):
+                    self.spectrum.mark_event("START")
+                    self.spectrum.mark_event("PHASING")
 
-                        if self.auto_clear.isChecked():
-                            self.clear_image()
-                        else:
-                            self.decoder.reset()
+                    # A RESTART is a newly detected 300 Hz START while an image
+                    # is already being received. It remains the safety net for a
+                    # missed STOP and is controlled only by Auto START/STOP.
+                    saved = None
+                    if self.image_lines:
+                        saved = self.auto_save_image(reason="new_start")
 
-                        self._set_lock_quality(self.phasing_quality_label, self.phasing_quality, 0.0, "phasing_lock")
-                        self._set_lock_quality(self.hsync_quality_label, self.hsync_quality, 0.0, "hsync_lock")
-                        if event.kind == "RESTART":
-                            if saved is not None:
-                                self.update_status(self._tr("auto_restart_saved", name=saved.name))
-                            else:
-                                self.update_status(self._tr("auto_restart_detected"))
-                        else:
-                            self.update_status(self._tr("auto_start_detected"))
-
-                    elif event.kind == "LOCK" and event.lpm is not None:
-                        self.spectrum.mark_event("IMAGE")
-                        self.auto_realign_done = False
-                        self.lpm.setCurrentText(str(event.lpm))
-                        self.configure_decoder(current_sr)
-                        if self.auto_levels.isChecked() and event.black_hz is not None and event.white_hz is not None:
-                            self.decoder.set_levels(event.black_hz, event.white_hz)
-                            lc = 0.0 if event.level_confidence is None else event.level_confidence
-                            self.level_cal_status.setText(self._tr(
-                                "levels_measured",
-                                black=event.black_hz,
-                                white=event.white_hz,
-                                conf=lc,
-                            ))
-                        else:
-                            self.level_cal_status.setText(self._tr("levels_nominal"))
-                        if self.auto_hsync.isChecked() and event.sync_skip is not None:
-                            self.decoder.set_initial_sync(event.sync_skip)
-                        conf = "" if event.confidence is None else f" ({event.confidence:.0%})"
-                        self._set_lock_quality(
-                            self.phasing_quality_label, self.phasing_quality,
-                            event.confidence or 0.0, "phasing_lock"
-                        )
-                        self._set_lock_quality(
-                            self.hsync_quality_label, self.hsync_quality,
-                            event.hsync_confidence or 0.0, "hsync_lock"
-                        )
-                        sync_txt = ""
-                        if self.auto_hsync.isChecked() and event.phase_percent is not None:
-                            sync_txt = self._tr("hsync_suffix", phase=event.phase_percent)
-                        self.update_status(self._tr(
-                            "auto_locked",
-                            lpm=event.lpm,
-                            conf=conf,
-                            sync=sync_txt,
-                        ))
-                        locked_this_chunk = True
-
-                    elif event.kind == "STOP":
-                        self.spectrum.mark_event("STOP")
-                        saved = self.auto_save_image(reason="stop")
+                    if self.auto_clear.isChecked():
+                        self.clear_image()
+                    else:
                         self.decoder.reset()
-                        self._set_lock_quality(self.phasing_quality_label, self.phasing_quality, 0.0, "phasing_lock")
-                        self._set_lock_quality(self.hsync_quality_label, self.hsync_quality, 0.0, "hsync_lock")
-                        if saved is not None:
-                            self.update_status(self._tr(
-                                "auto_stop_saved",
-                                hz=self.autodetector.stop_target_hz,
-                                name=saved.name,
-                            ))
-                        else:
-                            self.update_status(self._tr(
-                                "auto_stop_waiting",
-                                hz=self.autodetector.stop_target_hz,
-                            ))
 
-                self.auto_status.setText(self._auto_status_text())
-                if self.autodetector.state in ("WAIT_START", "PHASING"):
+                    self._set_lock_quality(
+                        self.phasing_quality_label, self.phasing_quality, 0.0, "phasing_lock"
+                    )
+                    self._set_lock_quality(
+                        self.hsync_quality_label, self.hsync_quality, 0.0, "hsync_lock"
+                    )
+                    if event.kind == "RESTART":
+                        if saved is not None:
+                            self.update_status(self._tr("auto_restart_saved", name=saved.name))
+                        else:
+                            self.update_status(self._tr("auto_restart_detected"))
+                    else:
+                        self.update_status(self._tr("auto_start_detected"))
+
+                elif event.kind == "LOCK" and event.lpm is not None:
+                    self.spectrum.mark_event("IMAGE")
+                    self.auto_realign_done = False
+
+                    # Only Auto LPM may change the LPM selector. In fixed/manual
+                    # mode the operator's selected value (120 by default) wins.
+                    if auto_lpm:
+                        self.lpm.blockSignals(True)
+                        self.lpm.setCurrentText(str(event.lpm))
+                        self.lpm.blockSignals(False)
+                    self.configure_decoder(current_sr)
+
+                    if self.auto_levels.isChecked() and event.black_hz is not None and event.white_hz is not None:
+                        self.decoder.set_levels(event.black_hz, event.white_hz)
+                        lc = 0.0 if event.level_confidence is None else event.level_confidence
+                        self.level_cal_status.setText(self._tr(
+                            "levels_measured",
+                            black=event.black_hz,
+                            white=event.white_hz,
+                            conf=lc,
+                        ))
+                    else:
+                        self.level_cal_status.setText(self._tr("levels_nominal"))
+
+                    if self.auto_hsync.isChecked() and event.sync_skip is not None:
+                        self.decoder.set_initial_sync(event.sync_skip)
+                    conf = "" if event.confidence is None else f" ({event.confidence:.0%})"
                     self._set_lock_quality(
                         self.phasing_quality_label, self.phasing_quality,
-                        self.autodetector.last_phasing_confidence, "phasing_lock"
+                        event.confidence or 0.0, "phasing_lock"
                     )
-                decode_this_chunk = (self.autodetector.state == "RECEIVING") and (not locked_this_chunk)
+                    self._set_lock_quality(
+                        self.hsync_quality_label, self.hsync_quality,
+                        event.hsync_confidence or 0.0, "hsync_lock"
+                    )
+                    sync_txt = ""
+                    if self.auto_hsync.isChecked() and event.phase_percent is not None:
+                        sync_txt = self._tr("hsync_suffix", phase=event.phase_percent)
+                    self.update_status(self._tr(
+                        "auto_locked",
+                        lpm=event.lpm,
+                        conf=conf,
+                        sync=sync_txt,
+                    ))
+                    locked_this_chunk = True
+
+                elif event.kind == "STOP":
+                    self.spectrum.mark_event("STOP")
+                    saved = self.auto_save_image(reason="stop")
+                    self.decoder.reset()
+                    self._set_lock_quality(
+                        self.phasing_quality_label, self.phasing_quality, 0.0, "phasing_lock"
+                    )
+                    self._set_lock_quality(
+                        self.hsync_quality_label, self.hsync_quality, 0.0, "hsync_lock"
+                    )
+                    if saved is not None:
+                        self.update_status(self._tr(
+                            "auto_stop_saved",
+                            hz=self.autodetector.stop_target_hz,
+                            name=saved.name,
+                        ))
+                    else:
+                        self.update_status(self._tr(
+                            "auto_stop_waiting",
+                            hz=self.autodetector.stop_target_hz,
+                        ))
+
+            self.auto_status.setText(self._auto_status_text())
+            if self.autodetector.state in ("WAIT_START", "PHASING"):
+                self._set_lock_quality(
+                    self.phasing_quality_label, self.phasing_quality,
+                    self.autodetector.last_phasing_confidence, "phasing_lock"
+                )
+
+            # Fully manual mode decodes immediately at the selected LPM. If
+            # either automation is enabled, wait until its phasing state locks.
+            decode_this_chunk = True
+            if automation_gated:
+                decode_this_chunk = (
+                    self.autodetector.state == "RECEIVING" and not locked_this_chunk
+                )
 
             if decode_this_chunk:
                 new_lines = self.decoder.push_audio(chunk)
@@ -1800,11 +1925,12 @@ class MainWindow(QMainWindow):
                         self.auto_realign_done = True
                         self.line_start_status.setText(self._tr("line_no_seam", conf=conf))
             self.render_image()
-            if self.auto_detect.isChecked():
-                lpm = self.autodetector.detected_lpm or self.lpm.currentText()
-                self.update_status(self._tr("receiving_lpm", lpm=lpm, lines=len(self.image_lines)))
-            else:
-                self.update_status(self._tr("receiving", lines=len(self.image_lines)))
+            lpm = (
+                self.autodetector.detected_lpm
+                if self.auto_lpm.isChecked() and self.autodetector.detected_lpm is not None
+                else self.lpm.currentText()
+            )
+            self.update_status(self._tr("receiving_lpm", lpm=lpm, lines=len(self.image_lines)))
 
     def nudge_image(self, percent: float):
         if not self.image_lines:

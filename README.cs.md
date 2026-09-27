@@ -6,6 +6,11 @@
 
 [English documentation](README.md)
 
+
+### Režimy automatického příjmu
+
+START/STOP a LPM jsou nezávislé. Výchozí nastavení je **Automatický START / STOP zapnutý**, **Automatické LPM vypnuté** a pevné **120 LPM**. Při vypnutém Auto LPM program zvolenou hodnotu LPM nepřepisuje. Pokud jsou obě automatiky vypnuté, příjem je plně ruční a dekódování začne ihned s vybraným LPM.
+
 ## Stažení
 
 Pro běžné použití ve Windows stáhněte z části **Releases** poslední soubor **`HFWeatherFax_OK5TVR.exe`**. Oficiální Release je samostatné EXE vytvořené pomocí PyInstalleru; na cílovém počítači není nutné instalovat Python.
@@ -30,7 +35,7 @@ Jazyk se přepíná položkou **Jazyk / Language** v ovládacím panelu. Volba s
 - IOC 288 / 576 a LPM 60 / 90 / 120 / 240,
 - automatická detekce START 300 Hz a STOP 450 Hz,
 - ochrana při zmeškaném STOP: nový START ukončí předchozí fax a začne nový obrázek,
-- automatická detekce phasingu, LPM a horizontální synchronizace,
+- volitelná automatická detekce LPM; phasing a horizontální synchronizace fungují i s ručně zvoleným LPM,
 - automatická kalibrace BLACK/WHITE,
 - automatická i ruční korekce sklonu,
 - automatická korekce začátku řádku / přetočení obrazu,
@@ -94,8 +99,8 @@ V repozitáři je připraven workflow `.github/workflows/windows-release.yml`.
 Pro vydání nové verze stačí například:
 
 ```bash
-git tag v1.10.0
-git push origin v1.10.0
+git tag v1.10.1
+git push origin v1.10.1
 ```
 
 GitHub Actions potom na Windows runneru:

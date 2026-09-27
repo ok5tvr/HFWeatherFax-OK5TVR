@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.10.1 - 2026-09-27
+
+- Split receive automation into independent **Automatic START / STOP** and **Automatic LPM** controls.
+- Automatic LPM is now disabled by default; the primary fixed/manual line rate is **120 LPM**.
+- With Auto START/STOP enabled and Auto LPM disabled, START/STOP remains automatic while phasing is evaluated only at the operator-selected fixed LPM; the software does not change it.
+- With both options disabled, reception is fully manual and starts decoding immediately at the selected LPM.
+- With Auto LPM enabled but Auto START/STOP disabled, the program can acquire LPM from phasing while START/STOP remains manual.
+- START/STOP/SYNC diagnostics continue to run even in manual mode.
+- Receive automation choices and the manually selected LPM are remembered between program starts.
+
 ## 1.10.0 - 2026-09-27
 
 - Redesigned the main window for small notebook displays: controls are grouped into **Receive / CAT / Stations** tabs instead of three tall columns.

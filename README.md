@@ -6,6 +6,11 @@
 
 [Česká dokumentace](README.cs.md)
 
+
+### Receive automation modes
+
+START/STOP and LPM automation are independent. The default is **Automatic START / STOP enabled**, **Automatic LPM disabled**, with a fixed **120 LPM**. When Auto LPM is off, the program never overwrites the selected LPM. With both automation options disabled, reception is fully manual and decoding starts immediately at the selected LPM.
+
 ## Download
 
 For normal Windows use, download the latest **`HFWeatherFax_OK5TVR.exe`** from the repository's **Releases** page. The official Release build is a standalone PyInstaller executable; Python is not required on the target PC.
@@ -30,7 +35,7 @@ Use the **Language / Jazyk** selector in the program controls. The selected lang
 - IOC 288 / 576 and LPM 60 / 90 / 120 / 240,
 - automatic 300 Hz START and 450 Hz STOP detection,
 - recovery from a missed STOP: a new START finalizes the previous fax and begins a new image,
-- automatic phasing / LPM and horizontal synchronization,
+- optional automatic LPM detection; phasing and horizontal synchronization also work with a manually selected LPM,
 - automatic BLACK/WHITE calibration,
 - automatic and manual slant correction,
 - automatic line-start / image wrap correction,
@@ -102,8 +107,8 @@ The repository contains `.github/workflows/windows-release.yml`.
 A tagged version such as:
 
 ```bash
-git tag v1.10.0
-git push origin v1.10.0
+git tag v1.10.1
+git push origin v1.10.1
 ```
 
 starts a Windows build on GitHub Actions. The workflow builds the EXE, generates `SHA256SUMS.txt`, uploads a build artifact and publishes the files to the matching GitHub Release.

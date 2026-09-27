@@ -31,9 +31,14 @@ class WefaxAutoDetector:
 
     LPM_CANDIDATES = (60, 90, 120, 240)
 
-    def __init__(self, sample_rate: int, sensitivity: str = "Normal"):
+    def __init__(self, sample_rate: int, sensitivity: str = "Normal",
+                 auto_start_stop: bool = True, auto_lpm: bool = False,
+                 manual_lpm: int = 120):
         self.sample_rate = int(sample_rate)
         self.sensitivity = sensitivity if sensitivity in ("Normal", "High", "Weak signal") else "Normal"
+        self.auto_start_stop = bool(auto_start_stop)
+        self.auto_lpm = bool(auto_lpm)
+        self.manual_lpm = int(manual_lpm) if int(manual_lpm) in self.LPM_CANDIDATES else 120
         self._profiles = {
             "Normal": {"tone_thr": 0.62, "confirm_s": 1.00, "stop_thr": 0.58, "stop_confirm_s": 1.00, "phase_thr": 0.48, "fallback_thr": 0.67, "spread": 28.0},
             "High": {"tone_thr": 0.54, "confirm_s": 1.10, "stop_thr": 0.50, "stop_confirm_s": 1.15, "phase_thr": 0.42, "fallback_thr": 0.60, "spread": 22.0},
@@ -91,6 +96,22 @@ class WefaxAutoDetector:
             sensitivity = "Normal"
         self.sensitivity = sensitivity
         self.profile = self._profiles[sensitivity]
+
+    def set_modes(self, auto_start_stop: bool, auto_lpm: bool, manual_lpm: int = 120) -> None:
+        """Update receive automation without recreating the detector.
+
+        START/STOP automation and LPM detection are intentionally independent.
+        When auto LPM is disabled, phasing is still evaluated at the operator's
+        selected fixed LPM so START/STOP automation can wait for the image phase
+        without changing the configured line rate.
+        """
+        self.auto_start_stop = bool(auto_start_stop)
+        self.auto_lpm = bool(auto_lpm)
+        try:
+            value = int(manual_lpm)
+        except (TypeError, ValueError):
+            value = 120
+        self.manual_lpm = value if value in self.LPM_CANDIDATES else 120
 
     def reset(self):
         self.state = "WAIT_START"
@@ -284,7 +305,11 @@ class WefaxAutoDetector:
         if self._phase_series.size < int(self._phase_rate * 3.5):
             return events
 
-        lpm, conf = self._estimate_lpm(self._phase_series)
+        # Auto LPM searches all supported line rates. In manual LPM mode we
+        # evaluate only the selected rate (120 LPM by default), so phasing/H-sync
+        # can still be used without the software changing the line rate.
+        candidates = self.LPM_CANDIDATES if self.auto_lpm else (self.manual_lpm,)
+        lpm, conf = self._estimate_lpm(self._phase_series, candidates=candidates)
         self.last_phasing_confidence = conf
 
         if self.state == "PHASING":
@@ -316,8 +341,10 @@ class WefaxAutoDetector:
                     level_confidence=level_conf,
                 ))
 
-        elif self.state == "WAIT_START":
-            # Fallback: allow lock if the program was started after the 300 Hz tone.
+        elif self.state == "WAIT_START" and self.auto_lpm:
+            # Auto-LPM fallback: allow lock if the program was started after the
+            # 300 Hz tone. With manual LPM this fallback is deliberately disabled
+            # so a fully manual receive starts decoding immediately in the UI.
             if lpm is not None and conf >= float(self.profile["fallback_thr"]):
                 self._phase_only_lock_count += 1
             else:
@@ -443,6 +470,13 @@ class WefaxAutoDetector:
 
         self.last_start_confidence = start_conf
         self.last_stop_confidence = stop_conf
+
+        # In manual START/STOP mode keep measuring the APT tones for the live
+        # diagnostics, but never change the receive state or emit START/STOP.
+        if not self.auto_start_stop:
+            self._start_seconds = 0.0
+            self._stop_seconds = 0.0
+            return events
 
         # Estimate elapsed new demodulated time since the previous evaluation.
         # push_audio cadence can vary (live vs WAV), so cap each update.
@@ -703,7 +737,7 @@ class WefaxAutoDetector:
         phase_pct = 100.0 * pulse_start / float(line_n)
         return int(skip), int(line_n), float(phase_pct), hsync_conf
 
-    def _estimate_lpm(self, series: np.ndarray) -> tuple[int | None, float]:
+    def _estimate_lpm(self, series: np.ndarray, candidates=None) -> tuple[int | None, float]:
         x = np.asarray(series, dtype=np.float64)
         if x.size < 200:
             return None, 0.0
@@ -720,8 +754,10 @@ class WefaxAutoDetector:
         x /= std
 
         # Normalized autocorrelation for the candidate line periods.
+        if candidates is None:
+            candidates = self.LPM_CANDIDATES
         scores: list[tuple[int, float]] = []
-        for lpm in self.LPM_CANDIDATES:
+        for lpm in candidates:
             f = lpm / 60.0
             lag = int(round(self._phase_rate / f))
             if lag < 2 or lag >= x.size // 2:
