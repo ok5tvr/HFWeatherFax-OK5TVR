@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.10.7 - 2026-10-31
+
+- Added a **Broadcasting now (UTC)** / **Vysílá právě teď (UTC)** station filter.
+- The filter combines with the existing country, service, band, favorites and text-search filters.
+- Added a live UTC clock beside the station filters; the list refreshes automatically every 30 seconds while the live filter is enabled.
+- Explicit schedule intervals such as `0530-0730` are evaluated exactly, including ranges crossing midnight.
+- Schedule rows containing only a start time are treated as active until the next published item, capped at **20 minutes** to avoid false activity across long gaps.
+- Stations marked as discontinued are excluded from the live filter.
+- Active stations are marked with `▶` in the station list, and the currently active schedule row is marked with `▶` in the UTC table.
+- The live UTC filter choice is remembered between program starts.
+
 ## 1.10.6 - 2026-09-27
 
 - Exposed the decoder's existing **WEFAX 1000-2800 Hz band-pass** as an operator-selectable option; it remains enabled by default.

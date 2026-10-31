@@ -50,6 +50,7 @@ Jazyk se přepíná položkou **Jazyk / Language** v ovládacím panelu. Volba s
 - skutečný seznam modelů rádií načítaný z Hamlib DLL,
 - databáze HF FAX stanic s filtrem země/služba/pásmo,
 - oblíbené stanice a UTC rozvrhy,
+- filtr **Vysílá právě teď (UTC)** s živými UTC hodinami a označením aktivní položky `▶`,
 - přenos frekvence stanice do CAT a **Naladit frekvenci přes CAT**; obě akce z knihovny mění pouze frekvenci a nemění modulaci ani šířku filtru.
 
 ## Databáze stanic
@@ -100,8 +101,8 @@ V repozitáři je připraven workflow `.github/workflows/windows-release.yml`.
 Pro vydání nové verze stačí například:
 
 ```bash
-git tag v1.10.6
-git push origin v1.10.6
+git tag v1.10.7
+git push origin v1.10.7
 ```
 
 GitHub Actions potom na Windows runneru:

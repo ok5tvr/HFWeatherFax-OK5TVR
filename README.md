@@ -49,6 +49,7 @@ Use the **Language / Jazyk** selector in the program controls. The selected lang
 - persistent Hamlib path and rig/CAT settings across restarts,
 - Hamlib radio model list loaded from the DLL,
 - station database, country/service/band filters, favorites and UTC schedules,
+- **Broadcasting now (UTC)** filter with a live UTC clock and `▶` marker for the active schedule item,
 - one-click station frequency transfer and **Tune frequency via CAT**; both station-library actions change frequency only and never change modulation or filter bandwidth.
 
 ## Station database
@@ -108,8 +109,8 @@ The repository contains `.github/workflows/windows-release.yml`.
 A tagged version such as:
 
 ```bash
-git tag v1.10.6
-git push origin v1.10.6
+git tag v1.10.7
+git push origin v1.10.7
 ```
 
 starts a Windows build on GitHub Actions. The workflow builds the EXE, generates `SHA256SUMS.txt`, uploads a build artifact and publishes the files to the matching GitHub Release.

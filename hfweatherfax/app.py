@@ -4,7 +4,7 @@ import sys
 import os
 import json
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 from collections import deque
 import numpy as np
 import soundfile as sf
@@ -138,6 +138,12 @@ class MainWindow(QMainWindow):
         self._diagnostic_audio_chunks = deque(maxlen=6)
         self._diagnostic_sample_rate = 48000
 
+        # UTC schedule filter refresh.  A 30 s cadence is enough for minute-based
+        # broadcast schedules and avoids unnecessary work in the GUI thread.
+        self.schedule_timer = QTimer(self)
+        self.schedule_timer.setInterval(30000)
+        self.schedule_timer.timeout.connect(self._refresh_schedule_clock)
+
         self.cat_timer = QTimer(self)
         self.cat_timer.setInterval(1000)
         self.cat_timer.timeout.connect(self.poll_cat)
@@ -160,6 +166,8 @@ class MainWindow(QMainWindow):
         self._restore_ui_settings()
         self._update_signal_diagnostics(-120.0)
         self.diagnostics_timer.start()
+        self.schedule_timer.start()
+        self._refresh_schedule_clock()
         self.update_status(self._tr("ready"))
 
     def _tr(self, key: str, **kwargs) -> str:
@@ -359,6 +367,9 @@ class MainWindow(QMainWindow):
                 self.cat_connect_btn.setText(self._tr("connect_cat"))
                 if hasattr(self, "cat_status"):
                     self.cat_status.setText(self._tr("cat_disconnected"))
+
+        if hasattr(self, "station_utc_clock"):
+            self._refresh_schedule_clock()
 
         if hasattr(self, "station_info"):
             station = self._current_station()
@@ -649,6 +660,8 @@ class MainWindow(QMainWindow):
             self.notch_50.setChecked(self._settings_bool("receive/notch_50", False))
         if hasattr(self, "notch_100"):
             self.notch_100.setChecked(self._settings_bool("receive/notch_100", False))
+        if hasattr(self, "station_active_now"):
+            self.station_active_now.setChecked(self._settings_bool("stations/active_now_utc", False))
         self._filter_options_changed()
         self._receive_mode_changed()
 
@@ -673,6 +686,8 @@ class MainWindow(QMainWindow):
             self.settings.setValue("receive/notch_50", self.notch_50.isChecked())
         if hasattr(self, "notch_100"):
             self.settings.setValue("receive/notch_100", self.notch_100.isChecked())
+        if hasattr(self, "station_active_now"):
+            self.settings.setValue("stations/active_now_utc", self.station_active_now.isChecked())
 
     def _audio_device_identity(self):
         if not hasattr(self, "device") or self.device.currentIndex() < 0:
@@ -1077,11 +1092,16 @@ class MainWindow(QMainWindow):
         self.station_sort = QComboBox()
         self._populate_station_sort_combo()
         self.station_fav_only = self._check("favorites_only")
+        self.station_active_now = self._check("active_now_utc")
+        self.station_utc_clock = QLabel()
+        self.station_utc_clock.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        self.station_utc_clock.setToolTip(self._tr("active_now_hint"))
         self.station_country.currentIndexChanged.connect(self.filter_station_list)
         self.station_service.currentIndexChanged.connect(self.filter_station_list)
         self.station_band.currentIndexChanged.connect(self.filter_station_list)
         self.station_sort.currentIndexChanged.connect(self.filter_station_list)
         self.station_fav_only.toggled.connect(self.filter_station_list)
+        self.station_active_now.toggled.connect(self.filter_station_list)
         filter_row.addWidget(self._label("country"), 0, 0)
         filter_row.addWidget(self.station_country, 0, 1)
         filter_row.addWidget(self._label("service"), 1, 0)
@@ -1090,7 +1110,9 @@ class MainWindow(QMainWindow):
         filter_row.addWidget(self.station_band, 2, 1)
         filter_row.addWidget(self._label("sort_by"), 3, 0)
         filter_row.addWidget(self.station_sort, 3, 1)
-        filter_row.addWidget(self.station_fav_only, 4, 0, 1, 2)
+        filter_row.addWidget(self.station_fav_only, 4, 0)
+        filter_row.addWidget(self.station_utc_clock, 4, 1)
+        filter_row.addWidget(self.station_active_now, 5, 0, 1, 2)
 
         self.station_list = QListWidget()
         self.station_list.setMinimumHeight(140)
@@ -1320,6 +1342,95 @@ class MainWindow(QMainWindow):
         if band == "gt18": return any(v > 18 for v in vals)
         return True
 
+    @staticmethod
+    def _hhmm_to_minutes(value: str) -> int | None:
+        text = str(value or "").strip()
+        if len(text) != 4 or not text.isdigit():
+            return None
+        hour = int(text[:2])
+        minute = int(text[2:])
+        if not (0 <= hour < 24 and 0 <= minute < 60):
+            return None
+        return hour * 60 + minute
+
+    @staticmethod
+    def _minutes_in_range(now_min: int, start_min: int, end_min: int) -> bool:
+        # End is exclusive.  Wrap-around ranges such as 2330-0030 are supported.
+        if start_min == end_min:
+            return True
+        if start_min < end_min:
+            return start_min <= now_min < end_min
+        return now_min >= start_min or now_min < end_min
+
+    def _schedule_entry_window(self, schedule: list[dict], index: int) -> tuple[int, int] | None:
+        """Return the UTC minute window for one schedule row.
+
+        Explicit HHMM-HHMM rows use the published interval.  Rows containing
+        only a start time are treated as a short fax transmission: they run
+        until the next published start, capped at 20 minutes.  The cap avoids
+        falsely marking a station active through long gaps in sparse schedules.
+        """
+        if not (0 <= index < len(schedule)):
+            return None
+        raw = str(schedule[index].get("utc", "") or "").strip()
+        if "-" in raw:
+            left, right = raw.split("-", 1)
+            start = self._hhmm_to_minutes(left)
+            end = self._hhmm_to_minutes(right)
+            if start is None or end is None:
+                return None
+            return start, end
+
+        start = self._hhmm_to_minutes(raw)
+        if start is None:
+            return None
+
+        # Find the nearest later start on the 24 h clock.
+        next_delta = 20
+        for j, entry in enumerate(schedule):
+            if j == index:
+                continue
+            other_raw = str(entry.get("utc", "") or "").strip().split("-", 1)[0]
+            other = self._hhmm_to_minutes(other_raw)
+            if other is None:
+                continue
+            delta = (other - start) % (24 * 60)
+            if 0 < delta < next_delta:
+                next_delta = delta
+        duration = max(1, min(20, next_delta))
+        return start, (start + duration) % (24 * 60)
+
+    def _active_schedule_entries(self, station: dict, now_min: int | None = None) -> list[dict]:
+        if now_min is None:
+            now = datetime.now(timezone.utc)
+            now_min = now.hour * 60 + now.minute
+        schedule = station.get("schedule", []) or []
+        active: list[dict] = []
+        for i, entry in enumerate(schedule):
+            window = self._schedule_entry_window(schedule, i)
+            if window is None:
+                continue
+            if self._minutes_in_range(int(now_min), window[0], window[1]):
+                active.append(entry)
+        return active
+
+    def _station_is_active_now(self, station: dict, now_min: int | None = None) -> bool:
+        return bool(self._active_schedule_entries(station, now_min))
+
+    def _refresh_schedule_clock(self) -> None:
+        now = datetime.now(timezone.utc)
+        if hasattr(self, "station_utc_clock"):
+            self.station_utc_clock.setText(self._tr("utc_now", time=now.strftime("%H:%M")))
+            self.station_utc_clock.setToolTip(self._tr("active_now_hint"))
+        # The visible set can change at a minute boundary.  Refilter only when
+        # the operator actually requested the live UTC view.
+        if hasattr(self, "station_active_now") and self.station_active_now.isChecked():
+            self.filter_station_list()
+        elif hasattr(self, "station_schedule"):
+            station = self._current_station()
+            if station is not None:
+                self.populate_station_schedule(station)
+
     def filter_station_list(self, _value=None):
         if not hasattr(self, "station_list"):
             return
@@ -1328,6 +1439,9 @@ class MainWindow(QMainWindow):
         service = self.station_service.currentData() if hasattr(self, "station_service") else None
         band = self.station_band.currentData() if hasattr(self, "station_band") else "all"
         fav_only = self.station_fav_only.isChecked() if hasattr(self, "station_fav_only") else False
+        active_now_only = self.station_active_now.isChecked() if hasattr(self, "station_active_now") else False
+        now_utc = datetime.now(timezone.utc)
+        now_min = now_utc.hour * 60 + now_utc.minute
         current_id = None
         cur = self.station_list.currentItem()
         if cur is not None:
@@ -1340,6 +1454,10 @@ class MainWindow(QMainWindow):
             if service and station.get("service") != service:
                 continue
             if fav_only and station.get("id") not in self.station_favorites:
+                continue
+            if active_now_only and station.get("status") == "discontinued":
+                continue
+            if active_now_only and not self._station_is_active_now(station, now_min):
                 continue
             if not self._station_in_band(station, band):
                 continue
@@ -1368,7 +1486,9 @@ class MainWindow(QMainWindow):
             status_mark = " ⛔" if status == "discontinued" else (" ?" if status == "uncertain" else "")
             calls = "/".join(station.get("call_signs",[])) or "—"
             freq_txt = ", ".join(f.get("display","") for f in station.get("frequencies",[])) or self._tr("no_active_frequency_short")
-            label = (f"{fav} {station.get('country','')} | {station.get('location','')} [{calls}]{status_mark}\n"
+            active_entries = self._active_schedule_entries(station, now_min)
+            active_mark = " ▶" if active_entries else ""
+            label = (f"{fav} {station.get('country','')} | {station.get('location','')} [{calls}]{status_mark}{active_mark}\n"
                      f"{station.get('service','')} • {freq_txt}")
             item=QListWidgetItem(label)
             item.setData(Qt.UserRole, station.get("id"))
@@ -1426,10 +1546,17 @@ class MainWindow(QMainWindow):
 
     def populate_station_schedule(self, station):
         schedule=station.get("schedule",[])
+        now = datetime.now(timezone.utc)
+        now_min = now.hour * 60 + now.minute
         self.station_schedule.setSortingEnabled(False)
         self.station_schedule.setRowCount(len(schedule))
         for r,entry in enumerate(schedule):
-            self.station_schedule.setItem(r,0,QTableWidgetItem(str(entry.get("utc",""))))
+            window = self._schedule_entry_window(schedule, r)
+            is_active = bool(window and self._minutes_in_range(now_min, window[0], window[1]))
+            utc_text = str(entry.get("utc",""))
+            if is_active:
+                utc_text = f"{utc_text} ▶"
+            self.station_schedule.setItem(r,0,QTableWidgetItem(utc_text))
             self.station_schedule.setItem(r,1,QTableWidgetItem(str(entry.get("product",""))))
             self.station_schedule.setItem(r,2,QTableWidgetItem(str(entry.get("rpm_ioc",""))))
         self.station_schedule.setSortingEnabled(True)
